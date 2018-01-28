@@ -7,8 +7,8 @@
     <ProjectGuid>{CBC506BA-11BF-4360-9F0E-946FEF647119}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceCore</RootNamespace>
-    <AssemblyName>ServiceCore</AssemblyName>
+    <RootNamespace>Sharp.ServiceHost</RootNamespace>
+    <AssemblyName>Sharp.ServiceHost</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

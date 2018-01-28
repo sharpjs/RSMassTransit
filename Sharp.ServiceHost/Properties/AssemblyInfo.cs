@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using System.Security;
 
 // General Information
-[assembly: AssemblyTitle       ("ServiceCore")]
-[assembly: AssemblyDescription ("Windows service host and installer")]
-[assembly: AssemblyProduct     ("ServiceCore")]
+[assembly: AssemblyTitle       ("Sharp.ServiceHost")]
+[assembly: AssemblyDescription ("Micro-framework that enables a console app to run as a Windows service")]
+[assembly: AssemblyProduct     ("Sharp.ServiceHost")]
 [assembly: AssemblyCompany     ("(to be determined)")]
 [assembly: AssemblyCopyright   ("Copyright 2018 (to be determined)")]
 [assembly: AssemblyVersion     ("0.0.0")]
@@ -16,7 +16,7 @@ using System.Security;
 
 // Security
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
-[assembly: InternalsVisibleTo("ServiceCore.Tests")]
+[assembly: InternalsVisibleTo("Sharp.ServiceHost.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
                             // ^^^^^^^^^^^^^^^^^^^^^^^^
                             // Required for Moq to mock a class with an internal abstract method.

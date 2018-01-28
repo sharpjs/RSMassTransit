@@ -12,6 +12,9 @@ bin/
 # NuGet
 /packages/
 
+# WCF References
+*.datasource
+
 # Testing
 TestResults
 TestResult*.xml

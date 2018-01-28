@@ -98,14 +98,170 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Connected Services\ReportingServices.Execution\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <None Include="Connected Services\ReportingServices.Execution\ReportExecution2005.wsdl" />
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.DocumentMapNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Extension.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.FindStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReport2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReport3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LoadReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LogoffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.LogonUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Render2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.RenderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.RenderStreamResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ResetExecution2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ResetExecution3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ResetExecutionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ServerInfoHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Sort2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Sort3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SortResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ToggleItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Warning.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ReportingServices.Execution\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ReportingServices.Execution\configuration91.svcinfo" />
+    <None Include="Connected Services\ReportingServices.Execution\configuration.svcinfo" />
+    <None Include="Connected Services\ReportingServices.Execution\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

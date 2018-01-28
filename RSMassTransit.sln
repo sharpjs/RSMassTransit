@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Tests", "RSMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceCore", "ServiceCore\ServiceCore.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharp.Logging", "Sharp.Logging\Sharp.Logging.csproj", "{E1833026-1B85-4369-8CC2-D75B3EE6964F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

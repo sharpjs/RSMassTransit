@@ -15,7 +15,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", ConfigurationName="ReportingServices.Execution.ReportExecutionServiceSoap")]
     internal interface ReportExecutionServiceSoap {
         
-        // CODEGEN: Generating message contract since message ListSecureMethodsRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Lis" +
             "tSecureMethods", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -26,7 +25,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "tSecureMethods", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse> ListSecureMethodsAsync(RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest request);
         
-        // CODEGEN: Generating message contract since message LoadReportRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReport", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -37,7 +35,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "dReport", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportResponse> LoadReportAsync(RSMassTransit.ReportingServices.Execution.LoadReportRequest request);
         
-        // CODEGEN: Generating message contract since message LoadReport3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReport3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -48,7 +45,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "dReport3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport3Response> LoadReport3Async(RSMassTransit.ReportingServices.Execution.LoadReport3Request request);
         
-        // CODEGEN: Generating message contract since message LoadReport2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReport2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -65,7 +61,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse LoadReportDefinition(RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReportDefinition", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse> LoadReportDefinitionAsync(RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest request);
@@ -76,7 +71,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response LoadReportDefinition2(RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReportDefinition2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response> LoadReportDefinition2Async(RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request request);
@@ -87,12 +81,10 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response LoadReportDefinition3(RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dReportDefinition3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response> LoadReportDefinition3Async(RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request request);
         
-        // CODEGEN: Generating message contract since message SetExecutionCredentialsRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionCredentials", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -103,7 +95,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionCredentials", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse> SetExecutionCredentialsAsync(RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest request);
         
-        // CODEGEN: Generating message contract since message SetExecutionCredentials2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionCredentials2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -114,7 +105,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionCredentials2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response> SetExecutionCredentials2Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request request);
         
-        // CODEGEN: Generating message contract since message SetExecutionCredentials3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionCredentials3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -125,7 +115,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionCredentials3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response> SetExecutionCredentials3Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request request);
         
-        // CODEGEN: Generating message contract since message SetExecutionParametersRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionParameters", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -136,7 +125,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionParameters", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse> SetExecutionParametersAsync(RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest request);
         
-        // CODEGEN: Generating message contract since message SetExecutionParameters2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionParameters2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -147,7 +135,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionParameters2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response> SetExecutionParameters2Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request request);
         
-        // CODEGEN: Generating message contract since message SetExecutionParameters3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Set" +
             "ExecutionParameters3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -158,7 +145,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionParameters3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response> SetExecutionParameters3Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request request);
         
-        // CODEGEN: Generating message contract since message ResetExecutionRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Res" +
             "etExecution", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -169,7 +155,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "etExecution", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecutionResponse> ResetExecutionAsync(RSMassTransit.ReportingServices.Execution.ResetExecutionRequest request);
         
-        // CODEGEN: Generating message contract since message ResetExecution2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Res" +
             "etExecution2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -180,7 +165,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "etExecution2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution2Response> ResetExecution2Async(RSMassTransit.ReportingServices.Execution.ResetExecution2Request request);
         
-        // CODEGEN: Generating message contract since message ResetExecution3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Res" +
             "etExecution3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -197,7 +181,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.RenderResponse Render(RSMassTransit.ReportingServices.Execution.RenderRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Ren" +
             "der", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.RenderResponse> RenderAsync(RSMassTransit.ReportingServices.Execution.RenderRequest request);
@@ -208,12 +191,10 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.Render2Response Render2(RSMassTransit.ReportingServices.Execution.Render2Request request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Ren" +
             "der2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Render2Response> Render2Async(RSMassTransit.ReportingServices.Execution.Render2Request request);
         
-        // CODEGEN: Generating message contract since message DeliverReportItemRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Del" +
             "iverReportItem", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -230,12 +211,10 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.RenderStreamResponse RenderStream(RSMassTransit.ReportingServices.Execution.RenderStreamRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Ren" +
             "derStream", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.RenderStreamResponse> RenderStreamAsync(RSMassTransit.ReportingServices.Execution.RenderStreamRequest request);
         
-        // CODEGEN: Generating message contract since message GetExecutionInfoRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Get" +
             "ExecutionInfo", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -246,7 +225,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionInfo", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse> GetExecutionInfoAsync(RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest request);
         
-        // CODEGEN: Generating message contract since message GetExecutionInfo2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Get" +
             "ExecutionInfo2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -257,7 +235,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionInfo2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response> GetExecutionInfo2Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request request);
         
-        // CODEGEN: Generating message contract since message GetExecutionInfo3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Get" +
             "ExecutionInfo3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -268,7 +245,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "ExecutionInfo3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response> GetExecutionInfo3Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request request);
         
-        // CODEGEN: Generating message contract since message GetDocumentMapRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Get" +
             "DocumentMap", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -279,7 +255,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "DocumentMap", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse> GetDocumentMapAsync(RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest request);
         
-        // CODEGEN: Generating message contract since message LoadDrillthroughTargetRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dDrillthroughTarget", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -290,7 +265,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "dDrillthroughTarget", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse> LoadDrillthroughTargetAsync(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest request);
         
-        // CODEGEN: Generating message contract since message LoadDrillthroughTarget2Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dDrillthroughTarget2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -301,7 +275,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "dDrillthroughTarget2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response> LoadDrillthroughTarget2Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request request);
         
-        // CODEGEN: Generating message contract since message LoadDrillthroughTarget3Request has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Loa" +
             "dDrillthroughTarget3", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -312,7 +285,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "dDrillthroughTarget3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response> LoadDrillthroughTarget3Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request request);
         
-        // CODEGEN: Generating message contract since message ToggleItemRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Tog" +
             "gleItem", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -323,7 +295,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "gleItem", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ToggleItemResponse> ToggleItemAsync(RSMassTransit.ReportingServices.Execution.ToggleItemRequest request);
         
-        // CODEGEN: Generating message contract since message NavigateDocumentMapRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Nav" +
             "igateDocumentMap", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -340,12 +311,10 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse NavigateBookmark(RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Nav" +
             "igateBookmark", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse> NavigateBookmarkAsync(RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest request);
         
-        // CODEGEN: Generating message contract since message FindStringRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Fin" +
             "dString", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -362,7 +331,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.SortResponse Sort(RSMassTransit.ReportingServices.Execution.SortRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Sor" +
             "t", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SortResponse> SortAsync(RSMassTransit.ReportingServices.Execution.SortRequest request);
@@ -373,7 +341,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.Sort2Response Sort2(RSMassTransit.ReportingServices.Execution.Sort2Request request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Sor" +
             "t2", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Sort2Response> Sort2Async(RSMassTransit.ReportingServices.Execution.Sort2Request request);
@@ -384,7 +351,6 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.Sort3Response Sort3(RSMassTransit.ReportingServices.Execution.Sort3Request request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Sor" +
             "t3", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Sort3Response> Sort3Async(RSMassTransit.ReportingServices.Execution.Sort3Request request);
@@ -395,12 +361,10 @@ namespace RSMassTransit.ReportingServices.Execution {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ParameterValueOrFieldReference))]
         RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse GetRenderResource(RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest request);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Get" +
             "RenderResource", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse> GetRenderResourceAsync(RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest request);
         
-        // CODEGEN: Generating message contract since message ListRenderingExtensionsRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Lis" +
             "tRenderingExtensions", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -411,7 +375,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "tRenderingExtensions", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse> ListRenderingExtensionsAsync(RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest request);
         
-        // CODEGEN: Generating message contract since message LogonUserResponse has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Log" +
             "onUser", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -422,7 +385,6 @@ namespace RSMassTransit.ReportingServices.Execution {
             "onUser", ReplyAction="*")]
         System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogonUserResponse> LogonUserAsync(RSMassTransit.ReportingServices.Execution.LogonUserRequest request);
         
-        // CODEGEN: Generating message contract since message LogoffResponse has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices/Log" +
             "off", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -2194,7 +2156,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ListSecureMethods", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ListSecureMethodsRequest {
         
@@ -2211,7 +2172,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ListSecureMethodsResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ListSecureMethodsResponse {
         
@@ -2232,7 +2192,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReport", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReportRequest {
         
@@ -2257,7 +2216,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReportResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReportResponse {
         
@@ -2282,7 +2240,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReport3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReport3Request {
         
@@ -2307,7 +2264,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReport3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReport3Response {
         
@@ -2332,7 +2288,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReport2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReport2Request {
         
@@ -2357,7 +2312,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadReport2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadReport2Response {
         
@@ -2529,7 +2483,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentials", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentialsRequest {
         
@@ -2554,7 +2507,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentialsResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentialsResponse {
         
@@ -2575,7 +2527,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentials2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentials2Request {
         
@@ -2600,7 +2551,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentials2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentials2Response {
         
@@ -2621,7 +2571,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentials3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentials3Request {
         
@@ -2646,7 +2595,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionCredentials3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionCredentials3Response {
         
@@ -2667,7 +2615,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParameters", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParametersRequest {
         
@@ -2696,7 +2643,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParametersResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParametersResponse {
         
@@ -2717,7 +2663,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParameters2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParameters2Request {
         
@@ -2746,7 +2691,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParameters2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParameters2Response {
         
@@ -2767,7 +2711,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParameters3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParameters3Request {
         
@@ -2796,7 +2739,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="SetExecutionParameters3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class SetExecutionParameters3Response {
         
@@ -2817,7 +2759,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecution", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecutionRequest {
         
@@ -2838,7 +2779,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecutionResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecutionResponse {
         
@@ -2859,7 +2799,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecution2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecution2Request {
         
@@ -2880,7 +2819,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecution2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecution2Response {
         
@@ -2901,7 +2839,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecution3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecution3Request {
         
@@ -2922,7 +2859,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ResetExecution3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ResetExecution3Response {
         
@@ -3085,7 +3021,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeliverReportItem", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class DeliverReportItemRequest {
         
@@ -3130,7 +3065,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="DeliverReportItemResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class DeliverReportItemResponse {
         
@@ -3208,7 +3142,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfo", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfoRequest {
         
@@ -3229,7 +3162,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfoResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfoResponse {
         
@@ -3250,7 +3182,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfo2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfo2Request {
         
@@ -3271,7 +3202,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfo2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfo2Response {
         
@@ -3292,7 +3222,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfo3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfo3Request {
         
@@ -3313,7 +3242,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetExecutionInfo3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetExecutionInfo3Response {
         
@@ -3334,7 +3262,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDocumentMap", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetDocumentMapRequest {
         
@@ -3355,7 +3282,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetDocumentMapResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class GetDocumentMapResponse {
         
@@ -3376,7 +3302,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTarget", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTargetRequest {
         
@@ -3401,7 +3326,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTargetResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTargetResponse {
         
@@ -3426,7 +3350,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTarget2", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTarget2Request {
         
@@ -3451,7 +3374,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTarget2Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTarget2Response {
         
@@ -3476,7 +3398,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTarget3", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTarget3Request {
         
@@ -3501,7 +3422,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LoadDrillthroughTarget3Response", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LoadDrillthroughTarget3Response {
         
@@ -3526,7 +3446,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ToggleItem", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ToggleItemRequest {
         
@@ -3551,7 +3470,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ToggleItemResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ToggleItemResponse {
         
@@ -3572,7 +3490,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="NavigateDocumentMap", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class NavigateDocumentMapRequest {
         
@@ -3597,7 +3514,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="NavigateDocumentMapResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class NavigateDocumentMapResponse {
         
@@ -3666,7 +3582,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="FindString", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class FindStringRequest {
         
@@ -3699,7 +3614,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="FindStringResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class FindStringResponse {
         
@@ -3973,7 +3887,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ListRenderingExtensions", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ListRenderingExtensionsRequest {
         
@@ -3990,7 +3903,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="ListRenderingExtensionsResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class ListRenderingExtensionsResponse {
         
@@ -4011,7 +3923,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LogonUser", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LogonUserRequest {
         
@@ -4036,7 +3947,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LogonUserResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LogonUserResponse {
         
@@ -4053,7 +3963,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="Logoff", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LogoffRequest {
         
@@ -4063,7 +3972,6 @@ namespace RSMassTransit.ReportingServices.Execution {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="LogoffResponse", WrapperNamespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices", IsWrapped=true)]
     internal partial class LogoffResponse {
         
@@ -4105,1000 +4013,308 @@ namespace RSMassTransit.ReportingServices.Execution {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ListSecureMethods(RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest request) {
+        public RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse ListSecureMethods(RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest request) {
             return base.Channel.ListSecureMethods(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ListSecureMethods(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out string[] ListSecureMethodsResult) {
-            RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest inValue = new RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ListSecureMethods(inValue);
-            ListSecureMethodsResult = retVal.ListSecureMethodsResult;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ListSecureMethodsAsync(RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse> ListSecureMethodsAsync(RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest request) {
             return base.Channel.ListSecureMethodsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListSecureMethodsResponse> ListSecureMethodsAsync(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest inValue = new RSMassTransit.ReportingServices.Execution.ListSecureMethodsRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ListSecureMethodsAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReportResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReport(RSMassTransit.ReportingServices.Execution.LoadReportRequest request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReportResponse LoadReport(RSMassTransit.ReportingServices.Execution.LoadReportRequest request) {
             return base.Channel.LoadReport(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReport(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadReportRequest inValue = new RSMassTransit.ReportingServices.Execution.LoadReportRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            RSMassTransit.ReportingServices.Execution.LoadReportResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReport(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            return retVal.ExecutionHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReportAsync(RSMassTransit.ReportingServices.Execution.LoadReportRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportResponse> LoadReportAsync(RSMassTransit.ReportingServices.Execution.LoadReportRequest request) {
             return base.Channel.LoadReportAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportResponse> LoadReportAsync(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID) {
-            RSMassTransit.ReportingServices.Execution.LoadReportRequest inValue = new RSMassTransit.ReportingServices.Execution.LoadReportRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReportAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReport3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReport3(RSMassTransit.ReportingServices.Execution.LoadReport3Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReport3Response LoadReport3(RSMassTransit.ReportingServices.Execution.LoadReport3Request request) {
             return base.Channel.LoadReport3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReport3(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadReport3Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReport3Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            RSMassTransit.ReportingServices.Execution.LoadReport3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReport3(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            return retVal.ExecutionHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReport3Async(RSMassTransit.ReportingServices.Execution.LoadReport3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport3Response> LoadReport3Async(RSMassTransit.ReportingServices.Execution.LoadReport3Request request) {
             return base.Channel.LoadReport3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport3Response> LoadReport3Async(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID) {
-            RSMassTransit.ReportingServices.Execution.LoadReport3Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReport3Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReport3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReport2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReport2(RSMassTransit.ReportingServices.Execution.LoadReport2Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReport2Response LoadReport2(RSMassTransit.ReportingServices.Execution.LoadReport2Request request) {
             return base.Channel.LoadReport2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReport2(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadReport2Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReport2Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            RSMassTransit.ReportingServices.Execution.LoadReport2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReport2(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            return retVal.ExecutionHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReport2Async(RSMassTransit.ReportingServices.Execution.LoadReport2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport2Response> LoadReport2Async(RSMassTransit.ReportingServices.Execution.LoadReport2Request request) {
             return base.Channel.LoadReport2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReport2Response> LoadReport2Async(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Report, string HistoryID) {
-            RSMassTransit.ReportingServices.Execution.LoadReport2Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReport2Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Report = Report;
-            inValue.HistoryID = HistoryID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReport2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReportDefinition(RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse LoadReportDefinition(RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest request) {
             return base.Channel.LoadReportDefinition(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReportDefinition(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, byte[] Definition, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo, out RSMassTransit.ReportingServices.Execution.Warning[] warnings) {
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest inValue = new RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Definition = Definition;
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReportDefinition(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            warnings = retVal.warnings;
-            return retVal.ExecutionHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinitionResponse> LoadReportDefinitionAsync(RSMassTransit.ReportingServices.Execution.LoadReportDefinitionRequest request) {
             return base.Channel.LoadReportDefinitionAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReportDefinition2(RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response LoadReportDefinition2(RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request request) {
             return base.Channel.LoadReportDefinition2(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReportDefinition2(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, byte[] Definition, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo, out RSMassTransit.ReportingServices.Execution.Warning[] warnings) {
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Definition = Definition;
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReportDefinition2(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            warnings = retVal.warnings;
-            return retVal.ExecutionHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Response> LoadReportDefinition2Async(RSMassTransit.ReportingServices.Execution.LoadReportDefinition2Request request) {
             return base.Channel.LoadReportDefinition2Async(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadReportDefinition3(RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response LoadReportDefinition3(RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request request) {
             return base.Channel.LoadReportDefinition3(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ExecutionHeader LoadReportDefinition3(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, byte[] Definition, out RSMassTransit.ReportingServices.Execution.ServerInfoHeader ServerInfoHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo, out RSMassTransit.ReportingServices.Execution.Warning[] warnings) {
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request inValue = new RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Definition = Definition;
-            RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadReportDefinition3(inValue);
-            ServerInfoHeader = retVal.ServerInfoHeader;
-            executionInfo = retVal.executionInfo;
-            warnings = retVal.warnings;
-            return retVal.ExecutionHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Response> LoadReportDefinition3Async(RSMassTransit.ReportingServices.Execution.LoadReportDefinition3Request request) {
             return base.Channel.LoadReportDefinition3Async(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentials(RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse SetExecutionCredentials(RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest request) {
             return base.Channel.SetExecutionCredentials(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionCredentials(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentials(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentialsAsync(RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse> SetExecutionCredentialsAsync(RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest request) {
             return base.Channel.SetExecutionCredentialsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsResponse> SetExecutionCredentialsAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentialsRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentialsAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentials2(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response SetExecutionCredentials2(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request request) {
             return base.Channel.SetExecutionCredentials2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionCredentials2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentials2(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentials2Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response> SetExecutionCredentials2Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request request) {
             return base.Channel.SetExecutionCredentials2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response> SetExecutionCredentials2Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentials2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentials3(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response SetExecutionCredentials3(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request request) {
             return base.Channel.SetExecutionCredentials3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionCredentials3(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentials3(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionCredentials3Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response> SetExecutionCredentials3Async(RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request request) {
             return base.Channel.SetExecutionCredentials3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Response> SetExecutionCredentials3Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.DataSourceCredentials[] Credentials) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionCredentials3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Credentials = Credentials;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionCredentials3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParameters(RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse SetExecutionParameters(RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest request) {
             return base.Channel.SetExecutionParameters(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionParameters(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParameters(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParametersAsync(RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse> SetExecutionParametersAsync(RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest request) {
             return base.Channel.SetExecutionParametersAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParametersResponse> SetExecutionParametersAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParametersRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParametersAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParameters2(RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response SetExecutionParameters2(RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request request) {
             return base.Channel.SetExecutionParameters2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionParameters2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParameters2(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParameters2Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response> SetExecutionParameters2Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request request) {
             return base.Channel.SetExecutionParameters2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Response> SetExecutionParameters2Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParameters2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParameters2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParameters3(RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request request) {
+        public RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response SetExecutionParameters3(RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request request) {
             return base.Channel.SetExecutionParameters3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader SetExecutionParameters3(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParameters3(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.SetExecutionParameters3Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response> SetExecutionParameters3Async(RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request request) {
             return base.Channel.SetExecutionParameters3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Response> SetExecutionParameters3Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, RSMassTransit.ReportingServices.Execution.ParameterValue[] Parameters, string ParameterLanguage) {
-            RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request inValue = new RSMassTransit.ReportingServices.Execution.SetExecutionParameters3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Parameters = Parameters;
-            inValue.ParameterLanguage = ParameterLanguage;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).SetExecutionParameters3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ResetExecutionResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecution(RSMassTransit.ReportingServices.Execution.ResetExecutionRequest request) {
+        public RSMassTransit.ReportingServices.Execution.ResetExecutionResponse ResetExecution(RSMassTransit.ReportingServices.Execution.ResetExecutionRequest request) {
             return base.Channel.ResetExecution(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ResetExecution(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo) {
-            RSMassTransit.ReportingServices.Execution.ResetExecutionRequest inValue = new RSMassTransit.ReportingServices.Execution.ResetExecutionRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.ResetExecutionResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecution(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecutionResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecutionAsync(RSMassTransit.ReportingServices.Execution.ResetExecutionRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecutionResponse> ResetExecutionAsync(RSMassTransit.ReportingServices.Execution.ResetExecutionRequest request) {
             return base.Channel.ResetExecutionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecutionResponse> ResetExecutionAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.ResetExecutionRequest inValue = new RSMassTransit.ReportingServices.Execution.ResetExecutionRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecutionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ResetExecution2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecution2(RSMassTransit.ReportingServices.Execution.ResetExecution2Request request) {
+        public RSMassTransit.ReportingServices.Execution.ResetExecution2Response ResetExecution2(RSMassTransit.ReportingServices.Execution.ResetExecution2Request request) {
             return base.Channel.ResetExecution2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ResetExecution2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.ResetExecution2Request inValue = new RSMassTransit.ReportingServices.Execution.ResetExecution2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.ResetExecution2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecution2(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecution2Async(RSMassTransit.ReportingServices.Execution.ResetExecution2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution2Response> ResetExecution2Async(RSMassTransit.ReportingServices.Execution.ResetExecution2Request request) {
             return base.Channel.ResetExecution2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution2Response> ResetExecution2Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.ResetExecution2Request inValue = new RSMassTransit.ReportingServices.Execution.ResetExecution2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecution2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ResetExecution3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecution3(RSMassTransit.ReportingServices.Execution.ResetExecution3Request request) {
+        public RSMassTransit.ReportingServices.Execution.ResetExecution3Response ResetExecution3(RSMassTransit.ReportingServices.Execution.ResetExecution3Request request) {
             return base.Channel.ResetExecution3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ResetExecution3(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.ResetExecution3Request inValue = new RSMassTransit.ReportingServices.Execution.ResetExecution3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.ResetExecution3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecution3(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ResetExecution3Async(RSMassTransit.ReportingServices.Execution.ResetExecution3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution3Response> ResetExecution3Async(RSMassTransit.ReportingServices.Execution.ResetExecution3Request request) {
             return base.Channel.ResetExecution3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ResetExecution3Response> ResetExecution3Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.ResetExecution3Request inValue = new RSMassTransit.ReportingServices.Execution.ResetExecution3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ResetExecution3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.RenderResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Render(RSMassTransit.ReportingServices.Execution.RenderRequest request) {
+        public RSMassTransit.ReportingServices.Execution.RenderResponse Render(RSMassTransit.ReportingServices.Execution.RenderRequest request) {
             return base.Channel.Render(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Render(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string DeviceInfo, out byte[] Result, out string Extension, out string MimeType, out string Encoding, out RSMassTransit.ReportingServices.Execution.Warning[] Warnings, out string[] StreamIds) {
-            RSMassTransit.ReportingServices.Execution.RenderRequest inValue = new RSMassTransit.ReportingServices.Execution.RenderRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.DeviceInfo = DeviceInfo;
-            RSMassTransit.ReportingServices.Execution.RenderResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Render(inValue);
-            Result = retVal.Result;
-            Extension = retVal.Extension;
-            MimeType = retVal.MimeType;
-            Encoding = retVal.Encoding;
-            Warnings = retVal.Warnings;
-            StreamIds = retVal.StreamIds;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.RenderResponse> RenderAsync(RSMassTransit.ReportingServices.Execution.RenderRequest request) {
             return base.Channel.RenderAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.Render2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Render2(RSMassTransit.ReportingServices.Execution.Render2Request request) {
+        public RSMassTransit.ReportingServices.Execution.Render2Response Render2(RSMassTransit.ReportingServices.Execution.Render2Request request) {
             return base.Channel.Render2(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Render2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string DeviceInfo, RSMassTransit.ReportingServices.Execution.PageCountMode PaginationMode, out byte[] Result, out string Extension, out string MimeType, out string Encoding, out RSMassTransit.ReportingServices.Execution.Warning[] Warnings, out string[] StreamIds) {
-            RSMassTransit.ReportingServices.Execution.Render2Request inValue = new RSMassTransit.ReportingServices.Execution.Render2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.DeviceInfo = DeviceInfo;
-            inValue.PaginationMode = PaginationMode;
-            RSMassTransit.ReportingServices.Execution.Render2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Render2(inValue);
-            Result = retVal.Result;
-            Extension = retVal.Extension;
-            MimeType = retVal.MimeType;
-            Encoding = retVal.Encoding;
-            Warnings = retVal.Warnings;
-            StreamIds = retVal.StreamIds;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Render2Response> Render2Async(RSMassTransit.ReportingServices.Execution.Render2Request request) {
             return base.Channel.Render2Async(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.DeliverReportItem(RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest request) {
+        public RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse DeliverReportItem(RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest request) {
             return base.Channel.DeliverReportItem(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader DeliverReportItem(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string DeviceInfo, RSMassTransit.ReportingServices.Execution.ExtensionSettings ExtensionSettings, string Description, string EventType, string MatchData) {
-            RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest inValue = new RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.DeviceInfo = DeviceInfo;
-            inValue.ExtensionSettings = ExtensionSettings;
-            inValue.Description = Description;
-            inValue.EventType = EventType;
-            inValue.MatchData = MatchData;
-            RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).DeliverReportItem(inValue);
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.DeliverReportItemAsync(RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse> DeliverReportItemAsync(RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest request) {
             return base.Channel.DeliverReportItemAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse> DeliverReportItemAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string DeviceInfo, RSMassTransit.ReportingServices.Execution.ExtensionSettings ExtensionSettings, string Description, string EventType, string MatchData) {
-            RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest inValue = new RSMassTransit.ReportingServices.Execution.DeliverReportItemRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.DeviceInfo = DeviceInfo;
-            inValue.ExtensionSettings = ExtensionSettings;
-            inValue.Description = Description;
-            inValue.EventType = EventType;
-            inValue.MatchData = MatchData;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).DeliverReportItemAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.RenderStreamResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.RenderStream(RSMassTransit.ReportingServices.Execution.RenderStreamRequest request) {
+        public RSMassTransit.ReportingServices.Execution.RenderStreamResponse RenderStream(RSMassTransit.ReportingServices.Execution.RenderStreamRequest request) {
             return base.Channel.RenderStream(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader RenderStream(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string StreamID, string DeviceInfo, out byte[] Result, out string Encoding, out string MimeType) {
-            RSMassTransit.ReportingServices.Execution.RenderStreamRequest inValue = new RSMassTransit.ReportingServices.Execution.RenderStreamRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.StreamID = StreamID;
-            inValue.DeviceInfo = DeviceInfo;
-            RSMassTransit.ReportingServices.Execution.RenderStreamResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).RenderStream(inValue);
-            Result = retVal.Result;
-            Encoding = retVal.Encoding;
-            MimeType = retVal.MimeType;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.RenderStreamResponse> RenderStreamAsync(RSMassTransit.ReportingServices.Execution.RenderStreamRequest request) {
             return base.Channel.RenderStreamAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfo(RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest request) {
+        public RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse GetExecutionInfo(RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest request) {
             return base.Channel.GetExecutionInfo(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader GetExecutionInfo(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo executionInfo) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfo(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfoAsync(RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse> GetExecutionInfoAsync(RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest request) {
             return base.Channel.GetExecutionInfoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfoResponse> GetExecutionInfoAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfoRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfo2(RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request request) {
+        public RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response GetExecutionInfo2(RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request request) {
             return base.Channel.GetExecutionInfo2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader GetExecutionInfo2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfo2(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfo2Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response> GetExecutionInfo2Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request request) {
             return base.Channel.GetExecutionInfo2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Response> GetExecutionInfo2Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfo2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfo2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfo3(RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request request) {
+        public RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response GetExecutionInfo3(RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request request) {
             return base.Channel.GetExecutionInfo3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader GetExecutionInfo3(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 executionInfo) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfo3(inValue);
-            executionInfo = retVal.executionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetExecutionInfo3Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response> GetExecutionInfo3Async(RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request request) {
             return base.Channel.GetExecutionInfo3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Response> GetExecutionInfo3Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request inValue = new RSMassTransit.ReportingServices.Execution.GetExecutionInfo3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetExecutionInfo3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetDocumentMap(RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest request) {
+        public RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse GetDocumentMap(RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest request) {
             return base.Channel.GetDocumentMap(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader GetDocumentMap(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.DocumentMapNode result) {
-            RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest inValue = new RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetDocumentMap(inValue);
-            result = retVal.result;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetDocumentMapAsync(RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse> GetDocumentMapAsync(RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest request) {
             return base.Channel.GetDocumentMapAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetDocumentMapResponse> GetDocumentMapAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest inValue = new RSMassTransit.ReportingServices.Execution.GetDocumentMapRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetDocumentMapAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTarget(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest request) {
+        public RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse LoadDrillthroughTarget(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest request) {
             return base.Channel.LoadDrillthroughTarget(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader LoadDrillthroughTarget(ref RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID, out RSMassTransit.ReportingServices.Execution.ExecutionInfo ExecutionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTarget(inValue);
-            ExecutionHeader = retVal.ExecutionHeader;
-            ExecutionInfo = retVal.ExecutionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTargetAsync(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse> LoadDrillthroughTargetAsync(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest request) {
             return base.Channel.LoadDrillthroughTargetAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetResponse> LoadDrillthroughTargetAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTargetRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTargetAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTarget2(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response LoadDrillthroughTarget2(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request request) {
             return base.Channel.LoadDrillthroughTarget2(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader LoadDrillthroughTarget2(ref RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 ExecutionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTarget2(inValue);
-            ExecutionHeader = retVal.ExecutionHeader;
-            ExecutionInfo = retVal.ExecutionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTarget2Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response> LoadDrillthroughTarget2Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request request) {
             return base.Channel.LoadDrillthroughTarget2Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Response> LoadDrillthroughTarget2Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTarget2Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTarget3(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request request) {
+        public RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response LoadDrillthroughTarget3(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request request) {
             return base.Channel.LoadDrillthroughTarget3(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader LoadDrillthroughTarget3(ref RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 ExecutionInfo) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTarget3(inValue);
-            ExecutionHeader = retVal.ExecutionHeader;
-            ExecutionInfo = retVal.ExecutionInfo;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LoadDrillthroughTarget3Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response> LoadDrillthroughTarget3Async(RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request request) {
             return base.Channel.LoadDrillthroughTarget3Async(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Response> LoadDrillthroughTarget3Async(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DrillthroughID) {
-            RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request inValue = new RSMassTransit.ReportingServices.Execution.LoadDrillthroughTarget3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DrillthroughID = DrillthroughID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LoadDrillthroughTarget3Async(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ToggleItemResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ToggleItem(RSMassTransit.ReportingServices.Execution.ToggleItemRequest request) {
+        public RSMassTransit.ReportingServices.Execution.ToggleItemResponse ToggleItem(RSMassTransit.ReportingServices.Execution.ToggleItemRequest request) {
             return base.Channel.ToggleItem(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ToggleItem(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string ToggleID, out bool Found) {
-            RSMassTransit.ReportingServices.Execution.ToggleItemRequest inValue = new RSMassTransit.ReportingServices.Execution.ToggleItemRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.ToggleID = ToggleID;
-            RSMassTransit.ReportingServices.Execution.ToggleItemResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ToggleItem(inValue);
-            Found = retVal.Found;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ToggleItemResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ToggleItemAsync(RSMassTransit.ReportingServices.Execution.ToggleItemRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ToggleItemResponse> ToggleItemAsync(RSMassTransit.ReportingServices.Execution.ToggleItemRequest request) {
             return base.Channel.ToggleItemAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ToggleItemResponse> ToggleItemAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string ToggleID) {
-            RSMassTransit.ReportingServices.Execution.ToggleItemRequest inValue = new RSMassTransit.ReportingServices.Execution.ToggleItemRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.ToggleID = ToggleID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ToggleItemAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.NavigateDocumentMap(RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest request) {
+        public RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse NavigateDocumentMap(RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest request) {
             return base.Channel.NavigateDocumentMap(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader NavigateDocumentMap(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DocMapID, out int PageNumber) {
-            RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest inValue = new RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DocMapID = DocMapID;
-            RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).NavigateDocumentMap(inValue);
-            PageNumber = retVal.PageNumber;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.NavigateDocumentMapAsync(RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse> NavigateDocumentMapAsync(RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest request) {
             return base.Channel.NavigateDocumentMapAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.NavigateDocumentMapResponse> NavigateDocumentMapAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string DocMapID) {
-            RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest inValue = new RSMassTransit.ReportingServices.Execution.NavigateDocumentMapRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.DocMapID = DocMapID;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).NavigateDocumentMapAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.NavigateBookmark(RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest request) {
+        public RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse NavigateBookmark(RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest request) {
             return base.Channel.NavigateBookmark(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader NavigateBookmark(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string BookmarkID, out int PageNumber, out string UniqueName) {
-            RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest inValue = new RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.BookmarkID = BookmarkID;
-            RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).NavigateBookmark(inValue);
-            PageNumber = retVal.PageNumber;
-            UniqueName = retVal.UniqueName;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.NavigateBookmarkResponse> NavigateBookmarkAsync(RSMassTransit.ReportingServices.Execution.NavigateBookmarkRequest request) {
             return base.Channel.NavigateBookmarkAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.FindStringResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.FindString(RSMassTransit.ReportingServices.Execution.FindStringRequest request) {
+        public RSMassTransit.ReportingServices.Execution.FindStringResponse FindString(RSMassTransit.ReportingServices.Execution.FindStringRequest request) {
             return base.Channel.FindString(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader FindString(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, int StartPage, int EndPage, string FindValue, out int PageNumber) {
-            RSMassTransit.ReportingServices.Execution.FindStringRequest inValue = new RSMassTransit.ReportingServices.Execution.FindStringRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.StartPage = StartPage;
-            inValue.EndPage = EndPage;
-            inValue.FindValue = FindValue;
-            RSMassTransit.ReportingServices.Execution.FindStringResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).FindString(inValue);
-            PageNumber = retVal.PageNumber;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.FindStringResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.FindStringAsync(RSMassTransit.ReportingServices.Execution.FindStringRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.FindStringResponse> FindStringAsync(RSMassTransit.ReportingServices.Execution.FindStringRequest request) {
             return base.Channel.FindStringAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.FindStringResponse> FindStringAsync(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, int StartPage, int EndPage, string FindValue) {
-            RSMassTransit.ReportingServices.Execution.FindStringRequest inValue = new RSMassTransit.ReportingServices.Execution.FindStringRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.StartPage = StartPage;
-            inValue.EndPage = EndPage;
-            inValue.FindValue = FindValue;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).FindStringAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.SortResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Sort(RSMassTransit.ReportingServices.Execution.SortRequest request) {
+        public RSMassTransit.ReportingServices.Execution.SortResponse Sort(RSMassTransit.ReportingServices.Execution.SortRequest request) {
             return base.Channel.Sort(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Sort(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string SortItem, RSMassTransit.ReportingServices.Execution.SortDirectionEnum Direction, bool Clear, out int PageNumber, out string ReportItem, out int NumPages) {
-            RSMassTransit.ReportingServices.Execution.SortRequest inValue = new RSMassTransit.ReportingServices.Execution.SortRequest();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.SortItem = SortItem;
-            inValue.Direction = Direction;
-            inValue.Clear = Clear;
-            RSMassTransit.ReportingServices.Execution.SortResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Sort(inValue);
-            PageNumber = retVal.PageNumber;
-            ReportItem = retVal.ReportItem;
-            NumPages = retVal.NumPages;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.SortResponse> SortAsync(RSMassTransit.ReportingServices.Execution.SortRequest request) {
             return base.Channel.SortAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.Sort2Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Sort2(RSMassTransit.ReportingServices.Execution.Sort2Request request) {
+        public RSMassTransit.ReportingServices.Execution.Sort2Response Sort2(RSMassTransit.ReportingServices.Execution.Sort2Request request) {
             return base.Channel.Sort2(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Sort2(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string SortItem, RSMassTransit.ReportingServices.Execution.SortDirectionEnum Direction, bool Clear, RSMassTransit.ReportingServices.Execution.PageCountMode PaginationMode, out int PageNumber, out string ReportItem, out RSMassTransit.ReportingServices.Execution.ExecutionInfo2 ExecutionInfo) {
-            RSMassTransit.ReportingServices.Execution.Sort2Request inValue = new RSMassTransit.ReportingServices.Execution.Sort2Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.SortItem = SortItem;
-            inValue.Direction = Direction;
-            inValue.Clear = Clear;
-            inValue.PaginationMode = PaginationMode;
-            RSMassTransit.ReportingServices.Execution.Sort2Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Sort2(inValue);
-            PageNumber = retVal.PageNumber;
-            ReportItem = retVal.ReportItem;
-            ExecutionInfo = retVal.ExecutionInfo;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Sort2Response> Sort2Async(RSMassTransit.ReportingServices.Execution.Sort2Request request) {
             return base.Channel.Sort2Async(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.Sort3Response RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Sort3(RSMassTransit.ReportingServices.Execution.Sort3Request request) {
+        public RSMassTransit.ReportingServices.Execution.Sort3Response Sort3(RSMassTransit.ReportingServices.Execution.Sort3Request request) {
             return base.Channel.Sort3(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Sort3(RSMassTransit.ReportingServices.Execution.ExecutionHeader ExecutionHeader, RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string SortItem, RSMassTransit.ReportingServices.Execution.SortDirectionEnum Direction, bool Clear, RSMassTransit.ReportingServices.Execution.PageCountMode PaginationMode, out int PageNumber, out string ReportItem, out RSMassTransit.ReportingServices.Execution.ExecutionInfo3 ExecutionInfo) {
-            RSMassTransit.ReportingServices.Execution.Sort3Request inValue = new RSMassTransit.ReportingServices.Execution.Sort3Request();
-            inValue.ExecutionHeader = ExecutionHeader;
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.SortItem = SortItem;
-            inValue.Direction = Direction;
-            inValue.Clear = Clear;
-            inValue.PaginationMode = PaginationMode;
-            RSMassTransit.ReportingServices.Execution.Sort3Response retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Sort3(inValue);
-            PageNumber = retVal.PageNumber;
-            ReportItem = retVal.ReportItem;
-            ExecutionInfo = retVal.ExecutionInfo;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.Sort3Response> Sort3Async(RSMassTransit.ReportingServices.Execution.Sort3Request request) {
             return base.Channel.Sort3Async(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.GetRenderResource(RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest request) {
+        public RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse GetRenderResource(RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest request) {
             return base.Channel.GetRenderResource(request);
-        }
-        
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader GetRenderResource(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, string Format, string DeviceInfo, out byte[] Result, out string MimeType) {
-            RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest inValue = new RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            inValue.Format = Format;
-            inValue.DeviceInfo = DeviceInfo;
-            RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).GetRenderResource(inValue);
-            Result = retVal.Result;
-            MimeType = retVal.MimeType;
-            return retVal.ServerInfoHeader;
         }
         
         public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.GetRenderResourceResponse> GetRenderResourceAsync(RSMassTransit.ReportingServices.Execution.GetRenderResourceRequest request) {
             return base.Channel.GetRenderResourceAsync(request);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ListRenderingExtensions(RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest request) {
+        public RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse ListRenderingExtensions(RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest request) {
             return base.Channel.ListRenderingExtensions(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader ListRenderingExtensions(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader, out RSMassTransit.ReportingServices.Execution.Extension[] Extensions) {
-            RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest inValue = new RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ListRenderingExtensions(inValue);
-            Extensions = retVal.Extensions;
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.ListRenderingExtensionsAsync(RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse> ListRenderingExtensionsAsync(RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest request) {
             return base.Channel.ListRenderingExtensionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsResponse> ListRenderingExtensionsAsync(RSMassTransit.ReportingServices.Execution.TrustedUserHeader TrustedUserHeader) {
-            RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest inValue = new RSMassTransit.ReportingServices.Execution.ListRenderingExtensionsRequest();
-            inValue.TrustedUserHeader = TrustedUserHeader;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).ListRenderingExtensionsAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LogonUserResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LogonUser(RSMassTransit.ReportingServices.Execution.LogonUserRequest request) {
+        public RSMassTransit.ReportingServices.Execution.LogonUserResponse LogonUser(RSMassTransit.ReportingServices.Execution.LogonUserRequest request) {
             return base.Channel.LogonUser(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader LogonUser(string userName, string password, string authority) {
-            RSMassTransit.ReportingServices.Execution.LogonUserRequest inValue = new RSMassTransit.ReportingServices.Execution.LogonUserRequest();
-            inValue.userName = userName;
-            inValue.password = password;
-            inValue.authority = authority;
-            RSMassTransit.ReportingServices.Execution.LogonUserResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LogonUser(inValue);
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogonUserResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LogonUserAsync(RSMassTransit.ReportingServices.Execution.LogonUserRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogonUserResponse> LogonUserAsync(RSMassTransit.ReportingServices.Execution.LogonUserRequest request) {
             return base.Channel.LogonUserAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogonUserResponse> LogonUserAsync(string userName, string password, string authority) {
-            RSMassTransit.ReportingServices.Execution.LogonUserRequest inValue = new RSMassTransit.ReportingServices.Execution.LogonUserRequest();
-            inValue.userName = userName;
-            inValue.password = password;
-            inValue.authority = authority;
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LogonUserAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RSMassTransit.ReportingServices.Execution.LogoffResponse RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.Logoff(RSMassTransit.ReportingServices.Execution.LogoffRequest request) {
+        public RSMassTransit.ReportingServices.Execution.LogoffResponse Logoff(RSMassTransit.ReportingServices.Execution.LogoffRequest request) {
             return base.Channel.Logoff(request);
         }
         
-        public RSMassTransit.ReportingServices.Execution.ServerInfoHeader Logoff() {
-            RSMassTransit.ReportingServices.Execution.LogoffRequest inValue = new RSMassTransit.ReportingServices.Execution.LogoffRequest();
-            RSMassTransit.ReportingServices.Execution.LogoffResponse retVal = ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).Logoff(inValue);
-            return retVal.ServerInfoHeader;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogoffResponse> RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap.LogoffAsync(RSMassTransit.ReportingServices.Execution.LogoffRequest request) {
+        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogoffResponse> LogoffAsync(RSMassTransit.ReportingServices.Execution.LogoffRequest request) {
             return base.Channel.LogoffAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RSMassTransit.ReportingServices.Execution.LogoffResponse> LogoffAsync() {
-            RSMassTransit.ReportingServices.Execution.LogoffRequest inValue = new RSMassTransit.ReportingServices.Execution.LogoffRequest();
-            return ((RSMassTransit.ReportingServices.Execution.ReportExecutionServiceSoap)(this)).LogoffAsync(inValue);
         }
     }
 }

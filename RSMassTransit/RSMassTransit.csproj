@@ -122,24 +122,6 @@
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.DeliverReportItemResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.DocumentMapNode.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionHeader.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo2.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ExecutionInfo3.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Extension.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.FindStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -221,9 +203,6 @@
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ResetExecutionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ServerInfoHeader.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.SetExecutionCredentials2Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -252,9 +231,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ToggleItemResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.Warning.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />

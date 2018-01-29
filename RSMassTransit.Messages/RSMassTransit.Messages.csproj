@@ -41,6 +41,8 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ExecuteReportRequest.cs" />
+    <Compile Include="ExecuteReportResponse.cs" />
     <Compile Include="IExecuteReportRequest.cs" />
     <Compile Include="IExecuteReportResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

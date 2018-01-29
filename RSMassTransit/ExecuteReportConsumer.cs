@@ -9,10 +9,11 @@ namespace RSMassTransit
 {
     internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
     {
-        public Task Consume(ConsumeContext<IExecuteReportRequest> context)
+        public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
         {
-            //await context.RespondAsync<IExecuteReportResponse>(...);
-            return Task.CompletedTask;
+            await context.RespondAsync<IExecuteReportResponse>(
+                new ExecuteReportRequest()
+            );
         }
     }
 }

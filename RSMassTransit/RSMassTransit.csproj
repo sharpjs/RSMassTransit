@@ -95,6 +95,20 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RSMassTransit.Messages\RSMassTransit.Messages.csproj">
+      <Project>{e9664a1a-e95c-406c-b963-07101be2b1f1}</Project>
+      <Name>RSMassTransit.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sharp.Logging\Sharp.Logging.csproj">
+      <Project>{e1833026-1b85-4369-8cc2-d75b3ee6964f}</Project>
+      <Name>Sharp.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sharp.ServiceHost\Sharp.ServiceHost.csproj">
+      <Project>{cbc506ba-11bf-4360-9f0e-946fef647119}</Project>
+      <Name>Sharp.ServiceHost</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>

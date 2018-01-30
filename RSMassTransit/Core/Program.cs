@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Security.Principal;
-using RSMassTransit.ReportingServices.Execution;
+﻿using Sharp.ServiceHost;
 
 namespace RSMassTransit
 {
@@ -9,6 +6,8 @@ namespace RSMassTransit
     {
         private static void Main(string[] args)
         {
+            ServiceHost<RSMassTransitService>.Run(args);
+            /*
             using (var client = new ReportExecutionServiceSoapClient())
             {
                 var credential                       = client.ClientCredentials.Windows;
@@ -42,6 +41,7 @@ namespace RSMassTransit
 
                 var bytes = renderResponse.Result;
             }
+            */
         }
     }
 }

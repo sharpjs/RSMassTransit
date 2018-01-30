@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using MassTransit;
 using Sharp.ServiceHost;
+using RSMassTransit.ReportingServices;
 
 namespace RSMassTransit.Core
 {
@@ -42,6 +43,7 @@ namespace RSMassTransit.Core
             var builder = new ContainerBuilder();
             builder.RegisterInstance(Configuration.Current).AsImplementedInterfaces();
             builder.RegisterModule<MessageBusModule>();
+            builder.RegisterModule<ReportingServicesModule>();
             _container = builder.Build();
         }
 

@@ -278,6 +278,7 @@
     <Compile Include="ReportingServices\IReportExecutionSoapClient.cs" />
     <Compile Include="ReportingServices\IReportingServicesClientFactory.cs" />
     <Compile Include="ReportingServices\ReportingServicesClientFactory.cs" />
+    <Compile Include="ReportingServices\ReportingServicesModule.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

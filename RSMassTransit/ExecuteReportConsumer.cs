@@ -11,9 +11,10 @@ namespace RSMassTransit
     {
         public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
         {
-            await context.RespondAsync<IExecuteReportResponse>(
-                new ExecuteReportRequest()
-            );
+            var request  = context.Message;
+            var response = new ExecuteReportResponse();
+
+            await context.RespondAsync<IExecuteReportResponse>(response);
         }
     }
 }

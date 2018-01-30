@@ -2,7 +2,7 @@
 
 // General Information
 [assembly: AssemblyTitle       ("RSMassTransit")]
-[assembly: AssemblyDescription ("MassTransit message bus interface for SQL Server Reporting Services")]
+[assembly: AssemblyDescription ("SQL Server Reporting Services MassTransit Interface")]
 
 // Security
 //

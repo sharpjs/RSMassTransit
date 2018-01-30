@@ -266,6 +266,7 @@
     </Compile>
     <Compile Include="Core\Configuration.cs" />
     <Compile Include="Core\Log.cs" />
+    <Compile Include="Core\MessageBusModule.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\RSMassTransitService.cs" />
     <Compile Include="Core\RSMassTransitServiceInstaller.cs" />

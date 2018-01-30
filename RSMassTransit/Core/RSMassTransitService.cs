@@ -41,7 +41,7 @@ namespace RSMassTransit.Core
             Log.Verbose("Creating IoC container.");
             var builder = new ContainerBuilder();
             builder.RegisterInstance(Configuration.Current).AsImplementedInterfaces();
-            //builder.RegisterModule<MessageBusModule>();
+            builder.RegisterModule<MessageBusModule>();
             _container = builder.Build();
         }
 
@@ -55,13 +55,13 @@ namespace RSMassTransit.Core
         private void StartBus()
         {
             Log.Verbose("Starting message bus.");
-            //_container.Resolve<IBusControl>().Start();
+            _container.Resolve<IBusControl>().Start();
         }
 
         private void StopBus()
         {
-            Log.Verbose("Stopping message bus.");
-            //_container.Resolve<IBusControl>().Stop();
+            Log.Verbose("Stopping message bus, waiting on consumers to finish.");
+            _container.Resolve<IBusControl>().Stop();
         }
     }
 }

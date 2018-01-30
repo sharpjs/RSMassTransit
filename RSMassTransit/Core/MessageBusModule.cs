@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Configuration;
 using Autofac;
+using GreenPipes;
 using MassTransit;
 using MassTransit.AzureServiceBusTransport;
+using Microsoft.ServiceBus;
 
 namespace RSMassTransit.Core
 {
@@ -35,10 +37,10 @@ namespace RSMassTransit.Core
             var messageBusType = configuration.MessageBusType;
 
             if (RabbitMqType.Equals(messageBusType, TypeComparison))
-                return CreateBusUsingRabbitMq(configuration);
+                return CreateBusUsingRabbitMq(context, configuration);
 
             if (AzureServiceBusType.Equals(messageBusType, TypeComparison))
-                return CreateBusUsingAzureServiceBus(configuration);
+                return CreateBusUsingAzureServiceBus(context, configuration);
 
             throw new ConfigurationErrorsException(string.Format(
                 "MessageBusType value '{0}' is not recognized.  " +
@@ -49,35 +51,58 @@ namespace RSMassTransit.Core
             ));
         }
 
-        private IBusControl CreateBusUsingRabbitMq(IMessageBusConfiguration configuration)
+        private IBusControl CreateBusUsingRabbitMq(
+            IComponentContext        context,
+            IMessageBusConfiguration configuration)
         {
-            return null;
+            return Bus.Factory.CreateUsingRabbitMq(b =>
+            {
+                var hostUri = new UriBuilder("rabbitmq", configuration.MessageBusHost).Uri;
+
+                var host = b.Host(hostUri, h =>
+                {
+                    h.Username(configuration.MessageBusSecretName);
+                    h.Password(configuration.MessageBusSecret);
+                });
+
+                b.ReceiveEndpoint(host, configuration.MessageBusQueue, r =>
+                {
+                    r.Durable    = true;    // Queue should survive broker restart
+                    r.AutoDelete = false;   // Queue should survive service restart
+                    r.LoadFrom(context);    // All registered consumers
+                });
+
+                b.UseRetry(r => r.None());
+            });
         }
 
-        private IBusControl CreateBusUsingAzureServiceBus(IMessageBusConfiguration configuration)
+        private IBusControl CreateBusUsingAzureServiceBus(
+            IComponentContext        context,
+            IMessageBusConfiguration config)
         {
-            return Bus.Factory.CreateUsingAzureServiceBus(bus =>
+            return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
-                var hostUri = new Uri("");
-                //var serviceUri = ServiceBusEnvironment.CreateServiceUri(
-                //    config.MessageBusScheme,
-                //    config.MessageBusHostUri,
-                //    config.MessageBusQueueName
-                //);
+                var uri = ServiceBusEnvironment.CreateServiceUri(
+                    "sb", config.MessageBusHost, ""
+                );
 
-                bus.Host(hostUri, host =>
+                var host = b.Host(uri, h =>
                 {
-                    //host.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(
-                    //    config.MessageBusSecretName,
-                    //    config.MessageBusSecret,
-                    //    TimeSpan.FromDays(1),
-                    //    TokenScope.Namespace
-                    //);
+                    h.SharedAccessSignature(s =>
+                    {
+                        s.KeyName         = config.MessageBusSecretName;
+                        s.SharedAccessKey = config.MessageBusSecret;
+                        s.TokenTimeToLive = TimeSpan.FromDays(1);
+                        s.TokenScope      = TokenScope.Namespace;
+                    });
                 });
 
-                bus.ReceiveEndpoint("rs", ep =>
+                b.ReceiveEndpoint(host, config.MessageBusQueue, r =>
                 {
+                    r.LoadFrom(context); // All registered consumers
                 });
+
+                b.UseRetry(r => r.None());
             });
         }
     }

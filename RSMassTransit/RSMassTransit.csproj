@@ -255,6 +255,9 @@
     <Compile Include="ExecuteReportConsumer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingServices\IReportExecutionSoapClient.cs" />
+    <Compile Include="ReportingServices\IReportingServicesClientFactory.cs" />
+    <Compile Include="ReportingServices\ReportingServicesClientFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

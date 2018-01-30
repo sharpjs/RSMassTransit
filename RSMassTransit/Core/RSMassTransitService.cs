@@ -1,6 +1,6 @@
 ﻿using Sharp.ServiceHost;
 
-namespace RSMassTransit
+namespace RSMassTransit.Core
 {
     internal class RSMassTransitService : Service
     {

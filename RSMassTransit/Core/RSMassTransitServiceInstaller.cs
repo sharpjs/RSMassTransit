@@ -3,7 +3,7 @@ using System.Configuration.Install;
 using System.ServiceProcess;
 using Sharp.ServiceHost;
 
-namespace RSMassTransit
+namespace RSMassTransit.Core
 {
     [RunInstaller(true)]
     [DesignerCategory("")] // disable designer

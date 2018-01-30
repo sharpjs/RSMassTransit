@@ -32,5 +32,15 @@ namespace RSMassTransit.Messages
         ///   Format in which to render the report.
         /// </summary>
         ReportFormat Format { get; set; }
+
+        /// <summary>
+        ///   User name to authenticate with the report server.
+        /// </summary>
+        string UserName { get; set; }
+
+        /// <summary>
+        ///   Password to authenticate with the report server.
+        /// </summary>
+        string Password { get; set; }
     }
 }

@@ -23,5 +23,11 @@ namespace RSMassTransit.Messages
 
         /// <inheritdoc/>
         public ReportFormat Format { get; set; }
+
+        /// <inheritdoc/>
+        public string UserName { get; set; }
+
+        /// <inheritdoc/>
+        public string Password { get; set; }
     }
 }

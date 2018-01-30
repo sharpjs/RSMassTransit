@@ -40,6 +40,7 @@ namespace RSMassTransit.Core
         {
             Log.Verbose("Creating IoC container.");
             var builder = new ContainerBuilder();
+            builder.RegisterInstance(Configuration.Current).AsImplementedInterfaces();
             //builder.RegisterModule<MessageBusModule>();
             _container = builder.Build();
         }

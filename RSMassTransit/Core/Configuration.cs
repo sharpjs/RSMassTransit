@@ -2,7 +2,7 @@
 
 namespace RSMassTransit
 {
-    internal class Configuration
+    internal class Configuration : IConfiguration
     {
         private static Configuration _current;
 

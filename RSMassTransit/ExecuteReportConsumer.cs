@@ -11,12 +11,12 @@ namespace RSMassTransit
 {
     internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
     {
-        private readonly IReportingServicesClientFactory _clientFactory;
+        private readonly IReportingServicesClientFactory _services;
 
-        public ExecuteReportConsumer(IReportingServicesClientFactory clientFactory)
+        public ExecuteReportConsumer(IReportingServicesClientFactory services)
         {
-            _clientFactory = clientFactory
-                ?? throw new ArgumentNullException(nameof(clientFactory));
+            _services = services
+                ?? throw new ArgumentNullException(nameof(services));
         }
 
         public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
@@ -26,7 +26,7 @@ namespace RSMassTransit
 
             var credential = new NetworkCredential(request.UserName, request.Password);
 
-            using (var client = _clientFactory.CreateExecutionClient(credential))
+            using (var client = _services.CreateExecutionClient(credential))
             {
                 var loadReportResponse = await client.LoadReport2Async(
                     new LoadReport2Request { Report = request.Path }

@@ -270,6 +270,7 @@
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\RSMassTransitService.cs" />
     <Compile Include="Core\RSMassTransitServiceInstaller.cs" />
+    <Compile Include="Core\StringExtensions.cs" />
     <Compile Include="Core\TraceSourceProvider.cs" />
     <Compile Include="ExecuteReportConsumer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

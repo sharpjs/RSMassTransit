@@ -34,16 +34,19 @@ namespace RSMassTransit.Consumers
 
         private async Task<byte[]> ExecuteReport(IExecuteReportRequest request, IExecuteReportResponse response)
         {
+            Log.Verbose("Creating report execution service client.");
             var credential = request.GetNetworkCredential();
 
             using (var client = _services.CreateExecutionClient(credential))
             {
+                Log.Verbose("Invoking LoadReport2.");
                 var loaded = await client.LoadReport2Async(
                     new LoadReport2Request { Report = request.Path }
                 );
 
                 var executionHeader = loaded.ExecutionHeader;
 
+                Log.Verbose("Invoking SetExecutionParameters2.");
                 await client.SetExecutionParameters2Async(
                     new SetExecutionParameters2Request
                     {
@@ -53,6 +56,7 @@ namespace RSMassTransit.Consumers
                     }
                 );
 
+                Log.Verbose("Invoking Render2.");
                 var rendered = await client.Render2Async(new Render2Request
                 {
                     ExecutionHeader = executionHeader,

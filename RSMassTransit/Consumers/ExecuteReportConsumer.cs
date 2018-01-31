@@ -23,11 +23,19 @@ namespace RSMassTransit.Consumers
 
         public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
         {
-            var request  = context.Message;
             var response = new ExecuteReportResponse();
 
-            var bytes = ExecuteReport(request, response);
-            // upload to azure
+            try
+            {
+                var request = context.Message;
+                var bytes   = ExecuteReport(request, response);
+                // upload to azure
+                response.Succeeded = true;
+            }
+            catch (Exception e)
+            {
+                response.Messages.Add(e.ToString());
+            }
 
             await context.RespondAsync<IExecuteReportResponse>(response);
         }

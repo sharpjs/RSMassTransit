@@ -2,7 +2,7 @@
 
 // General Information
 [assembly: AssemblyTitle       ("RSMassTransit.Tests")]
-[assembly: AssemblyDescription ("RSMassTransit automated test suite")]
+[assembly: AssemblyDescription ("Automated test suite for SQL Server Reporting Services MassTransit Interface")]
 
 // Security
 //

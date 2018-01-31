@@ -3,7 +3,7 @@ using System.Security;
 
 // General Information
 [assembly: AssemblyTitle       ("RSMassTransit.Messages")]
-[assembly: AssemblyDescription ("MassTransit message types for SQL Server Reporting Services")]
+[assembly: AssemblyDescription ("Message types for SQL Server Reporting Services MassTransit Interface")]
 
 // Security
 //

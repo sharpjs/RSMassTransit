@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 using MassTransit;
 
@@ -7,7 +6,7 @@ using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;
 
-namespace RSMassTransit
+namespace RSMassTransit.Consumers
 {
     internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
     {

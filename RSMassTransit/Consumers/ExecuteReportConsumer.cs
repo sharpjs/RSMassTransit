@@ -30,6 +30,14 @@ namespace RSMassTransit
                 var loadReportResponse = await client.LoadReport2Async(
                     new LoadReport2Request { Report = request.Path }
                 );
+
+
+                await client.SetExecutionParameters2Async(
+                    new SetExecutionParameters2Request
+                    {
+                        
+                    }
+                );
             }
 
             await context.RespondAsync<IExecuteReportResponse>(response);

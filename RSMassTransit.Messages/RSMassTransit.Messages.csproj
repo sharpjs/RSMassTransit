@@ -43,6 +43,7 @@
     </Compile>
     <Compile Include="ExecuteReportRequest.cs" />
     <Compile Include="ExecuteReportResponse.cs" />
+    <Compile Include="ICredential.cs" />
     <Compile Include="IExecuteReportRequest.cs" />
     <Compile Include="IExecuteReportResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

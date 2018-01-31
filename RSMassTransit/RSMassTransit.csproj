@@ -265,6 +265,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Core\Configuration.cs" />
+    <Compile Include="Core\CredentialExtensions.cs" />
     <Compile Include="Core\IConfiguration.cs" />
     <Compile Include="Core\Log.cs" />
     <Compile Include="Core\MessageBusModule.cs" />

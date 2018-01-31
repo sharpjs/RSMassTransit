@@ -21,10 +21,9 @@ namespace RSMassTransit
 
         public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
         {
-            var request  = context.Message;
-            var response = new ExecuteReportResponse();
-
-            var credential = new NetworkCredential(request.UserName, request.Password);
+            var request    = context.Message;
+            var response   = new ExecuteReportResponse();
+            var credential = request.GetNetworkCredential();
 
             using (var client = _services.CreateExecutionClient(credential))
             {

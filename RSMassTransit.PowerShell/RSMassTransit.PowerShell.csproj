@@ -40,6 +40,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RSMassTransit.Messages\RSMassTransit.Messages.csproj">
+      <Project>{e9664a1a-e95c-406c-b963-07101be2b1f1}</Project>
+      <Name>RSMassTransit.Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>

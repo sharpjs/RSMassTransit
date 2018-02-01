@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"

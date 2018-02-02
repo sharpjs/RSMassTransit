@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 using System.Net;
+using System.Security;
 using MassTransit;
 using MassTransit.AzureServiceBusTransport;
 using Microsoft.ServiceBus;
@@ -19,6 +20,13 @@ namespace RSMassTransit.PowerShell
         public const int
             DefaultTimeoutSeconds = 10;
 
+        public static readonly PSCredential
+            DefaultBusCredential = new PSCredential
+            (
+                userName: "guest",
+                password: new NetworkCredential("", "guest").SecurePassword
+            );
+
         [Parameter]
         public BusType BusType { get; set; } = DefaultBusType;
 
@@ -32,7 +40,7 @@ namespace RSMassTransit.PowerShell
 
         [Parameter]
         [Credential]
-        public PSCredential BusCredential { get; set; } = PSCredential.Empty;
+        public PSCredential BusCredential { get; set; } = DefaultBusCredential;
 
         [Parameter]
         [ValidateRange(0, int.MaxValue)]

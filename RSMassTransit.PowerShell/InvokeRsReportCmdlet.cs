@@ -40,8 +40,13 @@ namespace RSMassTransit.PowerShell
             };
 
             ProvideRsCredential(request);
+            var response = ExecuteReport(request);
+        }
 
-            var response = _client.Request(request);
+        private IExecuteReportResponse ExecuteReport(ExecuteReportRequest request)
+        {
+            using (new AsyncScope())
+                return _client.Request(request).Result;
         }
 
         private IList<KeyValuePair<string, string>> GetParameters()

@@ -1,38 +1,32 @@
 ﻿using System;
 using System.Management.Automation;
 using System.Net;
-using System.Security;
 using MassTransit;
 using MassTransit.AzureServiceBusTransport;
 using Microsoft.ServiceBus;
+using RSMassTransit.Messages;
 
 namespace RSMassTransit.PowerShell
 {
     public abstract class RSMassTransitCmdlet : PSCmdlet, IDisposable
     {
-        public const BusType
-            DefaultBusType = BusType.RabbitMQ;
-
         public const string
-            DefaultBusHost  = "localhost",
-            DefaultBusQueue = "reports";
+            DefaultBusQueue       = "reports",
+            RabbitMqScheme        = "rabbitmq",
+            AzureServiceBusScheme = "sb";
 
         public const int
             DefaultTimeoutSeconds = 10;
 
+        public static readonly Uri
+            DefaultBusUri = new Uri("rabbitmq://localhost");
+
         public static readonly PSCredential
-            DefaultBusCredential = new PSCredential
-            (
-                userName: "guest",
-                password: new NetworkCredential("", "guest").SecurePassword
-            );
+            DefaultBusCredential  = CreateGuestCredential();
 
         [Parameter]
-        public BusType BusType { get; set; } = DefaultBusType;
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string BusHost { get; set; } = DefaultBusHost;
+        [ValidateNotNull]
+        public Uri BusUri { get; set; } = DefaultBusUri;
 
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -43,12 +37,21 @@ namespace RSMassTransit.PowerShell
         public PSCredential BusCredential { get; set; } = DefaultBusCredential;
 
         [Parameter]
+        [Credential]
+        public PSCredential RsCredential { get; set; } = PSCredential.Empty;
+
+        [Parameter]
         [ValidateRange(0, int.MaxValue)]
         public int TimeoutSeconds { get; set; } = DefaultTimeoutSeconds;
 
         protected IBusControl Bus { get; private set; }
 
         private bool _isDisposed;
+
+        protected override void BeginProcessing()
+        {
+            CreateBus();
+        }
 
         ~RSMassTransitCmdlet()
         {
@@ -72,28 +75,38 @@ namespace RSMassTransit.PowerShell
             _isDisposed = true;
         }
 
-        protected void CreateBus()
+        private void CreateBus()
         {
-            switch (BusType)
+            switch (BusUri.Scheme.ToLower()) // in current culture
             {
-                case BusType.RabbitMQ:        CreateBusUsingRabbitMq();        break;
-                case BusType.AzureServiceBus: CreateBusUsingAzureServiceBus(); break;
+                case RabbitMqScheme:
+                    CreateBusUsingRabbitMq();
+                    break;
+                case AzureServiceBusScheme:
+                    CreateBusUsingAzureServiceBus();
+                    break;
                 default:
                     throw new ValidationMetadataException(string.Format(
-                        "BusType '{0}' is invalid.  See cmdlet documentation for valid values.",
-                        BusType
+                        "The scheme '{0}' is invalid for the BusUri parameter.  " +
+                        "Valid schemes are '{1}' and '{2}'.",
+                        BusUri.Scheme, RabbitMqScheme, AzureServiceBusScheme
                     ));
             }
         }
 
         private void CreateBusUsingRabbitMq()
         {
+            BusUri = new UriBuilder(
+                RabbitMqScheme, BusUri.Host, BusUri.Port, BusUri.AbsolutePath
+            ).Uri;
+
+            WriteVerbose($"Using RabbitMQ: {BusUri}");
+
+            var credential = BusCredential.GetNetworkCredential();
+
             Bus = MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
-                var hostUri    = new UriBuilder("rabbitmq", BusHost).Uri;
-                var credential = BusCredential.GetNetworkCredential();
-
-                b.Host(hostUri, h =>
+                b.Host(BusUri, h =>
                 {
                     h.Username(credential.UserName);
                     h.Password(credential.Password);
@@ -103,12 +116,17 @@ namespace RSMassTransit.PowerShell
 
         private void CreateBusUsingAzureServiceBus()
         {
+            BusUri = ServiceBusEnvironment.CreateServiceUri(
+                AzureServiceBusScheme, BusUri.Host, servicePath: ""
+            );
+
+            WriteVerbose($"Using Azure Service Bus: {BusUri}");
+
+            var credential = BusCredential.GetNetworkCredential();
+
             Bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
-                var hostUri    = ServiceBusEnvironment.CreateServiceUri("sb", BusHost, "");
-                var credential = BusCredential.GetNetworkCredential();
-
-                b.Host(hostUri, h =>
+                b.Host(BusUri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
@@ -121,21 +139,40 @@ namespace RSMassTransit.PowerShell
             });
         }
 
-        protected void CreateRequestClient<TRequest, TResponse>
+        protected void CreateBusClient<TRequest, TResponse>
             (out IRequestClient<TRequest, TResponse> client)
             where TRequest  : class
             where TResponse : class
         {
             client = Bus.CreateRequestClient<TRequest, TResponse>(
-                new Uri(""),
+                new Uri(BusUri, BusQueue),
                 TimeSpan.FromSeconds(TimeoutSeconds)
             );
         }
 
-        protected void DisposeBus()
+        private void DisposeBus()
         {
             Bus?.Stop();
             Bus = null;
+        }
+
+        private static PSCredential CreateGuestCredential()
+        {
+            return new PSCredential
+            (
+                userName: "guest",
+                password: new NetworkCredential("", "guest").SecurePassword
+            );
+        }
+
+        protected void ProvideRsCredential(ICredential message)
+        {
+            var credential = (RsCredential == PSCredential.Empty)
+                ? null // use RSMassTransit service's windows credentials
+                : RsCredential.GetNetworkCredential();
+
+            message.UserName = credential?.UserName;
+            message.Password = credential?.Password;
         }
     }
 }

@@ -21,31 +21,25 @@ namespace RSMassTransit.PowerShell
         [AllowNull, AllowEmptyCollection]
         public Hashtable Parameters { get; set; }
 
-        [Parameter]
-        [Credential]
-        public PSCredential RsCredential { get; set; } = PSCredential.Empty;
-
         private IRequestClient<IExecuteReportRequest, IExecuteReportResponse> _client;
 
         protected override void BeginProcessing()
         {
-            CreateBus();
-            CreateRequestClient(out _client);
+            base.BeginProcessing();
+            CreateBusClient(out _client);
         }
 
         protected override void ProcessRecord()
         {
-            var credential = RsCredential.GetNetworkCredential();
-
             var request = new ExecuteReportRequest
             {
                 Path              = Path,
                 Format            = Format,
                 ParameterValues   = GetParameters(),
-                ParameterLanguage = CultureInfo.CurrentCulture.Name,
-                UserName          = credential.UserName,
-                Password          = credential.Password
+                ParameterLanguage = CultureInfo.CurrentCulture.Name
             };
+
+            ProvideRsCredential(request);
 
             var response = _client.Request(request);
         }
@@ -76,11 +70,6 @@ namespace RSMassTransit.PowerShell
                 key  ?.ToString() ?? "",
                 value?.ToString() ?? ""
             );
-        }
-
-        protected override void EndProcessing()
-        {
-            DisposeBus();
         }
     }
 }

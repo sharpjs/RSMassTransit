@@ -78,7 +78,7 @@ namespace RSMassTransit.PowerShell
             }
         }
 
-        private void CreateBusUsingAzureServiceBus()
+        private void CreateBusUsingRabbitMq()
         {
             Bus = MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
@@ -93,7 +93,7 @@ namespace RSMassTransit.PowerShell
             });
         }
 
-        private void CreateBusUsingRabbitMq()
+        private void CreateBusUsingAzureServiceBus()
         {
             Bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
             {

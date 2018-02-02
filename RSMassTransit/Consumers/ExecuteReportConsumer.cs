@@ -115,8 +115,14 @@ namespace RSMassTransit.Consumers
             };
 
         private IList<string> TranslateWarnings(Warning[] warnings)
-            => warnings
-                .Select(w => $"{w.Severity}: [{w.ObjectType}/{w.ObjectName}]: {w.Message} [{w.Code}]")
-                .ToList();
+        {
+            if (warnings == null || warnings.Length == 0)
+                return new string[0];
+
+            return Array.ConvertAll(
+                warnings,
+                w => $"{w.Severity}: [{w.ObjectType}/{w.ObjectName}]: {w.Message} [{w.Code}]"
+            );
+        }
     }
 }

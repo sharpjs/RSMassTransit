@@ -10,7 +10,7 @@ using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core
 {
-    internal class MessageBusModule : Module
+    internal class BusModule : Module
     {
         private const string
             RabbitMqType        = "RabbitMQ",
@@ -35,19 +35,19 @@ namespace RSMassTransit.Core
         private IBusControl CreateBus(IComponentContext context)
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
-            var configuration  = context.Resolve<IMessageBusConfiguration>();
-            var messageBusType = configuration.BusType;
+            var config  = context.Resolve<IMessageBusConfiguration>();
+            var busType = config.BusType;
 
-            if (RabbitMqType.Equals(messageBusType, TypeComparison))
-                return CreateBusUsingRabbitMq(context, configuration);
+            if (RabbitMqType.Equals(busType, TypeComparison))
+                return CreateBusUsingRabbitMq(context, config);
 
-            if (AzureServiceBusType.Equals(messageBusType, TypeComparison))
-                return CreateBusUsingAzureServiceBus(context, configuration);
+            if (AzureServiceBusType.Equals(busType, TypeComparison))
+                return CreateBusUsingAzureServiceBus(context, config);
 
             throw new ConfigurationErrorsException(string.Format(
                 "MessageBusType value '{0}' is not recognized.  " +
                 "Valid MessageBusType values are: '{1}', '{2}'.",
-                messageBusType,
+                busType,
                 RabbitMqType,
                 AzureServiceBusType
             ));
@@ -55,19 +55,19 @@ namespace RSMassTransit.Core
 
         private IBusControl CreateBusUsingRabbitMq(
             IComponentContext        context,
-            IMessageBusConfiguration configuration)
+            IMessageBusConfiguration config)
         {
             return Bus.Factory.CreateUsingRabbitMq(b =>
             {
-                var hostUri = new UriBuilder("rabbitmq", configuration.BusHost).Uri;
+                var hostUri = new UriBuilder("rabbitmq", config.BusHost).Uri;
 
                 var host = b.Host(hostUri, h =>
                 {
-                    h.Username(configuration.BusSecretName);
-                    h.Password(configuration.BusSecret);
+                    h.Username(config.BusSecretName);
+                    h.Password(config.BusSecret);
                 });
 
-                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
+                b.ReceiveEndpoint(host, config.BusQueue, r =>
                 {
                     r.Durable    = true;    // Queue should survive broker restart
                     r.AutoDelete = false;   // Queue should survive service restart
@@ -80,26 +80,26 @@ namespace RSMassTransit.Core
 
         private IBusControl CreateBusUsingAzureServiceBus(
             IComponentContext        context,
-            IMessageBusConfiguration configuration)
+            IMessageBusConfiguration config)
         {
             return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
                 var uri = ServiceBusEnvironment.CreateServiceUri(
-                    "sb", configuration.BusHost, ""
+                    "sb", config.BusHost, ""
                 );
 
                 var host = b.Host(uri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
-                        s.KeyName         = configuration.BusSecretName;
-                        s.SharedAccessKey = configuration.BusSecret;
+                        s.KeyName         = config.BusSecretName;
+                        s.SharedAccessKey = config.BusSecret;
                         s.TokenTimeToLive = TimeSpan.FromDays(1);
                         s.TokenScope      = TokenScope.Namespace;
                     });
                 });
 
-                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
+                b.ReceiveEndpoint(host, config.BusQueue, r =>
                 {
                     r.LoadFrom(context); // All registered consumers
                 });

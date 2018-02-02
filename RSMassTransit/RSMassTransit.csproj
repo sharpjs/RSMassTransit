@@ -268,7 +268,7 @@
     <Compile Include="Core\CredentialExtensions.cs" />
     <Compile Include="Core\IConfiguration.cs" />
     <Compile Include="Core\Log.cs" />
-    <Compile Include="Core\MessageBusModule.cs" />
+    <Compile Include="Core\BusModule.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\RSMassTransitService.cs" />
     <Compile Include="Core\RSMassTransitServiceInstaller.cs" />

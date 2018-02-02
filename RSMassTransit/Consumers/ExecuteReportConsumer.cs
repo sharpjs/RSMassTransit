@@ -30,7 +30,7 @@ namespace RSMassTransit.Consumers
                 try
                 {
                     var request = context.Message;
-                    var bytes   = ExecuteReport(request, response);
+                    var bytes   = await ExecuteReport(request, response);
                     // upload to azure
                     response.Succeeded = true;
                 }

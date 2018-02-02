@@ -17,7 +17,7 @@ namespace RSMassTransit
 
             InstanceId    = GetString (settings, nameof(InstanceId),    "Default");
 
-            BusUri        = GetUri    (settings, nameof(BusQueue),      "rabbitmq://localhost");
+            BusUri        = GetUri    (settings, nameof(BusUri),        "rabbitmq://localhost");
             BusQueue      = GetString (settings, nameof(BusQueue),      "reports");
             BusSecretName = GetString (settings, nameof(BusSecretName), "guest");
             BusSecret     = GetString (settings, nameof(BusSecret),     "guest");

@@ -92,6 +92,9 @@ namespace RSMassTransit.PowerShell
                         BusUri.Scheme, RabbitMqScheme, AzureServiceBusScheme
                     ));
             }
+
+            WriteVerbose($"Starting message bus.");
+            Bus.Start();
         }
 
         private void CreateBusUsingRabbitMq()

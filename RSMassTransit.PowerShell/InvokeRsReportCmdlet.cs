@@ -31,6 +31,8 @@ namespace RSMassTransit.PowerShell
 
         protected override void ProcessRecord()
         {
+            WriteVerbose("Sending ExecuteReportRequest");
+
             var request = new ExecuteReportRequest
             {
                 Path              = Path,

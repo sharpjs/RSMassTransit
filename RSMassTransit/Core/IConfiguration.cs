@@ -12,10 +12,10 @@
 
     internal interface IMessageBusConfiguration
     {
-        string MessageBusHost       { get; }
-        string MessageBusQueue      { get; }
-        string MessageBusSecret     { get; }
-        string MessageBusSecretName { get; }
-        string MessageBusType       { get; }
+        string BusHost       { get; }
+        string BusQueue      { get; }
+        string BusSecret     { get; }
+        string BusSecretName { get; }
+        string BusType       { get; }
     }
 }

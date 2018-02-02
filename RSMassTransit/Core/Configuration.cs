@@ -11,23 +11,23 @@ namespace RSMassTransit
 
         public Configuration()
         {
-            var settings = ConfigurationManager.AppSettings;
+            var settings  = ConfigurationManager.AppSettings;
 
-            InstanceId           = settings[nameof(InstanceId)]             ?? "Default";
+            InstanceId    = settings[nameof(InstanceId)]    ?? "Default";
 
-            MessageBusType       = settings[nameof(MessageBusType)]         ?? "RabbitMQ";
-            MessageBusHost       = settings[nameof(MessageBusHost)]         ?? "localhost";
-            MessageBusQueue      = settings[nameof(MessageBusQueue)]        ?? "reports";
-            MessageBusSecretName = settings[nameof(MessageBusSecretName)]   .NullIfEmpty();
-            MessageBusSecret     = settings[nameof(MessageBusSecret)]       .NullIfEmpty();
+            BusType       = settings[nameof(BusType)]       ?? "RabbitMQ";
+            BusHost       = settings[nameof(BusHost)]       ?? "localhost";
+            BusQueue      = settings[nameof(BusQueue)]      ?? "reports";
+            BusSecretName = settings[nameof(BusSecretName)] .NullIfEmpty();
+            BusSecret     = settings[nameof(BusSecret)]     .NullIfEmpty();
         }
 
-        public string InstanceId             { get; private set; }
+        public string InstanceId    { get; private set; }
 
-        public string MessageBusType         { get; private set; }
-        public string MessageBusHost         { get; private set; }
-        public string MessageBusQueue        { get; private set; }
-        public string MessageBusSecretName   { get; private set; }
-        public string MessageBusSecret       { get; private set; }
+        public string BusType       { get; private set; }
+        public string BusHost       { get; private set; }
+        public string BusQueue      { get; private set; }
+        public string BusSecretName { get; private set; }
+        public string BusSecret     { get; private set; }
     }
 }

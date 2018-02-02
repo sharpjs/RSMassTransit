@@ -36,7 +36,7 @@ namespace RSMassTransit.Core
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
             var configuration  = context.Resolve<IMessageBusConfiguration>();
-            var messageBusType = configuration.MessageBusType;
+            var messageBusType = configuration.BusType;
 
             if (RabbitMqType.Equals(messageBusType, TypeComparison))
                 return CreateBusUsingRabbitMq(context, configuration);
@@ -59,15 +59,15 @@ namespace RSMassTransit.Core
         {
             return Bus.Factory.CreateUsingRabbitMq(b =>
             {
-                var hostUri = new UriBuilder("rabbitmq", configuration.MessageBusHost).Uri;
+                var hostUri = new UriBuilder("rabbitmq", configuration.BusHost).Uri;
 
                 var host = b.Host(hostUri, h =>
                 {
-                    h.Username(configuration.MessageBusSecretName);
-                    h.Password(configuration.MessageBusSecret);
+                    h.Username(configuration.BusSecretName);
+                    h.Password(configuration.BusSecret);
                 });
 
-                b.ReceiveEndpoint(host, configuration.MessageBusQueue, r =>
+                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
                     r.Durable    = true;    // Queue should survive broker restart
                     r.AutoDelete = false;   // Queue should survive service restart
@@ -80,26 +80,26 @@ namespace RSMassTransit.Core
 
         private IBusControl CreateBusUsingAzureServiceBus(
             IComponentContext        context,
-            IMessageBusConfiguration config)
+            IMessageBusConfiguration configuration)
         {
             return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
                 var uri = ServiceBusEnvironment.CreateServiceUri(
-                    "sb", config.MessageBusHost, ""
+                    "sb", configuration.BusHost, ""
                 );
 
                 var host = b.Host(uri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
-                        s.KeyName         = config.MessageBusSecretName;
-                        s.SharedAccessKey = config.MessageBusSecret;
+                        s.KeyName         = configuration.BusSecretName;
+                        s.SharedAccessKey = configuration.BusSecret;
                         s.TokenTimeToLive = TimeSpan.FromDays(1);
                         s.TokenScope      = TokenScope.Namespace;
                     });
                 });
 
-                b.ReceiveEndpoint(host, config.MessageBusQueue, r =>
+                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
                     r.LoadFrom(context); // All registered consumers
                 });

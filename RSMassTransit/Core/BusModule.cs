@@ -12,9 +12,9 @@ namespace RSMassTransit.Core
 {
     internal class BusModule : Module
     {
-        private const string
-            RabbitMqType        = "RabbitMQ",
-            AzureServiceBusType = "AzureServiceBus";
+        public const string
+            RabbitMqScheme        = "rabbitmq",
+            AzureServiceBusScheme = "sb";
 
         private const StringComparison
             TypeComparison = StringComparison.OrdinalIgnoreCase;
@@ -35,39 +35,38 @@ namespace RSMassTransit.Core
         private IBusControl CreateBus(IComponentContext context)
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
-            var config  = context.Resolve<IMessageBusConfiguration>();
-            var busType = config.BusType;
+            var configuration = context.Resolve<IMessageBusConfiguration>();
+            var scheme        = configuration.BusUri.Scheme;
 
-            if (RabbitMqType.Equals(busType, TypeComparison))
-                return CreateBusUsingRabbitMq(context, config);
+            if (RabbitMqScheme.Equals(scheme, TypeComparison))
+                return CreateBusUsingRabbitMq(context, configuration);
 
-            if (AzureServiceBusType.Equals(busType, TypeComparison))
-                return CreateBusUsingAzureServiceBus(context, config);
+            if (AzureServiceBusScheme.Equals(scheme, TypeComparison))
+                return CreateBusUsingAzureServiceBus(context, configuration);
 
             throw new ConfigurationErrorsException(string.Format(
-                "MessageBusType value '{0}' is not recognized.  " +
-                "Valid MessageBusType values are: '{1}', '{2}'.",
-                busType,
-                RabbitMqType,
-                AzureServiceBusType
+                "The scheme '{0}' is invalid for the BusUri application setting.  " +
+                "Valid schemes are '{1}' and '{2}'.",
+                scheme, RabbitMqScheme, AzureServiceBusScheme
             ));
         }
 
         private IBusControl CreateBusUsingRabbitMq(
             IComponentContext        context,
-            IMessageBusConfiguration config)
+            IMessageBusConfiguration configuration)
         {
             return Bus.Factory.CreateUsingRabbitMq(b =>
             {
-                var hostUri = new UriBuilder("rabbitmq", config.BusHost).Uri;
+                var uri = configuration.BusUri;
+                    uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
 
-                var host = b.Host(hostUri, h =>
+                var host = b.Host(uri, h =>
                 {
-                    h.Username(config.BusSecretName);
-                    h.Password(config.BusSecret);
+                    h.Username(configuration.BusSecretName);
+                    h.Password(configuration.BusSecret);
                 });
 
-                b.ReceiveEndpoint(host, config.BusQueue, r =>
+                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
                     r.Durable    = true;    // Queue should survive broker restart
                     r.AutoDelete = false;   // Queue should survive service restart
@@ -80,26 +79,25 @@ namespace RSMassTransit.Core
 
         private IBusControl CreateBusUsingAzureServiceBus(
             IComponentContext        context,
-            IMessageBusConfiguration config)
+            IMessageBusConfiguration configuration)
         {
             return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
-                var uri = ServiceBusEnvironment.CreateServiceUri(
-                    "sb", config.BusHost, ""
-                );
+                var uri = configuration.BusUri;
+                    uri = ServiceBusEnvironment.CreateServiceUri("sb", uri.Host, "");
 
                 var host = b.Host(uri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
-                        s.KeyName         = config.BusSecretName;
-                        s.SharedAccessKey = config.BusSecret;
+                        s.KeyName         = configuration.BusSecretName;
+                        s.SharedAccessKey = configuration.BusSecret;
                         s.TokenTimeToLive = TimeSpan.FromDays(1);
                         s.TokenScope      = TokenScope.Namespace;
                     });
                 });
 
-                b.ReceiveEndpoint(host, config.BusQueue, r =>
+                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
                     r.LoadFrom(context); // All registered consumers
                 });

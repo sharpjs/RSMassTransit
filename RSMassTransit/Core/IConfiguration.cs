@@ -1,4 +1,6 @@
-﻿namespace RSMassTransit
+﻿using System;
+
+namespace RSMassTransit
 {
     internal interface IConfiguration
         : IServiceConfiguration
@@ -12,10 +14,9 @@
 
     internal interface IMessageBusConfiguration
     {
-        string BusHost       { get; }
+        Uri    BusUri        { get; }
         string BusQueue      { get; }
         string BusSecret     { get; }
         string BusSecretName { get; }
-        string BusType       { get; }
     }
 }

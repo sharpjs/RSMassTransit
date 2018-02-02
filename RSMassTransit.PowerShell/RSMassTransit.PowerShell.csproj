@@ -85,6 +85,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AsyncScope.cs" />
     <Compile Include="BusType.cs" />
     <Compile Include="InvokeRsReportCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

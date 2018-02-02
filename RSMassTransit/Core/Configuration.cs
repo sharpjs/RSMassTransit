@@ -18,8 +18,8 @@ namespace RSMassTransit
             BusType       = settings[nameof(BusType)]       ?? "RabbitMQ";
             BusHost       = settings[nameof(BusHost)]       ?? "localhost";
             BusQueue      = settings[nameof(BusQueue)]      ?? "reports";
-            BusSecretName = settings[nameof(BusSecretName)] .NullIfEmpty();
-            BusSecret     = settings[nameof(BusSecret)]     .NullIfEmpty();
+            BusSecretName = settings[nameof(BusSecretName)] ?? "guest";
+            BusSecret     = settings[nameof(BusSecret)]     ?? "guest";
         }
 
         public string InstanceId    { get; private set; }

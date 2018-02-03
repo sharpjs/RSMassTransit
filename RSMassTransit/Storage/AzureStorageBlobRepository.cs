@@ -47,7 +47,7 @@ namespace RSMassTransit.Storage
             await blob.UploadFromStreamAsync(
                 stream,
                 AccessCondition.GenerateIfNotExistsCondition(),
-                options: null,
+                options:          null,
                 operationContext: null
             );
 

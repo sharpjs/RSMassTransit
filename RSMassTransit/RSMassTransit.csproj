@@ -280,6 +280,10 @@
     <Compile Include="ReportingServices\IReportingServicesClientFactory.cs" />
     <Compile Include="ReportingServices\ReportingServicesClientFactory.cs" />
     <Compile Include="ReportingServices\ReportingServicesModule.cs" />
+    <Compile Include="Storage\AzureStorageBlobRepository.cs" />
+    <Compile Include="Storage\FileSystemRepository.cs" />
+    <Compile Include="Storage\IBlobRepository.cs" />
+    <Compile Include="Storage\RandomFileNames.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

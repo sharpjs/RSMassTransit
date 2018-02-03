@@ -51,7 +51,7 @@ namespace RSMassTransit.Storage
                 operationContext: null
             );
 
-            return new Uri("");
+            return blob.Uri;
         }
 
         private static string GenerateFileName()

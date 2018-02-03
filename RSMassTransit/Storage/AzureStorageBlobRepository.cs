@@ -24,16 +24,22 @@ namespace RSMassTransit.Storage
             _client.DefaultRequestOptions = RequestOptions;
 
             _container = _client.GetContainerReference(containerName);
+
+            Log.Information("Using Azure Storage blob repository: {0}", _container.Uri);
         }
 
         public Task InitializeAsync()
         {
+            Log.Information("Ensuring blob container '{0}' exists.", _container.Name);
+
             return _container.CreateIfNotExistsAsync();
         }
 
         public async Task<Uri> PutAsync(Stream stream)
         {
             var name = GenerateFileName();
+
+            Log.Information("Uploading blob: {0}", name);
 
             var blob = _container.GetBlockBlobReference(name);
             blob.StreamWriteSizeInBytes = UploadBlockSizeInBytes;

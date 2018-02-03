@@ -16,6 +16,8 @@ namespace RSMassTransit.Storage
         public FileSystemRepository(string path)
         {
             _basePath = CreateDirectory(path).FullName;
+
+            Log.Information("Using filesystem repository: {0}", _basePath);
         }
 
         public async Task<Uri> PutAsync(Stream stream)
@@ -24,6 +26,8 @@ namespace RSMassTransit.Storage
             var realPath   = Combine(_basePath, GenerateFileName());
             var tempPath   = ChangeExtension(realPath, ".upl");
             var parentPath = GetDirectoryName(realPath);
+
+            Log.Information("Writing file: {0}", realPath);
 
             try
             {

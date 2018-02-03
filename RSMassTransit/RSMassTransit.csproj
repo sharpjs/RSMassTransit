@@ -121,6 +121,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Core\Configuration.cs" />
+    <Compile Include="Core\CredentialExtensions.cs" />
+    <Compile Include="Core\IConfiguration.cs" />
+    <Compile Include="Core\Log.cs" />
+    <Compile Include="Core\BusModule.cs" />
+    <Compile Include="Core\Program.cs" />
+    <Compile Include="Core\RSMassTransitService.cs" />
+    <Compile Include="Core\RSMassTransitServiceInstaller.cs" />
+    <Compile Include="Core\StringExtensions.cs" />
+    <Compile Include="Core\TraceSourceProvider.cs" />
+    <Compile Include="Consumers\ExecuteReportConsumer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportingServices\IReportExecutionSoapClient.cs" />
+    <Compile Include="ReportingServices\IReportingServicesClientFactory.cs" />
+    <Compile Include="ReportingServices\ReportingServicesClientFactory.cs" />
+    <Compile Include="ReportingServices\ReportingServicesModule.cs" />
+    <Compile Include="Storage\AzureStorageBlobRepository.cs" />
+    <Compile Include="Storage\FileSystemRepository.cs" />
+    <Compile Include="Storage\IBlobRepository.cs" />
+    <Compile Include="Storage\RandomFileNames.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -253,37 +284,6 @@
     <None Include="Connected Services\ReportingServices.Execution\RSMassTransit.ReportingServices.Execution.ToggleItemResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs">
-      <Link>Properties\GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="Core\Configuration.cs" />
-    <Compile Include="Core\CredentialExtensions.cs" />
-    <Compile Include="Core\IConfiguration.cs" />
-    <Compile Include="Core\Log.cs" />
-    <Compile Include="Core\BusModule.cs" />
-    <Compile Include="Core\Program.cs" />
-    <Compile Include="Core\RSMassTransitService.cs" />
-    <Compile Include="Core\RSMassTransitServiceInstaller.cs" />
-    <Compile Include="Core\StringExtensions.cs" />
-    <Compile Include="Core\TraceSourceProvider.cs" />
-    <Compile Include="Consumers\ExecuteReportConsumer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportingServices\IReportExecutionSoapClient.cs" />
-    <Compile Include="ReportingServices\IReportingServicesClientFactory.cs" />
-    <Compile Include="ReportingServices\ReportingServicesClientFactory.cs" />
-    <Compile Include="ReportingServices\ReportingServicesModule.cs" />
-    <Compile Include="Storage\AzureStorageBlobRepository.cs" />
-    <Compile Include="Storage\FileSystemRepository.cs" />
-    <Compile Include="Storage\IBlobRepository.cs" />
-    <Compile Include="Storage\RandomFileNames.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

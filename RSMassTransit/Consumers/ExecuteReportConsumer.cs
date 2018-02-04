@@ -44,8 +44,6 @@ namespace RSMassTransit.Consumers
                 using (var stream = new MemoryStream(bytes, writable: false))
                     response.Uri = await _storage.PutAsync(stream);
 
-                response.Succeeded = true;
-
                 await context.RespondAsync<IExecuteReportResponse>(response);
             });
         }

@@ -11,16 +11,6 @@ namespace RSMassTransit.Messages
     public interface IExecuteReportResponse : IMessage
     {
         /// <summary>
-        ///   Whether the report execution succeeded.
-        /// </summary>
-        bool Succeeded { get; set; }
-
-        /// <summary>
-        ///   Diagnostic messages produced during report execution.
-        /// </summary>
-        IList<string> Messages { get; set; }
-
-        /// <summary>
         ///   URI of the rendered report.
         /// </summary>
         /// <remarks>
@@ -48,5 +38,10 @@ namespace RSMassTransit.Messages
         ///   Length of the rendered report, in bytes.
         /// </summary>
         long Length { get; set; }
+
+        /// <summary>
+        ///   Diagnostic messages produced during report execution.
+        /// </summary>
+        IList<string> Messages { get; set; }
     }
 }

@@ -149,7 +149,9 @@
     <Compile Include="Storage\AzureStorageBlobRepository.cs" />
     <Compile Include="Storage\FileSystemRepository.cs" />
     <Compile Include="Storage\IBlobRepository.cs" />
+    <Compile Include="Storage\IStorageConfiguration.cs" />
     <Compile Include="Storage\RandomFileNames.cs" />
+    <Compile Include="Storage\StorageType.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

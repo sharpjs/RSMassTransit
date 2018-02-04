@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Linq;
+using RSMassTransit.Storage;
 
 namespace RSMassTransit
 {
@@ -13,14 +15,23 @@ namespace RSMassTransit
 
         public Configuration()
         {
-            var settings  = ConfigurationManager.AppSettings;
+            var settings   = ConfigurationManager.AppSettings;
 
-            InstanceId    = GetString (settings, nameof(InstanceId),    "Default");
+            InstanceId     = GetString (settings, nameof(InstanceId),     "Default");
 
-            BusUri        = GetUri    (settings, nameof(BusUri),        "rabbitmq://localhost");
-            BusQueue      = GetString (settings, nameof(BusQueue),      "reports");
-            BusSecretName = GetString (settings, nameof(BusSecretName), "guest");
-            BusSecret     = GetString (settings, nameof(BusSecret),     "guest");
+            BusUri         = GetUri    (settings, nameof(BusUri),         "rabbitmq://localhost");
+            BusQueue       = GetString (settings, nameof(BusQueue),       "reports");
+            BusSecretName  = GetString (settings, nameof(BusSecretName),  "guest");
+            BusSecret      = GetString (settings, nameof(BusSecret),      "guest");
+
+            StorageType    = GetEnum   (settings, nameof(StorageType),    StorageType.FileSystem);
+            FileSystemPath = GetString (settings, nameof(FileSystemPath), @"C:\Reports");
+
+            AzureStorageContainer
+                = GetString(settings, nameof(AzureStorageContainer), "reports");
+
+            AzureStorageConnectionString
+                = GetString(settings, nameof(AzureStorageConnectionString), "UseDevelopmentStorage=true");
         }
 
         public string InstanceId    { get; private set; }
@@ -30,11 +41,20 @@ namespace RSMassTransit
         public string BusSecretName { get; private set; }
         public string BusSecret     { get; private set; }
 
+        public StorageType StorageType                  { get; private set; }
+        public string      FileSystemPath               { get; private set; }
+        public string      AzureStorageContainer        { get; private set; }
+        public string      AzureStorageConnectionString { get; private set; }
+
+        private static string GetString(NameValueCollection settings, string name, string defaultValue)
+            => settings[name].NullIfEmpty() ?? defaultValue;
+
         private static Uri GetUri(NameValueCollection settings, string name, string defaultValue)
         {
             var text = GetString(settings, name, defaultValue);
-            var ok   = Uri.TryCreate(text, UriKind.Absolute, out Uri uri);
-            if (ok) return uri;
+
+            if (Uri.TryCreate(text, UriKind.Absolute, out Uri uri))
+                return uri;
 
             throw new ConfigurationErrorsException(string.Format(
                 "The value '{1}' is invalid for application setting '{0}'.  " +
@@ -43,7 +63,26 @@ namespace RSMassTransit
             ));
         }
 
-        private static string GetString(NameValueCollection settings, string name, string defaultValue)
-            => settings[name].NullIfEmpty() ?? defaultValue;
+        private T GetEnum<T>(NameValueCollection settings, string name, T defaultValue)
+            where T : struct // Enum
+        {
+            var text = settings[name].NullIfEmpty();
+            if (text == null)
+                return defaultValue;
+
+            if (Enum.TryParse(text, out T value))
+                return value;
+
+            var validValues = string.Join(
+                ", ",
+                Enum.GetNames(typeof(T)).Select(n => $"'{n}'")
+            );
+
+            throw new ConfigurationErrorsException(string.Format(
+                "The value '{1}' is invalid for application setting '{0}'.  " +
+                "The value must be one of: {2}",
+                name, text, validValues
+            ));
+        }
     }
 }

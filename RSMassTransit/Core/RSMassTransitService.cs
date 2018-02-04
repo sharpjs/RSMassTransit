@@ -3,6 +3,7 @@ using MassTransit;
 using Sharp.ServiceHost;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.Storage;
+using System;
 
 namespace RSMassTransit.Core
 {
@@ -21,6 +22,7 @@ namespace RSMassTransit.Core
         protected override void StartCore()
         {
             CreateContainer();
+            InitializeObjects();
             StartBus();
         }
 
@@ -47,6 +49,15 @@ namespace RSMassTransit.Core
             builder.RegisterModule<ReportingServicesModule>();
             builder.RegisterModule<StorageModule>();
             _container = builder.Build();
+        }
+
+        private void InitializeObjects()
+        {
+            Log.Verbose("Initializing reporting services.");
+            _container.Resolve<IReportingServicesClientFactory>();
+
+            Log.Verbose("Initializing storage.");
+            _container.Resolve<IBlobRepository>();
         }
 
         private void DisposeContainer()

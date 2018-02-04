@@ -4,7 +4,7 @@ namespace RSMassTransit
 {
     internal interface IConfiguration
         : IServiceConfiguration
-        , IMessageBusConfiguration
+        , IBusConfiguration
     { }
 
     internal interface IServiceConfiguration
@@ -12,7 +12,7 @@ namespace RSMassTransit
         string InstanceId { get; }
     }
 
-    internal interface IMessageBusConfiguration
+    internal interface IBusConfiguration
     {
         Uri    BusUri        { get; }
         string BusQueue      { get; }

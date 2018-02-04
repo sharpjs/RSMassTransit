@@ -35,7 +35,7 @@ namespace RSMassTransit.Core
         private IBusControl CreateBus(IComponentContext context)
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
-            var configuration = context.Resolve<IMessageBusConfiguration>();
+            var configuration = context.Resolve<IBusConfiguration>();
             var scheme        = configuration.BusUri.Scheme;
 
             if (RabbitMqScheme.Equals(scheme, TypeComparison))
@@ -52,8 +52,8 @@ namespace RSMassTransit.Core
         }
 
         private IBusControl CreateBusUsingRabbitMq(
-            IComponentContext        context,
-            IMessageBusConfiguration configuration)
+            IComponentContext context,
+            IBusConfiguration configuration)
         {
             return Bus.Factory.CreateUsingRabbitMq(b =>
             {
@@ -78,8 +78,8 @@ namespace RSMassTransit.Core
         }
 
         private IBusControl CreateBusUsingAzureServiceBus(
-            IComponentContext        context,
-            IMessageBusConfiguration configuration)
+            IComponentContext context,
+            IBusConfiguration configuration)
         {
             return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {

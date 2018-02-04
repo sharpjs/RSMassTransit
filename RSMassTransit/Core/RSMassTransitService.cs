@@ -1,9 +1,8 @@
 ﻿using Autofac;
 using MassTransit;
-using Sharp.ServiceHost;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.Storage;
-using System;
+using Sharp.ServiceHost;
 
 namespace RSMassTransit.Core
 {

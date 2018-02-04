@@ -2,6 +2,7 @@
 using MassTransit;
 using Sharp.ServiceHost;
 using RSMassTransit.ReportingServices;
+using RSMassTransit.Storage;
 
 namespace RSMassTransit.Core
 {
@@ -44,6 +45,7 @@ namespace RSMassTransit.Core
             builder.RegisterInstance(Configuration.Current).AsImplementedInterfaces();
             builder.RegisterModule<BusModule>();
             builder.RegisterModule<ReportingServicesModule>();
+            builder.RegisterModule<StorageModule>();
             _container = builder.Build();
         }
 

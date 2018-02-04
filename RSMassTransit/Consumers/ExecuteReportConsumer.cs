@@ -78,6 +78,7 @@ namespace RSMassTransit.Consumers
 
                 response.ContentType       = rendered.MimeType;
                 response.FileNameExtension = rendered.Extension;
+                response.Length            = rendered.Result.Length;
                 response.Messages          = TranslateWarnings(rendered.Warnings);
                 //???                      = rendered.Encoding;
 

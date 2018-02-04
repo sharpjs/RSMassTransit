@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -26,13 +23,8 @@ namespace RSMassTransit.Storage
             _container = _client.GetContainerReference(containerName);
 
             Log.Information("Using Azure Storage blob repository: {0}", _container.Uri);
-        }
 
-        public Task InitializeAsync()
-        {
-            Log.Information("Ensuring blob container '{0}' exists.", _container.Name);
-
-            return _container.CreateIfNotExistsAsync();
+            _container.CreateIfNotExists();
         }
 
         public async Task<Uri> PutAsync(Stream stream)

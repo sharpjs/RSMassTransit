@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (C) 2018 (to be determined)
+
+using System.Collections.Generic;
 
 namespace RSMassTransit.Messages
 {

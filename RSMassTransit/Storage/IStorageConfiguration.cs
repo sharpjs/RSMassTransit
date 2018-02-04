@@ -1,4 +1,6 @@
-﻿namespace RSMassTransit.Storage
+﻿// Copyright (C) 2018 (to be determined)
+
+namespace RSMassTransit.Storage
 {
     internal interface IStorageConfiguration
     {

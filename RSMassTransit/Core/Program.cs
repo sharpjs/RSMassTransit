@@ -1,4 +1,6 @@
-﻿using Sharp.ServiceHost;
+﻿// Copyright (C) 2018 (to be determined)
+
+using Sharp.ServiceHost;
 
 namespace RSMassTransit.Core
 {

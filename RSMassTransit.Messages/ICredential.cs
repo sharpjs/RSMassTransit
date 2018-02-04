@@ -1,4 +1,6 @@
-﻿namespace RSMassTransit.Messages
+﻿// Copyright (C) 2018 (to be determined)
+
+namespace RSMassTransit.Messages
 {
     /// <summary>
     ///   Credential to authenticate with the report server.

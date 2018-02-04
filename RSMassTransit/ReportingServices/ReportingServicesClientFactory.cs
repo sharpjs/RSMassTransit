@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿// Copyright (C) 2018 (to be determined)
+
+using System.Net;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Description;

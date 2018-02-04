@@ -1,3 +1,5 @@
+// Copyright (C) 2018 (to be determined)
+
 using System;
 using System.Configuration.Install;
 using System.Reflection;

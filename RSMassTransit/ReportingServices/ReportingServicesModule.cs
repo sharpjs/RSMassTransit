@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿// Copyright (C) 2018 (to be determined)
+
+using Autofac;
 
 namespace RSMassTransit.ReportingServices
 {

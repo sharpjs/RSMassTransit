@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (C) 2018 (to be determined)
+
+using System;
 
 using static System.FormattableString;
 

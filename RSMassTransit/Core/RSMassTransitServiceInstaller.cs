@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿// Copyright (C) 2018 (to be determined)
+
+using System.ComponentModel;
 using System.Configuration.Install;
 using System.ServiceProcess;
 using Sharp.ServiceHost;

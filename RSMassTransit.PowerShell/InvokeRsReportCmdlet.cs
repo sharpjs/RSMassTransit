@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Copyright (C) 2018 (to be determined)
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;

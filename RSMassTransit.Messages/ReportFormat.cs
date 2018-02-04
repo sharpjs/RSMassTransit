@@ -1,4 +1,6 @@
-﻿namespace RSMassTransit.Messages
+﻿// Copyright (C) 2018 (to be determined)
+
+namespace RSMassTransit.Messages
 {
     // Rendering extensions reported by a SSRS 2016 installation:
     // https://docs.microsoft.com/en-us/sql/reporting-services/report-builder/export-reports-report-builder-and-ssrs

@@ -78,7 +78,8 @@ namespace RSMassTransit.Core
 
                 b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
                 {
-                    r.BindMessageExchanges = false;
+                    r.BindMessageExchanges = false; // binding not required to get messages into queue
+                    r.PurgeOnStartup       = true;  // we discard them anyway
                     r.Consumer<ErrorConsumer>();
                 });
 

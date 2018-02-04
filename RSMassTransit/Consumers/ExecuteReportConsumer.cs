@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using MassTransit;
-
 using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;

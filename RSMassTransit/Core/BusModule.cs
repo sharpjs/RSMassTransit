@@ -7,7 +7,6 @@ using GreenPipes;
 using MassTransit;
 using MassTransit.AzureServiceBusTransport;
 using Microsoft.ServiceBus;
-
 using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core

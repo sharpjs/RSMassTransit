@@ -77,26 +77,17 @@ namespace Sharp.ServiceHost
 
         protected sealed override void OnStart(string[] args)
         {
-            TraceOperation.Do("Service Start", () =>
-            {
-                StartCore();
-            });
+            TraceOperation.Do("Service Start", StartCore);
         }
 
         protected sealed override void OnStop()
         {
-            TraceOperation.Do("Service Stop", () =>
-            {
-                StopCore();
-            });
+            TraceOperation.Do("Service Stop", StopCore);
         }
 
         protected sealed override void OnShutdown()
         {
-            TraceOperation.Do("Service Stop (Shutdown)", () =>
-            {
-                StopCore();
-            });
+            TraceOperation.Do("Service Stop (Shutdown)", StopCore);
         }
 
         protected virtual void StartCore() { }

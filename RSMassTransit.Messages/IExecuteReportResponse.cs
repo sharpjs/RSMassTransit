@@ -8,7 +8,7 @@ namespace RSMassTransit.Messages
     /// <summary>
     ///   The response to a request to execute a report.
     /// </summary>
-    public interface IExecuteReportResponse
+    public interface IExecuteReportResponse : IMessage
     {
         /// <summary>
         ///   Whether the report execution succeeded.

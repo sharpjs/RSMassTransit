@@ -7,7 +7,7 @@ namespace RSMassTransit.Messages
     /// <summary>
     ///   A request to execute a report.
     /// </summary>
-    public interface IExecuteReportRequest : ICredential
+    public interface IExecuteReportRequest : ICredential, IMessage
     {
         /// <summary>
         ///   Virtual path of the report on the report server.

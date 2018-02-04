@@ -1,10 +1,12 @@
 ﻿using System;
+using RSMassTransit.Storage;
 
 namespace RSMassTransit
 {
     internal interface IConfiguration
         : IServiceConfiguration
         , IBusConfiguration
+        , IStorageConfiguration
     { }
 
     internal interface IServiceConfiguration

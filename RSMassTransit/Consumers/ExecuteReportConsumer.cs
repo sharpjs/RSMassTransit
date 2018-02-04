@@ -94,7 +94,6 @@ namespace RSMassTransit.Consumers
                 response.FileNameExtension = rendered.Extension;
                 response.Length            = rendered.Result.Length;
                 response.Messages          = TranslateWarnings(rendered.Warnings);
-                //???                      = rendered.Encoding;
 
                 return rendered.Result;
             }

@@ -11,14 +11,14 @@ namespace RSMassTransit.Storage
 
         internal static string Next(char separator = '.', string extension = "")
         {
-            // Format: YYYY.MMDD.HHMMSSxxxxxxxxxxxxxxxx
+            // Format: yyyy/MMdd/yyyyMMdd_HHmmss_xxxxxxxx.ext
 
             var d = DateTime.UtcNow;
-            var n = GetRandomUInt64();
+            var n = GetRandomInt32();
             var s = separator;
 
             return Invariant(
-                $"{d:yyyy}{s}{d:MMdd}{s}{d:HHmmss}{n:x8}{extension}"
+                $"{d:yyyy}{s}{d:MMdd}{s}{d:yyyyMMdd}_{d:HHmmss}_{n:x8}{extension}"
             );
         }
 
@@ -33,18 +33,10 @@ namespace RSMassTransit.Storage
             return new Random(seed);
         }
 
-        private static ulong GetRandomUInt64()
+        private static int GetRandomInt32()
         {
-            // unsigned to avoid sign-extension
-            ulong a, b;
-            
             lock (Random)
-            {
-                a = (uint) Random.Next();
-                b = (uint) Random.Next();
-            }
-
-            return (a << 32) | b;
+                return Random.Next();
         }
     }
 }

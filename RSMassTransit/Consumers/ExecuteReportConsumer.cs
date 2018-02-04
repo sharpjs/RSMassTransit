@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using MassTransit;
@@ -37,8 +38,14 @@ namespace RSMassTransit.Consumers
                 try
                 {
                     var request = context.Message;
-                    var bytes   = await ExecuteReport(request, response);
-                    // upload to azure
+
+                    // Execute the report
+                    var bytes = await ExecuteReport(request, response);
+
+                    // Upload to storage
+                    using (var stream = new MemoryStream(bytes, writable: false))
+                        response.Uri = await _storage.PutAsync(stream);
+
                     response.Succeeded = true;
                 }
                 catch (Exception e)

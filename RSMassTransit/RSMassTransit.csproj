@@ -151,6 +151,7 @@
     <Compile Include="Storage\IBlobRepository.cs" />
     <Compile Include="Storage\IStorageConfiguration.cs" />
     <Compile Include="Storage\RandomFileNames.cs" />
+    <Compile Include="Storage\StorageModule.cs" />
     <Compile Include="Storage\StorageType.cs" />
   </ItemGroup>
   <ItemGroup>

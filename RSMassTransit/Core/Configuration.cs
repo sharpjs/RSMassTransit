@@ -27,11 +27,11 @@ namespace RSMassTransit
             StorageType    = GetEnum   (settings, nameof(StorageType),    StorageType.FileSystem);
             FileSystemPath = GetString (settings, nameof(FileSystemPath), @"C:\Reports");
 
-            AzureStorageContainer
-                = GetString(settings, nameof(AzureStorageContainer), "reports");
-
             AzureStorageConnectionString
                 = GetString(settings, nameof(AzureStorageConnectionString), "UseDevelopmentStorage=true");
+
+            AzureStorageContainer
+                = GetString(settings, nameof(AzureStorageContainer), "reports");
         }
 
         public string InstanceId    { get; private set; }
@@ -43,8 +43,8 @@ namespace RSMassTransit
 
         public StorageType StorageType                  { get; private set; }
         public string      FileSystemPath               { get; private set; }
-        public string      AzureStorageContainer        { get; private set; }
         public string      AzureStorageConnectionString { get; private set; }
+        public string      AzureStorageContainer        { get; private set; }
 
         private static string GetString(NameValueCollection settings, string name, string defaultValue)
             => settings[name].NullIfEmpty() ?? defaultValue;

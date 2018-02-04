@@ -26,7 +26,7 @@ namespace RSMassTransit.Messages
         ///   Language and locale used to interpret parameter values such as
         ///   dates and numbers.  Example: <c>"en-US"</c>
         /// </summary>
-        string ParameterLanguage { get; set; } // e.g. 
+        string ParameterLanguage { get; set; }
 
         /// <summary>
         ///   Format in which to render the report.

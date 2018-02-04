@@ -8,17 +8,24 @@ using MassTransit;
 using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;
+using RSMassTransit.Storage;
 
 namespace RSMassTransit.Consumers
 {
     internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
     {
         private readonly IReportingServicesClientFactory _services;
+        private readonly IBlobRepository                 _storage;
 
-        public ExecuteReportConsumer(IReportingServicesClientFactory services)
+        public ExecuteReportConsumer(
+            IReportingServicesClientFactory services,
+            IBlobRepository                 storage)
         {
             _services = services
                 ?? throw new ArgumentNullException(nameof(services));
+
+            _storage = storage
+                ?? throw new ArgumentNullException(nameof(storage));
         }
 
         public async Task Consume(ConsumeContext<IExecuteReportRequest> context)

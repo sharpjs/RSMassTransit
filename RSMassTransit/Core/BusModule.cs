@@ -2,6 +2,7 @@
 
 using System;
 using System.Configuration;
+using System.Threading.Tasks;
 using Autofac;
 using GreenPipes;
 using MassTransit;
@@ -23,7 +24,8 @@ namespace RSMassTransit.Core
         protected override void Load(ContainerBuilder builder)
         {
             builder
-                .RegisterConsumers(typeof(ExecuteReportConsumer).Assembly);
+                .RegisterConsumers(typeof(ExecuteReportConsumer).Assembly)
+                .Except<ErrorConsumer>();
 
             builder
                 .Register(CreateBus)
@@ -74,6 +76,12 @@ namespace RSMassTransit.Core
                     r.LoadFrom(context);    // All registered consumers
                 });
 
+                b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
+                {
+                    r.BindMessageExchanges = false;
+                    r.Consumer<ErrorConsumer>();
+                });
+
                 b.UseRetry(r => r.None());
             });
         }
@@ -101,6 +109,11 @@ namespace RSMassTransit.Core
                 b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
                     r.LoadFrom(context); // All registered consumers
+                });
+
+                b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
+                {
+                    r.Consumer<ErrorConsumer>();
                 });
 
                 b.UseRetry(r => r.None());

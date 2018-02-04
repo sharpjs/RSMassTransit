@@ -30,33 +30,24 @@ namespace RSMassTransit.Consumers
                 ?? throw new ArgumentNullException(nameof(storage));
         }
 
-        public async Task Consume(ConsumeContext<IExecuteReportRequest> context)
+        public Task Consume(ConsumeContext<IExecuteReportRequest> context)
         {
-            using (var op = Log.Operation(nameof(IExecuteReportRequest)))
+            return Log.DoAsync(nameof(IExecuteReportRequest), async () =>
             {
+                var request  = context.Message;
                 var response = new ExecuteReportResponse();
 
-                try
-                {
-                    var request = context.Message;
+                // Execute the report
+                var bytes = await ExecuteReport(request, response);
 
-                    // Execute the report
-                    var bytes = await ExecuteReport(request, response);
+                // Upload to storage
+                using (var stream = new MemoryStream(bytes, writable: false))
+                    response.Uri = await _storage.PutAsync(stream);
 
-                    // Upload to storage
-                    using (var stream = new MemoryStream(bytes, writable: false))
-                        response.Uri = await _storage.PutAsync(stream);
-
-                    response.Succeeded = true;
-                }
-                catch (Exception e)
-                {
-                    op.Exception = e;
-                    response.Messages.Add(e.ToString());
-                }
+                response.Succeeded = true;
 
                 await context.RespondAsync<IExecuteReportResponse>(response);
-            }
+            });
         }
 
         private async Task<byte[]> ExecuteReport(IExecuteReportRequest request, IExecuteReportResponse response)

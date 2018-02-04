@@ -43,6 +43,8 @@ namespace RSMassTransit.PowerShell
 
             ProvideRsCredential(request);
             var response = ExecuteReport(request);
+
+            WriteObject(response);
         }
 
         private IExecuteReportResponse ExecuteReport(ExecuteReportRequest request)

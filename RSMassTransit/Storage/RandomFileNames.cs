@@ -14,7 +14,7 @@ namespace RSMassTransit.Storage
             // Format: YYYY.MMDD.HHMMSSxxxxxxxxxxxxxxxx
 
             var d = DateTime.UtcNow;
-            var n = NextRandomUInt64();
+            var n = GetRandomUInt64();
             var s = separator;
 
             return Invariant(
@@ -22,7 +22,7 @@ namespace RSMassTransit.Storage
             );
         }
 
-        private static ulong NextRandomUInt64()
+        private static ulong GetRandomUInt64()
         {
             // unsigned to avoid sign-extension
             ulong a, b;

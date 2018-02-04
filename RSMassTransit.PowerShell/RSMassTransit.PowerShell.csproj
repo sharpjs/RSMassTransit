@@ -87,9 +87,12 @@
     </Compile>
     <Compile Include="AsyncScope.cs" />
     <Compile Include="BusType.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="InvokeRsReportCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RSMassTransitCmdlet.cs" />
+    <Compile Include="TaskExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

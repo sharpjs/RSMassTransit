@@ -51,8 +51,17 @@ namespace RSMassTransit.PowerShell
 
         private IExecuteReportResponse ExecuteReport(ExecuteReportRequest request)
         {
-            using (new AsyncScope())
-                return _client.Request(request).Result;
+            try
+            {
+                using (new AsyncScope())
+                    return _client.Request(request).GetResultOrThrowUnwrapped();
+            }
+            catch (RequestFaultException e)
+            {
+                foreach (var x in e.Fault.Exceptions)
+                    WriteWarning($"{x.ExceptionType}: {x.Message}\r\n{x.StackTrace}");
+                throw;
+            }
         }
 
         private IList<KeyValuePair<string, string>> GetParameters()

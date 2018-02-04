@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RSMassTransit.Messages
 {
@@ -18,9 +19,18 @@ namespace RSMassTransit.Messages
         IList<string> Messages { get; set; }
 
         /// <summary>
-        ///   Location from which to fetch the rendered report.
+        ///   URI of the rendered report.
         /// </summary>
-        string Uri { get; set; }
+        /// <remarks>
+        ///   <para>
+        ///     The following URI types are valid:
+        ///   </para>
+        ///   <list type="bullet">
+        ///     <item><c>file:</c></item>
+        ///     <item><c>https:</c></item>
+        ///   </list>
+        /// </remarks>
+        Uri Uri { get; set; }
 
         /// <summary>
         ///   Content type (MIME type) of the rendered report.

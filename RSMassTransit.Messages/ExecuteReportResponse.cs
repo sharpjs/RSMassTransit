@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RSMassTransit.Messages
 {
@@ -19,7 +20,7 @@ namespace RSMassTransit.Messages
         private IList<string> _messages;
 
         /// <inheritdoc/>
-        public string Uri { get; set; }
+        public Uri Uri { get; set; }
 
         /// <inheritdoc/>
         public string ContentType { get; set; }

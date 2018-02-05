@@ -43,12 +43,12 @@
     PrivateData = @{
         PSData = @{
             Tags = @("SSRS", "Reporting", "Report", "RsReport", "Invoke", "MassTransit", "message", "bus")
-            LicenseUri = 'https://github.com/ogsys/RSMassTransit/blob/master/LICENSE.txt'
-            ProjectUri = 'https://github.com/ogsys/RSMassTransit'
+            LicenseUri = 'https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt'
+            ProjectUri = 'https://github.com/sharpjs/RSMassTransit'
             # IconUri = ''
             ReleaseNotes = @"
 Release notes are available at:
-https://github.com/ogsys/RSMassTransit/releases
+https://github.com/sharpjs/RSMassTransit/releases
 "@
         }
     }

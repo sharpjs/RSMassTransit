@@ -21,7 +21,7 @@ using System.Security;
 
 // General Information
 [assembly: AssemblyTitle       ("Sharp.Logging")]
-[assembly: AssemblyDescription ("Logging micro-framework for the .NET TraceSource API")]
+[assembly: AssemblyDescription ("Micro-framework for logging via the .NET TraceSource API")]
 [assembly: AssemblyProduct     ("Sharp.Logging")]
 [assembly: AssemblyCompany     ("Jeffrey Sharp")]
 [assembly: AssemblyCopyright   ("Copyright 2018 Jeffrey Sharp")]

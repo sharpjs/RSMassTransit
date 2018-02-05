@@ -25,13 +25,13 @@ Service started.  Press any key to stop...
 To install RSMassTransit as a Windows service:
 
 ```
-RSMassTransit.exe /install
+> RSMassTransit.exe /install
 ```
 
 To uninstall the Windows service:
 
 ```
-RSMassTransit.exe /uninstall
+> RSMassTransit.exe /uninstall
 ```
 
 ## Development Setup

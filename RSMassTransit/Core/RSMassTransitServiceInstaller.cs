@@ -23,7 +23,7 @@ namespace RSMassTransit.Core
 {
     [RunInstaller(true)]
     [DesignerCategory("")] // disable designer
-    internal class RSMassTransitServiceInstaller : Installer
+    public class RSMassTransitServiceInstaller : Installer
     {
         public RSMassTransitServiceInstaller()
         {

@@ -9,6 +9,31 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 Experimental.  Currently, only report execution is supported.
 
+## Installation
+
+First, copy the application files to a suitable directory.
+A good choice would be `C:\Program Files\RSMassTransit`.
+Then, edit the `RSMassTransit.exe.config` file as required.
+
+RSMassTransit will run as a console application if invoked directly.
+
+```
+> .\RSMassTransit.exe
+Service started.  Press any key to stop...
+```
+
+To install RSMassTransit as a Windows service:
+
+```
+RSMassTransit.exe /install
+```
+
+To uninstall the Windows service:
+
+```
+RSMassTransit.exe /install
+```
+
 ## Development Setup
 
 * Requirements:

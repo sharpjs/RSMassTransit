@@ -31,7 +31,7 @@ RSMassTransit.exe /install
 To uninstall the Windows service:
 
 ```
-RSMassTransit.exe /install
+RSMassTransit.exe /uninstall
 ```
 
 ## Development Setup

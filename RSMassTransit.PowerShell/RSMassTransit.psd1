@@ -1,5 +1,5 @@
 ﻿<#
-    Copyright (C) 2018 (to be determined)
+    Copyright (C) 2018 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -20,9 +20,9 @@
     ModuleVersion = '0.0.1'
 
     # General
-    Author      = '(to be determined)'
-    CompanyName = '(to be determined)'
-    Copyright   = 'Copyright (C) 2018 (to be determined)'
+    Author      = 'Jeffrey Sharp'
+    CompanyName = 'Jeffrey Sharp'
+    Copyright   = 'Copyright (C) 2018 Jeffrey Sharp'
     Description = 'Provides the Invoke-RsReport cmdlet, which executes a SQL Server Reporting Services report via a MassTransit message bus.'
 
     # Requirements

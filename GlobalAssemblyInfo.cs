@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (C) 2018 (to be determined)
+    Copyright (C) 2018 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -21,8 +21,8 @@ using System.Security;
 
 // General Information
 [assembly: AssemblyProduct   ("RSMassTransit")]
-[assembly: AssemblyCompany   ("(to be determined)")]
-[assembly: AssemblyCopyright ("Copyright 2018 (to be determined)")]
+[assembly: AssemblyCompany   ("Jeffrey Sharp")]
+[assembly: AssemblyCopyright ("Copyright 2018 Jeffrey Sharp")]
 [assembly: AssemblyVersion   ("0.0.0")]
 
 // Compliance

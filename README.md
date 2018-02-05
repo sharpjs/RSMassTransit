@@ -1,5 +1,6 @@
 # RSMassTransit
-A MassTransit message bus interface for SQL Server Reporting Services.
+A [MassTransit](https://github.com/MassTransit/MassTransit)
+message bus interface for SQL Server Reporting Services.
 
 Idea by [Jahn Swob (@jahn-swob)](https://github.com/jahn-swob),
 implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).

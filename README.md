@@ -15,14 +15,15 @@ First, copy the application files to a suitable directory.
 A good choice would be `C:\Program Files\RSMassTransit`.
 Then, edit the `RSMassTransit.exe.config` file as required.
 
-RSMassTransit runs as a normal console application if invoked directly
+RSMassTransit runs as a normal console application if invoked
 by a logged-on user.  It will exit on the first keypress.
 
 ```
 RSMassTransit.exe
 ```
 
-To install RSMassTransit as a Windows service:
+Otherwise, RSMassTransit runs as a Windows service.
+To install the service:
 
 ```
 RSMassTransit.exe /install
@@ -34,6 +35,12 @@ To uninstall the Windows service:
 RSMassTransit.exe /uninstall
 ```
 
+To run RSMassTransit as a console application in a *non*-interactive
+context, such as an Azure Web Job:
+
+```
+RSMassTransit.exe /console
+```
 
 ## Development Setup
 

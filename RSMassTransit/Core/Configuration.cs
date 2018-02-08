@@ -33,7 +33,7 @@ namespace RSMassTransit
         {
             var settings   = ConfigurationManager.AppSettings;
 
-            InstanceId     = GetString (settings, nameof(InstanceId),     "Default");
+            InstanceId     = GetString (settings, nameof(InstanceId),     "");
 
             BusUri         = GetUri    (settings, nameof(BusUri),         "rabbitmq://localhost");
             BusQueue       = GetString (settings, nameof(BusQueue),       "reports");

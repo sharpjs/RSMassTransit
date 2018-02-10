@@ -87,25 +87,47 @@ namespace Sharp.ServiceHost
             OnStart(null);
         }
 
-        // NOTE: The existing Stop() method works fine!
-
+        /// <summary>
+        ///   Invoked when the service starts.
+        /// </summary>
+        /// <param name="args">
+        ///   Arguments passed by the Service Control Manager Start command.
+        /// </param>
         protected sealed override void OnStart(string[] args)
         {
             TraceOperation.Do("Service Start", StartCore);
         }
 
+        /// <summary>
+        ///   Invoked when the service stops as a result of a Service Control
+        ///   Manager Stop command (if running as a Windows service) or when the
+        ///   application exits (if running as a console application).
+        /// </summary>
         protected sealed override void OnStop()
         {
             TraceOperation.Do("Service Stop", StopCore);
         }
 
+        /// <summary>
+        ///   Invoked when the service stops as a result of system shutdown (if
+        ///   running as a Windows service).
+        /// </summary>
         protected sealed override void OnShutdown()
         {
             TraceOperation.Do("Service Stop (Shutdown)", StopCore);
         }
 
+        /// <summary>
+        ///   When overridden in a derived class, specifies actions to perform
+        ///   when the service starts.
+        /// </summary>
         protected virtual void StartCore() { }
-        protected virtual void StopCore () { }
+
+        /// <summary>
+        ///   When overridden in a derived class, specifies actions to perform
+        ///   when the service stops.
+        /// </summary>
+        protected virtual void StopCore() { }
 
         // Below here, it's all about how to wait for the end.
 

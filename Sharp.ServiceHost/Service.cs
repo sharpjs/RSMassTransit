@@ -181,7 +181,7 @@ namespace Sharp.ServiceHost
             return true;
         }
 
-        public static void WaitIndefinitely()
+        private static void WaitIndefinitely()
         {
             Thread.Sleep(int.MaxValue);
         }

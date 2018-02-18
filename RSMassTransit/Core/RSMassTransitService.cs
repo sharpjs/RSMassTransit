@@ -36,6 +36,7 @@ namespace RSMassTransit.Core
 
         protected override void StartCore()
         {
+            Log.ConfigureCloseOnExit();
             CreateContainer();
             InitializeObjects();
             StartBus();

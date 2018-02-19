@@ -102,8 +102,8 @@
     <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
-    <Reference Include="RSMassTransit.Messages, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RSMassTransit.Messages.0.0.1-alpha\lib\net40\RSMassTransit.Messages.dll</HintPath>
+    <Reference Include="RSMassTransit.Messages, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RSMassTransit.Messages.0.0.2-alpha\lib\net45\RSMassTransit.Messages.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

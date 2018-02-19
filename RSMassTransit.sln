@@ -22,8 +22,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharp.Logging", "Sharp.Logg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Messages", "RSMassTransit.Messages\RSMassTransit.Messages.csproj", "{E9664A1A-E95C-406C-B963-07101BE2B1F1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
 EndProject
 Global
@@ -48,10 +46,6 @@ Global
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9664A1A-E95C-406C-B963-07101BE2B1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9664A1A-E95C-406C-B963-07101BE2B1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9664A1A-E95C-406C-B963-07101BE2B1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9664A1A-E95C-406C-B963-07101BE2B1F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.ActiveCfg = Release|Any CPU

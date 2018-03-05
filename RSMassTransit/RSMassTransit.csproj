@@ -105,6 +105,9 @@
     <Reference Include="RSMassTransit.Messages, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RSMassTransit.Messages.0.0.2-alpha\lib\net45\RSMassTransit.Messages.dll</HintPath>
     </Reference>
+    <Reference Include="Sharp.BlobStorage, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sharp.BlobStorage.0.0.0-alpha2\lib\net45\Sharp.BlobStorage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />

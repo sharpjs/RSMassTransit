@@ -15,18 +15,11 @@
 */
 
 using System;
-using RSMassTransit.ReportingServices.Execution;
 
-namespace RSMassTransit.ReportingServices
+namespace RSMassTransit.ReportingServices.Execution
 {
     internal interface IReportExecutionSoapClient
-        : ReportExecutionServiceSoap, IDisposable
+        : ReportExecutionServiceSoap
+        , IDisposable
     { }
-
-    namespace Execution
-    {
-        partial class ReportExecutionServiceSoapClient
-            : IReportExecutionSoapClient
-        { }
-    }
 }

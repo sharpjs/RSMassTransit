@@ -16,7 +16,7 @@
 
 namespace RSMassTransit.ReportingServices.Execution
 {
-    partial class ReportExecutionServiceSoapClient
+    partial class ReportExecutionServiceSoapClient : IReportExecutionSoapClient
     {
         public ReportExecutionServiceSoapClient() { }
         

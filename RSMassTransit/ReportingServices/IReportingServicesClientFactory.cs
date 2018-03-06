@@ -15,6 +15,7 @@
 */
 
 using System.Net;
+using RSMassTransit.ReportingServices.Execution;
 
 namespace RSMassTransit.ReportingServices
 {

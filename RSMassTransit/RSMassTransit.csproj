@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net471</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <OutputType>Exe</OutputType>
     <Description>SQL Server Reporting Services MassTransit Interface</Description>
   </PropertyGroup>
 

@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net45</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 

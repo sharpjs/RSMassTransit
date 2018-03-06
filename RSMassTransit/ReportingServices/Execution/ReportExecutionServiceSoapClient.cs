@@ -14,16 +14,16 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security;
-
-// Compliance
-[assembly: ComVisible(false)]
-
-// Security
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-[assembly: InternalsVisibleTo("RSMassTransit.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-                            // ^^^^^^^^^^^^^^^^^^^^^^^^
-                            // Required for Moq to mock a class with an internal abstract method.
+namespace RSMassTransit.ReportingServices.Execution
+{
+    partial class ReportExecutionServiceSoapClient
+    {
+        public ReportExecutionServiceSoapClient() { }
+        
+        //public ReportExecutionServiceSoapClient(string endpointConfigurationName)
+        //    : base(endpointConfigurationName) { }
+        
+        //public ReportExecutionServiceSoapClient(string endpointConfigurationName, string remoteAddress)
+        //    : base(endpointConfigurationName, remoteAddress) { }
+    }
+}

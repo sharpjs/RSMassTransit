@@ -14,16 +14,13 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security;
+using System.ServiceModel;
 
-// Compliance
-[assembly: ComVisible(false)]
-
-// Security
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-[assembly: InternalsVisibleTo("RSMassTransit.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-                            // ^^^^^^^^^^^^^^^^^^^^^^^^
-                            // Required for Moq to mock a class with an internal abstract method.
+namespace RSMassTransit.ReportingServices.Execution
+{
+    partial class SetExecutionParameters2Request
+    {
+        [MessageHeader(Namespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices")]
+        public ExecutionHeader ExecutionHeader;
+    }
+}

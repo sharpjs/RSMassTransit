@@ -1,4 +1,6 @@
-﻿/*
+<Project>
+
+  <!--
     Copyright (C) 2018 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -12,18 +14,19 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
+  -->
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security;
+  <PropertyGroup>
+    <Product>RSMassTransit</Product>
+    <Company>Jeffrey Sharp</Company>
+    <Authors>Jeffrey Sharp</Authors>
+    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
+    <PackageLicenseUrl>https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
+    <PackageTags>RSMassTransit SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>
+    <PackageReleaseNotes>Release notes are available at:
+https://github.com/sharpjs/RSMassTransit/releases
+</PackageReleaseNotes>
+  </PropertyGroup>
 
-// Compliance
-[assembly: ComVisible(false)]
-
-// Security
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-[assembly: InternalsVisibleTo("RSMassTransit.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-                            // ^^^^^^^^^^^^^^^^^^^^^^^^
-                            // Required for Moq to mock a class with an internal abstract method.
+</Project>

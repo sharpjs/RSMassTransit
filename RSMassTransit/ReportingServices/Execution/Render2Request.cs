@@ -14,16 +14,13 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Reflection;
+using System.ServiceModel;
 
-// General Information
-[assembly: AssemblyTitle       ("RSMassTransit")]
-[assembly: AssemblyDescription ("SQL Server Reporting Services MassTransit Interface")]
-
-// Security
-//
-// All types and members are security-critical, except where
-// being security-critical violates an inheritance rule.
-// http://msdn.microsoft.com/en-us/library/dd233102.aspx
-//
-// (default behavior; no security attribute)
+namespace RSMassTransit.ReportingServices.Execution
+{
+    partial class Render2Request
+    {
+        [MessageHeader(Namespace="http://schemas.microsoft.com/sqlserver/2005/06/30/reporting/reportingservices")]
+        public ExecutionHeader ExecutionHeader;
+    }
+}

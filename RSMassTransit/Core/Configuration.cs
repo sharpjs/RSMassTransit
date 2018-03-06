@@ -19,6 +19,8 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using RSMassTransit.Storage;
+using Sharp.BlobStorage.Azure;
+using Sharp.BlobStorage.File;
 
 namespace RSMassTransit
 {
@@ -34,33 +36,33 @@ namespace RSMassTransit
             var settings   = ConfigurationManager.AppSettings;
 
             InstanceId     = GetString (settings, nameof(InstanceId),     "");
-
             BusUri         = GetUri    (settings, nameof(BusUri),         "rabbitmq://localhost");
             BusQueue       = GetString (settings, nameof(BusQueue),       "reports");
             BusSecretName  = GetString (settings, nameof(BusSecretName),  "guest");
             BusSecret      = GetString (settings, nameof(BusSecret),      "guest");
+            StorageType    = GetEnum   (settings, "Storage.Type",         StorageType.File);
 
-            StorageType    = GetEnum   (settings, nameof(StorageType),    StorageType.FileSystem);
-            FileSystemPath = GetString (settings, nameof(FileSystemPath), @"C:\Reports");
+            File = new FileBlobStorageConfiguration
+            {
+                Path = GetString(settings, "Storage.File.Path", @"C:\Reports")
+            };
 
-            AzureStorageConnectionString
-                = GetString(settings, nameof(AzureStorageConnectionString), "UseDevelopmentStorage=true");
-
-            AzureStorageContainer
-                = GetString(settings, nameof(AzureStorageContainer), "reports");
+            Azure = new AzureBlobStorageConfiguration
+            {
+                ConnectionString = GetString(settings, "Storage.AzureBlob.ConnectionString", "UseDevelopmentStorage=true"),
+                ContainerName    = GetString(settings, "Storage.AzureBlob.ContainerName",    "reports")
+            };
         }
 
-        public string InstanceId    { get; private set; }
+        public string      InstanceId    { get; }
+        public Uri         BusUri        { get; }
+        public string      BusQueue      { get; }
+        public string      BusSecretName { get; }
+        public string      BusSecret     { get; }
+        public StorageType StorageType   { get; }
 
-        public Uri    BusUri        { get; private set; }
-        public string BusQueue      { get; private set; }
-        public string BusSecretName { get; private set; }
-        public string BusSecret     { get; private set; }
-
-        public StorageType StorageType                  { get; private set; }
-        public string      FileSystemPath               { get; private set; }
-        public string      AzureStorageConnectionString { get; private set; }
-        public string      AzureStorageContainer        { get; private set; }
+        public FileBlobStorageConfiguration  File  { get; }
+        public AzureBlobStorageConfiguration Azure { get; }
 
         private static string GetString(NameValueCollection settings, string name, string defaultValue)
             => settings[name].NullIfEmpty() ?? defaultValue;

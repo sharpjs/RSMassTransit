@@ -14,13 +14,17 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using Sharp.BlobStorage.Azure;
+using Sharp.BlobStorage.File;
+
 namespace RSMassTransit.Storage
 {
     internal interface IStorageConfiguration
     {
-        StorageType StorageType                  { get; }
-        string      FileSystemPath               { get; }
-        string      AzureStorageConnectionString { get; }
-        string      AzureStorageContainer        { get; }
+        StorageType StorageType { get; }
+
+        FileBlobStorageConfiguration File { get; }
+
+        AzureBlobStorageConfiguration Azure { get; }
     }
 }

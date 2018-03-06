@@ -16,6 +16,9 @@
 
 using System;
 using Autofac;
+using Sharp.BlobStorage;
+using Sharp.BlobStorage.Azure;
+using Sharp.BlobStorage.File;
 
 namespace RSMassTransit.Storage
 {
@@ -26,25 +29,20 @@ namespace RSMassTransit.Storage
             builder
                 .Register(CreateRepository)
                 .SingleInstance()
-                .As<IBlobRepository>();
+                .As<IBlobStorage>();
         }
 
-        private IBlobRepository CreateRepository(IComponentContext context)
+        private IBlobStorage CreateRepository(IComponentContext context)
         {
             var configuration = context.Resolve<IStorageConfiguration>();
 
             switch (configuration.StorageType)
             {
-                case StorageType.FileSystem:
-                    return new FileSystemRepository(
-                        configuration.FileSystemPath
-                    );
+                case StorageType.File:
+                    return new FileBlobStorage(configuration.File);
 
-                case StorageType.AzureStorageBlob:
-                    return new AzureStorageBlobRepository(
-                        configuration.AzureStorageConnectionString,
-                        configuration.AzureStorageContainer
-                    );
+                case StorageType.AzureBlob:
+                    return new AzureBlobStorage(configuration.Azure);
 
                 default:
                     // Should be unreachable

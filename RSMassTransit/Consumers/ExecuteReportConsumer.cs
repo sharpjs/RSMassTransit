@@ -24,18 +24,18 @@ using MassTransit;
 using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;
-using RSMassTransit.Storage;
+using Sharp.BlobStorage;
 
 namespace RSMassTransit.Consumers
 {
     internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
     {
         private readonly IReportingServicesClientFactory _services;
-        private readonly IBlobRepository                 _storage;
+        private readonly IBlobStorage                    _storage;
 
         public ExecuteReportConsumer(
             IReportingServicesClientFactory services,
-            IBlobRepository                 storage)
+            IBlobStorage                    storage)
         {
             _services = services
                 ?? throw new ArgumentNullException(nameof(services));

@@ -22,13 +22,14 @@ namespace RSMassTransit.Storage
     internal enum StorageType
     {
         /// <summary>
-        ///   A directory in the file system.
+        ///   Each rendered report is stored as a file in the file system.
         /// </summary>
-        FileSystem,
+        File,
 
         /// <summary>
-        ///   A blob container in an Azure Storage account.
+        ///   Each rendered report is stored as a blob in an Azure storage
+        ///   account.
         /// </summary>
-        AzureStorageBlob
+        AzureBlob
     }
 }

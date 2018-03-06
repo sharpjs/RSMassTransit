@@ -18,6 +18,7 @@ using Autofac;
 using MassTransit;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.Storage;
+using Sharp.BlobStorage;
 using Sharp.ServiceHost;
 
 namespace RSMassTransit.Core
@@ -73,7 +74,7 @@ namespace RSMassTransit.Core
             _container.Resolve<IReportingServicesClientFactory>();
 
             Log.Verbose("Initializing storage.");
-            _container.Resolve<IBlobRepository>();
+            _container.Resolve<IBlobStorage>();
         }
 
         private void DisposeContainer()

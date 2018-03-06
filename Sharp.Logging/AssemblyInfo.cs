@@ -14,18 +14,9 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
-
-// General Information
-[assembly: AssemblyTitle       ("Sharp.Logging")]
-[assembly: AssemblyDescription ("Micro-framework for logging via the .NET TraceSource API")]
-[assembly: AssemblyProduct     ("Sharp.Logging")]
-[assembly: AssemblyCompany     ("Jeffrey Sharp")]
-[assembly: AssemblyCopyright   ("Copyright 2018 Jeffrey Sharp")]
-[assembly: AssemblyVersion     ("0.0.0")]
 
 // Compliance
 [assembly: ComVisible(false)]
@@ -36,10 +27,3 @@ using System.Security;
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
                             // ^^^^^^^^^^^^^^^^^^^^^^^^
                             // Required for Moq to mock a class with an internal abstract method.
-
-// Configuration
-#if DEBUG
-    [assembly: AssemblyConfiguration("Debug")]
-#else
-    [assembly: AssemblyConfiguration("Release")]
-#endif

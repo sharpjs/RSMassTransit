@@ -98,7 +98,6 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AsyncScope.cs" />
-    <Compile Include="BusType.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="ExceptionExtensions.cs" />
     <Compile Include="InvokeRsReportCmdlet.cs" />

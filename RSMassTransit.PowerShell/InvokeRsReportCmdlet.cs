@@ -18,7 +18,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using MassTransit;
 using RSMassTransit.Messages;
 
 namespace RSMassTransit.PowerShell
@@ -37,14 +36,6 @@ namespace RSMassTransit.PowerShell
         [AllowNull, AllowEmptyCollection]
         public Hashtable Parameters { get; set; }
 
-        private IRequestClient<IExecuteReportRequest, IExecuteReportResponse> _client;
-
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-            CreateBusClient(out _client);
-        }
-
         protected override void ProcessRecord()
         {
             WriteVerbose("Sending ExecuteReportRequest");
@@ -58,24 +49,10 @@ namespace RSMassTransit.PowerShell
             };
 
             ProvideRsCredential(request);
-            var response = ExecuteReport(request);
+
+            var response = WithFaultHandling(() => Client.ExecuteReport(request));
 
             WriteObject(response);
-        }
-
-        private IExecuteReportResponse ExecuteReport(ExecuteReportRequest request)
-        {
-            try
-            {
-                using (new AsyncScope())
-                    return _client.Request(request).GetResultOrThrowUnwrapped();
-            }
-            catch (RequestFaultException e)
-            {
-                foreach (var x in e.Fault.Exceptions)
-                    WriteWarning($"{x.ExceptionType}: {x.Message}\r\n{x.StackTrace}");
-                throw;
-            }
         }
 
         private IList<KeyValuePair<string, string>> GetParameters()

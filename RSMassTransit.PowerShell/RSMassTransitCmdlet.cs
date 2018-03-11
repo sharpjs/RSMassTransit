@@ -20,25 +20,24 @@ using System.Net;
 using MassTransit;
 using MassTransit.AzureServiceBusTransport;
 using Microsoft.ServiceBus;
+using RSMassTransit.Client;
 using RSMassTransit.Messages;
 
 namespace RSMassTransit.PowerShell
 {
     public abstract class RSMassTransitCmdlet : PSCmdlet, IDisposable
     {
-        public const string
-            DefaultBusQueue       = "reports",
-            RabbitMqScheme        = "rabbitmq",
-            AzureServiceBusScheme = "sb";
-
-        public const int
-            DefaultTimeoutSeconds = 10;
-
-        public static readonly Uri
+        protected static readonly Uri
             DefaultBusUri = new Uri("rabbitmq://localhost");
 
-        public static readonly PSCredential
+        protected const string
+            DefaultBusQueue = "reports";
+
+        protected static readonly PSCredential
             DefaultBusCredential  = CreateGuestCredential();
+
+        protected const int
+            DefaultTimeoutSeconds = 10;
 
         [Parameter]
         [ValidateNotNull]
@@ -60,119 +59,17 @@ namespace RSMassTransit.PowerShell
         [ValidateRange(0, int.MaxValue)]
         public int TimeoutSeconds { get; set; } = DefaultTimeoutSeconds;
 
-        protected IBusControl Bus { get; private set; }
-
-        private bool _isDisposed;
+        protected IReportingServices Client { get; private set; }
 
         protected override void BeginProcessing()
         {
-            CreateBus();
-        }
-
-        ~RSMassTransitCmdlet()
-        {
-            Dispose(managed: false);
-        }
-
-        public void Dispose()
-        {
-            Dispose(managed: true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool managed)
-        {
-            if (_isDisposed)
-                return;
-
-            if (managed)
-                DisposeBus();
-
-            _isDisposed = true;
-        }
-
-        private void CreateBus()
-        {
-            switch (BusUri.Scheme.ToLower()) // in current culture
+            Client = ReportingServices.Create(new ReportingServicesConfiguration
             {
-                case RabbitMqScheme:
-                    CreateBusUsingRabbitMq();
-                    break;
-                case AzureServiceBusScheme:
-                    CreateBusUsingAzureServiceBus();
-                    break;
-                default:
-                    throw new ValidationMetadataException(string.Format(
-                        "The scheme '{0}' is invalid for the BusUri parameter.  " +
-                        "Valid schemes are '{1}' and '{2}'.",
-                        BusUri.Scheme, RabbitMqScheme, AzureServiceBusScheme
-                    ));
-            }
-
-            WriteVerbose($"Starting message bus.");
-            Bus.Start();
-        }
-
-        private void CreateBusUsingRabbitMq()
-        {
-            BusUri = new UriBuilder(
-                RabbitMqScheme, BusUri.Host, BusUri.Port, BusUri.AbsolutePath
-            ).Uri;
-
-            WriteVerbose($"Using RabbitMQ: {BusUri}");
-
-            var credential = BusCredential.GetNetworkCredential();
-
-            Bus = MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
-            {
-                b.Host(BusUri, h =>
-                {
-                    h.Username(credential.UserName);
-                    h.Password(credential.Password);
-                });
+                BusUri         = BusUri,
+                BusQueue       = BusQueue,
+                BusCredential  = BusCredential.GetNetworkCredential(),
+                RequestTimeout = TimeSpan.FromSeconds(TimeoutSeconds)
             });
-        }
-
-        private void CreateBusUsingAzureServiceBus()
-        {
-            BusUri = ServiceBusEnvironment.CreateServiceUri(
-                AzureServiceBusScheme, BusUri.Host, servicePath: ""
-            );
-
-            WriteVerbose($"Using Azure Service Bus: {BusUri}");
-
-            var credential = BusCredential.GetNetworkCredential();
-
-            Bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
-            {
-                b.Host(BusUri, h =>
-                {
-                    h.SharedAccessSignature(s =>
-                    {
-                        s.KeyName         = credential.UserName;
-                        s.SharedAccessKey = credential.Password;
-                        s.TokenTimeToLive = TimeSpan.FromDays(1);
-                        s.TokenScope      = TokenScope.Namespace;
-                    });
-                });
-            });
-        }
-
-        protected void CreateBusClient<TRequest, TResponse>
-            (out IRequestClient<TRequest, TResponse> client)
-            where TRequest  : class
-            where TResponse : class
-        {
-            client = Bus.CreateRequestClient<TRequest, TResponse>(
-                new Uri(BusUri, BusQueue),
-                TimeSpan.FromSeconds(TimeoutSeconds)
-            );
-        }
-
-        private void DisposeBus()
-        {
-            Bus?.Stop();
-            Bus = null;
         }
 
         private static PSCredential CreateGuestCredential()
@@ -192,6 +89,33 @@ namespace RSMassTransit.PowerShell
 
             message.UserName = credential?.UserName;
             message.Password = credential?.Password;
+        }
+
+        protected T WithFaultHandling<T>(Func<T> action)
+        {
+            try
+            {
+                return action();
+            }
+            catch (RequestFaultException e)
+            {
+                foreach (var x in e.Fault.Exceptions)
+                    WriteWarning($"{x.ExceptionType}: {x.Message}\r\n{x.StackTrace}");
+
+                throw;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(managed: true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool managed)
+        {
+            Client?.Dispose();
+            Client = null;
         }
     }
 }

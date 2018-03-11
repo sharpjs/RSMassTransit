@@ -17,17 +17,16 @@
   -->
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <Product>Sharp.ServiceHost</Product>
+    <Description>Micro-framework that enables a console app to run as a Windows service</Description>
+    <Version>0.0.0-local</Version>
+    <Authors>Jeffrey Sharp</Authors>
+    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.0-local</Version>
-    <Description>Micro-framework that enables a console app to run as a Windows service</Description>
-    <Product>Sharp.ServiceHost</Product>
-    <Company>Jeffrey Sharp</Company>
-    <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
+    <TargetFramework>net45</TargetFramework>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

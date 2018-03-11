@@ -17,17 +17,16 @@
   -->
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <Product>Sharp.Logging</Product>
+    <Description>Micro-framework for logging via the .NET TraceSource API</Description>
+    <Version>0.0.0-local</Version>
+    <Authors>Jeffrey Sharp</Authors>
+    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.0-local</Version>
-    <Description>Micro-framework for logging via the .NET TraceSource API</Description>
-    <Product>Sharp.Logging</Product>
-    <Company>Jeffrey Sharp</Company>
-    <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
+    <TargetFramework>net45</TargetFramework>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
 
 </Project>

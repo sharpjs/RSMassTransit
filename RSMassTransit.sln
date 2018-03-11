@@ -11,8 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
-		Resolve-Version.ps1 = Resolve-Version.ps1
-		Version.ps1 = Version.ps1
+		Set-Version.ps1 = Set-Version.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"

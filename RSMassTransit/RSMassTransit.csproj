@@ -1,5 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\General.props" />
+  <Import Project="..\Local.props" Condition="Exists('..\Local.props')" />
+
   <PropertyGroup>
     <TargetFramework>net471</TargetFramework>
     <LangVersion>latest</LangVersion>

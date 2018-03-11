@@ -14,13 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2
 		Set-Version.ps1 = Set-Version.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharp.Logging", "Sharp.Logging\Sharp.Logging.csproj", "{E1833026-1B85-4369-8CC2-D75B3EE6964F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.Logging", "Sharp.Logging\Sharp.Logging.csproj", "{E1833026-1B85-4369-8CC2-D75B3EE6964F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
 EndProject

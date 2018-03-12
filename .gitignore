@@ -1,23 +1,18 @@
 # Build Products
 obj/
 bin/
-/build/
+/packages/
+/dist/
 
 # Visual Studio
 .vs/
-*.suo
 *.user
-*.cache
-
-# NuGet
-/packages/
 
 # WCF References
 *.datasource
 
-# Testing
-TestResults
-TestResult*.xml
+# Local Files
+/NuGet.config
 
 # Temporary Files
 *.log

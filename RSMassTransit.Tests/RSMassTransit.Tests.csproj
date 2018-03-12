@@ -25,8 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharp.BlobStorage" Version="0.0.0-alpha3" />
-    <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.0.0-alpha3" />
+    <PackageReference Include="Sharp.BlobStorage" Version="0.0.0-alpha4" />
+    <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.0.0-alpha4" />
   </ItemGroup>
 
   <ItemGroup>

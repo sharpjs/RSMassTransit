@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.Logging", "Sharp.Logg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

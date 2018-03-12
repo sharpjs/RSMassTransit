@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RSMassTransit": {
+      "commandName": "Project",
+      "workingDirectory": "$(OutDir)"
+    }
+  }
+}

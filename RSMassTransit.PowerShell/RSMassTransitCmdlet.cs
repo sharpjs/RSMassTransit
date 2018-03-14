@@ -33,9 +33,6 @@ namespace RSMassTransit.PowerShell
         protected const string
             DefaultBusQueue = "reports";
 
-        protected static readonly PSCredential
-            DefaultBusCredential  = CreateGuestCredential();
-
         protected const int
             DefaultTimeoutSeconds = 30;
 
@@ -49,7 +46,7 @@ namespace RSMassTransit.PowerShell
 
         [Parameter]
         [Credential]
-        public PSCredential BusCredential { get; set; } = DefaultBusCredential;
+        public PSCredential BusCredential { get; set; } = PSCredential.Empty;
 
         [Parameter]
         [Credential]
@@ -70,15 +67,6 @@ namespace RSMassTransit.PowerShell
                 BusCredential  = BusCredential.GetNetworkCredential(),
                 RequestTimeout = TimeSpan.FromSeconds(TimeoutSeconds)
             });
-        }
-
-        private static PSCredential CreateGuestCredential()
-        {
-            return new PSCredential
-            (
-                userName: "guest",
-                password: new NetworkCredential("", "guest").SecurePassword
-            );
         }
 
         protected void ProvideRsCredential(ICredential message)

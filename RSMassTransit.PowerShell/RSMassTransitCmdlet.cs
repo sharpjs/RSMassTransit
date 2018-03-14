@@ -64,17 +64,14 @@ namespace RSMassTransit.PowerShell
             {
                 BusUri         = BusUri,
                 BusQueue       = BusQueue,
-                BusCredential  = BusCredential.GetNetworkCredential(),
+                BusCredential  = BusCredential.GetNetworkCredentialSafe(),
                 RequestTimeout = TimeSpan.FromSeconds(TimeoutSeconds)
             });
         }
 
         protected void ProvideRsCredential(ICredential message)
         {
-            var credential = (RsCredential == PSCredential.Empty)
-                ? null // use RSMassTransit service's windows credentials
-                : RsCredential.GetNetworkCredential();
-
+            var credential   = RsCredential.GetNetworkCredentialSafe();
             message.UserName = credential?.UserName;
             message.Password = credential?.Password;
         }

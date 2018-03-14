@@ -16,10 +16,7 @@
 
 using System;
 using System.Management.Automation;
-using System.Net;
 using MassTransit;
-using MassTransit.AzureServiceBusTransport;
-using Microsoft.ServiceBus;
 using RSMassTransit.Client;
 using RSMassTransit.Messages;
 

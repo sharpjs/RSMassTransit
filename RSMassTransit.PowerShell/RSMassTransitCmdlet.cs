@@ -37,7 +37,7 @@ namespace RSMassTransit.PowerShell
             DefaultBusCredential  = CreateGuestCredential();
 
         protected const int
-            DefaultTimeoutSeconds = 10;
+            DefaultTimeoutSeconds = 30;
 
         [Parameter]
         [ValidateNotNull]

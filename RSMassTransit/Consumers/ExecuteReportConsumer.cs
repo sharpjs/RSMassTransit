@@ -55,14 +55,15 @@ namespace RSMassTransit.Consumers
                 var bytes = await ExecuteReport(request, response);
 
                 // Upload to storage
-                using (var stream = new MemoryStream(bytes, writable: false))
-                    response.Uri = await _storage.PutAsync(stream);
+                await StoreRenderedReport(request, response, bytes);
 
                 await context.RespondAsync<IExecuteReportResponse>(response);
             });
         }
 
-        private async Task<byte[]> ExecuteReport(IExecuteReportRequest request, IExecuteReportResponse response)
+        private async Task<byte[]> ExecuteReport(
+            IExecuteReportRequest  request,
+            IExecuteReportResponse response)
         {
             Log.Verbose("Creating report execution service client.");
             var credential = request.GetNetworkCredential();
@@ -103,6 +104,19 @@ namespace RSMassTransit.Consumers
             }
         }
 
+        private async Task StoreRenderedReport(
+            IExecuteReportRequest  request,
+            IExecuteReportResponse response,
+            byte[]                 bytes)
+        {
+            Log.Verbose("Uploading rendered report to storage.");
+
+            var extension = GetFileExtension(request);
+
+            using (var stream = new MemoryStream(bytes, writable: false))
+                response.Uri = await _storage.PutAsync(stream, extension);
+        }
+
         private static ParameterValue[] GetParameterValues(IExecuteReportRequest request)
             => request.ParameterValues
                 .Select(p => new ParameterValue { Name = p.Key, Value = p.Value })
@@ -130,6 +144,26 @@ namespace RSMassTransit.Consumers
                 [ReportFormat.Mhtml]       = "MHTML",
                 [ReportFormat.Csv]         = "CSV",
                 [ReportFormat.Xml]         = "XML"
+            };
+
+        private static string GetFileExtension(IExecuteReportRequest request)
+            => FileExtensions[request.Format]; // TODO: Handle not-found errors
+
+        private static readonly Dictionary<ReportFormat, string>
+            FileExtensions = new Dictionary<ReportFormat, string>
+            {
+                [ReportFormat.Word]        = ".docx",
+                [ReportFormat.WordLegacy]  = ".doc",
+                [ReportFormat.Excel]       = ".xlsx",
+                [ReportFormat.ExcelLegacy] = ".xls",
+                [ReportFormat.PowerPoint]  = ".pptx",
+                [ReportFormat.Pdf]         = ".pdf",
+                [ReportFormat.Tiff]        = ".tiff",
+                [ReportFormat.Html4]       = ".html",
+                [ReportFormat.Html5]       = ".html",
+                [ReportFormat.Mhtml]       = ".mhtml",
+                [ReportFormat.Csv]         = ".csv",
+                [ReportFormat.Xml]         = ".xml"
             };
 
         private IList<string> TranslateWarnings(Warning[] warnings)

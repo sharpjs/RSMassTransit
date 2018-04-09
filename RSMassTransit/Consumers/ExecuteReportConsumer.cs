@@ -62,7 +62,9 @@ namespace RSMassTransit.Consumers
             });
         }
 
-        private async Task<byte[]> ExecuteReport(IExecuteReportRequest request, IExecuteReportResponse response)
+        private async Task<byte[]> ExecuteReport(
+            IExecuteReportRequest  request,
+            IExecuteReportResponse response)
         {
             Log.Verbose("Creating report execution service client.");
             var credential = request.GetNetworkCredential();

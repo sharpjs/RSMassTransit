@@ -111,8 +111,10 @@ namespace RSMassTransit.Consumers
         {
             Log.Verbose("Uploading rendered report to storage.");
 
+            var extension = GetFileExtension(request);
+
             using (var stream = new MemoryStream(bytes, writable: false))
-                response.Uri = await _storage.PutAsync(stream);
+                response.Uri = await _storage.PutAsync(stream, extension);
         }
 
         private static ParameterValue[] GetParameterValues(IExecuteReportRequest request)
@@ -142,6 +144,26 @@ namespace RSMassTransit.Consumers
                 [ReportFormat.Mhtml]       = "MHTML",
                 [ReportFormat.Csv]         = "CSV",
                 [ReportFormat.Xml]         = "XML"
+            };
+
+        private static string GetFileExtension(IExecuteReportRequest request)
+            => FileExtensions[request.Format]; // TODO: Handle not-found errors
+
+        private static readonly Dictionary<ReportFormat, string>
+            FileExtensions = new Dictionary<ReportFormat, string>
+            {
+                [ReportFormat.Word]        = ".docx",
+                [ReportFormat.WordLegacy]  = ".doc",
+                [ReportFormat.Excel]       = ".xlsx",
+                [ReportFormat.ExcelLegacy] = ".xls",
+                [ReportFormat.PowerPoint]  = ".pptx",
+                [ReportFormat.Pdf]         = ".pdf",
+                [ReportFormat.Tiff]        = ".tiff",
+                [ReportFormat.Html4]       = ".html",
+                [ReportFormat.Html5]       = ".html",
+                [ReportFormat.Mhtml]       = ".mhtml",
+                [ReportFormat.Csv]         = ".csv",
+                [ReportFormat.Xml]         = ".xml"
             };
 
         private IList<string> TranslateWarnings(Warning[] warnings)

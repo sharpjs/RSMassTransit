@@ -55,8 +55,7 @@ namespace RSMassTransit.Consumers
                 var bytes = await ExecuteReport(request, response);
 
                 // Upload to storage
-                using (var stream = new MemoryStream(bytes, writable: false))
-                    response.Uri = await _storage.PutAsync(stream);
+                await StoreRenderedReport(request, response, bytes);
 
                 await context.RespondAsync<IExecuteReportResponse>(response);
             });
@@ -103,6 +102,17 @@ namespace RSMassTransit.Consumers
 
                 return rendered.Result;
             }
+        }
+
+        private async Task StoreRenderedReport(
+            IExecuteReportRequest  request,
+            IExecuteReportResponse response,
+            byte[]                 bytes)
+        {
+            Log.Verbose("Uploading rendered report to storage.");
+
+            using (var stream = new MemoryStream(bytes, writable: false))
+                response.Uri = await _storage.PutAsync(stream);
         }
 
         private static ParameterValue[] GetParameterValues(IExecuteReportRequest request)

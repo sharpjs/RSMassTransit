@@ -74,7 +74,7 @@ namespace RSMassTransit.PowerShell
             return pairs;
         }
 
-        private KeyValuePair<string, string> CreateParameter(object key, object value)
+        private static KeyValuePair<string, string> CreateParameter(object key, object value)
         {
             return new KeyValuePair<string, string>
             (

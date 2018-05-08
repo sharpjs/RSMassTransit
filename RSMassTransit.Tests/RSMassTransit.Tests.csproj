@@ -22,6 +22,7 @@
   <PropertyGroup>
     <Description>Automated test suite for SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFramework>net471</TargetFramework>
+    <RootNamespace>RSMassTransit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

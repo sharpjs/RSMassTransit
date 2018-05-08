@@ -16,6 +16,8 @@
 
 using System;
 using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -30,15 +32,21 @@ using Sharp.BlobStorage;
 namespace RSMassTransit.Consumers
 {
     [TestFixture]
-    [SetCulture(CultureName)]
+    [SetCulture(TestCultureName)]
     public class ExecuteReportConsumerTests
     {
+        // Object under test
+        private ExecuteReportConsumer Consumer;
+
+        // Mocks
         private MockRepository                             Mocks;
         private Mock<IReportingServicesClientFactory>      ClientFactory;
         private Mock<IReportExecutionSoapClient>           ExecutionClient;
         private Mock<IBlobStorage>                         Storage;
         private Mock<ConsumeContext<ExecuteReportRequest>> Context;
-        private ExecuteReportConsumer                      Consumer;
+
+        // Data
+        private ExecutionHeader ExecutionHeader;
 
         [SetUp]
         public void SetUp()
@@ -48,7 +56,10 @@ namespace RSMassTransit.Consumers
             ExecutionClient = Mocks.Create<IReportExecutionSoapClient>();
             Storage         = Mocks.Create<IBlobStorage>();
             Context         = Mocks.Create<ConsumeContext<ExecuteReportRequest>>();
+
             Consumer        = new ExecuteReportConsumer(ClientFactory.Object, Storage.Object);
+
+            ExecutionHeader = new ExecutionHeader();
         }
 
         [TearDown]
@@ -72,116 +83,173 @@ namespace RSMassTransit.Consumers
         }
 
         [Test]
-        public async Task Consume()
+        public async Task Consume_NoParameters()
+        {
+            SetUpRequest();
+            SetUpCreateExecutionClient();
+            SetUpLoadReport();
+            SetUpSetParameters();
+            SetUpRender();
+            SetUpStore();
+            ExpectResponse();
+
+            await Consumer.Consume(Context.Object);
+        }
+
+        private void SetUpRequest(Action<ExecuteReportRequest> setup = null)
         {
             var request = new ExecuteReportRequest
             {
-                Path     = ReportPath,
-                UserName = UserName,
-                Password = Password,
-                Format   = ReportFormat.Pdf,
+                Path     = TestReportPath,
+                UserName = TestUserName,
+                Password = TestPassword,
+                Format   = TestFormat
             };
+
+            setup?.Invoke(request);
 
             Context
                 .SetupGet(c => c.Message)
                 .Returns(request)
                 .Verifiable();
+        }
+
+        private void SetUpCreateExecutionClient(
+            Expression<Func<NetworkCredential, bool>> predicate = null)
+        {
+            if (predicate == null)
+                predicate = c
+                    => c.UserName == TestUserName
+                    && c.Password == TestPassword;
 
             ClientFactory
-                .Setup(f => f.CreateExecutionClient(
-                    It.Is<NetworkCredential>(c
-                        => c.UserName == UserName
-                        && c.Password == Password
-                    )
-                ))
+                .Setup(f => f.CreateExecutionClient(It.Is(predicate)))
                 .Returns(ExecutionClient.Object)
-                .Verifiable();
-
-            var executionHeader = new ExecutionHeader();
-            var loadResponse    = new LoadReport2Response() { ExecutionHeader = executionHeader };
-
-            ExecutionClient
-                .Setup(c => c.LoadReport2Async(
-                    It.Is<LoadReport2Request>(r
-                        => r.Report == ReportPath
-                    )
-                ))
-                .ReturnsAsync(loadResponse)
-                .Verifiable();
-
-            var setParametersResponse = new SetExecutionParameters2Response();
-
-            ExecutionClient
-                .Setup(c => c.SetExecutionParameters2Async(
-                    It.Is<SetExecutionParameters2Request>(r
-                        => r.ExecutionHeader   == executionHeader
-                        && r.Parameters.Length == 0
-                        && r.ParameterLanguage == CultureName
-                    )
-                ))
-                .ReturnsAsync(setParametersResponse)
-                .Verifiable();
-
-            var renderResponse = new Render2Response
-            {
-                MimeType  = PdfContentType,
-                Extension = PdfExtension,
-                Result    = TestContent,
-                Warnings  = new Warning[0]
-            };
-
-            ExecutionClient
-                .Setup(c => c.Render2Async(
-                    It.Is<Render2Request>(r
-                        => r.ExecutionHeader == executionHeader
-                        && r.Format          == PdfReportFormat
-                        && r.PaginationMode  == PageCountMode.Actual
-                    )
-                ))
-                .ReturnsAsync(renderResponse)
                 .Verifiable();
 
             ExecutionClient
                 .Setup(c => c.Dispose())
                 .Verifiable();
+        }
+
+        private void SetUpLoadReport(
+            Expression<Func<LoadReport2Request, bool>> predicate = null)
+        {
+            if (predicate == null)
+                predicate = r => r.Report == TestReportPath;
+
+            var response = new LoadReport2Response { ExecutionHeader = ExecutionHeader };
+
+            ExecutionClient
+                .Setup(c => c.LoadReport2Async(It.Is(predicate)))
+                .ReturnsAsync(response)
+                .Verifiable();
+        }
+
+        private void SetUpSetParameters(
+            Expression<Func<SetExecutionParameters2Request, bool>> predicate = null)
+        {
+            if (predicate == null)
+                predicate = r
+                    => r.ExecutionHeader   == ExecutionHeader
+                    && r.Parameters.Length == 0
+                    && r.ParameterLanguage == TestCultureName;
+
+            var response = new SetExecutionParameters2Response();
+
+            ExecutionClient
+                .Setup(c => c.SetExecutionParameters2Async(It.Is(predicate)))
+                .ReturnsAsync(response)
+                .Verifiable();
+        }
+
+        private void SetUpRender(
+            Action<Render2Response> setup = null)
+        {
+            var response = new Render2Response
+            {
+                MimeType  = TestContentType,
+                Extension = TestExtension,
+                Result    = TestContent,
+                Warnings  = new Warning[0]
+            };
+
+            setup?.Invoke(response);
+
+            ExecutionClient
+                .Setup(c => c.Render2Async(
+                    It.Is<Render2Request>(r
+                        => r.ExecutionHeader == ExecutionHeader
+                        && r.Format          == TestFormatName
+                        && r.PaginationMode  == PageCountMode.Actual
+                    )
+                ))
+                .ReturnsAsync(response)
+                .Verifiable();
+        }
+
+        private void SetUpStore(
+            byte[] bytes     = null,
+            string extension = TestExtension)
+        {
+            if (bytes == null)
+                bytes = TestContent;
 
             Storage
                 .Setup(s => s.PutAsync(
-                    It.IsAny<Stream>(),
-                    PdfExtension
+                    It.Is<Stream>(b => StreamYields(b, bytes)),
+                    TestExtension
                 ))
                 .ReturnsAsync(TestUri)
                 .Verifiable();
+        }
 
+        private void ExpectResponse(
+            Expression<Func<IExecuteReportResponse, bool>> predicate = null)
+        {
+            if (predicate == null)
+                predicate = r
+                    => r.Uri               == TestUri
+                    && r.ContentType       == TestContentType
+                    && r.FileNameExtension == TestExtension
+                    && r.Length            == TestContent.Length
+                    && r.Messages.Count    == 0;
+            
             Context
-                .Setup(c => c.RespondAsync(
-                    It.Is<IExecuteReportResponse>(r
-                        => r.Uri               == TestUri
-                        && r.ContentType       == PdfContentType
-                        && r.FileNameExtension == PdfExtension
-                        && r.Length            == TestContent.Length
-                        && r.Messages.Count    == 0
-                    )
-                ))
+                .Setup(c => c.RespondAsync(It.Is(predicate)))
                 .Returns(Task.CompletedTask)
                 .Verifiable();
+        }
 
-            await Consumer.Consume(Context.Object);
+        private static bool StreamYields(Stream s, byte[] bytes)
+        {
+            byte[] actual;
+
+            using (var memory = new MemoryStream())
+            {
+                s.CopyTo(memory);
+                actual = memory.ToArray();
+            }
+
+            return actual?.SequenceEqual(bytes) ?? false;
         }
 
         private const string
-            CultureName     = "de-CH",
-            ReportPath      = "/My Reports/Some Report",
-            UserName        = "Tester",
-            Password        = "Testing123",
-            PdfReportFormat = "PDF",
-            PdfContentType  = "application/pdf",
-            PdfExtension    = ".pdf";
+            TestCultureName = "de-CH",
+            TestReportPath  = "/My Reports/Some Report",
+            TestUserName    = "Tester",
+            TestPassword    = "Testing123",
+            TestFormatName  = "PDF",
+            TestContentType = "application/pdf",
+            TestExtension   = ".pdf";
+
+        private const ReportFormat
+            TestFormat      = ReportFormat.Pdf;
 
         private static readonly byte[]
-            TestContent = { 0xAA, 0x55, 0xA5, 0x5A };
+            TestContent     = { 0xAA, 0x55, 0xA5, 0x5A };
 
         private static readonly Uri
-            TestUri = new Uri("blobs://test/some-report.pdf");
+            TestUri         = new Uri("blobs://test/some-report.pdf");
     }
 }

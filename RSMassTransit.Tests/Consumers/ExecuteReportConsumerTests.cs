@@ -15,6 +15,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -89,6 +90,45 @@ namespace RSMassTransit.Consumers
             SetUpCreateExecutionClient();
             SetUpLoadReport();
             SetUpSetParameters();
+            SetUpRender();
+            SetUpStore();
+            ExpectResponse();
+
+            await Consumer.Consume(Context.Object);
+        }
+
+        [Test]
+        public async Task Consume_Parameters()
+        {
+            SetUpRequest(r =>
+            {
+                r.ParameterValues = new[]
+                {
+                    Kvp("P0", "V0"),
+                    Kvp("P1", "V1")
+                };
+            });
+            SetUpCreateExecutionClient();
+            SetUpLoadReport();
+            SetUpSetParameters(r
+                => r.Parameters.Length   == 2
+                && r.Parameters[0].Name  == "P0" && r.Parameters[0].Value == "V0"
+                && r.Parameters[1].Name  == "P1" && r.Parameters[1].Value == "V1"
+            );
+            SetUpRender();
+            SetUpStore();
+            ExpectResponse();
+
+            await Consumer.Consume(Context.Object);
+        }
+
+        [Test]
+        public async Task Consume_ParameterLanguage()
+        {
+            SetUpRequest(r => r.ParameterLanguage = "kl-QO"); // Qo'nos Klingon
+            SetUpCreateExecutionClient();
+            SetUpLoadReport();
+            SetUpSetParameters(r => r.ParameterLanguage == "kl-QO");
             SetUpRender();
             SetUpStore();
             ExpectResponse();
@@ -232,6 +272,11 @@ namespace RSMassTransit.Consumers
             }
 
             return actual?.SequenceEqual(bytes) ?? false;
+        }
+
+        private static KeyValuePair<string, string> Kvp(string key, string value)
+        {
+            return new KeyValuePair<string, string>(key, value);
         }
 
         private const string

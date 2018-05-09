@@ -29,6 +29,7 @@ using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;
 using Sharp.BlobStorage;
+using static System.StringComparison;
 
 namespace RSMassTransit.Consumers
 {
@@ -132,6 +133,56 @@ namespace RSMassTransit.Consumers
             SetUpRender();
             SetUpStore();
             ExpectResponse();
+
+            await Consumer.Consume(Context.Object);
+        }
+
+        [Test]
+        public async Task Consume_Warnings()
+        {
+            SetUpRequest();
+            SetUpCreateExecutionClient();
+            SetUpLoadReport();
+            SetUpSetParameters();
+            SetUpRender(r =>
+            {
+                r.Warnings = new[]
+                {
+                    new Warning
+                    {
+                        Severity   = "WARN",
+                        Code       = "W042",
+                        ObjectType = "Report",
+                        ObjectName = "Test",
+                        Message    = "Smoke detected."
+                    },
+                    new Warning
+                    {
+                        Severity   = "INFO",
+                        Code       = "N123",
+                        ObjectType = "DataSet",
+                        ObjectName = "Invoices",
+                        Message    = "Executing query."
+                    }
+                };
+            });
+            SetUpStore();
+            ExpectResponse(r
+                => r.Messages       != null
+                && r.Messages.Count == 2
+
+                && r.Messages[0].IndexOf("WARN",             Ordinal) >= 0
+                && r.Messages[0].IndexOf("W042",             Ordinal) >= 0
+                && r.Messages[0].IndexOf("Report",           Ordinal) >= 0
+                && r.Messages[0].IndexOf("Test",             Ordinal) >= 0
+                && r.Messages[0].IndexOf("Smoke detected.",  Ordinal) >= 0
+
+                && r.Messages[1].IndexOf("INFO",             Ordinal) >= 0
+                && r.Messages[1].IndexOf("N123",             Ordinal) >= 0
+                && r.Messages[1].IndexOf("DataSet",          Ordinal) >= 0
+                && r.Messages[1].IndexOf("Invoices",         Ordinal) >= 0
+                && r.Messages[1].IndexOf("Executing query.", Ordinal) >= 0
+            );
 
             await Consumer.Consume(Context.Object);
         }

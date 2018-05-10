@@ -33,8 +33,12 @@ namespace RSMassTransit
             => _current ?? (_current = new Configuration());
 
         public Configuration()
+            : this(ConfigurationManager.AppSettings) { }
+
+        public Configuration(NameValueCollection settings)
         {
-            var settings   = ConfigurationManager.AppSettings;
+            if (settings == null)
+                throw new ArgumentNullException(nameof(settings));
 
             InstanceId     = GetString (settings, nameof(InstanceId),     "");
             BusUri         = GetUri    (settings, nameof(BusUri),         "rabbitmq://localhost");

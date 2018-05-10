@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using RSMassTransit.Storage;
 using Sharp.BlobStorage.Azure;
@@ -44,7 +45,9 @@ namespace RSMassTransit
 
             File = new FileBlobStorageConfiguration
             {
-                Path = GetString(settings, "Storage.File.Path", @"C:\Reports")
+                Path            = GetString       (settings, "Storage.File.Path",            @"C:\Reports"),
+                ReadBufferSize  = GetNullableInt32(settings, "Storage.File.ReadBufferSize",  null),
+                WriteBufferSize = GetNullableInt32(settings, "Storage.File.WriteBufferSize", null)
             };
 
             Azure = new AzureBlobStorageConfiguration
@@ -100,6 +103,23 @@ namespace RSMassTransit
                 "The value '{1}' is invalid for application setting '{0}'.  " +
                 "The value must be one of: {2}",
                 name, text, validValues
+            ));
+        }
+
+        private int? GetNullableInt32(NameValueCollection settings, string name, int? defaultValue)
+        {
+            var text = settings[name].NullIfEmpty();
+            if (text == null)
+                return defaultValue;
+
+            if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value))
+                return value;
+
+            throw new ConfigurationErrorsException(string.Format(
+                "The value '{1}' is invalid for application setting '{0}'.  " +
+                "The value must be an integer, digits only, with optional leading sign, " +
+                "between -2147483648 and +2147483647.",
+                name, text
             ));
         }
     }

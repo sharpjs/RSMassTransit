@@ -23,6 +23,7 @@ namespace RSMassTransit.Core
 {
     [RunInstaller(true)]
     [DesignerCategory("")] // disable designer
+    [CodeCoverageExempt]
     public class RSMassTransitServiceInstaller : Installer
     {
         public RSMassTransitServiceInstaller()

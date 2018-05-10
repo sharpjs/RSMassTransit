@@ -14,16 +14,16 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Sharp.ServiceHost;
+using System;
 
 namespace RSMassTransit.Core
 {
+    using static AttributeTargets;
+
     [CodeCoverageExempt]
-    internal class Program
+    [AttributeUsage(Class | Struct | Constructor | Method | Property)]
+    internal class CodeCoverageExemptAttribute : Attribute
     {
-        private static void Main(string[] args)
-        {
-            ServiceHost<RSMassTransitService>.Run(args);
-        }
+        // Marker only
     }
 }

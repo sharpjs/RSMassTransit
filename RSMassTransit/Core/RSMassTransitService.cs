@@ -23,6 +23,7 @@ using Sharp.ServiceHost;
 
 namespace RSMassTransit.Core
 {
+    [CodeCoverageExempt]
     internal class RSMassTransitService : Service
     {
         public const string

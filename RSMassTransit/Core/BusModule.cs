@@ -16,7 +16,6 @@
 
 using System;
 using System.Configuration;
-using System.Threading.Tasks;
 using Autofac;
 using GreenPipes;
 using MassTransit;

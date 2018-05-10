@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Specialized;
+using System.Configuration;
 using FluentAssertions;
 using NUnit.Framework;
 using RSMassTransit.Storage;
@@ -85,6 +86,16 @@ namespace RSMassTransit.Core
 
             new Configuration(settings).BusUri
                 .Should().Be(new Uri("urn:a"));
+        }
+
+        [Test]
+        public void BusUri_Invalid()
+        {
+            var settings = new NameValueCollection { ["BusUri"] = "not a URI" };
+
+            this.Invoking(_ => new Configuration(settings))
+                .Should().Throw<ConfigurationErrorsException>()
+                .Which.Message.Should().Contain("The value must be an absolute URI.");
         }
 
         // BusQueue
@@ -187,6 +198,16 @@ namespace RSMassTransit.Core
                 .Should().Be(StorageType.AzureBlob);
         }
 
+        [Test]
+        public void StorageType_Invalid()
+        {
+            var settings = new NameValueCollection { ["Storage.Type"] = "not a storage type" };
+
+            this.Invoking(_ => new Configuration(settings))
+                .Should().Throw<ConfigurationErrorsException>()
+                .Which.Message.Should().Contain("The value must be one of:");
+        }
+
         // Storage.File.Path
 
         [Test]
@@ -237,6 +258,16 @@ namespace RSMassTransit.Core
                 .Should().Be(6502);
         }
 
+        [Test]
+        public void Storage_File_ReadBufferSize_Invalid()
+        {
+            var settings = new NameValueCollection { ["Storage.File.ReadBufferSize"] = @"not a number" };
+
+            this.Invoking(_ => new Configuration(settings))
+                .Should().Throw<ConfigurationErrorsException>()
+                .Which.Message.Should().Contain("The value must be an integer,");
+        }
+
         // Storage.File.WriteBufferSize
 
         [Test]
@@ -260,6 +291,16 @@ namespace RSMassTransit.Core
 
             new Configuration(settings).File.WriteBufferSize
                 .Should().Be(6502);
+        }
+
+        [Test]
+        public void Storage_File_WriteBufferSize_Invalid()
+        {
+            var settings = new NameValueCollection { ["Storage.File.WriteBufferSize"] = @"not a number" };
+
+            this.Invoking(_ => new Configuration(settings))
+                .Should().Throw<ConfigurationErrorsException>()
+                .Which.Message.Should().Contain("The value must be an integer,");
         }
 
         // Storage.AzureBlob.ConnectionString

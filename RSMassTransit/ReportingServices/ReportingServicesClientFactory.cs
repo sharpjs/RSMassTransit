@@ -24,6 +24,11 @@ namespace RSMassTransit.ReportingServices
 {
     internal class ReportingServicesClientFactory : IReportingServicesClientFactory
     {
+        public static ReportingServicesClientFactory
+            Instance = new ReportingServicesClientFactory();
+
+        protected ReportingServicesClientFactory() { }
+
         public IReportExecutionSoapClient CreateExecutionClient(NetworkCredential credential = null)
             => CreateClient
                 <ReportExecutionServiceSoapClient, ReportExecutionServiceSoap>

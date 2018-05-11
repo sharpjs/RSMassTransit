@@ -23,7 +23,7 @@ namespace RSMassTransit.ReportingServices
         protected override void Load(ContainerBuilder builder)
         {
             builder
-                .RegisterInstance(new ReportingServicesClientFactory())
+                .RegisterInstance(ReportingServicesClientFactory.Instance)
                 .As<IReportingServicesClientFactory>();
         }
     }

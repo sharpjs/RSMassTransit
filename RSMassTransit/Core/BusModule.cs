@@ -25,6 +25,7 @@ using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core
 {
+    [CodeCoverageExempt]
     internal class BusModule : Module
     {
         public const string

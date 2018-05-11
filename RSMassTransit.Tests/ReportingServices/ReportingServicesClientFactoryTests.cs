@@ -14,19 +14,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System;
+using System.Net;
+using System.Security.Principal;
 using FluentAssertions;
 using NUnit.Framework;
-using RSMassTransit.Storage;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
 using RSMassTransit.ReportingServices.Execution;
-using System.Security.Principal;
-using System.ServiceModel.Security;
-using System.Net;
 
 namespace RSMassTransit.ReportingServices
 {

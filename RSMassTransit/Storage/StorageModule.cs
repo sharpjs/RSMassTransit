@@ -16,6 +16,7 @@
 
 using System;
 using Autofac;
+using RSMassTransit.Core;
 using Sharp.BlobStorage;
 using Sharp.BlobStorage.Azure;
 using Sharp.BlobStorage.File;
@@ -32,6 +33,7 @@ namespace RSMassTransit.Storage
                 .As<IBlobStorage>();
         }
 
+        [CodeCoverageExempt]
         private IBlobStorage CreateRepository(IComponentContext context)
         {
             var configuration = context.Resolve<IStorageConfiguration>();

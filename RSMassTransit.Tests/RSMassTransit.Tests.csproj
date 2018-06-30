@@ -43,4 +43,10 @@
     <Compile Include="..\GlobalAssemblyInfo.cs" Link="Support\GlobalAssemblyInfo.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -27,10 +27,10 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="MassTransit" Version="5.1.2" />
-    <PackageReference Include="MassTransit.Autofac" Version="5.1.2" />
-    <PackageReference Include="MassTransit.AzureServiceBus" Version="5.1.2" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.2" />
+    <PackageReference Include="MassTransit" Version="5.1.3" />
+    <PackageReference Include="MassTransit.Autofac" Version="5.1.3" />
+    <PackageReference Include="MassTransit.AzureServiceBus" Version="5.1.3" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.3" />
     <PackageReference Include="RSMassTransit.Client" Version="0.0.0-beta3" />
     <PackageReference Include="Sharp.BlobStorage" Version="0.0.0-beta2" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.0.0-beta2" />

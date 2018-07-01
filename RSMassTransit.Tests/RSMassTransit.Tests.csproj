@@ -30,7 +30,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
     <PackageReference Include="Moq" Version="4.8.2" />
     <PackageReference Include="NUnit" Version="3.10.1" />
-    <PackageReference Include="NUnit.Extension.TeamCityEventListener" Version="1.0.3" />
+    <PackageReference Include="NUnit.Extension.TeamCityEventListener" Version="1.0.4" />
     <PackageReference Include="Sharp.BlobStorage" Version="0.0.0-beta2" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.0.0-beta2" />
   </ItemGroup>

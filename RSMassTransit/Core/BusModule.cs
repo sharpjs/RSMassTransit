@@ -123,6 +123,24 @@ namespace RSMassTransit.Core
 
                 b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
+                    // RSMassTransit expects multiple consumers competing for
+                    // infrequent, long-running requests.  Prefetch optimizes
+                    // for the opposite case and actually *hinders* the spread
+                    // of infrequent messages across consumers.  Therefor, turn
+                    // prefetch off here.
+                    r.PrefetchCount = 0;
+
+                    // Report execution is single-threaded and typically has
+                    // both idle periods (waiting on query results) and CPU-
+                    // bound periods (rendering).  Thus SSRS *should* be able
+                    // to support more concurrent reports than the number of
+                    // processors in the system.
+                    r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
+
+                    // It is reasonable to assume that any requestor will have
+                    // given up waiting on their response after a day.
+                    r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
+
                     r.LoadFrom(context); // All registered consumers
                 });
 

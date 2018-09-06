@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sharp.Logging\Sharp.Logging.csproj" />
+    <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0-rc2" />
   </ItemGroup>
 
 </Project>

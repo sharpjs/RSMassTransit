@@ -34,10 +34,10 @@
     <PackageReference Include="RSMassTransit.Client" Version="0.0.0-beta4" />
     <PackageReference Include="Sharp.BlobStorage" Version="0.1.0" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
+    <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0-rc2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sharp.Logging\Sharp.Logging.csproj" />
     <ProjectReference Include="..\Sharp.ServiceHost\Sharp.ServiceHost.csproj" />
   </ItemGroup>
 

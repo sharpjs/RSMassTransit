@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit", "RSMassTran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.Logging", "Sharp.Logging\Sharp.Logging.csproj", "{E1833026-1B85-4369-8CC2-D75B3EE6964F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
@@ -39,10 +37,6 @@ Global
 		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1833026-1B85-4369-8CC2-D75B3EE6964F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -15,7 +15,7 @@
 */
 
 using RSMassTransit.Core;
-using Sharp.Logging;
+using Sharp.Diagnostics.Logging;
 
 namespace RSMassTransit
 {

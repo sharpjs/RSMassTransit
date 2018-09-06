@@ -20,7 +20,7 @@ using System.Diagnostics;
 using System.IO;
 using System.ServiceProcess;
 using System.Threading;
-using Sharp.Logging;
+using Sharp.Diagnostics.Logging;
 
 using static System.IO.NotifyFilters;
 using static System.IO.WatcherChangeTypes;

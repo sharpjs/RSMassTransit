@@ -123,23 +123,7 @@ namespace RSMassTransit.Core
 
                 b.ReceiveEndpoint(host, configuration.BusQueue, r =>
                 {
-                    // RSMassTransit expects multiple consumers competing for
-                    // infrequent, long-running requests.  Prefetch optimizes
-                    // for the opposite case and actually *hinders* the spread
-                    // of infrequent messages across consumers.  Therefor, turn
-                    // prefetch off here.
-                    r.PrefetchCount = 0;
-
-                    // Report execution is single-threaded and typically has
-                    // both idle periods (waiting on query results) and CPU-
-                    // bound periods (rendering).  Thus SSRS *should* be able
-                    // to support more concurrent reports than the number of
-                    // processors in the system.
-                    r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
-
-                    // It is reasonable to assume that any requestor will have
-                    // given up waiting on their response after a day.
-                    r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
+                    TuneForReportExecution(r);
 
                     r.LoadFrom(context); // All registered consumers
                 });
@@ -151,6 +135,40 @@ namespace RSMassTransit.Core
 
                 b.UseRetry(r => r.None());
             });
+        }
+
+        private void TuneForReportExecution(IServiceBusReceiveEndpointConfigurator r)
+        {
+            // RSMassTransit expects multiple service instances, competing for
+            // infrequent, long-running requests.  Prefetch optimizes for the
+            // opposite case and actually *hinders* the spread of infrequent
+            // messages across instances.  Therefor, turn prefetch off here.
+            r.PrefetchCount = 0;
+
+            // Report execution is single-threaded and typically has both idle
+            // periods (waiting on query results) and CPU-bound periods
+            // (rendering).  Thus SSRS *should* be able to support more
+            // concurrent reports than the number of processors in the system.
+            r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
+
+            // When RSMassTransit tries to pause or stop message consumption,
+            // unwanted messages continue to be received, due to limitations in
+            // the Azure Service Bus OnMessageAsync API.  The messages accrue
+            // unconsumed up to the MaxConcurrentCalls limit.  To ensure those
+            // messages quickly become consumable by a competing instance, use
+            // a short message lock duration, and auto-renew the lock while
+            // consuming a message.
+            r.LockDuration = TimeSpan.FromSeconds(60);
+            r.UseRenewLock(TimeSpan.FromSeconds(30));
+
+            // The short lock period, combined with several paused instances,
+            // can cause many failed delivery attempts.  Use a high enough
+            // maximum delivery count to avoid these actionable messages
+            // getting dead-lettered.
+            r.MaxDeliveryCount = 16;
+
+            // It is reasonable to assume that any requestor will have given up waiting on their response after a day.
+            r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
         }
     }
 }

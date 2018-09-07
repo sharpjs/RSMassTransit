@@ -35,6 +35,7 @@
     <PackageReference Include="Sharp.BlobStorage" Version="0.1.0" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
     <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0-rc2" />
+    <PackageReference Include="Sharp.Disposable" Version="0.1.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>

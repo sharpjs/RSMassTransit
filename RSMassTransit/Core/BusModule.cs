@@ -149,7 +149,11 @@ namespace RSMassTransit.Core
             // periods (waiting on query results) and CPU-bound periods
             // (rendering).  Thus SSRS *should* be able to support more
             // concurrent reports than the number of processors in the system.
-            r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
+            //r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
+            //
+            // However, while investigating tuning options and future load
+            // compensation mechanisms, this will stay at a safer number.
+            r.MaxConcurrentCalls = Environment.ProcessorCount;
 
             // When RSMassTransit tries to pause or stop message consumption,
             // unwanted messages continue to be received, due to limitations in

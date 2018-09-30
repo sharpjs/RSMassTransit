@@ -171,7 +171,8 @@ namespace RSMassTransit.Core
             // getting dead-lettered.
             r.MaxDeliveryCount = 16;
 
-            // It is reasonable to assume that any requestor will have given up waiting on their response after a day.
+            // It is reasonable to assume that any client will have given up
+            // waiting for their response after a day.
             r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
         }
     }

@@ -1,17 +1,25 @@
 # Build Products
 obj/
 bin/
-/packages/
 /dist/
+/coverage/
+/packages/
 
 # Visual Studio
 .vs/
 *.user
 
+# Visual Studio Profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
 # WCF References
 *.datasource
 
 # Local Files
+/Local.props
 /NuGet.config
 
 # Temporary Files

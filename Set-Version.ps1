@@ -9,13 +9,13 @@
     * In Local.props, to set assembly and nupkg versions
     * As console output, to set the TeamCity build number
 
-    Version      Branch            Counter  =>  Version             FileVersion
-    ===========  ================  =======      ==================  ===========
-    1.2.3-local  (none)             (none)  =>  1.2.3-local         1.2.3.43210 (time-based)
-    1.2.3-local  stuff                 789  =>  1.2.3-stuff-b789    1.2.3.789
-    1.2.3-local  pull/456              789  =>  1.2.3-pr456-b789    1.2.3.789
-    1.2.3-local  release/1.2.3-rc      789  =>  1.2.3-rc            1.2.3.789
-    1.2.3-local  release/2.3.4-rc      789  =>  *ERROR*             *ERROR*
+    Code Version  -Branch    -Counter  =>  Version             FileVersion
+    ============  =========  ========      ==================  ===========
+    1.2.3-local   (none)       (none)  =>  1.2.3-local         1.2.3.43210 (time-based)
+    1.2.3-local   stuff           789  =>  1.2.3-stuff-b789    1.2.3.789
+    1.2.3-local   456             789  =>  1.2.3-pr456-b789    1.2.3.789
+    1.2.3-local   v1.2.3-rc       789  =>  1.2.3-rc            1.2.3.789
+    1.2.3-local   v2.3.4-rc       789  =>  *ERROR*             *ERROR*
 
 .NOTES
     Copyright (C) 2018 Jeffrey Sharp
@@ -58,7 +58,7 @@ $PullRequestRegex = [regex] '(?nx)
 # https://semver.org/spec/v1.0.0.html
 $VersionRegex = [regex] '(?nx)
     ^
-    ( release/ )?
+    ( release/ | v )?
     (?<VersionFull>
         (?<Version>
             ( 0 | [1-9][0-9]* ) \.
@@ -96,6 +96,7 @@ if ($Branch -match $VersionRegex) {
     # Branch name contains a version string (ex: a release scenario)
     $BranchVersion     = [version] $Matches.Version     # 1.2.3
     $BranchVersionFull = [string]  $Matches.VersionFull # 1.2.3-beta4
+    $VersionIsTagged   = "true"
 
     # Verify branch/code versions have equal numbers
     if ($BranchVersion -ne $Version) {
@@ -107,6 +108,8 @@ if ($Branch -match $VersionRegex) {
 }
 else {
     # Branch name is not a version string
+    $VersionIsTagged = "false"
+
     # Start with code version numbers (1.2.3)
     $VersionFull = $Version.ToString()
 
@@ -136,6 +139,7 @@ Set-Content Local.props -Encoding UTF8 -Value $(
     "  <PropertyGroup>"
     "    <Version>$VersionFull</Version>"
     "    <FileVersion>$Version.$Counter</FileVersion>"
+    "    <VersionIsTagged>$VersionIsTagged</VersionIsTagged>"
     "  </PropertyGroup>"
     ""
     "</Project>"

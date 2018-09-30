@@ -19,6 +19,7 @@
   <PropertyGroup>
     <Product>RSMassTransit</Product>
     <Version>0.0.0-local</Version>
+    <VersionIsTagged>false</VersionIsTagged>
     <Authors>Jeffrey Sharp</Authors>
     <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
     <PackageLicenseUrl>https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt</PackageLicenseUrl>

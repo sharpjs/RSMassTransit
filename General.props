@@ -22,8 +22,8 @@
     <VersionIsTagged>false</VersionIsTagged>
     <Authors>Jeffrey Sharp</Authors>
     <Copyright>Copyright 2019 Jeffrey Sharp</Copyright>
+    <PackageLicenseExpression>ISC</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageTags>RSMassTransit SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>
     <PackageReleaseNotes>Release notes are available at:
 https://github.com/sharpjs/RSMassTransit/releases

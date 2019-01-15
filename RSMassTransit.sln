@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2
 		.gitignore = .gitignore
 		General.props = General.props
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+		InheritDoc.targets = InheritDoc.targets
 		LICENSE.txt = LICENSE.txt
 		NuGet.config.example = NuGet.config.example
 		README.md = README.md

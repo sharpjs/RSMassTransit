@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project>
 
   <!--
     Copyright (C) 2019 Jeffrey Sharp
@@ -16,28 +16,19 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   -->
 
-  <PropertyGroup>
-    <Product>Sharp.ServiceHost</Product>
-    <Description>Micro-framework that enables a console app to run as a Windows service</Description>
-    <Version>0.0.0-local</Version>
-    <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright 2019 Jeffrey Sharp</Copyright>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Configuration.Install" />
-    <Reference Include="System.ServiceProcess" />
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard'))">
+    <PackageReference Include="InheritDoc" Version="[2.0.2]">
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0" />
-  </ItemGroup>
-
-  <Import Project="..\InheritDoc.targets" />
+  <Target
+    Name="InheritDoc"
+    AfterTargets="CopyFilesToOutputDirectory"
+    Condition="'$(_DocumentationFileProduced)'=='true'">
+    <Exec
+      Command="$(NuGetPackageRoot)inheritdoc\2.0.2\tools\InheritDoc.exe -o"
+      WorkingDirectory="$(OutDir)" />
+  </Target>
 
 </Project>

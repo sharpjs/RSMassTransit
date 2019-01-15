@@ -63,4 +63,6 @@
     </None>
   </ItemGroup>
 
+  <Import Project="..\InheritDoc.targets" />
+
 </Project>

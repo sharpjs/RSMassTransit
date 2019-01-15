@@ -18,7 +18,7 @@
     1.2.3-local   v2.3.4-rc       789  =>  *ERROR*             *ERROR*
 
 .NOTES
-    Copyright (C) 2018 Jeffrey Sharp
+    Copyright (C) 2019 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above

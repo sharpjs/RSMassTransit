@@ -1,7 +1,7 @@
 <Project>
 
   <!--
-    Copyright (C) 2018 Jeffrey Sharp
+    Copyright (C) 2019 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -21,7 +21,7 @@
     <Version>0.0.0-local</Version>
     <VersionIsTagged>false</VersionIsTagged>
     <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
+    <Copyright>Copyright 2019 Jeffrey Sharp</Copyright>
     <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageTags>RSMassTransit SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>

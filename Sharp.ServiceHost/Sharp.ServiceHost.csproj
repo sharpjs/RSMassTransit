@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    Copyright (C) 2018 Jeffrey Sharp
+    Copyright (C) 2019 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -21,7 +21,7 @@
     <Description>Micro-framework that enables a console app to run as a Windows service</Description>
     <Version>0.0.0-local</Version>
     <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright 2018 Jeffrey Sharp</Copyright>
+    <Copyright>Copyright 2019 Jeffrey Sharp</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>

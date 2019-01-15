@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		CHANGES.md = CHANGES.md
 		General.props = General.props
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
 		InheritDoc.targets = InheritDoc.targets

@@ -87,7 +87,10 @@ namespace RSMassTransit.Core
                 {
                     r.Durable    = true;    // Queue should survive broker restart
                     r.AutoDelete = false;   // Queue should survive service restart
+#pragma warning disable CS0618 // Type or member is obsolete
+                    // IMO LoadFrom should not be deprecated.
                     r.LoadFrom(context);    // All registered consumers
+#pragma warning restore CS0618 // Type or member is obsolete
                 });
 
                 b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
@@ -125,7 +128,10 @@ namespace RSMassTransit.Core
                 {
                     TuneForReportExecution(r);
 
+#pragma warning disable CS0618 // Type or member is obsolete
+                    // IMO LoadFrom should not be deprecated.
                     r.LoadFrom(context); // All registered consumers
+#pragma warning restore CS0618 // Type or member is obsolete
                 });
 
                 b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>

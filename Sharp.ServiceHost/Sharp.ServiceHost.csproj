@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0-rc2" />
+    <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0" />
   </ItemGroup>
 
 </Project>

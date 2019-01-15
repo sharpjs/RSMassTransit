@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <add key="RSMassTransit.Client" value="..\RSMassTransit.Client\dist" />
-    <add key="Sharp.BlobStorage" value="..\Sharp.BlobStorage\dist" />
-  </packageSources>
-</configuration>

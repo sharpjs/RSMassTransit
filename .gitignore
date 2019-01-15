@@ -3,7 +3,6 @@ obj/
 bin/
 /dist/
 /coverage/
-/packages/
 
 # Visual Studio
 .vs/

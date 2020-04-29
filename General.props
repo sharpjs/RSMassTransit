@@ -18,7 +18,7 @@
 
   <PropertyGroup>
     <Product>RSMassTransit</Product>
-    <Version>0.0.1-local</Version>
+    <Version>0.1.0-local</Version>
     <VersionIsTagged>false</VersionIsTagged>
     <Authors>Jeffrey Sharp</Authors>
     <Copyright>Copyright 2019 Jeffrey Sharp</Copyright>

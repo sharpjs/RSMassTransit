@@ -5,10 +5,10 @@ Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v0.0.1...HEAD)
-(no content)
+- TODO: Update MassTransit to 6.2.5
 
 ## [0.0.1](https://github.com/sharpjs/RSMassTransit/compare/v0.0.0...v0.0.1)
-(future release)
+- Update MassTransit to 5.5.1.
 
 ## [0.0.0](https://github.com/sharpjs/RSMassTransit/tree/v0.0.0)
-(future release)
+- Initial release.

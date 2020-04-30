@@ -19,8 +19,9 @@ using System.Configuration;
 using Autofac;
 using GreenPipes;
 using MassTransit;
-using MassTransit.AzureServiceBusTransport;
-using Microsoft.ServiceBus;
+using MassTransit.Azure.ServiceBus.Core;
+using MassTransit.RabbitMqTransport;
+using Microsoft.Azure.ServiceBus.Primitives;
 using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core
@@ -37,16 +38,11 @@ namespace RSMassTransit.Core
 
         protected override void Load(ContainerBuilder builder)
         {
-            builder
-                .RegisterConsumers(typeof(ExecuteReportConsumer).Assembly)
-                .Except<ErrorConsumer>();
-
-            builder
-                .Register(CreateBus)
-                .SingleInstance()
-                .As<IBusControl>()
-                .As<IBus>();
-                // Expose other interfaces as needed
+            builder.AddMassTransit(m =>
+            {
+                m.AddConsumer<ExecuteReportConsumer>();
+                m.AddBus(CreateBus);
+            });
         }
 
         private IBusControl CreateBus(IComponentContext context)
@@ -77,30 +73,17 @@ namespace RSMassTransit.Core
                 var uri = configuration.BusUri;
                     uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
 
-                var host = b.Host(uri, h =>
+                b.Host(uri, h =>
                 {
                     h.Username(configuration.BusSecretName);
                     h.Password(configuration.BusSecret);
                 });
 
-                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
+                b.ReceiveEndpoint(configuration.BusQueue, r =>
                 {
-                    r.Durable    = true;    // Queue should survive broker restart
-                    r.AutoDelete = false;   // Queue should survive service restart
-#pragma warning disable CS0618 // Type or member is obsolete
-                    // IMO LoadFrom should not be deprecated.
-                    r.LoadFrom(context);    // All registered consumers
-#pragma warning restore CS0618 // Type or member is obsolete
+                    TuneForReportExecution(r);
+                    r.ConfigureConsumers(context);
                 });
-
-                b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
-                {
-                    r.BindMessageExchanges = false; // binding not required to get messages into queue
-                    r.PurgeOnStartup       = true;  // we discard them anyway
-                    r.Consumer<ErrorConsumer>();
-                });
-
-                b.UseRetry(r => r.None());
             });
         }
 
@@ -108,12 +91,14 @@ namespace RSMassTransit.Core
             IComponentContext context,
             IBusConfiguration configuration)
         {
+            const string UriDomain = ".servicebus.windows.net";
+
             return Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
                 var uri = configuration.BusUri;
-                    uri = ServiceBusEnvironment.CreateServiceUri("sb", uri.Host, "");
+                    uri = new UriBuilder(AzureServiceBusScheme, uri.Host + UriDomain).Uri;
 
-                var host = b.Host(uri, h =>
+                b.Host(uri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
@@ -124,26 +109,32 @@ namespace RSMassTransit.Core
                     });
                 });
 
-                b.ReceiveEndpoint(host, configuration.BusQueue, r =>
+                b.ReceiveEndpoint(configuration.BusQueue, r =>
                 {
                     TuneForReportExecution(r);
-
-#pragma warning disable CS0618 // Type or member is obsolete
-                    // IMO LoadFrom should not be deprecated.
-                    r.LoadFrom(context); // All registered consumers
-#pragma warning restore CS0618 // Type or member is obsolete
+                    r.ConfigureConsumers(context);
                 });
-
-                b.ReceiveEndpoint(host, configuration.BusQueue + "_error", r =>
-                {
-                    r.Consumer<ErrorConsumer>();
-                });
-
-                b.UseRetry(r => r.None());
             });
         }
 
-        private void TuneForReportExecution(IServiceBusReceiveEndpointConfigurator r)
+        private static void TuneForReportExecution(IRabbitMqReceiveEndpointConfigurator r)
+        {
+            // Queue should survive RabbitMQ restart
+            r.Durable = true;
+
+            // Queue should survive RSMassTransit restart
+            r.AutoDelete = false;
+
+            // RSMassTransit expects multiple service instances, competing for
+            // infrequent, long-running requests.  Prefetch optimizes for the
+            // opposite case and actually *hinders* the spread of infrequent
+            // messages across instances.  Therefor, turn prefetch off here.
+            r.PrefetchCount = 0;
+
+            TuneForReportExecution((IReceiveEndpointConfigurator) r);
+        }
+
+        private static void TuneForReportExecution(IServiceBusReceiveEndpointConfigurator r)
         {
             // RSMassTransit expects multiple service instances, competing for
             // infrequent, long-running requests.  Prefetch optimizes for the
@@ -168,8 +159,12 @@ namespace RSMassTransit.Core
             // messages quickly become consumable by a competing instance, use
             // a short message lock duration, and auto-renew the lock while
             // consuming a message.
-            r.LockDuration = TimeSpan.FromSeconds(60);
-            r.UseRenewLock(TimeSpan.FromSeconds(30));
+            r.LockDuration         = TimeSpan.FromSeconds(90);
+            r.MaxAutoRenewDuration = TimeSpan.FromSeconds(60);
+
+            r.UserMetadata = "";
+
+            r.MessageWaitTimeout = TimeSpan.FromDays(1);
 
             // The short lock period, combined with several paused instances,
             // can cause many failed delivery attempts.  Use a high enough
@@ -180,6 +175,22 @@ namespace RSMassTransit.Core
             // It is reasonable to assume that any client will have given up
             // waiting for their response after a day.
             r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
+
+            TuneForReportExecution((IReceiveEndpointConfigurator) r);
+        }
+
+        private static void TuneForReportExecution(IReceiveEndpointConfigurator r)
+        {
+            // No automatic retries.  Clients can implement their own.
+            r.UseMessageRetry(x => x.None());
+
+            // RSMassTransit's current users do not monitor an _error queue.
+            // Prevent MT from inadvertently filling one to its limit.
+            r.DiscardFaultedMessages();
+
+            // RSMassTransit's current users do not monitor a _skipped queue.
+            // Prevent MT from inadvertently filling one to its limit.
+            r.DiscardSkippedMessages();
         }
     }
 }

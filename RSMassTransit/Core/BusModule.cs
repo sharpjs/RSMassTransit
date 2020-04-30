@@ -157,14 +157,12 @@ namespace RSMassTransit.Core
             // the Azure Service Bus OnMessageAsync API.  The messages accrue
             // unconsumed up to the MaxConcurrentCalls limit.  To ensure those
             // messages quickly become consumable by a competing instance, use
-            // a short message lock duration, and auto-renew the lock while
-            // consuming a message.
-            r.LockDuration         = TimeSpan.FromSeconds(90);
-            r.MaxAutoRenewDuration = TimeSpan.FromSeconds(60);
+            // a short message lock duration.
+            r.LockDuration = TimeSpan.FromMinutes(1);
 
-            r.UserMetadata = "";
-
-            r.MessageWaitTimeout = TimeSpan.FromDays(1);
+            // While a message is being consumed, its lock must be refreshed
+            // regularly so that it does not expire.
+            r.MaxAutoRenewDuration = TimeSpan.FromDays(1);
 
             // The short lock period, combined with several paused instances,
             // can cause many failed delivery attempts.  Use a high enough

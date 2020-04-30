@@ -117,6 +117,7 @@ namespace RSMassTransit.Core
             });
         }
 
+        // For RabbitMQ
         private static void TuneForReportExecution(IRabbitMqReceiveEndpointConfigurator r)
         {
             // Queue should survive RabbitMQ restart
@@ -131,9 +132,11 @@ namespace RSMassTransit.Core
             // messages across instances.  Therefor, turn prefetch off here.
             r.PrefetchCount = 0;
 
+            // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);
         }
 
+        // For Azure Service Bus
         private static void TuneForReportExecution(IServiceBusReceiveEndpointConfigurator r)
         {
             // RSMassTransit expects multiple service instances, competing for
@@ -174,9 +177,11 @@ namespace RSMassTransit.Core
             // waiting for their response after a day.
             r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
 
+            // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);
         }
 
+        // Transport-independent tuning
         private static void TuneForReportExecution(IReceiveEndpointConfigurator r)
         {
             // No automatic retries.  Clients can implement their own.

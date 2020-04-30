@@ -167,15 +167,15 @@ namespace RSMassTransit.Core
             // regularly so that it does not expire.
             r.MaxAutoRenewDuration = TimeSpan.FromDays(1);
 
+            // It is reasonable to assume that any client will have given up
+            // waiting for their response after a day.
+            r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
+
             // The short lock period, combined with several paused instances,
             // can cause many failed delivery attempts.  Use a high enough
             // maximum delivery count to avoid these actionable messages
             // getting dead-lettered.
             r.MaxDeliveryCount = 16;
-
-            // It is reasonable to assume that any client will have given up
-            // waiting for their response after a day.
-            r.DefaultMessageTimeToLive = TimeSpan.FromDays(1);
 
             // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);

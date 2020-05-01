@@ -149,11 +149,22 @@ namespace RSMassTransit.Core
             // periods (waiting on query results) and CPU-bound periods
             // (rendering).  Thus SSRS *should* be able to support more
             // concurrent reports than the number of processors in the system.
-            //r.MaxConcurrentCalls = Environment.ProcessorCount * 2;
-            //
             // However, while investigating tuning options and future load
             // compensation mechanisms, this will stay at a safer number.
-            r.MaxConcurrentCalls = Environment.ProcessorCount;
+            //
+            // WARNING:
+            //   Do not use int.MaxValue here, or the bus will never start!
+            //   MassTransit will start this many async 'receive' operations
+            //   against the queue.  Choose a number that balances the desire
+            //   for max utilization against the danger of creating too many
+            //   connections to Azure Service Bus.  Each connection adds delay
+            //   to bus start and reduces the number of connections available
+            //   to other clients.  The cap is 5000 ASB connections/receives.
+            //
+            // TODO: Consider physical memory in concurrency calculation.
+            // TODO: Make loading factor(s) configurable.
+            var concurrency = Math.Min(Environment.ProcessorCount, 32);
+            r.MaxConcurrentCalls = concurrency;
 
             // When RSMassTransit tries to pause or stop message consumption,
             // unwanted messages continue to be received, due to limitations in
@@ -175,7 +186,7 @@ namespace RSMassTransit.Core
             // can cause many failed delivery attempts.  Use a high enough
             // maximum delivery count to avoid these actionable messages
             // getting dead-lettered.
-            r.MaxDeliveryCount = 16;
+            r.MaxDeliveryCount = concurrency * 4;
 
             // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);

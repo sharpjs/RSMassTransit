@@ -5,7 +5,8 @@ Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v0.0.1...HEAD)
-- TODO: Update MassTransit to 6.2.5
+- Update MassTransit to 6.2.5
+- Fix bus tuning options not being applied completely.
 
 ## [0.0.1](https://github.com/sharpjs/RSMassTransit/compare/v0.0.0...v0.0.1)
 - Update MassTransit to 5.5.1.

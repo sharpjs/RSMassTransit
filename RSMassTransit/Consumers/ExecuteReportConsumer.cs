@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -52,16 +52,16 @@ namespace RSMassTransit.Consumers
                 var response = new ExecuteReportResponse();
 
                 // Execute the report
-                var bytes = await ExecuteReport(request, response);
+                var bytes = await ExecuteReportAsync(request, response);
 
                 // Upload to storage
-                await StoreRenderedReport(request, response, bytes);
+                await StoreRenderedReportAsync(request, response, bytes);
 
                 await context.RespondAsync<IExecuteReportResponse>(response);
             });
         }
 
-        private async Task<byte[]> ExecuteReport(
+        private async Task<byte[]> ExecuteReportAsync(
             IExecuteReportRequest  request,
             IExecuteReportResponse response)
         {
@@ -104,7 +104,7 @@ namespace RSMassTransit.Consumers
             }
         }
 
-        private async Task StoreRenderedReport(
+        private async Task StoreRenderedReportAsync(
             IExecuteReportRequest  request,
             IExecuteReportResponse response,
             byte[]                 bytes)

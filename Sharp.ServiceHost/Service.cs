@@ -84,7 +84,7 @@ namespace Sharp.ServiceHost
         /// </summary>
         public void StartInProcess()
         {
-            OnStart(null);
+            OnStart(null!); // args is not used by OnStart
         }
 
         /// <summary>

@@ -1,0 +1,61 @@
+﻿<Project>
+
+  <!--
+    Copyright (C) 2020 Jeffrey Sharp
+
+    Permission to use, copy, modify, and distribute this software for any
+    purpose with or without fee is hereby granted, provided that the above
+    copyright notice and this permission notice appear in all copies.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  -->
+
+  <!--
+    * Imported very early, before the project file.
+    * Many properties are not yet defined and behave as if empty.
+    * Provide defaults for properties here.
+    https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
+  -->
+
+  <!-- Descriptive properties -->
+  <PropertyGroup>
+    <Product>RSMassTransit</Product>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <Authors>Jeffrey Sharp</Authors>
+    <Company>Subatomix Research Inc.</Company>
+    <Copyright>Copyright $([System.DateTime]::UtcNow.Year) Jeffrey Sharp, Subatomix Research Inc.</Copyright>
+    <PackageLicenseExpression>ISC</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
+    <PackageTags>RSMassTransit SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>
+    <PackageReleaseNotes>$(PackageProjectUrl)/blob/master/CHANGES.md</PackageReleaseNotes>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Build properties -->
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <!--<Nullable>enable</Nullable>-->
+  </PropertyGroup>
+
+  <!-- Documentation properties -->
+  <PropertyGroup Condition="'$(IsPackable)' != 'false'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Packaging properties -->
+  <PropertyGroup>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <PackageOutputPath>..\dist\</PackageOutputPath>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+</Project>

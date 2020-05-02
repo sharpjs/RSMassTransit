@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -18,11 +18,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security;
 
-// Compliance
+// Component Object Model
 [assembly: ComVisible(false)]
 
+#if NETFRAMEWORK
 // Security
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
+#endif
+
+// Visibility
 [assembly: InternalsVisibleTo("RSMassTransit.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
                             // ^^^^^^^^^^^^^^^^^^^^^^^^

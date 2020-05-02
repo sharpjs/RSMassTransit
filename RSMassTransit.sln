@@ -1,20 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2-3F1C-467D-8721-3D51B7E7E56D}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		CHANGES.md = CHANGES.md
-		General.props = General.props
+		Coverlet.runsettings = Coverlet.runsettings
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
-		InheritDoc.targets = InheritDoc.targets
+		icon.png = icon.png
 		LICENSE.txt = LICENSE.txt
 		Make.ps1 = Make.ps1
 		README.md = README.md
-		Set-Version.ps1 = Set-Version.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"
@@ -24,6 +26,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{F12FA401-8363-4982-8B79-8F0541289CC4}"
+	ProjectSection(SolutionItems) = preProject
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +57,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F12FA401-8363-4982-8B79-8F0541289CC4} = {C29566A2-3F1C-467D-8721-3D51B7E7E56D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB0AD8BC-9B4E-4DCE-BB2C-8DEBD7B76FEC}

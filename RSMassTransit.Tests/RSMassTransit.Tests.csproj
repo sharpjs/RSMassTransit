@@ -16,16 +16,18 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   -->
 
-  <Import Project="..\General.props" />
-  <Import Project="..\Local.props" Condition="Exists('..\Local.props')" />
-
   <PropertyGroup>
     <Description>Automated test suite for SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>RSMassTransit</RootNamespace>
+    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="1.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Moq" Version="4.14.1" />
@@ -50,10 +52,6 @@
 
   <ItemGroup>
     <Reference Include="System.ServiceModel" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

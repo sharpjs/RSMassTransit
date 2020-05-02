@@ -1,6 +1,4 @@
-<Project>
-
-  <!--
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,21 +12,9 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  -->
+*/
 
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netstandard'))">
-    <PackageReference Include="InheritDoc" Version="[2.2.1]">
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
+using System.Runtime.CompilerServices;
 
-  <Target
-    Name="InheritDoc"
-    AfterTargets="CopyFilesToOutputDirectory"
-    Condition="'$(_DocumentationFileProduced)'=='true'">
-    <Exec
-      Command="$(NuGetPackageRoot)inheritdoc\2.0.2\tools\InheritDoc.exe -o"
-      WorkingDirectory="$(OutDir)" />
-  </Target>
-
-</Project>
+// Visibility
+[assembly: InternalsVisibleTo("Sharp.ServiceHost.Tests")]

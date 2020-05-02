@@ -16,12 +16,10 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   -->
 
-  <Import Project="..\General.props" />
-  <Import Project="..\Local.props" Condition="Exists('..\Local.props')" />
-
   <PropertyGroup>
     <Description>PowerShell Cmdlets for SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFramework>net461</TargetFramework>
+    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,15 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="RSMassTransit.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <Import Project="..\InheritDoc.targets" />
 
 </Project>

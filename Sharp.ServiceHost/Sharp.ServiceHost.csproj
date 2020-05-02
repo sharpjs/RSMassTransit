@@ -17,16 +17,9 @@
   -->
 
   <PropertyGroup>
-    <Product>Sharp.ServiceHost</Product>
     <Description>Micro-framework that enables a console app to run as a Windows service</Description>
-    <Version>0.0.0-local</Version>
-    <Authors>Jeffrey Sharp</Authors>
-    <Copyright>Copyright $([System.DateTime]::UtcNow.Year) Jeffrey Sharp</Copyright>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
-    <LangVersion>7.3</LangVersion>
+    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,7 +30,5 @@
   <ItemGroup>
     <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0" />
   </ItemGroup>
-
-  <Import Project="..\InheritDoc.targets" />
 
 </Project>

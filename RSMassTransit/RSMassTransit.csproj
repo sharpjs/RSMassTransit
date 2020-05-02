@@ -16,13 +16,14 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   -->
 
-  <Import Project="..\General.props" />
-  <Import Project="..\Local.props" Condition="Exists('..\Local.props')" />
-
   <PropertyGroup>
     <Description>SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFramework>net472</TargetFramework>
     <OutputType>Exe</OutputType>
+    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
+    <SetAzurePipelinesBuildName>true</SetAzurePipelinesBuildName>
+    <SetGitHubActionsVersion>true</SetGitHubActionsVersion>
+    <SetTeamCityBuildNumber>true</SetTeamCityBuildNumber>
   </PropertyGroup>
 
   <ItemGroup>
@@ -50,10 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
@@ -62,7 +59,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <Import Project="..\InheritDoc.targets" />
 
 </Project>

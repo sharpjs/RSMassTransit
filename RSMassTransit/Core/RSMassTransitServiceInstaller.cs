@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -16,6 +16,7 @@
 
 using System.ComponentModel;
 using System.Configuration.Install;
+using System.Diagnostics.CodeAnalysis;
 using System.ServiceProcess;
 using Sharp.ServiceHost;
 
@@ -23,7 +24,7 @@ namespace RSMassTransit.Core
 {
     [RunInstaller(true)]
     [DesignerCategory("")] // disable designer
-    [CodeCoverageExempt]
+    [ExcludeFromCodeCoverage]
     public class RSMassTransitServiceInstaller : Installer
     {
         public RSMassTransitServiceInstaller()

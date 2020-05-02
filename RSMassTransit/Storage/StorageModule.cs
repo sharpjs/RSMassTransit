@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -15,8 +15,8 @@
 */
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
-using RSMassTransit.Core;
 using Sharp.BlobStorage;
 using Sharp.BlobStorage.Azure;
 using Sharp.BlobStorage.File;
@@ -33,7 +33,7 @@ namespace RSMassTransit.Storage
                 .As<IBlobStorage>();
         }
 
-        [CodeCoverageExempt]
+        [ExcludeFromCodeCoverage]
         private IBlobStorage CreateRepository(IComponentContext context)
         {
             var configuration = context.Resolve<IStorageConfiguration>();

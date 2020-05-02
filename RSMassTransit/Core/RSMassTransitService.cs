@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,6 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
 using MassTransit;
 using RSMassTransit.ReportingServices;
@@ -23,7 +24,7 @@ using Sharp.ServiceHost;
 
 namespace RSMassTransit.Core
 {
-    [CodeCoverageExempt]
+    [ExcludeFromCodeCoverage]
     internal class RSMassTransitService : Service
     {
         public const string

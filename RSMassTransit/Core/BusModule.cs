@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2020 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -16,6 +16,7 @@
 
 using System;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
 using GreenPipes;
 using MassTransit;
@@ -26,7 +27,7 @@ using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core
 {
-    [CodeCoverageExempt]
+    [ExcludeFromCodeCoverage]
     internal class BusModule : Module
     {
         public const string

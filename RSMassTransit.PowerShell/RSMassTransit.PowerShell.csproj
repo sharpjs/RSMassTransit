@@ -24,9 +24,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.PowerShell.4.ReferenceAssemblies" Version="1.0.0" />
-    <PackageReference Include="RSMassTransit.Client" Version="0.1.0-rc1" />
-    <PackageReference Include="RSMassTransit.Client.AzureServiceBus.Core" Version="0.1.0-rc1" />
-    <PackageReference Include="RSMassTransit.Client.RabbitMQ" Version="0.1.0-rc1" />
+    <PackageReference Include="RSMassTransit.Client" Version="0.1.0" />
+    <PackageReference Include="RSMassTransit.Client.AzureServiceBus.Core" Version="0.1.0" />
+    <PackageReference Include="RSMassTransit.Client.RabbitMQ" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>

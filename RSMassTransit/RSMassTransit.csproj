@@ -32,7 +32,7 @@
     <PackageReference Include="MassTransit.Autofac" Version="6.2.5" />
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="6.2.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="6.2.5" />
-    <PackageReference Include="RSMassTransit.Client" Version="0.1.0-rc1" />
+    <PackageReference Include="RSMassTransit.Client" Version="0.1.0" />
     <PackageReference Include="Sharp.BlobStorage" Version="0.1.0" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
     <PackageReference Include="Sharp.Diagnostics.Logging" Version="0.0.0" />

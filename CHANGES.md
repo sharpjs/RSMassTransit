@@ -9,6 +9,7 @@ _None_
 
 ## [0.1.1](https://github.com/sharpjs/RSMassTransit/compare/v0.1.0...v0.1.0)
 _Future release_
+- Fix message prefetch not being applied on Azure Service Bus.
 
 ## [0.1.0](https://github.com/sharpjs/RSMassTransit/tree/v0.1.0)
 - Update MassTransit to 6.2.5

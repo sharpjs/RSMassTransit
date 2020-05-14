@@ -140,12 +140,6 @@ namespace RSMassTransit.Core
         // For Azure Service Bus
         private static void TuneForReportExecution(IServiceBusReceiveEndpointConfigurator r)
         {
-            // RSMassTransit expects multiple service instances, competing for
-            // infrequent, long-running requests.  Prefetch optimizes for the
-            // opposite case and actually *hinders* the spread of infrequent
-            // messages across instances.  Therefor, turn prefetch off here.
-            r.PrefetchCount = 0;
-
             // Report execution is single-threaded and typically has both idle
             // periods (waiting on query results) and CPU-bound periods
             // (rendering).  Thus SSRS *should* be able to support more
@@ -166,6 +160,15 @@ namespace RSMassTransit.Core
             // TODO: Make loading factor(s) configurable.
             var concurrency = Math.Min(Environment.ProcessorCount, 32);
             r.MaxConcurrentCalls = concurrency;
+
+            // RSMassTransit expects multiple service instances, competing for
+            // infrequent, long-running requests.  Prefetch optimizes for the
+            // opposite case and actually *hinders* the spread of infrequent
+            // messages across instances.  Therefor, turn prefetch off here.
+            //
+            // WARNING: This must come *AFTER* MaxConcurrentCalls above.
+            // Otherwise, the setting is overwritten.
+            r.PrefetchCount = 0;
 
             // When RSMassTransit tries to pause or stop message consumption,
             // unwanted messages continue to be received, due to limitations in

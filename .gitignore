@@ -1,4 +1,4 @@
-# Build Products
+# Build products
 obj/
 bin/
 /dist/
@@ -8,20 +8,20 @@ bin/
 .vs/
 *.user
 
-# Visual Studio Profiler
+# Visual Studio profiler
 *.psess
 *.vsp
 *.vspx
 *.sap
 
-# WCF References
+# WCF references
 *.datasource
 
-# Local Files
-/Local.props
-/NuGet.config
+# Testing
+TestResults
+TestResult*.xml
 
-# Temporary Files
+# Temporary files
 *.log
 *.old
 *.tmp
@@ -31,9 +31,9 @@ bin/
 *.patch
 *.rej
 
-# Windows Junk
+# Windows junk
 Thumbs.db
 Desktop.ini
 
-# OS X Junk
+# macOS junk
 .DS_Store

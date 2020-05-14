@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{F12F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Engine", "RSMassTransit.Engine\RSMassTransit.Engine.csproj", "{644ED813-6566-4D0C-A96D-AFB151022CF1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Tool", "RSMassTransit.Tool\RSMassTransit.Tool.csproj", "{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

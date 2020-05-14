@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{F12F
 		.config\dotnet-tools.json = .config\dotnet-tools.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Engine", "RSMassTransit.Engine\RSMassTransit.Engine.csproj", "{644ED813-6566-4D0C-A96D-AFB151022CF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

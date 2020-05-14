@@ -16,18 +16,21 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+
+#if NETFRAMEWORK
 using System.Security;
+#endif
 
 // Component Object Model
 [assembly: ComVisible(false)]
 
-#if NETFRAMEWORK
 // Security
+#if NETFRAMEWORK
 [assembly: SecurityRules(SecurityRuleSet.Level2)]
 #endif
 
 // Visibility
 [assembly: InternalsVisibleTo("RSMassTransit.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-                            // ^^^^^^^^^^^^^^^^^^^^^^^^
-                            // Required for Moq to mock a class with an internal abstract method.
+//                             ^^^^^^^^^^^^^^^^^^^^^^^^
+//                             Required for Moq to mock a class with an internal abstract method.

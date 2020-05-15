@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>RSMassTransit</AssemblyName>
     <Description>SQL Server Reporting Services MassTransit Interface - DotNet Tool Host</Description>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
+    <RootNamespace>RSMassTransit</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

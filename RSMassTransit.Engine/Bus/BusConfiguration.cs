@@ -16,29 +16,16 @@
 
 using System;
 using RSMassTransit.Storage;
-using Sharp.BlobStorage.Azure;
-using Sharp.BlobStorage.File;
 
 namespace RSMassTransit
 {
-    public class Configuration : IBusConfiguration, IStorageConfiguration
+    public class BusConfiguration : IBusConfiguration
     {
         public Uri         BusUri        { get; set; } = new Uri("rabbitmq://localhost", UriKind.Absolute);
         public string      BusQueue      { get; set; } = "reports";
         public string      BusSecretName { get; set; } = "guest";
         public string      BusSecret     { get; set; } = "guest";
         public StorageType StorageType   { get; set; } = StorageType.File;
-
-        public FileBlobStorageConfiguration File { get; } = new FileBlobStorageConfiguration
-        {
-            Path = @"C:\Reports"
-        };
-
-        public AzureBlobStorageConfiguration Azure { get; } = new AzureBlobStorageConfiguration
-        {
-            ConnectionString = "UseDevelopmentStorage=true",
-            ContainerName    = "reports"
-        };
 
 #if OLD
         private static string GetString(NameValueCollection settings, string name, string defaultValue)

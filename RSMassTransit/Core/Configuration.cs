@@ -49,7 +49,7 @@ namespace RSMassTransit
 
             File = new FileBlobStorageConfiguration
             {
-                Path            = GetString       (settings, "Storage.File.Path",            @"C:\Reports"),
+                Path            = GetString       (settings, "Storage.File.Path",            @"C:\Blobs"),
                 ReadBufferSize  = GetNullableInt32(settings, "Storage.File.ReadBufferSize",  null),
                 WriteBufferSize = GetNullableInt32(settings, "Storage.File.WriteBufferSize", null)
             };

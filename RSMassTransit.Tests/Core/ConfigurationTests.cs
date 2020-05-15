@@ -221,7 +221,7 @@ namespace RSMassTransit.Core
         public void Storage_File_Path_Default()
         {
             new Configuration(Defaults).File.Path
-                .Should().Be(@"C:\Reports");
+                .Should().Be(@"C:\Blobs");
         }
 
         [Test]

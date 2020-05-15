@@ -21,7 +21,7 @@ using Sharp.BlobStorage.File;
 
 namespace RSMassTransit
 {
-    public class Configuration : IConfiguration
+    public class Configuration : IBusConfiguration, IStorageConfiguration
     {
         public Uri         BusUri        { get; set; } = new Uri("rabbitmq://localhost", UriKind.Absolute);
         public string      BusQueue      { get; set; } = "reports";

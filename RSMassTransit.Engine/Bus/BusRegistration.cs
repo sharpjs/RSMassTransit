@@ -25,7 +25,7 @@ using Microsoft.Azure.ServiceBus.Primitives;
 using Microsoft.Extensions.DependencyInjection;
 using RSMassTransit.Consumers;
 
-namespace RSMassTransit.Core
+namespace RSMassTransit.Bus
 {
     [ExcludeFromCodeCoverage]
     internal static class BusRegistration
@@ -71,7 +71,7 @@ namespace RSMassTransit.Core
             IRegistrationContext<IServiceProvider> context,
             IBusConfiguration                      configuration)
         {
-            return Bus.Factory.CreateUsingRabbitMq(b =>
+            return MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
                 var uri = configuration.BusUri;
                     uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
@@ -96,7 +96,7 @@ namespace RSMassTransit.Core
         {
             const string UriDomain = ".servicebus.windows.net";
 
-            return Bus.Factory.CreateUsingAzureServiceBus(b =>
+            return MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
                 var uri = configuration.BusUri;
                     uri = new UriBuilder(AzureServiceBusScheme, uri.Host + UriDomain).Uri;

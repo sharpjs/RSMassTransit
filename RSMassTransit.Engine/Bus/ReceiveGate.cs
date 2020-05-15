@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 using MassTransit;
 using Sharp.Disposable;
 
-namespace RSMassTransit.Core
+namespace RSMassTransit.Bus
 {
     internal class ReceiveGate : Disposable, IReceiveObserver
     {

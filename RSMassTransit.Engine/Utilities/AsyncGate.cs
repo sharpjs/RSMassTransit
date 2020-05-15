@@ -17,7 +17,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RSMassTransit.Core
+namespace RSMassTransit
 {
     /// <summary>
     ///   A gate for asynchronous tasks.  When the gate is closed, tasks wait

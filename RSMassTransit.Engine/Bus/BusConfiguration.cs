@@ -17,7 +17,7 @@
 using System;
 using RSMassTransit.Storage;
 
-namespace RSMassTransit
+namespace RSMassTransit.Bus
 {
     public class BusConfiguration : IBusConfiguration
     {

@@ -16,7 +16,7 @@
 
 using System;
 
-namespace RSMassTransit
+namespace RSMassTransit.Bus
 {
     public interface IBusConfiguration
     {

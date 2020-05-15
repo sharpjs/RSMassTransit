@@ -1,4 +1,3 @@
-#if PORTED
 /*
     Copyright (C) 2020 Jeffrey Sharp
 
@@ -16,40 +15,43 @@
 */
 
 using System;
-using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using GreenPipes;
 using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
+using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
 using Microsoft.Azure.ServiceBus.Primitives;
+using Microsoft.Extensions.DependencyInjection;
 using RSMassTransit.Consumers;
 
 namespace RSMassTransit.Core
 {
     [ExcludeFromCodeCoverage]
-    internal class BusModule : Module
+    internal static class BusRegistration
     {
-        public const string
+        internal const string
             RabbitMqScheme        = "rabbitmq",
             AzureServiceBusScheme = "sb";
 
         private const StringComparison
             TypeComparison = StringComparison.OrdinalIgnoreCase;
 
-        protected override void Load(ContainerBuilder builder)
+        internal static void AddBus(this IServiceCollection services)
         {
-            builder.AddMassTransit(m =>
-            {
-                m.AddConsumer<ExecuteReportConsumer>();
-                m.AddBus(CreateBus);
-            });
+            services.AddMassTransit(ConfigureMassTransit);
         }
 
-        private IBusControl CreateBus(IComponentContext context)
+        private static void ConfigureMassTransit(IServiceCollectionConfigurator services)
+        {
+            services.AddConsumer<ExecuteReportConsumer>();
+            services.AddBus(CreateBus);
+        }
+
+        private static IBusControl CreateBus(IRegistrationContext<IServiceProvider> context)
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
-            var configuration = context.Resolve<IBusConfiguration>();
+            var configuration = context.Container.GetRequiredService<IBusConfiguration>();
             var scheme        = configuration.BusUri.Scheme;
 
             if (RabbitMqScheme.Equals(scheme, TypeComparison))
@@ -58,16 +60,16 @@ namespace RSMassTransit.Core
             if (AzureServiceBusScheme.Equals(scheme, TypeComparison))
                 return CreateBusUsingAzureServiceBus(context, configuration);
 
-            throw new ConfigurationErrorsException(string.Format(
+            throw new FormatException(string.Format(
                 "The scheme '{0}' is invalid for the BusUri application setting.  " +
                 "Valid schemes are '{1}' and '{2}'.",
                 scheme, RabbitMqScheme, AzureServiceBusScheme
             ));
         }
 
-        private IBusControl CreateBusUsingRabbitMq(
-            IComponentContext context,
-            IBusConfiguration configuration)
+        private static IBusControl CreateBusUsingRabbitMq(
+            IRegistrationContext<IServiceProvider> context,
+            IBusConfiguration                      configuration)
         {
             return Bus.Factory.CreateUsingRabbitMq(b =>
             {
@@ -88,9 +90,9 @@ namespace RSMassTransit.Core
             });
         }
 
-        private IBusControl CreateBusUsingAzureServiceBus(
-            IComponentContext context,
-            IBusConfiguration configuration)
+        private static IBusControl CreateBusUsingAzureServiceBus(
+            IRegistrationContext<IServiceProvider> context,
+            IBusConfiguration                      configuration)
         {
             const string UriDomain = ".servicebus.windows.net";
 
@@ -212,4 +214,3 @@ namespace RSMassTransit.Core
         }
     }
 }
-#endif

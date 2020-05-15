@@ -15,64 +15,32 @@
 */
 
 using System;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.Globalization;
-using System.Linq;
 using RSMassTransit.Storage;
 using Sharp.BlobStorage.Azure;
 using Sharp.BlobStorage.File;
 
 namespace RSMassTransit
 {
-    internal class Configuration : IConfiguration
+    public class Configuration : IConfiguration
     {
-        #if PORTED
-        private static Configuration _current;
+        public Uri         BusUri        { get; set; } = new Uri("rabbitmq://localhost", UriKind.Absolute);
+        public string      BusQueue      { get; set; } = "reports";
+        public string      BusSecretName { get; set; } = "guest";
+        public string      BusSecret     { get; set; } = "guest";
+        public StorageType StorageType   { get; set; } = StorageType.File;
 
-        public static Configuration Current
-            => _current ?? (_current = new Configuration());
-
-        public Configuration()
-            : this(ConfigurationManager.AppSettings) { }
-        #endif
-
-        public Configuration(NameValueCollection settings)
+        public FileBlobStorageConfiguration File { get; } = new FileBlobStorageConfiguration
         {
-            if (settings == null)
-                throw new ArgumentNullException(nameof(settings));
+            Path = @"C:\Reports"
+        };
 
-            InstanceId     = GetString (settings, nameof(InstanceId),     "");
-            BusUri         = GetUri    (settings, nameof(BusUri),         "rabbitmq://localhost");
-            BusQueue       = GetString (settings, nameof(BusQueue),       "reports");
-            BusSecretName  = GetString (settings, nameof(BusSecretName),  "guest");
-            BusSecret      = GetString (settings, nameof(BusSecret),      "guest");
-            StorageType    = GetEnum   (settings, "Storage.Type",         StorageType.File);
+        public AzureBlobStorageConfiguration Azure { get; } = new AzureBlobStorageConfiguration
+        {
+            ConnectionString = "UseDevelopmentStorage=true",
+            ContainerName    = "reports"
+        };
 
-            File = new FileBlobStorageConfiguration
-            {
-                Path            = GetString       (settings, "Storage.File.Path",            @"C:\Reports"),
-                ReadBufferSize  = GetNullableInt32(settings, "Storage.File.ReadBufferSize",  null),
-                WriteBufferSize = GetNullableInt32(settings, "Storage.File.WriteBufferSize", null)
-            };
-
-            Azure = new AzureBlobStorageConfiguration
-            {
-                ConnectionString = GetString(settings, "Storage.AzureBlob.ConnectionString", "UseDevelopmentStorage=true"),
-                ContainerName    = GetString(settings, "Storage.AzureBlob.ContainerName",    "reports")
-            };
-        }
-
-        public string      InstanceId    { get; }
-        public Uri         BusUri        { get; }
-        public string      BusQueue      { get; }
-        public string      BusSecretName { get; }
-        public string      BusSecret     { get; }
-        public StorageType StorageType   { get; }
-
-        public FileBlobStorageConfiguration  File  { get; }
-        public AzureBlobStorageConfiguration Azure { get; }
-
+#if OLD
         private static string GetString(NameValueCollection settings, string name, string defaultValue)
             => settings[name].NullIfEmpty() ?? defaultValue;
 
@@ -128,5 +96,6 @@ namespace RSMassTransit
                 name, text
             ));
         }
+#endif
     }
 }

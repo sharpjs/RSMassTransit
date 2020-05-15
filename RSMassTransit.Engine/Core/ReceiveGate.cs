@@ -22,7 +22,7 @@ using Sharp.Disposable;
 
 namespace RSMassTransit.Core
 {
-    public class ReceiveGate : Disposable, IReceiveObserver
+    internal class ReceiveGate : Disposable, IReceiveObserver
     {
         private readonly AsyncGate _gate;
 

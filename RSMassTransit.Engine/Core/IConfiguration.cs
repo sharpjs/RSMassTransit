@@ -18,10 +18,7 @@ using RSMassTransit.Storage;
 
 namespace RSMassTransit
 {
-    internal interface IConfiguration
-        : IBusConfiguration
-        , IStorageConfiguration
+    public interface IConfiguration : IBusConfiguration, IStorageConfiguration
     {
-        string InstanceId { get; }
     }
 }

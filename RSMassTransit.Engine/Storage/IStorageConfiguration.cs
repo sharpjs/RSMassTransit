@@ -19,7 +19,7 @@ using Sharp.BlobStorage.File;
 
 namespace RSMassTransit.Storage
 {
-    internal interface IStorageConfiguration
+    public interface IStorageConfiguration
     {
         StorageType StorageType { get; }
 

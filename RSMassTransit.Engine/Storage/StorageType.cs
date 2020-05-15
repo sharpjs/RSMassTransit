@@ -19,7 +19,7 @@ namespace RSMassTransit.Storage
     /// <summary>
     ///   Types of storage supported by RSMassTransit.
     /// </summary>
-    internal enum StorageType
+    public enum StorageType
     {
         /// <summary>
         ///   Each rendered report is stored as a file in the file system.

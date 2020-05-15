@@ -18,7 +18,7 @@ using System;
 
 namespace RSMassTransit
 {
-    internal interface IBusConfiguration
+    public interface IBusConfiguration
     {
         Uri    BusUri        { get; }
         string BusQueue      { get; }

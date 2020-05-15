@@ -39,10 +39,11 @@ namespace RSMassTransit.Bus
 
         internal static void AddBus(this IServiceCollection services)
         {
-            services.AddMassTransit(ConfigureMassTransit);
+            services.AddMassTransit(ConfigureServices);
+            services.AddHostedService<BusService>();
         }
 
-        private static void ConfigureMassTransit(IServiceCollectionConfigurator services)
+        private static void ConfigureServices(IServiceCollectionConfigurator services)
         {
             services.AddConsumer<ExecuteReportConsumer>();
             services.AddBus(CreateBus);

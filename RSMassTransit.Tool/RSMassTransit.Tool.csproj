@@ -4,6 +4,7 @@
     <Description>SQL Server Reporting Services MassTransit Interface - DotNet Tool Host</Description>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

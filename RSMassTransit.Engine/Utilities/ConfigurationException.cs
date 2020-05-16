@@ -15,21 +15,22 @@
 */
 
 using System;
-using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.Serialization;
 
-namespace RSMassTransit.ReportingServices
+namespace RSMassTransit
 {
-    internal static class ReportingServicesExtensions
+    internal class ConfigurationException : Exception
     {
-        internal static void AddReportingServices(this IServiceCollection services)
-        {
-            if (services is null)
-                throw new ArgumentNullException(nameof(services));
+        public ConfigurationException()
+            : base("One or more configuration settings are invalid.") { }
 
-            services.AddSingleton(
-                (IReportingServicesClientFactory)
-                ReportingServicesClientFactory.Instance
-            );
-        }
+        public ConfigurationException(string message)
+            : base(message) { }
+
+        public ConfigurationException(string message, Exception innerException)
+            : base(message, innerException) { }
+
+        protected ConfigurationException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
     }
 }

@@ -15,74 +15,74 @@
 */
 
 using System;
-using RSMassTransit.Storage;
+using Microsoft.Extensions.Configuration;
 
 namespace RSMassTransit.Bus
 {
+    /// <summary>
+    ///   Configuration for bus access.
+    /// </summary>
     public class BusConfiguration : IBusConfiguration
     {
-        public Uri         BusUri        { get; set; } = new Uri("rabbitmq://localhost", UriKind.Absolute);
-        public string      BusQueue      { get; set; } = "reports";
-        public string      BusSecretName { get; set; } = "guest";
-        public string      BusSecret     { get; set; } = "guest";
-        public StorageType StorageType   { get; set; } = StorageType.File;
+        private const string
+            DefaultQueueName  = "reports",
+            DefaultSecretName = "guest",
+            DefaultSecret     = "guest";
 
-#if OLD
-        private static string GetString(NameValueCollection settings, string name, string defaultValue)
-            => settings[name].NullIfEmpty() ?? defaultValue;
+        private static Uri
+            DefaultHostUri => new Uri("rabbitmq://localhost", UriKind.Absolute);
 
-        private static Uri GetUri(NameValueCollection settings, string name, string defaultValue)
+        /// <summary>
+        ///   Gets or sets the URI of the bus host. The default value is
+        ///   <c>rabbitmq://localhost</c>.
+        /// </summary>
+        public Uri HostUri { get; set; } = DefaultHostUri;
+
+        /// <summary>
+        ///   Gets or sets the name of the queue from which to consume
+        ///   requests. The default value is <c>reports</c>.
+        /// </summary>
+        public string QueueName { get; set; } = DefaultQueueName;
+
+        /// <summary>
+        ///   Gets or sets the name of the shared secret used for
+        ///   authentication.  The default value is <c>guest</c>.
+        /// </summary>
+        public string SecretName { get; set; } = DefaultSecretName;
+
+        /// <summary>
+        ///   Gets or sets the content of the shared secret used for
+        ///   authentication.  The default value is <c>guest</c>.
+        /// </summary>
+        public string Secret { get; set; } = DefaultSecret;
+
+        /// <summary>
+        ///   Initializes a new <see cref="BusConfiguration"/> instance with
+        ///   values from the specified configuration repository.
+        /// </summary>
+        /// <param name="configuration">
+        ///   The configuration repository from which to load values.
+        /// </param>
+        public BusConfiguration(IConfiguration configuration)
         {
-            var text = GetString(settings, name, defaultValue);
-
-            if (Uri.TryCreate(text, UriKind.Absolute, out Uri uri))
-                return uri;
-
-            throw new FormatException(string.Format(
-                "The value '{1}' is invalid for application setting '{0}'.  " +
-                "The value must be an absolute URI.",
-                name, text
-            ));
+            Load(configuration);
         }
 
-        private T GetEnum<T>(NameValueCollection settings, string name, T defaultValue)
-            where T : struct // Enum
+        /// <summary>
+        ///   Loads values from the specified configuration repository.
+        /// </summary>
+        /// <param name="configuration">
+        ///   The configuration repository from which to load values.
+        /// </param>
+        public void Load(IConfiguration configuration)
         {
-            var text = settings[name].NullIfEmpty();
-            if (text == null)
-                return defaultValue;
+            if (configuration is null)
+                throw new ArgumentNullException(nameof(configuration));
 
-            if (Enum.TryParse(text, out T value))
-                return value;
-
-            var validValues = string.Join(
-                ", ",
-                Enum.GetNames(typeof(T)).Select(n => $"'{n}'")
-            );
-
-            throw new FormatException(string.Format(
-                "The value '{1}' is invalid for application setting '{0}'.  " +
-                "The value must be one of: {2}",
-                name, text, validValues
-            ));
+            HostUri    = configuration.GetUri    (nameof(HostUri))    ?? DefaultHostUri;
+            QueueName  = configuration.GetString (nameof(QueueName))  ?? DefaultQueueName;
+            SecretName = configuration.GetString (nameof(SecretName)) ?? DefaultSecretName;
+            Secret     = configuration.GetString (nameof(Secret))     ?? DefaultSecret;
         }
-
-        private int? GetNullableInt32(NameValueCollection settings, string name, int? defaultValue)
-        {
-            var text = settings[name].NullIfEmpty();
-            if (text == null)
-                return defaultValue;
-
-            if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value))
-                return value;
-
-            throw new FormatException(string.Format(
-                "The value '{1}' is invalid for application setting '{0}'.  " +
-                "The value must be an integer, digits only, with optional leading sign, " +
-                "between -2147483648 and +2147483647.",
-                name, text
-            ));
-        }
-#endif
     }
 }

@@ -1,10 +1,6 @@
-using System.Threading;
 using System.Threading.Tasks;
-using MassTransit.Logging;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace RSMassTransit
 {
@@ -44,24 +40,7 @@ namespace RSMassTransit
             HostBuilderContext context,
             IServiceCollection services)
         {
-            services.AddHostedService<SomeService>();
-        }
-
-        internal class SomeService : BackgroundService
-        {
-            public SomeService(ILogger<SomeService>? logger)
-            {
-                Logger = logger as ILogger ?? NullLogger.Instance;
-            }
-
-            private ILogger Logger { get; }
-
-            protected override Task ExecuteAsync(CancellationToken stoppingToken)
-            {
-                Logger.LogInformation("Hi");
-
-                return Task.Delay(Timeout.Infinite, stoppingToken);
-            }
+            services.AddRSMassTransit(context.Configuration);
         }
     }
 }

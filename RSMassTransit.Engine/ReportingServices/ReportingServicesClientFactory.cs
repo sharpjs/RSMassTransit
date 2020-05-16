@@ -29,12 +29,12 @@ namespace RSMassTransit.ReportingServices
 
         protected ReportingServicesClientFactory() { }
 
-        public IReportExecutionSoapClient CreateExecutionClient(NetworkCredential credential = null)
+        public IReportExecutionSoapClient CreateExecutionClient(NetworkCredential? credential = null)
             => CreateClient
                 <ReportExecutionServiceSoapClient, ReportExecutionServiceSoap>
                 (credential);
 
-        private static TClient CreateClient<TClient, TChannel>(NetworkCredential credential = null)
+        private static TClient CreateClient<TClient, TChannel>(NetworkCredential? credential = null)
             where TClient  : ClientBase<TChannel>, new()
             where TChannel : class
         {
@@ -52,7 +52,7 @@ namespace RSMassTransit.ReportingServices
             }
         }
 
-        private static void ProvideCredential(ClientCredentials client, NetworkCredential credential)
+        private static void ProvideCredential(ClientCredentials client, NetworkCredential? credential)
         {
             client.Windows.AllowedImpersonationLevel
                 = TokenImpersonationLevel.Impersonation;

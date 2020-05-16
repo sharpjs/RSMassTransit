@@ -20,6 +20,7 @@
     <Description>SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFrameworks>net48;netstandard2.1</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

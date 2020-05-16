@@ -18,11 +18,29 @@ using System;
 
 namespace RSMassTransit.Bus
 {
+    /// <summary>
+    ///   Configuration for bus access.
+    /// </summary>
     public interface IBusConfiguration
     {
-        Uri    BusUri        { get; }
-        string BusQueue      { get; }
-        string BusSecret     { get; }
-        string BusSecretName { get; }
+        /// <summary>
+        ///   Gets the URI of the bus host.
+        /// </summary>
+        Uri HostUri { get; }
+
+        /// <summary>
+        ///   Gets the name of the queue from which to consume requests.
+        /// </summary>
+        string QueueName { get; }
+
+        /// <summary>
+        ///   Gets the name of the shared secret used for authentication.
+        /// </summary>
+        string Secret { get; }
+
+        /// <summary>
+        ///   Gets the content of the shared secret used for authentication.
+        /// </summary>
+        string SecretName { get; }
     }
 }

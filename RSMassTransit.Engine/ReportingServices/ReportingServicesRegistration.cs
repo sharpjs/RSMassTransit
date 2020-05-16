@@ -15,41 +15,21 @@
 */
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
-using Sharp.BlobStorage;
-using Sharp.BlobStorage.Azure;
-using Sharp.BlobStorage.File;
 
-namespace RSMassTransit.Storage
+namespace RSMassTransit.ReportingServices
 {
-    internal static class StorageExtensions
+    internal static class ReportingServicesRegistration
     {
-        internal static void AddBlobStorage(this IServiceCollection services)
+        internal static void AddReportingServices(this IServiceCollection services)
         {
             if (services is null)
                 throw new ArgumentNullException(nameof(services));
 
-            services.AddSingleton(CreateRepository);
-        }
-
-        [ExcludeFromCodeCoverage]
-        private static IBlobStorage CreateRepository(IServiceProvider context)
-        {
-            var configuration = context.GetRequiredService<IStorageConfiguration>();
-
-            switch (configuration.StorageType)
-            {
-                case StorageType.File:
-                    return new FileBlobStorage(configuration.File);
-
-                case StorageType.AzureBlob:
-                    return new AzureBlobStorage(configuration.Azure);
-
-                default:
-                    // Should be unreachable
-                    throw new NotSupportedException();
-            }
+            services.AddSingleton(
+                (IReportingServicesClientFactory)
+                ReportingServicesClientFactory.Instance
+            );
         }
     }
 }

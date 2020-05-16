@@ -22,6 +22,7 @@ using MassTransit.Azure.ServiceBus.Core;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
 using Microsoft.Azure.ServiceBus.Primitives;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RSMassTransit.Consumers;
 
@@ -37,10 +38,16 @@ namespace RSMassTransit.Bus
         private const StringComparison
             TypeComparison = StringComparison.OrdinalIgnoreCase;
 
-        internal static void AddBus(this IServiceCollection services)
+        internal static void AddBus(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton(LoadConfiguration(configuration));
             services.AddMassTransit(ConfigureServices);
             services.AddHostedService<BusService>();
+        }
+
+        private static IBusConfiguration LoadConfiguration(IConfiguration configuration)
+        {
+            return new BusConfiguration(configuration);
         }
 
         private static void ConfigureServices(IServiceCollectionConfigurator services)
@@ -53,7 +60,7 @@ namespace RSMassTransit.Bus
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
             var configuration = context.Container.GetRequiredService<IBusConfiguration>();
-            var scheme        = configuration.BusUri.Scheme;
+            var scheme        = configuration.HostUri.Scheme;
 
             if (RabbitMqScheme.Equals(scheme, TypeComparison))
                 return CreateBusUsingRabbitMq(context, configuration);
@@ -74,16 +81,16 @@ namespace RSMassTransit.Bus
         {
             return MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
-                var uri = configuration.BusUri;
+                var uri = configuration.HostUri;
                     uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
 
                 b.Host(uri, h =>
                 {
-                    h.Username(configuration.BusSecretName);
-                    h.Password(configuration.BusSecret);
+                    h.Username(configuration.SecretName);
+                    h.Password(configuration.Secret);
                 });
 
-                b.ReceiveEndpoint(configuration.BusQueue, r =>
+                b.ReceiveEndpoint(configuration.QueueName, r =>
                 {
                     TuneForReportExecution(r);
                     r.ConfigureConsumers(context);
@@ -99,21 +106,21 @@ namespace RSMassTransit.Bus
 
             return MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
-                var uri = configuration.BusUri;
+                var uri = configuration.HostUri;
                     uri = new UriBuilder(AzureServiceBusScheme, uri.Host + UriDomain).Uri;
 
                 b.Host(uri, h =>
                 {
                     h.SharedAccessSignature(s =>
                     {
-                        s.KeyName         = configuration.BusSecretName;
-                        s.SharedAccessKey = configuration.BusSecret;
+                        s.KeyName         = configuration.SecretName;
+                        s.SharedAccessKey = configuration.Secret;
                         s.TokenTimeToLive = TimeSpan.FromDays(1);
                         s.TokenScope      = TokenScope.Namespace;
                     });
                 });
 
-                b.ReceiveEndpoint(configuration.BusQueue, r =>
+                b.ReceiveEndpoint(configuration.QueueName, r =>
                 {
                     TuneForReportExecution(r);
                     r.ConfigureConsumers(context);

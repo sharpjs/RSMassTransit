@@ -6,7 +6,7 @@ namespace RSMassTransit
 {
     internal static class Program
     {
-        internal static Task Main(string[] args)
+        private static Task Main(string[] args)
         {
             // .NET Host Builder Documentation
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.1

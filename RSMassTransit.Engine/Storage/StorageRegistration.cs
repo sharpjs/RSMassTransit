@@ -24,7 +24,7 @@ using Sharp.BlobStorage.File;
 
 namespace RSMassTransit.Storage
 {
-    public static class StorageRegistration
+    internal static class StorageRegistration
     {
         public static void AddBlobStorage(
             this IServiceCollection services,

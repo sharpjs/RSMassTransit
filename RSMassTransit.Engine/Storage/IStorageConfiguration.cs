@@ -22,7 +22,7 @@ namespace RSMassTransit.Storage
     /// <summary>
     ///   Configuration for report storage.
     /// </summary>
-    public interface IStorageConfiguration
+    internal interface IStorageConfiguration
     {
         /// <summary>
         ///   Gets the type of report storage.

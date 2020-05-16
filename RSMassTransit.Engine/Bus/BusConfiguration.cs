@@ -22,7 +22,7 @@ namespace RSMassTransit.Bus
     /// <summary>
     ///   Configuration for bus access.
     /// </summary>
-    public class BusConfiguration : IBusConfiguration
+    internal class BusConfiguration : IBusConfiguration
     {
         private const string
             DefaultQueueName  = "reports",

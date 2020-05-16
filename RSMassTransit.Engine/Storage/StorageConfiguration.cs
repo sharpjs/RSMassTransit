@@ -24,7 +24,7 @@ namespace RSMassTransit
     /// <summary>
     ///   Configuration for RSMassTransit report storage.
     /// </summary>
-    public class StorageConfiguration : IStorageConfiguration
+    internal class StorageConfiguration : IStorageConfiguration
     {
         private const string
             DefaultFilePath                  = @"C:\Blobs",

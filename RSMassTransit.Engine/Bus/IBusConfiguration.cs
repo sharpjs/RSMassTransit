@@ -21,7 +21,7 @@ namespace RSMassTransit.Bus
     /// <summary>
     ///   Configuration for bus access.
     /// </summary>
-    public interface IBusConfiguration
+    internal interface IBusConfiguration
     {
         /// <summary>
         ///   Gets the URI of the bus host.

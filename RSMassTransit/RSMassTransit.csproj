@@ -24,6 +24,7 @@
     <SetAzurePipelinesBuildName>true</SetAzurePipelinesBuildName>
     <SetGitHubActionsVersion>true</SetGitHubActionsVersion>
     <SetTeamCityBuildNumber>true</SetTeamCityBuildNumber>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

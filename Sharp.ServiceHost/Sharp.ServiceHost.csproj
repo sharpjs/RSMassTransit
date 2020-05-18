@@ -20,6 +20,7 @@
     <Description>Micro-framework that enables a console app to run as a Windows service</Description>
     <TargetFramework>net45</TargetFramework>
     <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,8 @@ Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...HEAD)
-_None_
+- Change target frameworks to .NET Core 3.1 and .NET Framework 4.8
+- Add dotnet tool packaging
 
 ## [0.1.1](https://github.com/sharpjs/RSMassTransit/compare/v0.1.0...v0.1.1)
 - Fix message prefetch setting not being applied on Azure Service Bus.

@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,9 +32,16 @@ namespace RSMassTransit
 
             return Host
                 .CreateDefaultBuilder(args)
+                .UseContentRoot(GetProgramDirectory())
                 .ConfigureServices(ConfigureServices)
                 .Build()
                 .RunAsync();
+        }
+
+        private static string GetProgramDirectory()
+        {
+            return Path.GetDirectoryName(typeof(Program).Assembly.Location)
+                ?? Directory.GetCurrentDirectory();
         }
 
         private static void ConfigureServices(

@@ -16,14 +16,7 @@
 
 namespace RSMassTransit.ReportingServices.Execution
 {
-    partial class ReportExecutionServiceSoapClient : IReportExecutionSoapClient
-    {
-        public ReportExecutionServiceSoapClient() { }
-        
-        //public ReportExecutionServiceSoapClient(string endpointConfigurationName)
-        //    : base(endpointConfigurationName) { }
-        
-        //public ReportExecutionServiceSoapClient(string endpointConfigurationName, string remoteAddress)
-        //    : base(endpointConfigurationName, remoteAddress) { }
-    }
+    partial class ReportExecutionServiceSoapClient
+        : IReportExecutionSoapClient
+    { }
 }

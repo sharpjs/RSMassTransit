@@ -25,17 +25,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="6.3.1" />
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="6.3.1" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="6.3.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.4" />
-    <PackageReference Include="RSMassTransit.Client" Version="0.1.0" />
-    <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
-    <PackageReference Include="Sharp.Disposable" Version="1.0.0" />
-    <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.Security" Version="4.7.0" />
+    <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release' And '$(MSBuildRestoreSessionId)' == ''">
+    <!-- Project dependencies must have same version, not same-or-later. -->
+    <PackageReference Include="RSMassTransit.Client" Version="[$(PackageVersion)]" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core"          Version="[6.3.2, 7.0.0)" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="[6.3.2, 7.0.0)" />
+    <PackageReference Include="MassTransit.RabbitMQ"                       Version="[6.3.2, 7.0.0)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="[3.1.5, 4.0.0)" />
+    <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
+    <PackageReference Include="Sharp.Disposable"                           Version="[1.0.0, 2.0.0)" />
+    <PackageReference Include="System.ServiceModel.Duplex"                 Version="[4.7.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.Http"                   Version="[4.7.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.NetTcp"                 Version="[4.7.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.Security"               Version="[4.7.0, 5.0.0)" />
   </ItemGroup>
 
   <ItemGroup>

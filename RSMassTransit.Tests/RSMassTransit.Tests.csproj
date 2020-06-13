@@ -18,14 +18,18 @@
 
   <PropertyGroup>
     <Description>Automated test suite for SQL Server Reporting Services MassTransit Interface</Description>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
     <NoWarn>$(NoWarn);IDE1006</NoWarn> <!-- Async suffix not desired for test project -->
     <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="1.2.1">
+    <ProjectReference Include="..\RSMassTransit.Engine\RSMassTransit.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -43,17 +47,9 @@
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <DotNetCliToolReference Include="JetBrains.dotCover.DotNetCliTool" Version="2020.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RSMassTransit\RSMassTransit.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+  <!--<ItemGroup>
     <Reference Include="System.ServiceModel" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <None Update="App.config">

@@ -17,19 +17,21 @@
   -->
 
   <PropertyGroup>
-    <Description>RabbitMQ client implementation for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services.</Description>
+    <Description>RabbitMQ client for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services.</Description>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="[6.2.5,7.0.0)" />
-    <!-- Versions for project refs that become package refs in the NuGet package.
-         See: https://github.com/dotnet/sdk/issues/1151#issuecomment-297265205 -->
-    <PackageReference Include="RSMassTransit.Client" Version="[$(PackageVersion)]" Condition="$(GeneratePackageOnBuild)" />
+    <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release' And '$(MSBuildRestoreSessionId)' == ''">
+    <!-- Project dependencies must have same version, not same-or-later. -->
+    <PackageReference Include="RSMassTransit.Client" Version="[$(PackageVersion)]" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="[6.3.2, 7.0.0)" />
   </ItemGroup>
 
 </Project>

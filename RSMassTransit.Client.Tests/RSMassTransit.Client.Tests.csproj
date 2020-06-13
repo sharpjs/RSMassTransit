@@ -28,7 +28,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="1.2.1">
+    <ProjectReference Include="..\RSMassTransit.Client.AzureServiceBus.Core\RSMassTransit.Client.AzureServiceBus.Core.csproj" />
+    <ProjectReference Include="..\RSMassTransit.Client.RabbitMQ\RSMassTransit.Client.RabbitMQ.csproj" />
+    <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -42,12 +48,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RSMassTransit.Client.AzureServiceBus.Core\RSMassTransit.Client.AzureServiceBus.Core.csproj" />
-    <ProjectReference Include="..\RSMassTransit.Client.RabbitMQ\RSMassTransit.Client.RabbitMQ.csproj" />
-    <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
   </ItemGroup>
 
 </Project>

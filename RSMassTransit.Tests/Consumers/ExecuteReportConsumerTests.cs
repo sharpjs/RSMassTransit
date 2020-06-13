@@ -1,3 +1,4 @@
+#if PORTED
 /*
     Copyright (C) 2020 Jeffrey Sharp
 
@@ -349,3 +350,4 @@ namespace RSMassTransit.Consumers
             TestUri         = new Uri("blobs://test/some-report.pdf");
     }
 }
+#endif

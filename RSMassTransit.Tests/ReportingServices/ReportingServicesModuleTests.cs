@@ -1,3 +1,4 @@
+#if PORTED
 /*
     Copyright (C) 2020 Jeffrey Sharp
 
@@ -38,3 +39,4 @@ namespace RSMassTransit.ReportingServices
         }
     }
 }
+#endif

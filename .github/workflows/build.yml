@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - release/*
+  pull_request:
+    branches:
+      - '*'
+
+env:
+  DOTNET_NOLOGO: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Get Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 16
+
+      # https://github.com/actions/setup-dotnet
+      - name: Configure .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+
+      - name: Install NuGet Packages
+        run: dotnet restore
+
+      - name: Build
+        id: build
+        run: >
+          dotnet build -c Release --no-restore
+          -p:Branch=${{ github.ref }}
+          -p:Counter=${{ github.run_number }}
+          -p:RepositoryCommit=${{ github.sha }}
+          -p:PackageOutputPath=${{ runner.temp }}\dist
+
+      - name: Test
+        run: dotnet test -c Release --no-build
+
+      # https://github.com/actions/upload-artifact
+      - name: Save NuGet Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: RSMassTransit ${{ steps.build.outputs.version }}
+          path: ${{ runner.temp }}\dist

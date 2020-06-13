@@ -24,8 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{F12F
 		.config\dotnet-tools.json = .config\dotnet-tools.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit", "RSMassTransit\RSMassTransit.csproj", "{106852DE-445E-4179-91D7-440BDD9E9768}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Client", "RSMassTransit.Client\RSMassTransit.Client.csproj", "{5EBC9C21-C953-4309-88AC-5308D547D50D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Client.AzureServiceBus.Core", "RSMassTransit.Client.AzureServiceBus.Core\RSMassTransit.Client.AzureServiceBus.Core.csproj", "{793DB615-0711-44DA-ACCC-8EF01540D307}"
@@ -34,13 +32,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Client.Rabbit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Client.Tests", "RSMassTransit.Client.Tests\RSMassTransit.Client.Tests.csproj", "{EC4D64A0-68B9-4B70-8224-DB76945192AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.ServiceHost", "Sharp.ServiceHost\Sharp.ServiceHost.csproj", "{CBC506BA-11BF-4360-9F0E-946FEF647119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Engine", "RSMassTransit.Engine\RSMassTransit.Engine.csproj", "{644ED813-6566-4D0C-A96D-AFB151022CF1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Engine", "RSMassTransit.Engine\RSMassTransit.Engine.csproj", "{644ED813-6566-4D0C-A96D-AFB151022CF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Service", "RSMassTransit.Service\RSMassTransit.Service.csproj", "{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tool", "RSMassTransit.Tool\RSMassTransit.Tool.csproj", "{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}"
 EndProject
@@ -50,9 +48,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{106852DE-445E-4179-91D7-440BDD9E9768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{106852DE-445E-4179-91D7-440BDD9E9768}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{106852DE-445E-4179-91D7-440BDD9E9768}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,22 +64,22 @@ Global
 		{EC4D64A0-68B9-4B70-8224-DB76945192AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4D64A0-68B9-4B70-8224-DB76945192AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4D64A0-68B9-4B70-8224-DB76945192AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBC506BA-11BF-4360-9F0E-946FEF647119}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.Build.0 = Release|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{644ED813-6566-4D0C-A96D-AFB151022CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27CBD7E-6DD9-4240-9018-512526D3A987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4449AA9-3D90-4226-B45C-34B9EF98D4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU

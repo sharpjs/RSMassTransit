@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <Description>Windows Service Host for SQL Server Reporting Services MassTransit Interface</Description>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>RSMassTransit</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>dotnet-RSMassTransit.Service-64DD0679-DFFE-47D2-B2E4-189EA642132E</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RSMassTransit.Engine\RSMassTransit.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>

@@ -18,15 +18,19 @@
 
   <PropertyGroup>
     <Description>PowerShell Cmdlets for SQL Server Reporting Services MassTransit Interface</Description>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SetGitHubActionsVersion>true</SetGitHubActionsVersion>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <PublishDir>..\dist\$(Configuration)\</PublishDir>
     <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.PowerShell.4.ReferenceAssemblies" Version="1.0.0" />
-    <PackageReference Include="RSMassTransit.Client" Version="0.1.0" />
-    <PackageReference Include="RSMassTransit.Client.AzureServiceBus.Core" Version="0.1.0" />
-    <PackageReference Include="RSMassTransit.Client.RabbitMQ" Version="0.1.0" />
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
+    <PackageReference Include="RSMassTransit.Client" Version="0.1.0-rc1" />
+    <PackageReference Include="RSMassTransit.Client.AzureServiceBus.Core" Version="0.1.0-rc1" />
+    <PackageReference Include="RSMassTransit.Client.RabbitMQ" Version="0.1.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>

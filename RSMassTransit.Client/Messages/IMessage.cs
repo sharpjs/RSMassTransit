@@ -14,24 +14,10 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
-#if NETFRAMEWORK
-using System.Security;
-#endif
-
-// Component Object Model
-[assembly: ComVisible(false)]
-
-// Security
-#if NETFRAMEWORK
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-#endif
-
-// Visibility
-[assembly: InternalsVisibleTo("RSMassTransit.Tests")]
-[assembly: InternalsVisibleTo("RSMassTransit.Client.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-//                             ^^^^^^^^^^^^^^^^^^^^^^^^
-//                             Required for Moq to mock a class with an internal abstract method.
+namespace RSMassTransit.Messages
+{
+    /// <summary>
+    ///   Marker interface for RSMassTransit messages.
+    /// </summary>
+    public interface IMessage { }
+}

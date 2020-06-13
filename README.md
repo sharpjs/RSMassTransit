@@ -8,53 +8,28 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 ## Status
 
-**Experimental.**  Currently, only report execution is implemented.
+**Incomplete.**
+- Currently, only report execution is implemented.
+- Report deployment and discovery are planned for implementation sometime
+  between right now and entropic end of the universe.
+- Versions targeting .NET Framework are deployed in production and have been
+  so for several years, with few defects.
+- A port to .NET Core is underway.
+- Test coverage is inadequate.
 
 ## Installation
 
-First, copy the application files to a suitable directory.  A good choice would
-be `C:\Program Files\RSMassTransit`.  Then, edit the `RSMassTransit.exe.config`
-file as required.
-
-RSMassTransit runs as a normal console application if invoked by a logged-on
-user.  It will exit on the first keypress.
-
-```
-RSMassTransit.exe
-```
-
-Otherwise, RSMassTransit runs as a Windows service.  To install the service:
-
-```
-RSMassTransit.exe /install
-```
-
-To uninstall the Windows service:
-
-```
-RSMassTransit.exe /uninstall
-```
-
-To run RSMassTransit as a console application in a *non*-interactive context,
-such as an Azure Web Job:
-
-```
-RSMassTransit.exe /console
-```
+*TODO*
 
 ## Development Setup
 
 * Requirements:
-  * Visual Studio 2017
-  * SQL Server Reporting Services 2016 (might work with earlier versions)
-  * PowerShell 5 (might work with earlier versions)
-* In RSMassTransit.PowerShell project properties, Debug tab:
-  * Click "Start external program" and enter:<br>
-    `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
-  * In "Command line arguments", enter:<br>
-    `-NoLogo -NoProfile -NoExit -Command "Import-Module .\RSMassTransit.psd1"`
+  * Visual Studio 2019
+  * SQL Server Reporting Services 2019 (might work with earlier versions)
+  * PowerShell 5.1+
+  * PowerShell Core 6.x or PowerShell 7+
 * In solution properties, Startup Project tab, ensure that Action is set to `Start` for:
-  * RSMassTransit
+  * RSMassTransit.Tool
   * RSMassTransit.PowerShell
 * On F5 run, two windows should appear:
   * RSMassTransit service console window

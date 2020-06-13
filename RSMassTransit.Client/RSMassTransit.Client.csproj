@@ -17,28 +17,13 @@
   -->
 
   <PropertyGroup>
-    <Description>.NET Core Tool Host for SQL Server Reporting Services MassTransit Interface</Description>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <OutputType>Exe</OutputType>
+    <Description>Messages types and client core for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services.</Description>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>rsmasstransit</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSMassTransit.Engine\RSMassTransit.Engine.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="MassTransit" Version="[6.2.5,7.0.0)" />
   </ItemGroup>
 
 </Project>

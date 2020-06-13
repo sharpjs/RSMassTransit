@@ -11,9 +11,11 @@ indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{json,jsonc,md,xml,yaml,yml}]
-indent_size = 2
-
-[*.{sln,*proj,props,targets}]
+[*.{sln,*proj}]
 charset = utf-8-bom
+
+[*.sln]
+indent_style = tab
+
+[*.{*proj,config,json,jsonc,md,props,targets,xml,yaml,yml}]
 indent_size = 2

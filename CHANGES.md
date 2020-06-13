@@ -6,6 +6,8 @@ Most lines should begin with one of these words:
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...HEAD)
 - Change target frameworks to .NET Core 3.1 and .NET Framework 4.8
+- Merge RSMassTransit.Client and RSMassTransit.PowerShell git repositories
+  into RSMassTransit repository to yield a single RSMassTransit repository.
 - Add dotnet tool packaging
 
 ## [0.1.1](https://github.com/sharpjs/RSMassTransit/compare/v0.1.0...v0.1.1)

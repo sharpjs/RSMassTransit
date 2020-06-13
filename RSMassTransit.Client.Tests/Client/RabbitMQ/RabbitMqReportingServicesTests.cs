@@ -14,24 +14,34 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System;
+using MassTransit;
+using NUnit.Framework;
 
-#if NETFRAMEWORK
-using System.Security;
-#endif
+namespace RSMassTransit.Client.RabbitMQ
+{
+    [TestFixture]
+    public class RabbitMqReportingServicesTests
+    {
+        [Test]
+        public void Create_NullConfiguration()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                new RabbitMqReportingServices(null);
+            });
+        }
 
-// Component Object Model
-[assembly: ComVisible(false)]
-
-// Security
-#if NETFRAMEWORK
-[assembly: SecurityRules(SecurityRuleSet.Level2)]
-#endif
-
-// Visibility
-[assembly: InternalsVisibleTo("RSMassTransit.Tests")]
-[assembly: InternalsVisibleTo("RSMassTransit.Client.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-//                             ^^^^^^^^^^^^^^^^^^^^^^^^
-//                             Required for Moq to mock a class with an internal abstract method.
+        [Test]
+        public void Create_UnrecognizedUri()
+        {
+            Assert.Throws<ConfigurationException>(() =>
+            {
+                new RabbitMqReportingServices(new ReportingServicesConfiguration
+                {
+                    BusUri = new Uri("unrecognized://example.com")
+                });
+            });
+        }
+    }
+}

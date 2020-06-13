@@ -17,19 +17,19 @@
     # Identity
     GUID          = '86812cf8-957d-4eca-b899-6e8c580d68ef'
     RootModule    = 'RSMassTransit.PowerShell.dll'
-    ModuleVersion = '0.0.1'
+    ModuleVersion = '0.1.0'
 
     # General
     Author      = 'Jeffrey Sharp'
-    CompanyName = 'Jeffrey Sharp'
+    CompanyName = 'Subatomix Research, Inc.'
     Copyright   = 'Copyright (C) 2020 Jeffrey Sharp'
     Description = 'Provides the Invoke-RsReport cmdlet, which executes a SQL Server Reporting Services report via a MassTransit message bus.'
 
     # Requirements
     PowerShellVersion      = '5.1'
-    CompatiblePSEditions   = @("Desktop")
-    DotNetFrameworkVersion = '4.7.1'  # Valid for Desktop edition only
-    CLRVersion             = '4.0'    # Valid for Desktop edition only
+    CompatiblePSEditions   = "Desktop", "Core"  # Added in PowerShell 5.1
+    DotNetFrameworkVersion = '4.6.1'            # Valid for Desktop edition only
+    CLRVersion             = '4.0'              # Valid for Desktop edition only
 
     # Exports
     # NOTE: Use empty arrays to indicate no exports.

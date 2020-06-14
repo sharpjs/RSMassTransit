@@ -1,4 +1,4 @@
-![](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)
+[![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
 
 # RSMassTransit
 

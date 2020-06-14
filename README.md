@@ -1,3 +1,5 @@
+![](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)
+
 # RSMassTransit
 
 A [MassTransit](https://github.com/MassTransit/MassTransit)

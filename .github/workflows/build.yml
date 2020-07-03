@@ -1,3 +1,6 @@
+# GitHub Actions workflow
+# https://help.github.com/en/actions/reference
+
 name: Build
 
 on:
@@ -17,38 +20,56 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
-
     steps:
-      # https://github.com/actions/checkout
-      - name: Get Code
-        uses: actions/checkout@v2
+
+      - name: Check Out Code
+        uses: actions/checkout@v2 # https://github.com/actions/checkout
         with:
           fetch-depth: 16
+          clean: true
 
-      # https://github.com/actions/setup-dotnet
       - name: Configure .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v1 # https://github.com/actions/setup-dotnet
         with:
           dotnet-version: 3.1.x
 
       - name: Install NuGet Packages
         run: dotnet restore
 
-      - name: Build
-        id: build
+      - name: Stamp Version
         run: >
-          dotnet build -c Release --no-restore
+          dotnet msbuild .root.targets
+          -t:Stamp
+          -p:Configuration=Release
           -p:Branch=${{ github.ref }}
           -p:Counter=${{ github.run_number }}
           -p:RepositoryCommit=${{ github.sha }}
+
+      - name: Build
+        run: >
+          dotnet build
+          --configuration Release
+          --no-restore
           -p:PackageOutputPath=${{ runner.temp }}\dist
 
       - name: Test
-        run: dotnet test -c Release --no-build
+        run: >
+          dotnet test
+          --configuration Release
+          --no-build
+          --settings Coverlet.runsettings
+          --results-directory:${{ runner.temp }}\coverage\raw
 
-      # https://github.com/actions/upload-artifact
-      - name: Save NuGet Package
-        uses: actions/upload-artifact@v2
+      - name: Prepare Coverage Report
+        uses: danielpalme/ReportGenerator-GitHub-Action@4.6.1 # https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
-          name: RSMassTransit ${{ steps.build.outputs.version }}
+          reports: ${{ runner.temp }}\coverage\raw\**\coverage.opencover.xml
+          targetdir: ${{ runner.temp }}\coverage
+          reporttypes: Cobertura;HtmlInline_AzurePipelines_Dark;Badges;TeamCitySummary
+          verbosity: Warning
+
+      - name: Save NuGet Package
+        uses: actions/upload-artifact@v2 # https://github.com/actions/upload-artifact
+        with:
+          name: Package
           path: ${{ runner.temp }}\dist

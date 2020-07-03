@@ -17,10 +17,6 @@ bin/
 # WCF references
 *.datasource
 
-# Testing
-TestResults
-TestResult*.xml
-
 # Temporary files
 *.log
 *.old

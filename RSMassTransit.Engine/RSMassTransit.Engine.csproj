@@ -28,7 +28,7 @@
     <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' == 'Release' And '$(MSBuildRestoreSessionId)' == ''">
+  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
     <!-- Project dependencies must have same version, not same-or-later. -->
     <PackageReference Include="RSMassTransit.Client" Version="[$(PackageVersion)]" />
   </ItemGroup>

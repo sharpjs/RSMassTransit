@@ -3,26 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{C29566A2-3F1C-467D-8721-3D51B7E7E56D}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		CHANGES.md = CHANGES.md
-		Coverlet.runsettings = Coverlet.runsettings
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
-		icon.png = icon.png
-		LICENSE.txt = LICENSE.txt
-		Make.ps1 = Make.ps1
-		README.md = README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{F12FA401-8363-4982-8B79-8F0541289CC4}"
-	ProjectSection(SolutionItems) = preProject
-		.config\dotnet-tools.json = .config\dotnet-tools.json
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".root", ".root.targets", "{31935090-D802-46C2-943F-DEC04E49912E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Client", "RSMassTransit.Client\RSMassTransit.Client.csproj", "{5EBC9C21-C953-4309-88AC-5308D547D50D}"
 EndProject
@@ -36,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Engine", "RSM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.PowerShell", "RSMassTransit.PowerShell\RSMassTransit.PowerShell.csproj", "{E27CBD7E-6DD9-4240-9018-512526D3A987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSMassTransit.Service", "RSMassTransit.Service\RSMassTransit.Service.csproj", "{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Service", "RSMassTransit.Service\RSMassTransit.Service.csproj", "{A86EFE1E-BE18-470C-8EC6-8CBA83F78473}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSMassTransit.Tests", "RSMassTransit.Tests\RSMassTransit.Tests.csproj", "{323ECB36-5D4A-4C9D-8867-13A74F43FB5D}"
 EndProject
@@ -48,6 +29,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31935090-D802-46C2-943F-DEC04E49912E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31935090-D802-46C2-943F-DEC04E49912E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31935090-D802-46C2-943F-DEC04E49912E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31935090-D802-46C2-943F-DEC04E49912E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBC9C21-C953-4309-88AC-5308D547D50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,9 +72,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{F12FA401-8363-4982-8B79-8F0541289CC4} = {C29566A2-3F1C-467D-8721-3D51B7E7E56D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB0AD8BC-9B4E-4DCE-BB2C-8DEBD7B76FEC}

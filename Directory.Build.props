@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 
   <!--
     Copyright (C) 2020 Jeffrey Sharp
@@ -17,7 +17,7 @@
   -->
 
   <!--
-    * Imported very early, before the project file.
+    * Imported early: this -> NuGet package .props -> SDK .props -> project
     * Many properties are not yet defined and behave as if empty.
     * Provide defaults for properties here.
     https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
@@ -42,12 +42,8 @@
   <!-- Build properties -->
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <!--<Nullable>enable</Nullable>-->
-  </PropertyGroup>
-
-  <!-- Documentation properties -->
-  <PropertyGroup Condition="'$(IsPackable)' != 'false'">
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>disable<!--enable--></Nullable>
+    <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Packaging properties -->
@@ -57,5 +53,17 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <!-- Hide .root project output -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == '.root'">
+    <BaseOutputPath>.vs\.root\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>.vs\.root\obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+  <!-- Version stamping (Subatomix.Build.Versioning.Semantic) -->
+  <PropertyGroup>
+    <StampFilePath>$(MSBuildThisFileDirectory)Stamp.props</StampFilePath>
+  </PropertyGroup>
+  <Import Project="$(StampFilePath)" Condition="Exists('$(StampFilePath)')"/>
 
 </Project>

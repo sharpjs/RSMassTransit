@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 
   <!--
     Copyright (C) 2020 Jeffrey Sharp
@@ -17,22 +17,32 @@
   -->
 
   <!--
-    * Imported after the project file and .targets files from NuGet packages.
+    * Imported late: project -> SDK .targets -> NuGet package .targets -> this
     * Override properties and targets here.
     https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
   -->
-
-  <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
-  </ItemGroup>
 
   <ItemGroup Condition="$(IsPackable)">
     <None Include="..\icon.png" Pack="true" PackagePath="" Link="Properties\icon.png" />
   </ItemGroup>
 
+  <!-- Visibility -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>RSMassTransit.Tests</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>RSMassTransit.Client.Tests</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <!-- Required for Moq to mock a class with an internal abstract method. -->
+      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
   <!-- Versioning -->
   <ItemGroup>
-    <PackageReference Include="Subatomix.Build.Versioning.Semantic" Version="0.0.0-pre.4">
+    <PackageReference Include="Subatomix.Build.Versioning.Semantic" Version="0.0.0-pre.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

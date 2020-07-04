@@ -1,6 +1,4 @@
-[![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
-
-# RSMassTransit
+# RSMassTransit [![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
 
 A [MassTransit](https://github.com/MassTransit/MassTransit)
 message bus interface for SQL Server Reporting Services.

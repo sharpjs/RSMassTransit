@@ -33,17 +33,17 @@ jobs:
         with:
           dotnet-version: 3.1.x
 
-      - name: Install NuGet Packages
-        run: dotnet restore
-
       - name: Stamp Version
         run: >
-          dotnet msbuild .root.targets
-          -t:Stamp
+          dotnet build .root.targets
           -p:Configuration=Release
+          -p:StampOnBuild=true
           -p:Branch=${{ github.ref }}
           -p:Counter=${{ github.run_number }}
           -p:RepositoryCommit=${{ github.sha }}
+
+      - name: Install NuGet Packages
+        run: dotnet restore
 
       - name: Build
         run: >

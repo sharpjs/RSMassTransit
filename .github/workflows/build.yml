@@ -14,6 +14,7 @@ on:
       - '*'
 
 env:
+  # Minimize noise from dotnet CLI
   DOTNET_NOLOGO: true
 
 jobs:
@@ -61,7 +62,7 @@ jobs:
           --results-directory:${{ runner.temp }}\coverage\raw
 
       - name: Prepare Coverage Report
-        uses: danielpalme/ReportGenerator-GitHub-Action@4.6.1 # https://github.com/danielpalme/ReportGenerator-GitHub-Action
+        uses: danielpalme/ReportGenerator-GitHub-Action@4.8.3 # https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}\coverage\raw\**\coverage.opencover.xml
           targetdir: ${{ runner.temp }}\coverage

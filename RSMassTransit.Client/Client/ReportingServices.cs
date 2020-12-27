@@ -40,13 +40,15 @@ namespace RSMassTransit.Client
     /// </summary>
     public abstract class ReportingServices : IReportingServices
     {
+        private const string
+            AssemblyPattern = "RSMassTransit.Client.*.dll",
+            AssemblyPrefix  = "RSMassTransit.Client.";
+
+        private static bool          _assembliesLoaded;
+
         private readonly IBusControl _bus;
         private readonly Uri         _queueUri;
         private int                  _isDisposed;
-
-        private const string         AssemblyPattern = "RSMassTransit.Client.*.dll";
-        private const string         AssemblyPrefix  = "RSMassTransit.Client.";
-        private static bool          _assembliesLoaded;
 
         /// <summary>
         ///   Creates a new <see cref="ReportingServices"/> instance with the

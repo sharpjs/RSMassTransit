@@ -16,7 +16,6 @@
 
 using System;
 using MassTransit;
-using MassTransit.Azure.ServiceBus.Core;
 using Microsoft.Azure.ServiceBus.Primitives;
 
 namespace RSMassTransit.Client.AzureServiceBus
@@ -44,6 +43,9 @@ namespace RSMassTransit.Client.AzureServiceBus
         ///   The configuration for the client, specifying how to communicate
         ///   with RSMassTransit.
         /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="configuration"/> is <see langword="null"/>.
+        /// </exception>
         public AzureServiceBusReportingServices(ReportingServicesConfiguration configuration)
             : base(configuration) { }
 

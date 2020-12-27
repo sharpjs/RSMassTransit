@@ -40,6 +40,9 @@ namespace RSMassTransit.Client.RabbitMQ
         ///   The configuration for the client, specifying how to communicate
         ///   with RSMassTransit.
         /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="configuration"/> is <see langword="null"/>.
+        /// </exception>
         public RabbitMqReportingServices(ReportingServicesConfiguration configuration)
             : base(configuration) { }
 

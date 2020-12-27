@@ -28,6 +28,7 @@ using RSMassTransit.Client.Internal;
 using RSMassTransit.Messages;
 using static System.Reflection.BindingFlags;
 using static System.StringComparison;
+using Sharp.Async;
 
 namespace RSMassTransit.Client
 {

@@ -20,7 +20,6 @@
     <Description>SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFrameworks>net48;netstandard2.1</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
-    <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -38,6 +37,7 @@
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="$(MassTransitVersion)" />
     <PackageReference Include="MassTransit.RabbitMQ"                       Version="$(MassTransitVersion)" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Include="Sharp.Async"                                Version="[0.0.1, 2.0.0)" />
     <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
     <PackageReference Include="Sharp.Disposable"                           Version="[1.0.0, 2.0.0)" />
     <PackageReference Include="System.ServiceModel.Duplex"                 Version="[4.8.0, 5.0.0)" />

@@ -18,6 +18,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using MassTransit;
+using Sharp.Async;
 using Sharp.Disposable;
 
 namespace RSMassTransit.Bus

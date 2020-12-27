@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RSMassTransit.Client.Internal
 {
@@ -46,7 +47,7 @@ namespace RSMassTransit.Client.Internal
 
             if (!enumerator.MoveNext())
             {
-                item = default(T);
+                item = default!;
                 return false;
             }
 
@@ -54,7 +55,7 @@ namespace RSMassTransit.Client.Internal
 
             if (enumerator.MoveNext())
             {
-                item = default(T);
+                item = default!;
                 return false;
             }
 

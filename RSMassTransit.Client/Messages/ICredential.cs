@@ -24,11 +24,11 @@ namespace RSMassTransit.Messages
         /// <summary>
         ///   Username to authenticate with the report server.
         /// </summary>
-        string UserName { get; set; }
+        string? UserName { get; set; }
 
         /// <summary>
         ///   Password to authenticate with the report server.
         /// </summary>
-        string Password { get; set; }
+        string? Password { get; set; }
     }
 }

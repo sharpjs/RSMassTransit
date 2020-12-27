@@ -36,17 +36,17 @@ namespace RSMassTransit.Messages
         ///     <item><c>https:</c></item>
         ///   </list>
         /// </remarks>
-        Uri Uri { get; set; }
+        Uri? Uri { get; set; }
 
         /// <summary>
         ///   Content type (MIME type) of the rendered report.
         /// </summary>
-        string ContentType { get; set; }
+        string? ContentType { get; set; }
 
         /// <summary>
         ///   File name extension of the rendered report.
         /// </summary>
-        string FileNameExtension { get; set; }
+        string? FileNameExtension { get; set; }
 
         /// <summary>
         ///   Length of the rendered report, in bytes.

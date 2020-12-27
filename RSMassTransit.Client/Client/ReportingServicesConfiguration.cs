@@ -38,19 +38,19 @@ namespace RSMassTransit.Client
         ///   URI of the message bus.  The scheme of the URI specifies the kind
         ///   of message bus (RabbitMQ, etc.).
         /// </summary>
-        public Uri BusUri { get; set; }
+        public Uri? BusUri { get; set; }
 
         /// <summary>
         ///   Name of the queue within the message bus.  The default value is
         ///   <c>"reports"</c>.
         /// </summary>
-        public string BusQueue { get; set; } = DefaultBusQueue;
+        public string? BusQueue { get; set; } = DefaultBusQueue;
 
         /// <summary>
         ///   Credential used to authenticate with the message bus.
         ///   If omitted, behavior is client-specific.
         /// </summary>
-        public NetworkCredential BusCredential { get; set; }
+        public NetworkCredential? BusCredential { get; set; }
 
         /// <summary>
         ///   The duration after which the client will cease waiting for a

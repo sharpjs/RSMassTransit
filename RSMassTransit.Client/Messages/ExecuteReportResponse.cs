@@ -25,13 +25,13 @@ namespace RSMassTransit.Messages
     public class ExecuteReportResponse : IExecuteReportResponse
     {
         /// <inheritdoc/>
-        public Uri Uri { get; set; }
+        public Uri? Uri { get; set; }
 
         /// <inheritdoc/>
-        public string ContentType { get; set; }
+        public string? ContentType { get; set; }
 
         /// <inheritdoc/>
-        public string FileNameExtension { get; set; }
+        public string? FileNameExtension { get; set; }
 
         /// <inheritdoc/>
         public long Length { get; set; }
@@ -39,9 +39,9 @@ namespace RSMassTransit.Messages
         /// <inheritdoc/>
         public IList<string> Messages
         {
-            get => _messages ?? (_messages = new List<string>());
+            get => _messages ??= new List<string>();
             set => _messages = value;
         }
-        private IList<string> _messages;
+        private IList<string>? _messages;
     }
 }

@@ -28,7 +28,7 @@ namespace RSMassTransit.Client.RabbitMQ
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                new RabbitMqReportingServices(null);
+                new RabbitMqReportingServices(null!);
             });
         }
 

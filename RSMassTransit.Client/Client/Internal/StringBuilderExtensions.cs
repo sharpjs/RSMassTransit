@@ -31,10 +31,10 @@ namespace RSMassTransit.Client.Internal
         /// <param name="delimiter">The string to delimit each item in the list.</param>
         /// <returns>The <paramref name="builder"/> instance.</returns>
         public static StringBuilder AppendDelimitedList(
-            this StringBuilder  builder,
-            IEnumerable<string> items,
-            string              separator = ", ",
-            string              delimiter = "'")
+            this StringBuilder   builder,
+            IEnumerable<string>? items,
+            string?              separator = ", ",
+            string?              delimiter = "'")
         {
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));

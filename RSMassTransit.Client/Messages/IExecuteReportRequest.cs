@@ -27,7 +27,7 @@ namespace RSMassTransit.Messages
         ///   Virtual path of the report on the report server.
         ///   Example: <c>"/My Reports/Contoso/BalanceSheet"</c>
         /// </summary>
-        string Path { get; set; }
+        string? Path { get; set; }
 
         /// <summary>
         ///   Values for the report's parameters.
@@ -42,7 +42,7 @@ namespace RSMassTransit.Messages
         ///   Language and locale used to interpret parameter values such as
         ///   dates and numbers.  Example: <c>"en-US"</c>
         /// </summary>
-        string ParameterLanguage { get; set; }
+        string? ParameterLanguage { get; set; }
 
         /// <summary>
         ///   Format in which to render the report.

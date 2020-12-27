@@ -151,7 +151,7 @@ namespace RSMassTransit.Client
 
             LoadAssemblies();
             var supportedSchemes = DiscoverSupportedSchemes();
-            var requestedScheme  = configuration.BusUri?.Scheme;
+            var requestedScheme  = configuration.BusUri?.Scheme ?? "(not specified)";
 
             if (!supportedSchemes.TryGetValue(requestedScheme, out Type type))
                 throw OnUnsupportedScheme(requestedScheme, supportedSchemes.Keys);
@@ -164,7 +164,7 @@ namespace RSMassTransit.Client
             if (_assembliesLoaded)
                 return;
 
-            string directory = GetAssemblyDirectorySafe();
+            var directory = GetAssemblyDirectorySafe();
 
             if (!string.IsNullOrEmpty(directory))
                 foreach (var path in Directory.GetFiles(directory, AssemblyPattern))
@@ -173,7 +173,7 @@ namespace RSMassTransit.Client
             _assembliesLoaded = true;
         }
 
-        private static string GetAssemblyDirectorySafe()
+        private static string? GetAssemblyDirectorySafe()
         {
             string path;
 
@@ -270,7 +270,7 @@ namespace RSMassTransit.Client
                     uri, scheme, kind
                 ));
 
-            return uri;
+            return uri!;
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace RSMassTransit.Client
 
             return string.IsNullOrEmpty(queue)
                 ? ReportingServicesConfiguration.DefaultBusQueue
-                : queue;
+                : queue!;
         }
 
         /// <summary>

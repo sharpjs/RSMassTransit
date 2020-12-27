@@ -28,7 +28,7 @@ namespace RSMassTransit.Client.AzureServiceBus
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                new AzureServiceBusReportingServices(null);
+                new AzureServiceBusReportingServices(null!);
             });
         }
 

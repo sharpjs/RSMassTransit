@@ -37,7 +37,7 @@ namespace RSMassTransit.Client
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                ReportingServices.Create(null);
+                ReportingServices.Create(null!);
             });
         }
 
@@ -166,8 +166,7 @@ namespace RSMassTransit.Client
             instance.Verify();
         }
 
-        private static Fake WithInstance
-            (Action<ReportingServicesConfiguration> setup = null)
+        private static Fake WithInstance(Action<ReportingServicesConfiguration>? setup = null)
         {
             var configuration = new ReportingServicesConfiguration
             {

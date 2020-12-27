@@ -63,7 +63,7 @@ namespace RSMassTransit.Client
         {
             var key = (typeof(TRequest), typeof(TResponse));
 
-            if (!RequestClients.TryGetValue(key, out Mock mock))
+            if (!RequestClients.TryGetValue(key, out Mock? mock))
                 mock = RequestClients[key] = new Mock<IRequestClient<TRequest, TResponse>>(MockBehavior.Strict);
 
             return (Mock<IRequestClient<TRequest, TResponse>>) mock;

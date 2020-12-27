@@ -45,6 +45,7 @@
     <Nullable>disable<!--enable--></Nullable>
     <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
     <MassTransitVersion>[6.3.2, 7.0.0)</MassTransitVersion>
+    <MicrosoftExtensionsVersion>[3.1.10, 4.0.0)</MicrosoftExtensionsVersion>
   </PropertyGroup>
 
   <!-- Packaging properties -->

@@ -37,7 +37,7 @@
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core"          Version="$(MassTransitVersion)" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="$(MassTransitVersion)" />
     <PackageReference Include="MassTransit.RabbitMQ"                       Version="$(MassTransitVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="[3.1.6, 4.0.0)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="$(MicrosoftExtensionsVersion)" />
     <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
     <PackageReference Include="Sharp.Disposable"                           Version="[1.0.0, 2.0.0)" />
     <PackageReference Include="System.ServiceModel.Duplex"                 Version="[4.7.0, 5.0.0)" />

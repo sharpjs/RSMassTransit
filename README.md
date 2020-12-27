@@ -1,4 +1,4 @@
-# RSMassTransit [![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
+# RSMassTransit
 
 A [MassTransit](https://github.com/MassTransit/MassTransit)
 message bus interface for SQL Server Reporting Services.
@@ -7,6 +7,8 @@ Idea by [Jahn Swob (@jahn-swob)](https://github.com/jahn-swob),
 implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 ## Status
+
+[![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
 
 **Incomplete.**
 - Currently, only report execution is implemented.

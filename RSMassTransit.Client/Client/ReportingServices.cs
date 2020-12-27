@@ -29,7 +29,9 @@ using RSMassTransit.Messages;
 using static System.Reflection.BindingFlags;
 using static System.StringComparison;
 
-#pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS0618
+// IRequestClient<TRequest, TResponse> is obsolete:
+//   This will be deprecated in the next release
 
 namespace RSMassTransit.Client
 {
@@ -130,6 +132,7 @@ namespace RSMassTransit.Client
             where TRequest  : class
             where TResponse : class
         {
+            // TODO: Use whatever type MassTransit wants us to transition to.
             return _bus.CreateRequestClient<TRequest, TResponse>(
                 _queueUri,
                 timeout ?? Configuration.RequestTimeout

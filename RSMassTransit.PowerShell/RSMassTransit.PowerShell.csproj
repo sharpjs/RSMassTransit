@@ -23,6 +23,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <PublishDir>..\dist\$(Configuration)\</PublishDir>
     <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

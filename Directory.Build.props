@@ -42,7 +42,7 @@
   <!-- Build properties -->
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
-    <Nullable>disable<!--enable--></Nullable>
+    <Nullable>enable</Nullable>
     <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
     <MassTransitVersion>[7.1.0, 8.0.0)</MassTransitVersion>
     <MicrosoftExtensionsVersion>[3.1.10, 4.0.0)</MicrosoftExtensionsVersion>

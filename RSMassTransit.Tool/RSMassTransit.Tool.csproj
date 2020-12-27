@@ -21,7 +21,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
     <RootNamespace>RSMassTransit</RootNamespace>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

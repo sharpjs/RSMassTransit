@@ -34,9 +34,5 @@
     <None Include=".*\**" Exclude=".git\**;.vs\**" />
   </ItemGroup>
 
-  <Target Name="StampOnBuild"
-          AfterTargets="Build"
-          DependsOnTargets="Stamp"
-          Condition="'$(StampOnBuild)' == 'true'" />
 
 </Project>

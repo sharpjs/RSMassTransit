@@ -4,7 +4,7 @@ bin/
 /dist/
 /coverage/
 /Stamp.props
-RSMassTransit.psd1
+RSMassTransit.PowerShell.psd1
 
 # Visual Studio
 .vs/

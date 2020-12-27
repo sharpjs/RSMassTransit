@@ -44,6 +44,7 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>disable<!--enable--></Nullable>
     <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
+    <MassTransitVersion>[6.3.2, 7.0.0)</MassTransitVersion>
   </PropertyGroup>
 
   <!-- Packaging properties -->

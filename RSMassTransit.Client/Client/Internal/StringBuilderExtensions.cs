@@ -20,6 +20,9 @@ using System.Text;
 
 namespace RSMassTransit.Client.Internal
 {
+    /// <summary>
+    ///   Extensions for <see cref="StringBuilder"/>.
+    /// </summary>
     internal static class StringBuilderExtensions
     {
         /// <summary>

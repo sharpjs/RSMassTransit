@@ -26,22 +26,23 @@ using System.Threading.Tasks;
 using MassTransit;
 using RSMassTransit.Client.Internal;
 using RSMassTransit.Messages;
-using static System.Reflection.BindingFlags;
-using static System.StringComparison;
 using Sharp.Async;
 
 namespace RSMassTransit.Client
 {
+    using static BindingFlags;
+    using static StringComparison;
+
     /// <summary>
     ///   Base class for RSMassTransit clients.
     /// </summary>
     public abstract class ReportingServices : IReportingServices
     {
         private const string
-            AssemblyPattern = "RSMassTransit.Client.*.dll",
-            AssemblyPrefix  = "RSMassTransit.Client.";
+            ClientAssemblyPrefix  = "RSMassTransit.Client.",
+            ClientAssemblyPattern = "RSMassTransit.Client.*.dll";
 
-        private static bool          _assembliesLoaded;
+        private static bool          _clientAssembliesLoaded;
 
         private readonly IBusControl _bus;
         private readonly Uri         _queueUri;
@@ -55,6 +56,9 @@ namespace RSMassTransit.Client
         ///   The configuration for the client, specifying how to communicate
         ///   with RSMassTransit.
         /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="configuration"/> is <see langword="null"/>.
+        /// </exception>
         protected ReportingServices(ReportingServicesConfiguration configuration)
         {
             Configuration = configuration
@@ -88,19 +92,21 @@ namespace RSMassTransit.Client
         public virtual IExecuteReportResponse ExecuteReport(
             IExecuteReportRequest request,
             TimeSpan?             timeout = default)
-            => Send<IExecuteReportRequest, IExecuteReportResponse>(request, timeout);
+        {
+            return Send<IExecuteReportRequest, IExecuteReportResponse>(
+                request, timeout
+            );
+        }
 
         /// <inheritdoc/>
-        public virtual async Task<IExecuteReportResponse> ExecuteReportAsync(
+        public virtual Task<IExecuteReportResponse> ExecuteReportAsync(
             IExecuteReportRequest request,
             TimeSpan?             timeout           = default,
             CancellationToken     cancellationToken = default)
         {
-            var response = await SendAsync<IExecuteReportRequest, IExecuteReportResponse>(
+            return SendAsync<IExecuteReportRequest, IExecuteReportResponse>(
                 request, timeout, cancellationToken
             );
-
-            return response.Message;
         }
 
         private TResponse Send<TRequest, TResponse>(
@@ -112,31 +118,38 @@ namespace RSMassTransit.Client
         {
             using var _ = new AsyncScope();
 
-            return SendAsync<TRequest, TResponse>(request, timeout)
+            return SendAsync<TRequest, TResponse>(request, timeout, cancellationToken)
                 .ConfigureAwait(false)
                 .GetAwaiter()
-                .GetResult()
-                .Message;
+                .GetResult();
         }
 
-        private Task<Response<TResponse>> SendAsync<TRequest, TResponse>(
+        private async Task<TResponse> SendAsync<TRequest, TResponse>(
             TRequest          request,
             TimeSpan?         timeout           = default,
             CancellationToken cancellationToken = default)
             where TRequest  : class
             where TResponse : class
         {
-            return CreateRequestClient<TRequest>(timeout)
-                .GetResponse<TResponse>(request, cancellationToken);
+            var response = await CreateRequestClient<TRequest>(timeout)
+                .GetResponse<TResponse>(request, cancellationToken)
+                .ConfigureAwait(false);
+
+            return response.Message;
         }
 
         /// <summary>
         ///   Creates a MassTransit request client.
         /// </summary>
-        /// <typeparam name="TRequest">Type of the request.</typeparam>
-        /// <typeparam name="TResponse">Type of the response.</typeparam>
-        /// <param name="timeout">If specified, overrides the configured timeout.</param>
-        /// <returns>A MassTransit request client.</returns>
+        /// <typeparam name="TRequest">
+        ///   Type of the request.
+        /// </typeparam>
+        /// <param name="timeout">
+        ///   If specified, overrides the configured timeout.
+        /// </param>
+        /// <returns>
+        ///   A MassTransit request client.
+        /// </returns>
         protected virtual IRequestClient<TRequest>
             CreateRequestClient<TRequest>(TimeSpan? timeout = null)
             where TRequest : class
@@ -155,6 +168,17 @@ namespace RSMassTransit.Client
         ///   The configuration for the client, specifying how to communicate
         ///   with RSMassTransit.
         /// </param>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="configuration"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        ///   The URI scheme specified by <paramref name="configuration"/> in
+        ///   the <see cref="ReportingServicesConfiguration.BusUri"/> property
+        ///   is not supported by any loaded RSMassTransit client type.
+        /// </exception>
+        /// <exception cref="FileLoadException">
+        ///   Could not load a client assembly (<c>RSMassTransit.Client.*.dll</c>).
+        /// </exception>
         public static ReportingServices Create(ReportingServicesConfiguration configuration)
         {
             if (configuration == null)
@@ -172,32 +196,26 @@ namespace RSMassTransit.Client
 
         private static void LoadAssemblies()
         {
-            if (_assembliesLoaded)
+            if (_clientAssembliesLoaded)
                 return;
 
-            var directory = GetAssemblyDirectorySafe();
-
-            if (!string.IsNullOrEmpty(directory))
-                foreach (var path in Directory.GetFiles(directory, AssemblyPattern))
+            if (GetAssemblyDirectory() is string directory)
+                foreach (var path in Directory.GetFiles(directory, ClientAssemblyPattern))
                     Assembly.LoadFrom(path);
 
-            _assembliesLoaded = true;
+            _clientAssembliesLoaded = true;
         }
 
-        private static string? GetAssemblyDirectorySafe()
+        private static string? GetAssemblyDirectory()
         {
-            string path;
+            // This is not a dynamic assembly, so Assembly.Location will not
+            // throw.  This assembly might have been loaded via Load(byte[]),
+            // in which case its location is "".
+            var path = typeof(ReportingServices).Assembly.Location;
 
-            try
-            {
-                path = typeof(ReportingServices).Assembly.Location;
-            }
-            catch (NotSupportedException)
-            {
-                return null;
-            }
-
-            return string.IsNullOrEmpty(path)
+            // GetDirectoryName(null or "") behavior differs between target
+            // frameworks, so avoid that case.
+            return path is null or ""
                 ? null
                 : Path.GetDirectoryName(path);
         }
@@ -209,7 +227,7 @@ namespace RSMassTransit.Client
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 // Assembly must be from RSMassTransit.Client family
-                if (!assembly.GetName().Name.StartsWith(AssemblyPrefix, Ordinal))
+                if (!assembly.GetName().Name.StartsWith(ClientAssemblyPrefix, Ordinal))
                     continue;
 
                 foreach (var type in assembly.GetExportedTypes())
@@ -237,21 +255,21 @@ namespace RSMassTransit.Client
             string              requestedScheme,
             IEnumerable<string> supportedSchemes)
         {
-            var message = new StringBuilder();
-
-            message.AppendFormat(
-                "The URI scheme '{0}' is not supported by any loaded RSMassTransit client type.  ",
-                requestedScheme
-            );
+            var message = new StringBuilder()
+                .Append("The URI scheme '")
+                .Append(requestedScheme)
+                .Append("' is not supported by any loaded RSMassTransit client type.  ");
 
             if (supportedSchemes.Any())
-                message.Append("Supported schemes are: ")
+                message
+                    .Append("Supported schemes are: ")
                     .AppendDelimitedList(supportedSchemes);
             else
-                message.Append(
-                    "No RSMassTransit client types are loaded.  " +
-                    "Did you forget to install a client package?"
-                );
+                message
+                    .Append(
+                        "No RSMassTransit client types are loaded.  " +
+                        "Did you forget to install a client package?"
+                    );
 
             return new ArgumentException(message.ToString(), "configuration");
         }
@@ -260,60 +278,77 @@ namespace RSMassTransit.Client
         ///   Validates the configured bus URI and converts it to a normalized
         ///   form.
         /// </summary>
-        /// <param name="scheme">The required URI scheme.</param>
-        /// <param name="kind">A short human-readable name for the kind of bus URI.</param>
-        /// <returns>The normalized bus URI.</returns>
+        /// <param name="scheme">
+        ///   The required URI scheme.
+        /// </param>
+        /// <param name="kind">
+        ///   A short human-readable name for the kind of bus URI.
+        /// </param>
+        /// <returns>
+        ///   The normalized bus URI.
+        /// </returns>
+        /// <exception cref="ConfigurationException">
+        ///   The <see cref="ReportingServicesConfiguration.BusUri"/> value is
+        ///   not a valid URI for the <paramref name="kind"/> of bus.
+        /// </exception>
         protected virtual Uri NormalizeBusUri(string scheme, string kind)
         {
             var uri = Configuration.BusUri;
 
-            var valid
-                =  uri != null
+            if (uri is not null
                 && uri.IsAbsoluteUri
                 && uri.Scheme.Equals(scheme, OrdinalIgnoreCase)
-                && !string.IsNullOrEmpty(uri.Host);
+                && uri.Host is not (null or ""))
+            {
+                return uri;
+            }
 
-            if (!valid)
-                throw new ConfigurationException(string.Format(
-                    "Invalid RSMassTransit client configuration.  " +
-                    "The BusUri value '{0}' is not a valid {2} bus URI.  " +
-                    "The value must be an absolute URI with scheme '{1}' and must contain a hostname.",
-                    uri, scheme, kind
-                ));
-
-            return uri!;
+            throw new ConfigurationException(string.Format(
+                "Invalid RSMassTransit client configuration.  " +
+                "The BusUri value '{0}' is not a valid {2} bus URI.  " +
+                "The value must be an absolute URI with scheme '{1}' and must contain a hostname.",
+                uri, scheme, kind
+            ));
         }
 
         /// <summary>
         ///   Validates the configured queue name and converts it to a
         ///   normalized form.
         /// </summary>
-        /// <returns>The normalized queue name.</returns>
+        /// <returns>
+        ///   The normalized queue name.
+        /// </returns>
         protected virtual string NormalizeBusQueue()
         {
             var queue = Configuration.BusQueue;
 
-            return string.IsNullOrEmpty(queue)
+            return queue is null or ""
                 ? ReportingServicesConfiguration.DefaultBusQueue
-                : queue!;
+                : queue;
         }
 
         /// <summary>
         ///   Validates the configured bus credential and converts to a
         ///   normalized form.
         /// </summary>
-        /// <returns>The normalized bus credential.</returns>
+        /// <returns>
+        ///   The normalized bus credential.
+        /// </returns>
+        /// <exception cref="ConfigurationException">
+        ///   The <see cref="ReportingServicesConfiguration.BusCredential"/>
+        ///   property is <see langword="null"/>.
+        /// </exception>
         protected virtual NetworkCredential NormalizeBusCredential()
         {
             var credential = Configuration.BusCredential;
 
-            if (credential == null)
-                throw new ConfigurationException(
-                    "Invalid RSMassTransit client configuration.  " +
-                    "The BusCredential property is null."
-                );
+            if (credential is not null)
+                return credential;
 
-            return credential;
+            throw new ConfigurationException(
+                "Invalid RSMassTransit client configuration.  " +
+                "The BusCredential property is null."
+            );
         }
 
         /// <summary>
@@ -347,7 +382,7 @@ namespace RSMassTransit.Client
                 return; // already disposed
 
             if (managed)
-                _bus?.Stop();
+                _bus.Stop();
         }
     }
 }

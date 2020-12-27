@@ -40,10 +40,10 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="$(MicrosoftExtensionsVersion)" />
     <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
     <PackageReference Include="Sharp.Disposable"                           Version="[1.0.0, 2.0.0)" />
-    <PackageReference Include="System.ServiceModel.Duplex"                 Version="[4.7.0, 5.0.0)" />
-    <PackageReference Include="System.ServiceModel.Http"                   Version="[4.7.0, 5.0.0)" />
-    <PackageReference Include="System.ServiceModel.NetTcp"                 Version="[4.7.0, 5.0.0)" />
-    <PackageReference Include="System.ServiceModel.Security"               Version="[4.7.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.Duplex"                 Version="[4.8.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.Http"                   Version="[4.8.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.NetTcp"                 Version="[4.8.0, 5.0.0)" />
+    <PackageReference Include="System.ServiceModel.Security"               Version="[4.8.0, 5.0.0)" />
   </ItemGroup>
 
   <ItemGroup>

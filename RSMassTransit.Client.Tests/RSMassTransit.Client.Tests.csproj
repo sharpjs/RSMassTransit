@@ -20,7 +20,6 @@
     <Description>Test suite for RSMassTransit.Client and related assemblies.</Description>
     <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup>

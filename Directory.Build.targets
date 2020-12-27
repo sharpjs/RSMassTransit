@@ -55,11 +55,11 @@
 
   <!-- SourceLink https://github.com/dotnet/sourcelink/blob/master/README.md -->
   <ItemGroup Condition="$(IsPackable)">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
   </ItemGroup>
 
   <!--
-    The following is needed to work around this netstandard2.0 bug:
+    InheritDoc: Workaround for this netstandard2.0 bug:
     https://github.com/dotnet/standard/issues/1527
   -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

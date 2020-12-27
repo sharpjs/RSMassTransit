@@ -39,8 +39,7 @@ namespace RSMassTransit.Client
         public Mock<IBusControl> Bus { get; }
             = new Mock<IBusControl>(MockBehavior.Strict);
 
-        public Dictionary<(Type, Type), Mock> RequestClients { get; }
-            = new Dictionary<(Type, Type), Mock>();
+        public Dictionary<Type, Mock> RequestClients { get; } = new();
 
         protected override IBusControl CreateBus(out Uri queueUri)
         {
@@ -51,31 +50,35 @@ namespace RSMassTransit.Client
             return Bus.Object;
         }
 
-        protected override IRequestClient<TRequest, TResponse>
-            CreateRequestClient<TRequest, TResponse>(TimeSpan? timeout = null)
+        protected override IRequestClient<TRequest>
+            CreateRequestClient<TRequest>(TimeSpan? timeout = null)
+            where TRequest  : class
         {
-            return GetRequestClient<TRequest, TResponse>().Object;
+            return GetRequestClient<TRequest>().Object;
         }
 
-        private Mock<IRequestClient<TRequest, TResponse>> GetRequestClient<TRequest, TResponse>()
+        private Mock<IRequestClient<TRequest>> GetRequestClient<TRequest>()
             where TRequest  : class
-            where TResponse : class
         {
-            var key = (typeof(TRequest), typeof(TResponse));
+            var key = typeof(TRequest);
 
             if (!RequestClients.TryGetValue(key, out Mock? mock))
-                mock = RequestClients[key] = new Mock<IRequestClient<TRequest, TResponse>>(MockBehavior.Strict);
+                mock = RequestClients[key] = new Mock<IRequestClient<TRequest>>(MockBehavior.Strict);
 
-            return (Mock<IRequestClient<TRequest, TResponse>>) mock;
+            return (Mock<IRequestClient<TRequest>>) mock;
         }
 
         public void SetupRequest<TRequest, TResponse>(TRequest request, TResponse response)
             where TRequest  : class
             where TResponse : class
         {
-            GetRequestClient<TRequest, TResponse>()
-                .Setup(c => c.Request(request, It.IsAny<CancellationToken>()))
-                .ReturnsAsync(response)
+            var responseWrapper = new Mock<Response<TResponse>>(MockBehavior.Strict);
+
+            responseWrapper.Setup(r => r.Message).Returns(response);
+
+            GetRequestClient<TRequest>()
+                .Setup(c => c.GetResponse<TResponse>(request, It.IsAny<CancellationToken>(), It.IsAny<RequestTimeout>()))
+                .ReturnsAsync(responseWrapper.Object)
                 .Verifiable();
         }
 

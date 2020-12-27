@@ -29,10 +29,6 @@ using RSMassTransit.Messages;
 using static System.Reflection.BindingFlags;
 using static System.StringComparison;
 
-#pragma warning disable CS0618
-// IRequestClient<TRequest, TResponse> is obsolete:
-//   This will be deprecated in the next release
-
 namespace RSMassTransit.Client
 {
     /// <summary>
@@ -94,11 +90,17 @@ namespace RSMassTransit.Client
             => Send<IExecuteReportRequest, IExecuteReportResponse>(request, timeout);
 
         /// <inheritdoc/>
-        public virtual Task<IExecuteReportResponse> ExecuteReportAsync(
+        public virtual async Task<IExecuteReportResponse> ExecuteReportAsync(
             IExecuteReportRequest request,
             TimeSpan?             timeout           = default,
             CancellationToken     cancellationToken = default)
-            => SendAsync<IExecuteReportRequest, IExecuteReportResponse>(request, timeout, cancellationToken);
+        {
+            var response = await SendAsync<IExecuteReportRequest, IExecuteReportResponse>(
+                request, timeout, cancellationToken
+            );
+
+            return response.Message;
+        }
 
         private TResponse Send<TRequest, TResponse>(
             TRequest          request,
@@ -112,18 +114,19 @@ namespace RSMassTransit.Client
             return SendAsync<TRequest, TResponse>(request, timeout)
                 .ConfigureAwait(false)
                 .GetAwaiter()
-                .GetResult();
+                .GetResult()
+                .Message;
         }
 
-        private Task<TResponse> SendAsync<TRequest, TResponse>(
+        private Task<Response<TResponse>> SendAsync<TRequest, TResponse>(
             TRequest          request,
             TimeSpan?         timeout           = default,
             CancellationToken cancellationToken = default)
             where TRequest  : class
             where TResponse : class
         {
-            return CreateRequestClient<TRequest, TResponse>(timeout)
-                .Request(request, cancellationToken);
+            return CreateRequestClient<TRequest>(timeout)
+                .GetResponse<TResponse>(request, cancellationToken);
         }
 
         /// <summary>
@@ -133,13 +136,11 @@ namespace RSMassTransit.Client
         /// <typeparam name="TResponse">Type of the response.</typeparam>
         /// <param name="timeout">If specified, overrides the configured timeout.</param>
         /// <returns>A MassTransit request client.</returns>
-        protected virtual IRequestClient<TRequest, TResponse>
-            CreateRequestClient<TRequest, TResponse>(TimeSpan? timeout = null)
-            where TRequest  : class
-            where TResponse : class
+        protected virtual IRequestClient<TRequest>
+            CreateRequestClient<TRequest>(TimeSpan? timeout = null)
+            where TRequest : class
         {
-            // TODO: Use whatever type MassTransit wants us to transition to.
-            return _bus.CreateRequestClient<TRequest, TResponse>(
+            return _bus.CreateRequestClient<TRequest>(
                 _queueUri,
                 timeout ?? Configuration.RequestTimeout
             );

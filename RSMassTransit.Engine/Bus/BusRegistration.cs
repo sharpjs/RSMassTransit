@@ -50,16 +50,16 @@ namespace RSMassTransit.Bus
             return new BusConfiguration(configuration);
         }
 
-        private static void ConfigureServices(IServiceCollectionConfigurator services)
+        private static void ConfigureServices(IServiceCollectionBusConfigurator services)
         {
             services.AddConsumer<ExecuteReportConsumer>();
             services.AddBus(CreateBus);
         }
 
-        private static IBusControl CreateBus(IRegistrationContext<IServiceProvider> context)
+        private static IBusControl CreateBus(IBusRegistrationContext context)
         {
             // This is called only once, so a fancier bus type registry is unwarranted.
-            var configuration = context.Container.GetRequiredService<IBusConfiguration>();
+            var configuration = context.GetRequiredService<IBusConfiguration>();
             var scheme        = configuration.HostUri.Scheme;
 
             if (RabbitMqScheme.Equals(scheme, TypeComparison))
@@ -76,8 +76,8 @@ namespace RSMassTransit.Bus
         }
 
         private static IBusControl CreateBusUsingRabbitMq(
-            IRegistrationContext<IServiceProvider> context,
-            IBusConfiguration                      configuration)
+            IBusRegistrationContext context,
+            IBusConfiguration       configuration)
         {
             return MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
@@ -99,8 +99,8 @@ namespace RSMassTransit.Bus
         }
 
         private static IBusControl CreateBusUsingAzureServiceBus(
-            IRegistrationContext<IServiceProvider> context,
-            IBusConfiguration                      configuration)
+            IBusRegistrationContext context,
+            IBusConfiguration       configuration)
         {
             const string UriDomain = ".servicebus.windows.net";
 

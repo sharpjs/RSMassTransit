@@ -47,10 +47,7 @@
 
   <!-- <inheritdoc/> support -->
   <ItemGroup>
-    <PackageReference Include="SauceControl.InheritDoc" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="SauceControl.InheritDoc" Version="1.2.0" PrivateAssets="all" />
   </ItemGroup>
 
   <!-- SourceLink https://github.com/dotnet/sourcelink/blob/master/README.md -->

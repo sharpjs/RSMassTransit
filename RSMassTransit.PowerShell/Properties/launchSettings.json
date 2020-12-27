@@ -1,15 +1,15 @@
 {
   "profiles": {
-    "PS Core": {
+    "PS 7.0+": {
       "commandName": "Executable",
       "executablePath": "pwsh",
-      "commandLineArgs": "-NoLogo -NoProfile -NoExit -Command \"Import-Module .\\RSMassTransit.psd1; Set-PSReadLineOption -EditMode Emacs\"",
+      "commandLineArgs": "-NoLogo -NoProfile -NoExit -Command \"Import-Module .\\RSMassTransit.PowerShell.psd1; Set-PSReadLineOption -EditMode Emacs\"",
       "workingDirectory": "$(OutDir)"
     },
-    "PS Desktop": {
+    "PS 5.1": {
       "commandName": "Executable",
       "executablePath": "powershell",
-      "commandLineArgs": "-NoLogo -NoProfile -NoExit -Command \"Import-Module .\\RSMassTransit.psd1; Set-PSReadLineOption -EditMode Emacs\"",
+      "commandLineArgs": "-NoLogo -NoProfile -NoExit -Command \"Import-Module .\\RSMassTransit.PowerShell.psd1; Set-PSReadLineOption -EditMode Emacs\"",
       "workingDirectory": "$(OutDir)"
     }
   }

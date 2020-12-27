@@ -4,16 +4,11 @@ bin/
 /dist/
 /coverage/
 /Stamp.props
+RSMassTransit.psd1
 
 # Visual Studio
 .vs/
 *.user
-
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.sap
 
 # WCF references
 *.datasource

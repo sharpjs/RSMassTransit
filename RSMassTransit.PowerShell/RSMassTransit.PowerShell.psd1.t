@@ -17,19 +17,27 @@
     # Identity
     GUID          = '86812cf8-957d-4eca-b899-6e8c580d68ef'
     RootModule    = 'RSMassTransit.PowerShell.dll'
-    ModuleVersion = '0.1.0'
+    ModuleVersion = '{VersionPrefix}'
 
     # General
-    Author      = 'Jeffrey Sharp'
-    CompanyName = 'Subatomix Research, Inc.'
-    Copyright   = '© 2020 Jeffrey Sharp'
     Description = 'Provides the Invoke-RsReport cmdlet, which executes a SQL Server Reporting Services report via a MassTransit message bus.'
+    Author      = 'Jeffrey Sharp'
+    CompanyName = 'Subatomix Research Inc.'
+    Copyright   = '{Copyright}'
 
     # Requirements
     PowerShellVersion      = '5.1'
     CompatiblePSEditions   = "Desktop", "Core"  # Added in PowerShell 5.1
     DotNetFrameworkVersion = '4.6.1'            # Valid for Desktop edition only
     CLRVersion             = '4.0'              # Valid for Desktop edition only
+    #RequiredModules       = @(...)
+    #RequiredAssemblies    = @(...)
+
+    # Initialization
+    #ScriptsToProcess = @(...)
+    #TypesToProcess   = @(...)
+    #FormatsToProcess = @(...)
+    #NestedModules    = @(...)
 
     # Exports
     # NOTE: Use empty arrays to indicate no exports.
@@ -42,14 +50,16 @@
     # Discoverability and URLs
     PrivateData = @{
         PSData = @{
-            Tags = @("SSRS", "Reporting", "Report", "RsReport", "Invoke", "MassTransit", "message", "bus")
-            LicenseUri = 'https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt'
-            ProjectUri = 'https://github.com/sharpjs/RSMassTransit'
-            # IconUri = ''
-            ReleaseNotes = @"
-Release notes are available at:
-https://github.com/sharpjs/RSMassTransit/releases
-"@
+            # Additional metadata
+            Prerelease   = '{VersionSuffix}'
+            ProjectUri   = 'https://github.com/sharpjs/RSMassTransit'
+            ReleaseNotes = "https://github.com/sharpjs/RSMassTransit/blob/master/CHANGES.md"
+            LicenseUri   = 'https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt'
+            IconUri      = 'https://github.com/sharpjs/RSMassTransit/blob/master/icon.png'
+            Tags         = @(
+                "SSRS", "Reporting", "Report", "RsReport", "Invoke", "MassTransit", "message", "bus",
+                "PSEdition_Desktop", "PSEdition_Core", "Windows", "Linux", "MacOS"
+            )
         }
     }
 }

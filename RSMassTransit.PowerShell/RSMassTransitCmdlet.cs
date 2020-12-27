@@ -53,7 +53,7 @@ namespace RSMassTransit.PowerShell
         [ValidateRange(0, int.MaxValue)]
         public int TimeoutSeconds { get; set; } = DefaultTimeoutSeconds;
 
-        protected IReportingServices Client { get; private set; }
+        protected IReportingServices? Client { get; private set; }
 
         protected override void BeginProcessing()
         {

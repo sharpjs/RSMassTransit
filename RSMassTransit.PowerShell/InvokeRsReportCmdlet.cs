@@ -27,14 +27,14 @@ namespace RSMassTransit.PowerShell
     {
         [Parameter(Position = 0, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public string? Path { get; set; }
 
         [Parameter(Position = 1, Mandatory = true)]
         public ReportFormat Format { get; set; }
 
         [Parameter(Position = 2)]
         [AllowNull, AllowEmptyCollection]
-        public Hashtable Parameters { get; set; }
+        public Hashtable? Parameters { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -50,7 +50,8 @@ namespace RSMassTransit.PowerShell
 
             ProvideRsCredential(request);
 
-            var response = WithFaultHandling(() => Client.ExecuteReport(request));
+            // NULLS: Client is set in BeginProcessing
+            var response = WithFaultHandling(() => Client!.ExecuteReport(request));
 
             WriteObject(response);
         }

@@ -20,10 +20,6 @@
     <Description>PowerShell Cmdlets for SQL Server Reporting Services MassTransit Interface</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <PublishDir>..\dist\$(Configuration)\</PublishDir>
-    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->
-    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,20 +27,9 @@
     <ProjectReference Include="..\RSMassTransit.Client.RabbitMQ\RSMassTransit.Client.RabbitMQ.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
-    <!-- Project dependencies must have same version, not same-or-later. -->
-    <PackageReference Include="RSMassTransit.Client.AzureServiceBus.Core" Version="[$(PackageVersion)]" />
-    <PackageReference Include="RSMassTransit.Client.RabbitMQ"             Version="[$(PackageVersion)]" />
-  </ItemGroup>
-
   <ItemGroup>
+    <PackageReference Include="Subatomix.Build.Packaging.PowerShellModule" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="RSMassTransit.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -21,8 +21,6 @@ using System.Threading;
 using MassTransit;
 using Moq;
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace RSMassTransit.Client
 {
     public class FakeReportingServices : ReportingServices

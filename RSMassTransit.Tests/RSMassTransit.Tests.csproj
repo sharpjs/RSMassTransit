@@ -34,10 +34,6 @@
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
   </ItemGroup>
 
-  <!--<ItemGroup>
-    <Reference Include="System.ServiceModel" />
-  </ItemGroup>-->
-
   <ItemGroup>
     <None Update="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

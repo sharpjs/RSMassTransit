@@ -105,8 +105,12 @@ namespace RSMassTransit.Client
             where TRequest  : class
             where TResponse : class
         {
-            using (new AsyncScope())
-                return SendAsync<TRequest, TResponse>(request, timeout).GetResultOrThrowUnwrapped();
+            using var _ = new AsyncScope();
+
+            return SendAsync<TRequest, TResponse>(request, timeout)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
         private Task<TResponse> SendAsync<TRequest, TResponse>(

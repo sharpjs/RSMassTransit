@@ -26,7 +26,6 @@
     <SkipCopyBuildProduct>true</SkipCopyBuildProduct>
     <IsPublishable>false</IsPublishable>
     <IsPackable>false</IsPackable>
-    <SetGitHubActionsVersion>true</SetGitHubActionsVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -31,4 +31,8 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="$(MicrosoftExtensionsVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\LICENSE.txt" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

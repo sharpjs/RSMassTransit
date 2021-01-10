@@ -46,6 +46,7 @@
     <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
     <MassTransitVersion>[7.1.2, 8.0.0)</MassTransitVersion>
     <MicrosoftExtensionsVersion>[3.1.10, 4.0.0)</MicrosoftExtensionsVersion>
+    <ApplicationIcon>..\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <!-- Packaging properties -->

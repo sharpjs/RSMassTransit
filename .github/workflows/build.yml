@@ -81,8 +81,9 @@ jobs:
           -o ${{ runner.temp }}\bin\win-x64
 
       - name: Zip Service Package
+        #url: https://sevenzip.osdn.jp/chm/cmdline/index.htm
         run: >
-          7z add
+          7z a
           "${{ runner.temp }}\dist\RSMassTransit.Service-${{ steps.stamp.outputs.version }}-win-x64.zip"
           "${{ runner.temp }}\bin\win-x64\*"
           -r -mx=7

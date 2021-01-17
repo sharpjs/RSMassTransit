@@ -35,6 +35,7 @@
   <ItemGroup>
     <None Include="..\LICENSE.txt" CopyToPublishDirectory="PreserveNewest" />
     <None Update="Set-Configuration.ps1" CopyToPublishDirectory="PreserveNewest" />
+    <Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
 </Project>

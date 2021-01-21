@@ -17,6 +17,8 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging.Configuration;
+using Microsoft.Extensions.Logging.EventLog;
 
 namespace RSMassTransit.Service
 {
@@ -70,6 +72,12 @@ namespace RSMassTransit.Service
             HostBuilderContext context,
             IServiceCollection services)
         {
+            // Required to convince the EventLogLoggerProvider to honor
+            // configuration for more than just log level.
+            // https://github.com/dotnet/extensions/issues/2519
+            LoggerProviderOptions.RegisterProviderOptions
+                <EventLogSettings, EventLogLoggerProvider>(services);
+
             services.AddRSMassTransit(context.Configuration);
         }
     }

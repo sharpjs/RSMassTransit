@@ -10,13 +10,12 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 [![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
 
-**Incomplete.**
 - Currently, only report execution is implemented.
 - Report deployment and discovery are planned for implementation sometime
-  between right now and entropic end of the universe.
+  between right now and the entropic end of the universe.
 - Versions targeting .NET Framework are deployed in production and have been
   so for several years, with few defects.
-- A port to .NET Core is underway.
+- A port to .NET Core 3.1 is nearing release.
 - Test coverage is inadequate.
 
 ## Installation

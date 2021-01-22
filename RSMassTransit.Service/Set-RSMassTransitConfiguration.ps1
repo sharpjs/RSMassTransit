@@ -132,6 +132,6 @@ process {
 
 end {
     if ($Changed) {
-        $Config | ConvertTo-Json | Set-Content $ConfigPath -Encoding utf8
+        $Config | ConvertTo-Json -Depth 32 | Set-Content $ConfigPath -Encoding utf8
     }
 }

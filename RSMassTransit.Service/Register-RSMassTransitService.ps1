@@ -63,7 +63,7 @@ process {
             -DisplayName    'SQL Server Reporting Services MassTransit Interface' `
             -Description    'Executes reports in response to messages received on a MassTransit message bus.' `
             -BinaryPathName (Join-Path $PSScriptRoot RSMassTransit.Service.exe) `
-            -StartupType    Manual `
+            -StartupType    Automatic `
             -DependsOn      $DependsOn `
             > $null
     }

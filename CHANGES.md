@@ -7,7 +7,7 @@ Most lines should begin with one of these words:
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0-pre.2...HEAD)
 (none)
 
-## [1.0.0-pre.2](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0-pre.2)
+## [1.0.0-pre.3](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0-pre.3)
 - Change project structure.
   - Extract server engine into `RSMassTransit.Engine.dll`.
   - Add Windows service package.

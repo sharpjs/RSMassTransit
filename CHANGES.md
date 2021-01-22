@@ -28,6 +28,7 @@ Most lines should begin with one of these words:
 - Add/Update dependencies:
   - MassTransit 7.1.3
   - Microsoft.Extensions.* 3.1.11
+  - Subatomix.Testing 1.1.0 *(build)*
 
 - Change automated build system to GitHub Actions.
 

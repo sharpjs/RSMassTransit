@@ -51,6 +51,11 @@ begin {
 process {
     $ServiceName = "RSMassTransit"
 
+    $DependsOn = @(
+        Get-Service SQLServerReportingServices, ReportServer -ErrorAction SilentlyContinue `
+            | ForEach-Object Name
+    )
+
     if (-not (Get-Service $ServiceName -ErrorAction SilentlyContinue)) {
         Write-Host "Creating service $ServiceName."
         New-Service `
@@ -59,7 +64,7 @@ process {
             -Description    'Executes reports in response to messages received on a MassTransit message bus.' `
             -BinaryPathName (Join-Path $PSScriptRoot RSMassTransit.Service.exe) `
             -StartupType    Manual `
-            -DependsOn      SQLServerReportingServices `
+            -DependsOn      $DependsOn `
             > $null
     }
 

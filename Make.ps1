@@ -5,8 +5,7 @@
 .DESCRIPTION
     This script is similar to a makefile.
 
-.NOTES
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -22,26 +21,30 @@
 #>
 [CmdletBinding(DefaultParameterSetName="Test")]
 param (
+    # Clean.
+    [Parameter(Mandatory, ParameterSetName="Clean")]
+    [switch] $Clean
+,
     # Build.
     [Parameter(Mandatory, ParameterSetName="Build")]
-    [switch] $Build,
-
+    [switch] $Build
+,
     # Build, run tests.
     [Parameter(ParameterSetName="Test")]
-    [switch] $Test,
-
-    # Build, run tests, and produce code covarage report.
+    [switch] $Test
+,
+    # Build, run tests, produce code coverage report.
     [Parameter(Mandatory, ParameterSetName="Coverage")]
-    [switch] $Coverage,
-
+    [switch] $Coverage
+,
     # The configuration to build: Debug or Release.  The default is Debug.
     [Parameter(ParameterSetName="Build")]
     [Parameter(ParameterSetName="Test")]
     [Parameter(ParameterSetName="Coverage")]
     [ValidateSet("Debug", "Release")]
-    [string] $Configuration = "Debug",
-
-    # Update dotnet local tools, like the coverage report generator.
+    [string] $Configuration = "Debug"
+,
+    # Update .NET CLI 'local tool' plugins.
     [Parameter(Mandatory, ParameterSetName="UpdateLocalTools")]
     [switch] $UpdateLocalTools
 )
@@ -69,6 +72,11 @@ function Main {
         return
     }
 
+    if ($Clean) {
+        Invoke-Clean
+        return
+    }
+
     Invoke-Build
 
     if ($Test -or $Coverage) {
@@ -78,22 +86,31 @@ function Main {
     if ($Coverage) {
         Export-CoverageReport
     }
-}
+} 
 
 function Update-LocalTools {
     Write-Phase "Update Local Tools"
-    Invoke-DotNetExe tool update dotnet-reportgenerator-globaltool
+    Invoke-DotNet tool update dotnet-reportgenerator-globaltool
+}
+
+function Invoke-Clean {
+    Write-Phase "Clean"
+    Invoke-Git "clean",
+        "-fxd",               # Delete all untracked files in directory tree
+        "-e", "*.suo",        # Keep Visual Studio <  2015 local options
+        "-e", "*.user",       # Keep Visual Studio <  2015 local options
+        "-e", ".vs/"          # Keep Visual Studio >= 2015 local options
 }
 
 function Invoke-Build {
     Write-Phase "Build"
-    Invoke-DotNetExe build --configuration:$Configuration
+    Invoke-DotNet build --configuration:$Configuration
 }
 
 function Invoke-Test {
     Write-Phase "Test$(if ($Coverage) {" + Coverage"})"
     Remove-Item coverage\raw -Recurse -ErrorAction SilentlyContinue
-    Invoke-DotNetExe -Arguments @(
+    Invoke-DotNet -Arguments @(
         "test"
         "--nologo"
         "--no-build"
@@ -107,23 +124,32 @@ function Invoke-Test {
 
 function Export-CoverageReport {
     Write-Phase "Coverage Report"
-    Invoke-DotNetExe -Arguments "tool", "restore"
-    Invoke-DotNetExe -Arguments @(
+    Invoke-DotNet -Arguments "tool", "restore"
+    Invoke-DotNet -Arguments @(
         "reportgenerator"
         "-reports:coverage\raw\**\coverage.opencover.xml"
         "-targetdir:coverage"
-        "-reporttypes:Cobertura;HtmlInline_AzurePipelines_Dark;Badges;TeamCitySummary"
+        "-reporttypes:Cobertura;HtmlInline;Badges;TeamCitySummary"
         "-verbosity:Warning"
     )
 }
 
-function Invoke-DotNetExe {
+function Invoke-DotNet {
     param (
         [Parameter(Mandatory, ValueFromRemainingArguments)]
         [string[]] $Arguments
     )
-    & dotnet.exe $Arguments
-    if ($LASTEXITCODE -ne 0) { throw "dotnet.exe exited with an error." }
+    & dotnet $Arguments
+    if ($LASTEXITCODE -ne 0) { throw "dotnet exited with an error." }
+}
+
+function Invoke-Git {
+    param (
+        [Parameter(Mandatory, ValueFromRemainingArguments)]
+        [string[]] $Arguments
+    )
+    & git $Arguments
+    if ($LASTEXITCODE -ne 0) { throw "git exited with an error." }
 }
 
 function Write-Phase {

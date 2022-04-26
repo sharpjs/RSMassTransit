@@ -1,7 +1,7 @@
 <Project>
 
   <!--
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -32,7 +32,7 @@
     <Copyright>© $([System.DateTime]::UtcNow.Year) $(Authors)</Copyright>
     <PackageLicenseExpression>ISC</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
-    <PackageTags>RSMassTransit SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>
+    <PackageTags>SSRS Reporting MassTransit Bus RabbitMQ ServiceBus Messages</PackageTags>
     <PackageReleaseNotes>$(PackageProjectUrl)/blob/master/CHANGES.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
@@ -41,9 +41,10 @@
 
   <!-- Build properties -->
   <PropertyGroup>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10</LangVersion>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile Condition="'$(IsPackable)' == 'true'">true</GenerateDocumentationFile>
+    <ImplicitUsings>true</ImplicitUsings>
+    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
     <MassTransitVersion>[7.1.3, 8.0.0)</MassTransitVersion>
     <MicrosoftExtensionsVersion>[3.1.11, 4.0.0)</MicrosoftExtensionsVersion>
     <ApplicationIcon>..\icon.ico</ApplicationIcon>

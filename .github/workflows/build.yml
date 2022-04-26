@@ -1,7 +1,7 @@
 # GitHub Actions workflow
 # https://help.github.com/en/actions/reference
 #
-# Copyright 2021 Jeffrey Sharp
+# Copyright 2022 Jeffrey Sharp
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -28,6 +28,8 @@ on:
     branches:
       - master
       - release/*
+  workflow_dispatch:
+    # no options
 
 env:
   # Minimize noise from dotnet CLI
@@ -37,7 +39,7 @@ jobs:
   build:
     name: Build
     runs-on: windows-latest
-    #url: https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md
+    #url: https://github.com/actions/virtual-environments
 
     steps:
       - name: Check Out Code
@@ -55,6 +57,12 @@ jobs:
         #url: https://github.com/actions/setup-dotnet
         with:
           dotnet-version: 5.0.x
+
+      - name: Configure .NET 6.0
+        uses: actions/setup-dotnet@v1
+        #url: https://github.com/actions/setup-dotnet
+        with:
+          dotnet-version: 6.0.x
 
       - name: Stamp Version
         id: stamp
@@ -95,7 +103,7 @@ jobs:
           --results-directory:${{ runner.temp }}\coverage\raw
 
       - name: Prepare Coverage Report
-        uses: danielpalme/ReportGenerator-GitHub-Action@4.8.4
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.4
         #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}\coverage\raw\**\coverage.opencover.xml
@@ -131,27 +139,14 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
       - name: Create Release
-        uses: actions/create-release@v1
-        #url: https://github.com/actions/create-release
+        uses: ncipollo/release-action@v1
+        #url: https://github.com/ncipollo/release-action
         if: startsWith(github.ref, 'refs/tags/release/')
-        id: create_release
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ steps.stamp.outputs.version }}
-          draft: true
+          name: ${{ steps.stamp.outputs.version }}
           prerelease: ${{ contains('-', steps.stamp.outputs.version) }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish Service Package
-        uses: actions/upload-release-asset@v1
-        #url: https://github.com/actions/upload-release-asset
-        if: startsWith(github.ref, 'refs/tags/release/')
-        id: upload_release_asset 
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ runner.temp }}\dist\RSMassTransit.Service-${{ steps.stamp.outputs.version }}-win-x64.zip
-          asset_name: RSMassTransit.Service-${{ steps.stamp.outputs.version }}-win-x64.zip
-          asset_content_type: application/zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          draft: true
+          bodyFile: CHANGES.md
+          artifacts: ${{ runner.temp }}\dist\*
+          artifactErrorsFailBuild: true
+          token: ${{ secrets.GITHUB_TOKEN }}

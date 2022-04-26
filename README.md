@@ -10,13 +10,13 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 [![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
 
-- Currently, only report execution is implemented.
-- Report deployment and discovery are planned for implementation sometime
-  between right now and the entropic end of the universe.
-- Versions targeting .NET Framework are deployed in production and have been
-  so for several years, with few defects.
-- A port to .NET Core 3.1 is nearing release.
+- RSMassTransit exexutes reports and uploads their contents to blob storage.
+  Other features like report discovery or deployment might become supported at
+  some indeterminate time in the future.
 - Test coverage is inadequate.
+- Versions targeting both .NET Framework and .NET Core 3.1 are deployed in
+  production and have been so for several years, with few defects.
+- An update to .NET 6.0 is nearing release.
 
 ## Installation
 
@@ -24,18 +24,19 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 ## Development Setup
 
-* Requirements:
-  * Visual Studio 2019
-  * SQL Server Reporting Services 2019 (might work with earlier versions)
-  * PowerShell 5.1+
-  * PowerShell Core 6.x or PowerShell 7+
-* In solution properties, Startup Project tab, ensure that Action is set to `Start` for:
-  * RSMassTransit.Tool
-  * RSMassTransit.PowerShell
-* On F5 run, two windows should appear:
-  * RSMassTransit service console window
-  * PowerShell prompt
-* In the PowerShell window, enter a command similar to the following:
+- Requirements:
+  - Visual Studio 2019 or later
+  - SQL Server Reporting Services 2019 (might work with earlier versions)
+  - .NET SDKs and targeting packs (see `TargetFrameworks` in each project file)
+  - PowerShell 5.1+
+  - PowerShell Core 6.x or PowerShell 7+
+- In solution properties, Startup Project tab, ensure that Action is set to `Start` for:
+  - RSMassTransit.Tool
+  - RSMassTransit.PowerShell
+- On F5 run, two windows should appear:
+  - RSMassTransit service console window
+  - PowerShell prompt
+- In the PowerShell window, enter a command similar to the following:
   ```powershell
     Invoke-RsReport `
         -Path           '/My Reports/IT Reports/TPS Report' `

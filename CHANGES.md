@@ -31,8 +31,8 @@ Most lines should begin with one of these words:
 
   Package                     | Version
   :---------------------------|:-----------------
-  Client packages             | .NET Standard 2.0
-  MassTransit                 | 7.1.3
+  Client packages             | 1.0.0
+  MassTransit                 | [7.3.1](https://masstransit-project.com/releases/)
   Microsoft.Extensions.*      | [6.0.0](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.0/6.0.0.md), [6.0.1](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.2/6.0.2.md)
   System.ServiceModel.*       | [4.9.0](https://github.com/dotnet/wcf/releases/tag/v3.3.0-rtm)
 

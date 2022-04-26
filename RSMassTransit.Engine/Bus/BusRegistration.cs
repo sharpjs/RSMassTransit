@@ -1,5 +1,5 @@
 /*
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,14 +14,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using GreenPipes;
-using MassTransit;
 using MassTransit.Azure.ServiceBus.Core;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
-using Microsoft.Azure.ServiceBus.Primitives;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RSMassTransit.Consumers;
@@ -111,13 +108,10 @@ namespace RSMassTransit.Bus
 
                 b.Host(uri, h =>
                 {
-                    h.SharedAccessSignature(s =>
-                    {
-                        s.KeyName         = configuration.SecretName;
-                        s.SharedAccessKey = configuration.Secret;
-                        s.TokenTimeToLive = TimeSpan.FromDays(1);
-                        s.TokenScope      = TokenScope.Namespace;
-                    });
+                    h.NamedKeyCredential = new(
+                        configuration.SecretName,
+                        configuration.Secret
+                    );
                 });
 
                 b.ReceiveEndpoint(configuration.QueueName, r =>

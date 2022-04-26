@@ -36,7 +36,7 @@ namespace RSMassTransit
             if (text is null)
                 return null;
 
-            if (Uri.TryCreate(text, UriKind.Absolute, out Uri uri))
+            if (Uri.TryCreate(text, UriKind.Absolute, out var uri))
                 return uri;
 
             throw new ConfigurationException(string.Format(

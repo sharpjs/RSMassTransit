@@ -4,10 +4,12 @@ This file documents all notable changes.
 Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
+<!--
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0-pre.2...HEAD)
 (none)
+-->
 
-## [1.0.0-pre.3](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0-pre.3)
+## [1.0.0 (WIP)](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0-pre.3)
 - Change project structure.
   - Extract server engine into `RSMassTransit.Engine.dll`.
   - Add Windows service package.
@@ -29,6 +31,7 @@ Most lines should begin with one of these words:
   - MassTransit 7.1.3
   - Microsoft.Extensions.* 3.1.11
   - Subatomix.Testing 1.1.0 *(build)*
+  - System.ServiceModel.* [4.9.0](https://github.com/dotnet/wcf/releases/tag/v3.3.0-rtm)
 
 - Change automated build system to GitHub Actions.
 

@@ -28,10 +28,13 @@ Most lines should begin with one of these words:
   Windows service package | .NET Core 3.1         | none
 
 - Add/Update dependencies:
-  - MassTransit 7.1.3
-  - Microsoft.Extensions.* 3.1.11
-  - Subatomix.Testing 1.1.0 *(build)*
-  - System.ServiceModel.* [4.9.0](https://github.com/dotnet/wcf/releases/tag/v3.3.0-rtm)
+
+  Package                     | Version
+  :---------------------------|:-----------------
+  Client packages             | .NET Standard 2.0
+  MassTransit                 | 7.1.3
+  Microsoft.Extensions.*      | [6.0.0](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.0/6.0.0.md), [6.0.1](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.2/6.0.2.md)
+  System.ServiceModel.*       | [4.9.0](https://github.com/dotnet/wcf/releases/tag/v3.3.0-rtm)
 
 - Change automated build system to GitHub Actions.
 

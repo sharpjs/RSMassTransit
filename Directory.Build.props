@@ -51,7 +51,7 @@
   <!-- Common package versions -->
   <PropertyGroup>
     <MassTransitVersion>[7.1.3, 8.0.0)</MassTransitVersion>
-    <MicrosoftExtensionsVersion>[3.1.11, 4.0.0)</MicrosoftExtensionsVersion>
+    <MicrosoftExtensionsVersion>[6.0.0, 7.0.0)</MicrosoftExtensionsVersion>
     <SystemServiceModelVersion>[4.9.0, 5.0.0)</SystemServiceModelVersion>
   </PropertyGroup>
 

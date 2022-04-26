@@ -19,13 +19,13 @@ Most lines should begin with one of these words:
 
 - Change target frameworks:
 
-  Component               | .NET Standard/Core/5+ | .NET Framework
-  :-----------------------|:----------------------|:--------------------
-  Client packages         | .NET Standard 2.0     | .NET Framework 4.6.1
-  Engine assembly         | .NET Standard 2.1     | .NET Framework 4.8
-  Test suite              | .NET Core 3.1         | .NET Framework 4.8
-  .NET tool package       | .NET Core 3.1         | none
-  Windows service package | .NET Core 3.1         | none
+  Component               | .NET Standard/Core/5+       | .NET Framework
+  :-----------------------|:----------------------------|:--------------------
+  Client packages         | .NET Standard 2.0           | .NET Framework 4.6.1
+  Engine assembly         | .NET 6.0, .NET Standard 2.1 | .NET Framework 4.8
+  Test suite              | .NET 6.0, .NET Core 3.1     | .NET Framework 4.8
+  .NET tool package       | .NET 6.0                    | none
+  Windows service package | .NET 6.0                    | none
 
 - Add/Update dependencies:
 

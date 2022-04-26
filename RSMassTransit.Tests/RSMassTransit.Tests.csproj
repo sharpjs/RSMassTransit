@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Subatomix.Testing" Version="1.1.0" />
+    <PackageReference Include="Subatomix.Testing" Version="2.0.0" />
     <PackageReference Include="Sharp.BlobStorage" Version="0.1.0" />
     <PackageReference Include="Sharp.BlobStorage.Azure" Version="0.1.0" />
   </ItemGroup>

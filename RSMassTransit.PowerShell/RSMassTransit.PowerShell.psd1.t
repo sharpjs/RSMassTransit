@@ -53,9 +53,9 @@
             # Additional metadata
             Prerelease   = '{VersionSuffix}'
             ProjectUri   = 'https://github.com/sharpjs/RSMassTransit'
-            ReleaseNotes = "https://github.com/sharpjs/RSMassTransit/blob/master/CHANGES.md"
-            LicenseUri   = 'https://github.com/sharpjs/RSMassTransit/blob/master/LICENSE.txt'
-            IconUri      = 'https://github.com/sharpjs/RSMassTransit/blob/master/icon.png'
+            ReleaseNotes = "https://github.com/sharpjs/RSMassTransit/blob/main/CHANGES.md"
+            LicenseUri   = 'https://github.com/sharpjs/RSMassTransit/blob/main/LICENSE.txt'
+            IconUri      = 'https://github.com/sharpjs/RSMassTransit/blob/main/icon.png'
             Tags         = @(
                 "SSRS", "Reporting", "Report", "RsReport", "Invoke", "MassTransit", "message", "bus",
                 "PSEdition_Desktop", "PSEdition_Core", "Windows", "Linux", "MacOS"

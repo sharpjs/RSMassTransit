@@ -43,9 +43,8 @@
   <!-- Build properties -->
   <PropertyGroup>
     <LangVersion>10</LangVersion>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <Using Include="MassTransit" />

@@ -8,15 +8,20 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 
 ## Status
 
-[![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions?query=workflow%3ABuild)
+[![Build](https://github.com/sharpjs/RSMassTransit/workflows/Build/badge.svg)](https://github.com/sharpjs/RSMassTransit/actions)
+[![NuGet](https://img.shields.io/nuget/v/RSMassTransit.Client.svg)](https://www.nuget.org/packages/RSMassTransit.Client)
+[![NuGet](https://img.shields.io/nuget/dt/RSMassTransit.Client.svg)](https://www.nuget.org/packages/RSMassTransit.Client)
+<!--
+[![NuGet](https://img.shields.io/powershellgallery/v/RSMassTransit.svg)](https://www.powershellgallery.com/packages/RSMassTransit)
+[![NuGet](https://img.shields.io/powershellgallery/dt/RSMassTransit.svg)](https://www.powershellgallery.com/packages/RSMassTransit)
+-->
 
 - RSMassTransit exexutes reports and uploads their contents to blob storage.
   Other features like report discovery or deployment might become supported at
   some indeterminate time in the future.
+- Used in production for several years with few reported defects.
 - Test coverage is inadequate.
-- Versions targeting both .NET Framework and .NET Core 3.1 are deployed in
-  production and have been so for several years, with few defects.
-- An update to .NET 6.0 is nearing release.
+- Documentation is inadequate.
 
 ## Installation
 
@@ -38,11 +43,11 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
   - PowerShell prompt
 - In the PowerShell window, enter a command similar to the following:
   ```powershell
-    Invoke-RsReport `
-        -Path           '/My Reports/IT Reports/TPS Report' `
-        -Format         Pdf `
-        -TimeoutSeconds 30 `
-        -RsCredential   (Get-Credential)
+  Invoke-RsReport `
+      -Path           '/My Reports/IT Reports/TPS Report' `
+      -Format         Pdf `
+      -TimeoutSeconds 30 `
+      -RsCredential   (Get-Credential)
   ```
 
 <!--

@@ -37,11 +37,16 @@
              Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
-  <!-- HACK: PowerShell Gallery supports SemVer1 only; ensure $(Version) is SemVer1-compatible. -->
-  <PropertyGroup Condition="'$(Version)' == ''">
-    <VersionSuffix1>$([System.Text.RegularExpressions.Regex]::Replace($(VersionSuffix), `\+.*|[^0-9a-zA-Z-]+`, ``))</VersionSuffix1>
-    <Version Condition="'$(VersionSuffix1)' != ''">$(VersionPrefix)-$(VersionSuffix1)</Version>
-    <Version Condition="'$(Version)' == ''">$(VersionPrefix)</Version>
+  <!--
+    HACK: PowerShell Gallery supports SemVer1 only.  VersionSuffix is SemVer2.
+    Transform VersionSuffix to SemVer1 by removing incompatible bits.  Note
+    that this hack is broken if VersionSuffix is specified on the command line.
+
+    Before: 1.2.3-foo.4+bar.5
+    After:  1.2.3-foo4
+  -->
+  <PropertyGroup>
+    <VersionSuffix>$([System.Text.RegularExpressions.Regex]::Replace($(VersionSuffix), '\+.*|[^0-9a-zA-Z-]+', ''))</VersionSuffix>
   </PropertyGroup>
 
 </Project>

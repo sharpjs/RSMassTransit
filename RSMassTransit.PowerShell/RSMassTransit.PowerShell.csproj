@@ -37,4 +37,11 @@
              Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
 
+  <!-- HACK: PowerShell Gallery supports SemVer1 only; ensure $(Version) is SemVer1-compatible. -->
+  <PropertyGroup Condition="'$(Version)' == ''">
+    <VersionSuffix1>$([System.Text.RegularExpressions.Regex]::Replace($(VersionSuffix), `\+.*|[^0-9a-zA-Z-]+`, ``))</VersionSuffix1>
+    <Version Condition="'$(VersionSuffix1)' != ''">$(VersionPrefix)-$(VersionSuffix1)</Version>
+    <Version Condition="'$(Version)' == ''">$(VersionPrefix)</Version>
+  </PropertyGroup>
+
 </Project>

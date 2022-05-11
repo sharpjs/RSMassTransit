@@ -22,10 +22,6 @@
     <RootNamespace>RSMassTransit</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment -->
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\RSMassTransit.Client.AzureServiceBus.Core\RSMassTransit.Client.AzureServiceBus.Core.csproj" />
     <ProjectReference Include="..\RSMassTransit.Client.RabbitMQ\RSMassTransit.Client.RabbitMQ.csproj" />

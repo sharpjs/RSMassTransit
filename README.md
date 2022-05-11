@@ -12,8 +12,8 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 [![NuGet](https://img.shields.io/nuget/v/RSMassTransit.Client.svg)](https://www.nuget.org/packages/RSMassTransit.Client)
 [![NuGet](https://img.shields.io/nuget/dt/RSMassTransit.Client.svg)](https://www.nuget.org/packages/RSMassTransit.Client)
 <!--
-[![NuGet](https://img.shields.io/powershellgallery/v/RSMassTransit.svg)](https://www.powershellgallery.com/packages/RSMassTransit)
-[![NuGet](https://img.shields.io/powershellgallery/dt/RSMassTransit.svg)](https://www.powershellgallery.com/packages/RSMassTransit)
+[![NuGet](https://img.shields.io/powershellgallery/v/RSMassTransit.PowerShell.svg)](https://www.powershellgallery.com/packages/RSMassTransit.PowerShell)
+[![NuGet](https://img.shields.io/powershellgallery/dt/RSMassTransit.PowerShell.svg)](https://www.powershellgallery.com/packages/RSMassTransit.PowerShell)
 -->
 
 - RSMassTransit exexutes reports and uploads their contents to blob storage.

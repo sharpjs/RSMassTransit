@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Windows Service Host for SQL Server Reporting Services MassTransit Interface</Description>
+    <Description>Windows service host for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
     <TargetFramework>net6.0</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <RootNamespace>RSMassTransit</RootNamespace>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Test suite for RSMassTransit.Client and related assemblies.</Description>
+    <Description>Tests RSMassTransit client</Description>
     <TargetFrameworks>net48;netcoreapp3.1;net6.0</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
   </PropertyGroup>

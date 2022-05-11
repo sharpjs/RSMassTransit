@@ -57,7 +57,7 @@
             LicenseUri   = 'https://github.com/sharpjs/RSMassTransit/blob/main/LICENSE.txt'
             IconUri      = 'https://github.com/sharpjs/RSMassTransit/blob/main/icon.png'
             Tags         = @(
-                "SSRS", "Reporting", "Report", "RsReport", "Invoke", "MassTransit", "message", "bus",
+                "SSRS", "Reporting", "MassTransit", "Bus", "RabbitMQ", "ServiceBus",
                 "PSEdition_Desktop", "PSEdition_Core", "Windows", "Linux", "MacOS"
             )
         }

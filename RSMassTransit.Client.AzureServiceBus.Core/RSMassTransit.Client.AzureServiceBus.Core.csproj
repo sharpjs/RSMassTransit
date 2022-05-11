@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Azure Service Bus client for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services.</Description>
+    <Description>Azure Service Bus client for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
   </PropertyGroup>
 

@@ -20,6 +20,7 @@
     <Description>Core client and message types for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

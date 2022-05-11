@@ -19,6 +19,7 @@
   <PropertyGroup>
     <Description>RabbitMQ client for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

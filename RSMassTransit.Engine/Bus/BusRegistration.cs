@@ -138,8 +138,10 @@ namespace RSMassTransit.Bus
             // RSMassTransit expects multiple service instances, competing for
             // infrequent, long-running requests.  Prefetch optimizes for the
             // opposite case and actually *hinders* the spread of infrequent
-            // messages across instances.  Therefor, turn prefetch off here.
-            r.PrefetchCount = 0;
+            // messages across instances.  Therefore, do not prefetch requests
+            // beyond what this instance can work concurrently.
+            var concurrency = Math.Min(Environment.ProcessorCount, 32);
+            r.PrefetchCount = concurrency;
 
             // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);
@@ -172,11 +174,9 @@ namespace RSMassTransit.Bus
             // RSMassTransit expects multiple service instances, competing for
             // infrequent, long-running requests.  Prefetch optimizes for the
             // opposite case and actually *hinders* the spread of infrequent
-            // messages across instances.  Therefor, turn prefetch off here.
-            //
-            // WARNING: This must come *AFTER* MaxConcurrentCalls above.
-            // Otherwise, the setting is overwritten.
-            r.PrefetchCount = 0;
+            // messages across instances.  Therefore, do not prefetch requests
+            // beyond what this instance can work concurrently.
+            r.PrefetchCount = concurrency;
 
             // When RSMassTransit tries to pause or stop message consumption,
             // unwanted messages continue to be received, due to limitations in

@@ -15,6 +15,8 @@ Most lines should begin with one of these words:
 -->
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.
+- Update bus tuning:
+  - Change prefetch count from zero to the concurrency level.
 
 ## [1.0.0](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0)
 - Change project structure.

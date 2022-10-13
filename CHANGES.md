@@ -17,6 +17,8 @@ Most lines should begin with one of these words:
   default (response) queue.
 - Update bus tuning:
   - Change prefetch count from zero to the concurrency level.
+  - Lower Azure Service Bus maximum delivery count from 4X concurrency to
+    concurrency plus one.
 
 ## [1.0.0](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0)
 - Change project structure.

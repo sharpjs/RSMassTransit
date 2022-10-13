@@ -198,7 +198,7 @@ namespace RSMassTransit.Bus
             // can cause many failed delivery attempts.  Use a high enough
             // maximum delivery count to avoid these actionable messages
             // getting dead-lettered.
-            r.MaxDeliveryCount = concurrency * 4;
+            r.MaxDeliveryCount = concurrency + 1;
 
             // Do transport-independent tuning
             TuneForReportExecution((IReceiveEndpointConfigurator) r);

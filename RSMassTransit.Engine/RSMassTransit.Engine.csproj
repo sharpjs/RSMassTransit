@@ -39,7 +39,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="$(MicrosoftExtensionsVersion)" />
     <PackageReference Include="Sharp.Async"                                Version="[0.0.1, 2.0.0)" />
     <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
-    <PackageReference Include="Sharp.Disposable"                           Version="[1.0.0, 2.0.0)" />
+    <PackageReference Include="Sharp.Disposable"                           Version="[1.1.1, 2.0.0)" />
     <PackageReference Include="System.ServiceModel.Duplex"                 Version="$(SystemServiceModelVersion)" />
     <PackageReference Include="System.ServiceModel.Http"                   Version="$(SystemServiceModelVersion)" />
     <PackageReference Include="System.ServiceModel.NetTcp"                 Version="$(SystemServiceModelVersion)" />

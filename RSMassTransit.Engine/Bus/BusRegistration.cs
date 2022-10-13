@@ -87,6 +87,8 @@ namespace RSMassTransit.Bus
                     h.Password(configuration.Secret);
                 });
 
+                b.DiscardFaultAndSkippedMessages();
+
                 b.ReceiveEndpoint(configuration.QueueName, r =>
                 {
                     TuneForReportExecution(r);
@@ -113,6 +115,8 @@ namespace RSMassTransit.Bus
                         configuration.Secret
                     );
                 });
+
+                b.DiscardFaultAndSkippedMessages();
 
                 b.ReceiveEndpoint(configuration.QueueName, r =>
                 {
@@ -205,14 +209,6 @@ namespace RSMassTransit.Bus
         {
             // No automatic retries.  Clients can implement their own.
             r.UseMessageRetry(x => x.None());
-
-            // RSMassTransit's current users do not monitor an _error queue.
-            // Prevent MT from inadvertently filling one to its limit.
-            r.DiscardFaultedMessages();
-
-            // RSMassTransit's current users do not monitor a _skipped queue.
-            // Prevent MT from inadvertently filling one to its limit.
-            r.DiscardSkippedMessages();
         }
     }
 }

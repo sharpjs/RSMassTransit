@@ -14,6 +14,8 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using RSMassTransit.Bus;
+
 namespace RSMassTransit.Client.AzureServiceBus
 {
     /// <summary>
@@ -52,7 +54,7 @@ namespace RSMassTransit.Client.AzureServiceBus
             var queue      = NormalizeBusQueue();
             var credential = NormalizeBusCredential();
 
-            var bus = Bus.Factory.CreateUsingAzureServiceBus(b =>
+            var bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
             {
                 b.Host(uri, h =>
                 {
@@ -61,6 +63,8 @@ namespace RSMassTransit.Client.AzureServiceBus
                         credential.Password
                     );
                 });
+
+                b.DiscardFaultAndSkippedMessages();
             });
 
             queueUri = new Uri(uri, queue);

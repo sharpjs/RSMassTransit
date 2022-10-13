@@ -14,9 +14,8 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System;
 using System.Net;
-using MassTransit;
+using RSMassTransit.Bus;
 
 namespace RSMassTransit.Client.RabbitMQ
 {
@@ -53,13 +52,15 @@ namespace RSMassTransit.Client.RabbitMQ
             var queue      = NormalizeBusQueue();
             var credential = NormalizeBusCredential();
 
-            var bus = Bus.Factory.CreateUsingRabbitMq(b =>
+            var bus = MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
             {
                 b.Host(uri, h =>
                 {
                     h.Username(credential.UserName);
                     h.Password(credential.Password);
                 });
+
+                b.DiscardFaultAndSkippedMessages();
             });
 
             queueUri = new Uri(uri, queue);

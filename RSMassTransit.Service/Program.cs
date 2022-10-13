@@ -1,5 +1,5 @@
 /*
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -19,6 +19,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Logging.EventLog;
+using Subatomix.Logging.Console;
+using Subatomix.Logging.Debugger;
 
 namespace RSMassTransit.Service
 {
@@ -72,13 +74,26 @@ namespace RSMassTransit.Service
             HostBuilderContext context,
             IServiceCollection services)
         {
-            // Required to convince the EventLogLoggerProvider to honor
-            // configuration for more than just log level.
-            // https://github.com/dotnet/extensions/issues/2519
-            LoggerProviderOptions.RegisterProviderOptions
-                <EventLogSettings, EventLogLoggerProvider>(services);
-
+            services.AddLogging(ConfigureLogging);
             services.AddRSMassTransit(context.Configuration);
+        }
+
+        private static void ConfigureLogging(ILoggingBuilder builder)
+        {
+            builder.ClearProviders();
+            builder.AddPrettyConsole();
+            builder.AddDebugger();
+
+            if (OperatingSystem.IsWindows())
+            {
+                builder.AddEventLog();
+
+                // Required to convince the EventLogLoggerProvider to honor
+                // configuration for more than just log level.
+                // https://github.com/dotnet/extensions/issues/2519
+                LoggerProviderOptions.RegisterProviderOptions
+                    <EventLogSettings, EventLogLoggerProvider>(builder.Services);
+            }
         }
     }
 }

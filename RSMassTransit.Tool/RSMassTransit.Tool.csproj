@@ -35,6 +35,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="[6.0.1, 7.0.0)" />
     <!--<PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsVersion)" />-->
+    <PackageReference Include="Subatomix.Logging" Version="1.0.0-pre.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,12 +13,14 @@ Most lines should begin with one of these words:
 <!--
 ## [1.1.0](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0...release/1.1.0)
 -->
+- Add prettier console output.
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.
 - Update bus tuning:
   - Change prefetch count from zero to the concurrency level.
   - Lower Azure Service Bus maximum delivery count from 4X concurrency to
     concurrency plus one.
+- Add dependency: Subatomix.Logging [1.0.0](https://github.com/sharpjs/Subatomix.Logging).
 - Update dependencies:
 
   Package                                      | Version

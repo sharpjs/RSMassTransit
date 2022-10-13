@@ -1,5 +1,5 @@
 /*
-    Copyright 2021 Jeffrey Sharp
+    Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,10 +14,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Subatomix.Logging.Console;
+using Subatomix.Logging.Debugger;
 
 namespace RSMassTransit
 {
@@ -58,7 +59,15 @@ namespace RSMassTransit
             HostBuilderContext context,
             IServiceCollection services)
         {
+            services.AddLogging(ConfigureLogging);
             services.AddRSMassTransit(context.Configuration);
+        }
+
+        private static void ConfigureLogging(ILoggingBuilder builder)
+        {
+            builder.ClearProviders();
+            builder.AddPrettyConsole();
+            builder.AddDebugger();
         }
     }
 }

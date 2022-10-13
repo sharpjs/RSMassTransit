@@ -21,9 +21,10 @@ Most lines should begin with one of these words:
     concurrency plus one.
 - Update dependencies:
 
-  Package                | Version
-  :----------------------|:-----------------
-  System.ServiceModel.*  | [4.10.0](https://github.com/dotnet/wcf/releases/tag/v3.4.0-rtm)
+  Package                                      | Version
+  :--------------------------------------------|:-----------------
+  Microsoft.Extensions.Hosting.WindowsServices | [6.0.1](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.10/6.0.10.md)
+  System.ServiceModel.*                        | [4.10.0](https://github.com/dotnet/wcf/releases/tag/v3.4.0-rtm)
 
 ## [1.0.0](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0)
 - Change project structure.

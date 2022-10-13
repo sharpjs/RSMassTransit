@@ -5,13 +5,13 @@ Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
 <!--
-## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.1...HEAD)
+## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.1.0...HEAD)
 (none)
 -->
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...HEAD)
 <!--
-## [1.0.1](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0...release/1.0.1)
+## [1.1.0](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0...release/1.1.0)
 -->
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.

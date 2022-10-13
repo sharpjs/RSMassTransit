@@ -54,7 +54,7 @@
   <PropertyGroup>
     <MassTransitVersion>[7.3.1, 8.0.0)</MassTransitVersion>
     <MicrosoftExtensionsVersion>[6.0.0, 7.0.0)</MicrosoftExtensionsVersion>
-    <SystemServiceModelVersion>[4.9.0, 5.0.0)</SystemServiceModelVersion>
+    <SystemServiceModelVersion>[4.10.0, 5.0.0)</SystemServiceModelVersion>
   </PropertyGroup>
 
   <!-- Packaging properties -->

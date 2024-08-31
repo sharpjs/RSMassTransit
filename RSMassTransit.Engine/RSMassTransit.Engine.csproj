@@ -1,19 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <!--
-    Copyright 2022 Jeffrey Sharp
-
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+    Copyright Jeffrey Sharp
+    SPDX-License-Identifier: ISC
   -->
 
   <PropertyGroup>
@@ -27,23 +16,23 @@
     <ProjectReference Include="..\RSMassTransit.Client\RSMassTransit.Client.csproj" />
   </ItemGroup>
 
+  <!-- Project dependencies must have same version, not same-or-later. -->
   <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
-    <!-- Project dependencies must have same version, not same-or-later. -->
-    <PackageReference Include="RSMassTransit.Client" Version="[$(PackageVersion)]" />
+    <PackageReference Include="RSMassTransit.Client" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.Azure.ServiceBus.Core"          Version="$(MassTransitVersion)" />
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="$(MassTransitVersion)" />
-    <PackageReference Include="MassTransit.RabbitMQ"                       Version="$(MassTransitVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions"  Version="$(MicrosoftExtensionsVersion)" />
-    <PackageReference Include="Sharp.Async"                                Version="[0.0.1, 2.0.0)" />
-    <PackageReference Include="Sharp.BlobStorage.Azure"                    Version="[0.1.0, 2.0.0)" />
-    <PackageReference Include="Sharp.Disposable"                           Version="[1.1.1, 2.0.0)" />
-    <PackageReference Include="System.ServiceModel.Duplex"                 Version="$(SystemServiceModelVersion)" />
-    <PackageReference Include="System.ServiceModel.Http"                   Version="$(SystemServiceModelVersion)" />
-    <PackageReference Include="System.ServiceModel.NetTcp"                 Version="$(SystemServiceModelVersion)" />
-    <PackageReference Include="System.ServiceModel.Security"               Version="$(SystemServiceModelVersion)" />
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" />
+    <PackageReference Include="MassTransit.RabbitMQ" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Sharp.Async" />
+    <PackageReference Include="Sharp.BlobStorage.Azure" />
+    <PackageReference Include="Sharp.Disposable" />
+    <PackageReference Include="System.ServiceModel.Duplex" />
+    <PackageReference Include="System.ServiceModel.Http" />
+    <PackageReference Include="System.ServiceModel.NetTcp" />
+    <PackageReference Include="System.ServiceModel.Security" />
   </ItemGroup>
 
   <ItemGroup>

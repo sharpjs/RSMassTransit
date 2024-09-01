@@ -1,26 +1,17 @@
 # GitHub Actions workflow
 # https://help.github.com/en/actions/reference
 #
-# Copyright 2022 Jeffrey Sharp
-#
-# Permission to use, copy, modify, and distribute this software for any
-# purpose with or without fee is hereby granted, provided that the above
-# copyright notice and this permission notice appear in all copies.
-#
-# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+# Copyright Jeffrey Sharp
+# SPDX-License-Identifier: ISC
 
 name: Build
+run-name: Build
 
 on:
   push:
     branches:
       - main
+      - next
       - release/*
     tags:
       - release/*
@@ -30,6 +21,9 @@ on:
       - release/*
   workflow_dispatch:
     # no options
+
+permissions:
+  contents: write # required by ncipollo/release-action@v1
 
 env:
   # Minimize noise from dotnet CLI
@@ -43,20 +37,16 @@ jobs:
 
     steps:
       - name: Check Out Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         #url: https://github.com/actions/checkout
 
-      - name: Configure .NET Core 3.1
-        uses: actions/setup-dotnet@v1
-        #url: https://github.com/actions/setup-dotnet
-        with:
-          dotnet-version: 3.1.x
-
       - name: Configure .NET 6.0
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         #url: https://github.com/actions/setup-dotnet
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - name: Stamp Version
         id: stamp
@@ -75,7 +65,7 @@ jobs:
         run: >
           dotnet build --no-restore -c Release
           -p:TreatWarningsAsErrors=true
-          -p:PackageOutputPath=${{ runner.temp }}\dist
+          -p:PackageOutputPath=${{ runner.temp }}\dist\
 
       - name: Build Service Package
         run: >
@@ -98,24 +88,31 @@ jobs:
           --results-directory:${{ runner.temp }}\coverage\raw
 
       - name: Prepare Coverage Report
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.10
+        uses: danielpalme/ReportGenerator-GitHub-Action@5
         #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}\coverage\raw\**\coverage.opencover.xml
           targetdir: ${{ runner.temp }}\coverage
-          reporttypes: Cobertura;JsonSummary;Html_Dark;Badges
+          reporttypes: Html;MarkdownSummaryGithub;Badges
           verbosity: Warning
 
       - name: Save Coverage Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         #url: https://github.com/actions/upload-artifact
         with:
           name: Coverage Report
           path: ${{ runner.temp }}\coverage
           if-no-files-found: error
 
+      - name: Publish Coverage Summary
+        shell: pwsh
+        run: >
+          Get-Content $env:REPORT_PATH -Raw >> $env:GITHUB_STEP_SUMMARY
+        env:
+          REPORT_PATH: ${{ runner.temp }}\coverage\SummaryGithub.md
+
       - name: Save Packages
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         #url: https://github.com/actions/upload-artifact
         with:
           name: Packages

@@ -8,7 +8,7 @@
   <!--
     * Imported late: project -> SDK .targets -> NuGet package .targets -> this
     * Override properties and targets here.
-    https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
+    https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-your-build
   -->
 
   <ItemGroup Condition="'$(IsPackable)' == 'true'">
@@ -16,9 +16,10 @@
           Pack="true" PackagePath="" CopyToOutputDirectory="Never" />
     <None Include="..\LICENSE.txt" Link="Properties\LICENSE.txt"
           Pack="true" PackagePath="$(PackageLicenseFile)" CopyToOutputDirectory="Never" />
+    <None Include="..\README.md" Link="Properties\README.md"
+          Pack="true" PackagePath="$(PackageReadmeFile)" CopyToOutputDirectory="Never" />
   </ItemGroup>
 
-  <!-- Visibility -->
   <ItemGroup>
     <InternalsVisibleTo Include="RSMassTransit.Client.Tests"/>
     <InternalsVisibleTo Include="RSMassTransit.Client.AzureServiceBus.Core"/>
@@ -27,6 +28,10 @@
     <InternalsVisibleTo Include="RSMassTransit.Tests"/>
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2"/>
     <!-- Required for Moq to mock a class with an internal abstract method. -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="MassTransit" />
   </ItemGroup>
 
 </Project>

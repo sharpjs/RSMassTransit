@@ -5,19 +5,8 @@
 .DESCRIPTION
     This script is similar to a makefile.
 
-    Copyright 2022 Jeffrey Sharp
-
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+    Copyright Jeffrey Sharp
+    SPDX-License-Identifier: ISC
 #>
 [CmdletBinding(DefaultParameterSetName="Test")]
 param (
@@ -62,7 +51,7 @@ $Command = $PSCmdlet.ParameterSetName
 if ($Command -eq "Test") { $Test = $true }
 
 # http://patorjk.com/software/taag/#p=display&f=Slant
-Write-Host -ForegroundColor Cyan @' 
+Write-Host -ForegroundColor Cyan @'
 
         ____  _____ __  ___               ______                      _ __ 
        / __ \/ ___//  |/  /___ __________/_  __/________ _____  _____(_) /_
@@ -93,7 +82,7 @@ function Main {
     if ($Coverage) {
         Export-CoverageReport
     }
-} 
+}
 
 function Update-LocalTools {
     Write-Phase "Update Local Tools"

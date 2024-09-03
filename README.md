@@ -30,11 +30,11 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
 ## Development Setup
 
 - Requirements:
-  - Visual Studio 2019 or later
-  - SQL Server Reporting Services 2019 (might work with earlier versions)
+  - Visual Studio 2022 or later
+  - SQL Server Reporting Services 2022 (might work with earlier versions)
   - .NET SDKs and targeting packs (see `TargetFrameworks` in each project file)
   - PowerShell 5.1+
-  - PowerShell Core 6.x or PowerShell 7+
+  - PowerShell 7.2+
 - In solution properties, Startup Project tab, ensure that Action is set to `Start` for:
   - RSMassTransit.Tool
   - RSMassTransit.PowerShell
@@ -51,17 +51,6 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
   ```
 
 <!--
-  Copyright 2022 Jeffrey Sharp
-
-  Permission to use, copy, modify, and distribute this software for any
-  purpose with or without fee is hereby granted, provided that the above
-  copyright notice and this permission notice appear in all copies.
-
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  Copyright Jeffrey Sharp
+  SPDX-License-Identifier: ISC
 -->

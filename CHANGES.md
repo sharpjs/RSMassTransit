@@ -11,7 +11,7 @@ Most lines should begin with one of these words:
 
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...HEAD)
 <!--
-## [1.1.0](https://github.com/sharpjs/RSMassTransit/compare/v1.0.0...release/1.1.0)
+## [2.0.0](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...release/2.0.0)
 -->
 - Add prettier console output.
 - Fix unwanted `_error` and `_skipped` queues being created for each client's

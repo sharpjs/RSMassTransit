@@ -49,14 +49,18 @@ internal static class Program
         return Host
             .CreateDefaultBuilder(args)
             .UseWindowsService()
+            .ConfigureHostConfiguration(ConfigureHostConfiguration)
             .ConfigureServices(ConfigureServices)
             .Build()
             .RunAsync();
     }
 
-    private static void ConfigureServices(
-        HostBuilderContext context,
-        IServiceCollection services)
+    private static void ConfigureHostConfiguration(IConfigurationBuilder builder)
+    {
+        builder.AddJsonFile("hostsettings.json");
+    }
+
+    private static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         services.AddLogging(ConfigureLogging);
         services.AddRSMassTransit(context.Configuration);

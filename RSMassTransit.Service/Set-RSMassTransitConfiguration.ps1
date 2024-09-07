@@ -70,7 +70,12 @@ param (
     [Parameter(ValueFromPipelineByPropertyName)]
     [Alias("ContainerName")]
     [string]
-    $AzureBlobContainerName
+    $AzureBlobContainerName,
+
+    # Maximum duration to wait for running reports to complete when RSMassTransit is stopping.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [timespan]
+    $StopTimeout
 )
 
 begin {
@@ -81,6 +86,10 @@ begin {
     $AppConfigChanged  = $false
     $AppConfigPath     = Join-Path $PSScriptRoot appsettings.json -Resolve
     $AppConfig         = Get-Content $AppConfigPath -Raw | ConvertFrom-Json
+
+    $HostConfigChanged = $false
+    $HostConfigPath    = Join-Path $PSScriptRoot hostsettings.json -Resolve
+    $HostConfig        = Get-Content $HostConfigPath -Raw | ConvertFrom-Json
 }
 
 process {
@@ -119,11 +128,19 @@ process {
         $AppConfig.Storage.AzureBlob.ContainerName = $AzureBlobContainerName
         $AppConfigChanged                          = $true
     }
+
+    if ($StopTimeout) {
+        $HostConfig.shutdownTimeoutSeconds = [long] $StopTimeout.TotalSeconds
+        $HostConfigChanged                 = $true
     }
 }
 
 end {
     if ($AppConfigChanged) {
         $AppConfig | ConvertTo-Json -Depth 32 | Set-Content $AppConfigPath -Encoding utf8
+    }
+
+    if ($HostConfigChanged) {
+        $HostConfig | ConvertTo-Json -Depth 32 | Set-Content $HostConfigPath -Encoding utf8
     }
 }

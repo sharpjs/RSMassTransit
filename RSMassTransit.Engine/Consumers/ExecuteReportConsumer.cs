@@ -9,8 +9,6 @@ using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;
 using Sharp.BlobStorage;
 
-#nullable enable
-
 namespace RSMassTransit.Consumers;
 
 internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>

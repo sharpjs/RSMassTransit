@@ -1,86 +1,72 @@
-/*
-    Copyright 2022 Jeffrey Sharp
-
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
+// Copyright Jeffrey Sharp
+// SPDX-License-Identifier: ISC
 
 using RSMassTransit.Bus;
 
-namespace RSMassTransit.Client.AzureServiceBus
+namespace RSMassTransit.Client.AzureServiceBus;
+
+/// <summary>
+///   Client that invokes actions on a RSMassTransit instance via messages
+///   in an Azure Service Bus namespace.
+/// </summary>
+public class AzureServiceBusReportingServices : ReportingServices
 {
     /// <summary>
-    ///   Client that invokes actions on a RSMassTransit instance via messages
-    ///   in an Azure Service Bus namespace.
+    ///   The scheme component required in message bus URIs.
     /// </summary>
-    public class AzureServiceBusReportingServices : ReportingServices
+    public const string
+        UriScheme = "sb";
+
+    private const string
+        HostSuffix = ".servicebus.windows.net";
+
+    /// <summary>
+    ///   Creates a new <see cref="AzureServiceBusReportingServices"/>
+    ///   instance with the specified configuration.
+    /// </summary>
+    /// <param name="configuration">
+    ///   The configuration for the client, specifying how to communicate
+    ///   with RSMassTransit.
+    /// </param>
+    /// <exception cref="ArgumentNullException">
+    ///   <paramref name="configuration"/> is <see langword="null"/>.
+    /// </exception>
+    public AzureServiceBusReportingServices(ReportingServicesConfiguration configuration)
+        : base(configuration) { }
+
+    /// <inheritdoc/>
+    protected override IBusControl CreateBus(out Uri queueUri)
     {
-        /// <summary>
-        ///   The scheme component required in message bus URIs.
-        /// </summary>
-        public const string
-            UriScheme = "sb";
+        var uri        = NormalizeBusUri(UriScheme, "Azure Service Bus namespace");
+        var queue      = NormalizeBusQueue();
+        var credential = NormalizeBusCredential();
 
-        private const string
-            HostSuffix = ".servicebus.windows.net";
-
-        /// <summary>
-        ///   Creates a new <see cref="AzureServiceBusReportingServices"/>
-        ///   instance with the specified configuration.
-        /// </summary>
-        /// <param name="configuration">
-        ///   The configuration for the client, specifying how to communicate
-        ///   with RSMassTransit.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        ///   <paramref name="configuration"/> is <see langword="null"/>.
-        /// </exception>
-        public AzureServiceBusReportingServices(ReportingServicesConfiguration configuration)
-            : base(configuration) { }
-
-        /// <inheritdoc/>
-        protected override IBusControl CreateBus(out Uri queueUri)
+        var bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
         {
-            var uri        = NormalizeBusUri(UriScheme, "Azure Service Bus namespace");
-            var queue      = NormalizeBusQueue();
-            var credential = NormalizeBusCredential();
-
-            var bus = MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
+            b.Host(uri, h =>
             {
-                b.Host(uri, h =>
-                {
-                    h.NamedKeyCredential = new(
-                        credential.UserName,
-                        credential.Password
-                    );
-                });
-
-                b.DiscardFaultAndSkippedMessages();
+                h.NamedKeyCredential = new(
+                    credential.UserName,
+                    credential.Password
+                );
             });
 
-            queueUri = new Uri(uri, queue);
-            return bus;
-        }
+            b.DiscardFaultAndSkippedMessages();
+        });
 
-        /// <inheritdoc/>
-        protected override Uri NormalizeBusUri(string scheme, string kind)
-        {
-            var uri = base.NormalizeBusUri(scheme, kind);
+        queueUri = new Uri(uri, queue);
+        return bus;
+    }
 
-            var host = uri.Host;
-            if (!host.EndsWith(HostSuffix, StringComparison.OrdinalIgnoreCase))
-                host += HostSuffix;
+    /// <inheritdoc/>
+    protected override Uri NormalizeBusUri(string scheme, string kind)
+    {
+        var uri = base.NormalizeBusUri(scheme, kind);
 
-            return new UriBuilder(UriScheme, host).Uri;
-        }
+        var host = uri.Host;
+        if (!host.EndsWith(HostSuffix, StringComparison.OrdinalIgnoreCase))
+            host += HostSuffix;
+
+        return new UriBuilder(UriScheme, host).Uri;
     }
 }

@@ -1,100 +1,81 @@
-/*
-    Copyright 2021 Jeffrey Sharp
+// Copyright Jeffrey Sharp
+// SPDX-License-Identifier: ISC
 
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
-
-using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Threading;
-using MassTransit;
-using Moq;
 
-namespace RSMassTransit.Client
+namespace RSMassTransit.Client;
+
+public class FakeReportingServices : ReportingServices
 {
-    public class FakeReportingServices : ReportingServices
+    public const string
+        UriScheme = "fake";
+
+    public static readonly Uri
+        Uri = new Uri("fake://example.com");
+
+    public FakeReportingServices(ReportingServicesConfiguration configuration)
+        : base(configuration) { }
+
+    public Mock<IBusControl> Bus { get; }
+        = new Mock<IBusControl>(MockBehavior.Strict);
+
+    public Dictionary<Type, Mock> RequestClients { get; } = new();
+
+    protected override IBusControl CreateBus(out Uri queueUri)
     {
-        public const string
-            UriScheme = "fake";
+        Bus.Setup(b => b.StartAsync(It.IsAny<CancellationToken>()))
+            .ReturnsAsync(Mock.Of<BusHandle>());
 
-        public static readonly Uri
-            Uri = new Uri("fake://example.com");
-
-        public FakeReportingServices(ReportingServicesConfiguration configuration)
-            : base(configuration) { }
-
-        public Mock<IBusControl> Bus { get; }
-            = new Mock<IBusControl>(MockBehavior.Strict);
-
-        public Dictionary<Type, Mock> RequestClients { get; } = new();
-
-        protected override IBusControl CreateBus(out Uri queueUri)
-        {
-            Bus.Setup(b => b.StartAsync(It.IsAny<CancellationToken>()))
-                .ReturnsAsync(Mock.Of<BusHandle>());
-
-            queueUri = new Uri(Uri, ReportingServicesConfiguration.DefaultBusQueue);
-            return Bus.Object;
-        }
-
-        protected override IRequestClient<TRequest>
-            CreateRequestClient<TRequest>(TimeSpan? timeout = null)
-            where TRequest  : class
-        {
-            return GetRequestClient<TRequest>().Object;
-        }
-
-        private Mock<IRequestClient<TRequest>> GetRequestClient<TRequest>()
-            where TRequest  : class
-        {
-            var key = typeof(TRequest);
-
-            if (!RequestClients.TryGetValue(key, out Mock? mock))
-                mock = RequestClients[key] = new Mock<IRequestClient<TRequest>>(MockBehavior.Strict);
-
-            return (Mock<IRequestClient<TRequest>>) mock;
-        }
-
-        public void SetupRequest<TRequest, TResponse>(TRequest request, TResponse response)
-            where TRequest  : class
-            where TResponse : class
-        {
-            var responseWrapper = new Mock<Response<TResponse>>(MockBehavior.Strict);
-
-            responseWrapper.Setup(r => r.Message).Returns(response);
-
-            GetRequestClient<TRequest>()
-                .Setup(c => c.GetResponse<TResponse>(request, It.IsAny<CancellationToken>(), It.IsAny<RequestTimeout>()))
-                .ReturnsAsync(responseWrapper.Object)
-                .Verifiable();
-        }
-
-        public void Verify()
-        {
-            Bus.Verify();
-
-            foreach (var mock in RequestClients.Values)
-                mock.Verify();
-        }
-
-        public new Uri NormalizeBusUri(string scheme, string kind)
-            => base.NormalizeBusUri(scheme, kind);
-
-        public new string NormalizeBusQueue()
-            => base.NormalizeBusQueue();
-
-        public new NetworkCredential NormalizeBusCredential()
-            => base.NormalizeBusCredential();
+        queueUri = new Uri(Uri, ReportingServicesConfiguration.DefaultBusQueue);
+        return Bus.Object;
     }
+
+    protected override IRequestClient<TRequest>
+        CreateRequestClient<TRequest>(TimeSpan? timeout = null)
+        where TRequest  : class
+    {
+        return GetRequestClient<TRequest>().Object;
+    }
+
+    private Mock<IRequestClient<TRequest>> GetRequestClient<TRequest>()
+        where TRequest  : class
+    {
+        var key = typeof(TRequest);
+
+        if (!RequestClients.TryGetValue(key, out Mock? mock))
+            mock = RequestClients[key] = new Mock<IRequestClient<TRequest>>(MockBehavior.Strict);
+
+        return (Mock<IRequestClient<TRequest>>) mock;
+    }
+
+    public void SetupRequest<TRequest, TResponse>(TRequest request, TResponse response)
+        where TRequest  : class
+        where TResponse : class
+    {
+        var responseWrapper = new Mock<Response<TResponse>>(MockBehavior.Strict);
+
+        responseWrapper.Setup(r => r.Message).Returns(response);
+
+        GetRequestClient<TRequest>()
+            .Setup(c => c.GetResponse<TResponse>(request, It.IsAny<CancellationToken>(), It.IsAny<RequestTimeout>()))
+            .ReturnsAsync(responseWrapper.Object)
+            .Verifiable();
+    }
+
+    public void Verify()
+    {
+        Bus.Verify();
+
+        foreach (var mock in RequestClients.Values)
+            mock.Verify();
+    }
+
+    public new Uri NormalizeBusUri(string scheme, string kind)
+        => base.NormalizeBusUri(scheme, kind);
+
+    public new string NormalizeBusQueue()
+        => base.NormalizeBusQueue();
+
+    public new NetworkCredential NormalizeBusCredential()
+        => base.NormalizeBusCredential();
 }

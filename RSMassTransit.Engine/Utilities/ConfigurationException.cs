@@ -1,38 +1,21 @@
-/*
-    Copyright 2021 Jeffrey Sharp
+// Copyright Jeffrey Sharp
+// SPDX-License-Identifier: ISC
 
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
+namespace RSMassTransit;
 
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
-
-using System;
-using System.Runtime.Serialization;
-
-namespace RSMassTransit
+internal class ConfigurationException : Exception
 {
-    internal class ConfigurationException : Exception
-    {
-        public ConfigurationException()
-            : base("One or more configuration settings are invalid.") { }
+    public ConfigurationException()
+        : base("One or more configuration settings are invalid.") { }
 
-        public ConfigurationException(string message)
-            : base(message) { }
+    public ConfigurationException(string message)
+        : base(message) { }
 
-        public ConfigurationException(string message, Exception innerException)
-            : base(message, innerException) { }
+    public ConfigurationException(string message, Exception innerException)
+        : base(message, innerException) { }
 
 #if !NET8_0_OR_GREATER
-        protected ConfigurationException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
+    protected ConfigurationException(SerializationInfo info, StreamingContext context)
+        : base(info, context) { }
 #endif
-    }
 }

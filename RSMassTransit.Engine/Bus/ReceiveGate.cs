@@ -1,90 +1,72 @@
-/*
-    Copyright 2021 Jeffrey Sharp
+// Copyright Jeffrey Sharp
+// SPDX-License-Identifier: ISC
 
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
-
-using System;
-using System.Runtime.Serialization;
-using System.Threading.Tasks;
-using MassTransit;
 using Sharp.Async;
 using Sharp.Disposable;
 
-namespace RSMassTransit.Bus
+namespace RSMassTransit.Bus;
+
+internal class ReceiveGate : Disposable, IReceiveObserver
 {
-    internal class ReceiveGate : Disposable, IReceiveObserver
+    private readonly AsyncGate _gate;
+
+    public ReceiveGate()
     {
-        private readonly AsyncGate _gate;
+        _gate = new AsyncGate(true);
+    }
 
-        public ReceiveGate()
-        {
-            _gate = new AsyncGate(true);
-        }
+    public bool IsOpen
+    {
+        get => _gate.IsOpen;
+        set => _gate.IsOpen = value;
+    }
 
-        public bool IsOpen
-        {
-            get => _gate.IsOpen;
-            set => _gate.IsOpen = value;
-        }
+    public Task PreReceive(ReceiveContext context)
+    {
+        if (!IsOpen)
+            throw new GateClosedException();
 
-        public Task PreReceive(ReceiveContext context)
-        {
-            if (!IsOpen)
-                throw new GateClosedException();
+        return Task.CompletedTask;
+    }
 
-            return Task.CompletedTask;
-        }
+    public Task PostConsume<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType)
+        where T : class
+    {
+        return Task.CompletedTask;
+    }
 
-        public Task PostConsume<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType)
-            where T : class
-        {
-            return Task.CompletedTask;
-        }
+    public Task ConsumeFault<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType, Exception exception)
+        where T : class
+    {
+        return Task.CompletedTask;
+    }
 
-        public Task ConsumeFault<T>(ConsumeContext<T> context, TimeSpan duration, string consumerType, Exception exception)
-            where T : class
-        {
-            return Task.CompletedTask;
-        }
+    public Task PostReceive(ReceiveContext context)
+    {
+        return Task.CompletedTask;
+    }
 
-        public Task PostReceive(ReceiveContext context)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task ReceiveFault(ReceiveContext context, Exception exception)
-        {
-            return exception is GateClosedException
-                ? _gate.WaitAsync()
-                : Task.CompletedTask;
-        }
+    public Task ReceiveFault(ReceiveContext context, Exception exception)
+    {
+        return exception is GateClosedException
+            ? _gate.WaitAsync()
+            : Task.CompletedTask;
+    }
 
 #if !NET8_0_OR_GREATER
-        [Serializable]
+    [Serializable]
 #endif
-        private class GateClosedException : OperationCanceledException
-        {
-            private const string
-                DefaultMessage = "Cannot consume the received message, because the receive gate is closed.";
+    private class GateClosedException : OperationCanceledException
+    {
+        private const string
+            DefaultMessage = "Cannot consume the received message, because the receive gate is closed.";
 
-            public GateClosedException()
-                : base(DefaultMessage) { }
+        public GateClosedException()
+            : base(DefaultMessage) { }
 
 #if !NET8_0_OR_GREATER
-            protected GateClosedException(SerializationInfo info, StreamingContext context)
-                : base(info, context) { }
+        protected GateClosedException(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
 #endif
-        }
     }
 }

@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <Description>SQL Server Reporting Services MassTransit Interface</Description>
-    <TargetFrameworks>net48;netstandard2.1;net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>

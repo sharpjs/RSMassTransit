@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <Description>Tests for RSMassTransit engine</Description>
-    <TargetFrameworks>net481;net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <RootNamespace>RSMassTransit</RootNamespace>
     <NoWarn>$(NoWarn);IDE1006</NoWarn> <!-- Async suffix not desired for test project -->
     <NoWarn>$(NoWarn);CS1591</NoWarn> <!-- missing XML comment (temporarily disabled) -->

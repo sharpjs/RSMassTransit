@@ -21,6 +21,17 @@ Most lines should begin with one of these words:
   - Lower Azure Service Bus maximum delivery count from 4X concurrency to
     concurrency plus one.
 - Add dependency: Subatomix.Logging [1.0.0](https://github.com/sharpjs/Subatomix.Logging).
+
+- Change target frameworks:
+
+  Component               | .NET Core/5+ | .NET Standard | .NET Framework
+  :-----------------------|:------------:|:-------------:|:--------------:
+  Client packages         | ➤            | 2.0           | 4.6.1
+  Engine assembly         | 8.0          | *none*        | *none*
+  .NET tool package       | 8.0          | *none*        | *none*
+  Windows service package | 8.0          | *none*        | *none*
+  Test suite              | 8.0          | *none*        | 4.8.1
+
 - Update dependencies:
 
   Package                                      | Version

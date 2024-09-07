@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <Description>.NET tool host for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <RootNamespace>RSMassTransit</RootNamespace>
   </PropertyGroup>

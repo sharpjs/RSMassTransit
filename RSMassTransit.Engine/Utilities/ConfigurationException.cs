@@ -30,7 +30,9 @@ namespace RSMassTransit
         public ConfigurationException(string message, Exception innerException)
             : base(message, innerException) { }
 
+#if !NET8_0_OR_GREATER
         protected ConfigurationException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
+#endif
     }
 }

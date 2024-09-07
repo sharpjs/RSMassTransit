@@ -7,8 +7,9 @@
 
   <PropertyGroup>
     <Description>Windows service host for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
     <RootNamespace>RSMassTransit</RootNamespace>
     <UserSecretsId>dotnet-RSMassTransit.Service-64DD0679-DFFE-47D2-B2E4-189EA642132E</UserSecretsId>
   </PropertyGroup>

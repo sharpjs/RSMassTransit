@@ -70,7 +70,9 @@ namespace RSMassTransit.Bus
                 : Task.CompletedTask;
         }
 
+#if !NET8_0_OR_GREATER
         [Serializable]
+#endif
         private class GateClosedException : OperationCanceledException
         {
             private const string
@@ -79,8 +81,10 @@ namespace RSMassTransit.Bus
             public GateClosedException()
                 : base(DefaultMessage) { }
 
+#if !NET8_0_OR_GREATER
             protected GateClosedException(SerializationInfo info, StreamingContext context)
                 : base(info, context) { }
+#endif
         }
     }
 }

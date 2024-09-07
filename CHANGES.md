@@ -32,13 +32,15 @@ Most lines should begin with one of these words:
   Windows service package | 8.0          | *none*        | *none*
   Test suite              | 8.0          | *none*        | 4.8.1
 
-- Update dependencies:
+- Add/Update dependencies:
 
-  Package                                      | Version
-  :--------------------------------------------|:-----------------
-  Microsoft.Extensions.Hosting.WindowsServices | [6.0.1](https://github.com/dotnet/core/blob/main/release-notes/6.0/6.0.10/6.0.10.md)
-  Sharp.Disposable                             | [1.1.1](https://github.com/sharpjs/Sharp.Disposable/releases/tag/release/1.1.1)
-  System.ServiceModel.*                        | [4.10.0](https://github.com/dotnet/wcf/releases/tag/v3.4.0-rtm)
+  Package                        | Version
+  :------------------------------|:-----------------
+  Microsoft.Extensions.Hosting.* | [8.0.0](https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.0/8.0.0.md)
+  Microsoft.Extensions.Logging   | [8.0.0](https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.0/8.0.0.md)
+  Sharp.Disposable               | [1.1.1](https://github.com/sharpjs/Sharp.Disposable/releases/tag/release/1.1.1)
+  Subatomix.Logging              | [1.0.0-pre.4](https://github.com/sharpjs/Subatomix.Logging)
+  System.ServiceModel.*          | [8.0.0](https://github.com/dotnet/wcf/releases/tag/v3.4.0-rtm)
 
 ## [1.0.0](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0)
 - Change project structure.

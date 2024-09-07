@@ -18,7 +18,7 @@
     SPDX-License-Identifier: ISC
 
 .EXAMPLE
-    Set-Configuration -BusHostUri sb://my-bus
+    Set-RSMassTransitConfiguration -BusHostUri sb://my-bus
 
     Sets the URI of the bus host to 'sb://my-bus'.
 
@@ -78,51 +78,52 @@ begin {
     $ErrorActionPreference = "Stop"
     Set-StrictMode -Off
 
-    $ConfigPath = Join-Path $PSScriptRoot appsettings.json -Resolve
-    $Config     = Get-Content $ConfigPath -Raw | ConvertFrom-Json
-    $Changed    = $false
+    $AppConfigChanged  = $false
+    $AppConfigPath     = Join-Path $PSScriptRoot appsettings.json -Resolve
+    $AppConfig         = Get-Content $AppConfigPath -Raw | ConvertFrom-Json
 }
 
 process {
     if ($BusHostUri -and $BusHostUri.ToString()) {
-        $Config.Bus.HostUri = $BusHostUri
-        $Changed            = $true
+        $AppConfig.Bus.HostUri = $BusHostUri
+        $AppConfigChanged      = $true
     }
 
     if ($BusQueueName) {
-        $Config.Bus.QueueName = $BusQueueName
-        $Changed              = $true
+        $AppConfig.Bus.QueueName = $BusQueueName
+        $AppConfigChanged        = $true
     }
 
     if ($BusCredential -and $BusCredential.UserName -and $BusCredential.Password) {
-        $Config.Bus.SecretName = $BusCredential.UserName
-        $Config.Bus.Secret     = $BusCredential.GetNetworkCredential().Password
-        $Changed               = $true
+        $AppConfig.Bus.SecretName = $BusCredential.UserName
+        $AppConfig.Bus.Secret     = $BusCredential.GetNetworkCredential().Password
+        $AppConfigChanged         = $true
     }
 
     if ($StorageType) {
-        $Config.Storage.Type = $StorageType
-        $Changed             = $true
+        $AppConfig.Storage.Type = $StorageType
+        $AppConfigChanged       = $true
     }
 
     if ($FilePath) {
-        $Config.Storage.File.Path = $FilePath
-        $Changed                  = $true
+        $AppConfig.Storage.File.Path = $FilePath
+        $AppConfigChanged            = $true
     }
 
     if ($AzureBlobConnectionString) {
-        $Config.Storage.AzureBlob.ConnectionString = $AzureBlobConnectionString
-        $Changed                                   = $true
+        $AppConfig.Storage.AzureBlob.ConnectionString = $AzureBlobConnectionString
+        $AppConfigChanged                             = $true
     }
 
     if ($AzureBlobContainerName) {
-        $Config.Storage.AzureBlob.ContainerName = $AzureBlobContainerName
-        $Changed                                = $true
+        $AppConfig.Storage.AzureBlob.ContainerName = $AzureBlobContainerName
+        $AppConfigChanged                          = $true
+    }
     }
 }
 
 end {
-    if ($Changed) {
-        $Config | ConvertTo-Json -Depth 32 | Set-Content $ConfigPath -Encoding utf8
+    if ($AppConfigChanged) {
+        $AppConfig | ConvertTo-Json -Depth 32 | Set-Content $AppConfigPath -Encoding utf8
     }
 }

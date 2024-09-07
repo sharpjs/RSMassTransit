@@ -17,7 +17,6 @@
   <PropertyGroup>
     <MassTransitVersion>[7.3.1, 8.0.0)</MassTransitVersion>
     <MicrosoftExtensionsVersion>[6.0.0, 7.0.0)</MicrosoftExtensionsVersion>
-    <SystemServiceModelVersion>[4.10.0, 5.0.0)</SystemServiceModelVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,10 +36,8 @@
     <PackageVersion Include="Subatomix.Build.Packaging.PowerShellModule"   Version="1.1.1" />
     <PackageVersion Include="Subatomix.Logging"                            Version="1.0.0-pre.4" />
     <PackageVersion Include="Subatomix.Testing"                            Version="3.1.0" />
-    <PackageVersion Include="System.ServiceModel.Duplex"                   Version="$(SystemServiceModelVersion)" />
-    <PackageVersion Include="System.ServiceModel.Http"                     Version="$(SystemServiceModelVersion)" />
-    <PackageVersion Include="System.ServiceModel.NetTcp"                   Version="$(SystemServiceModelVersion)" />
-    <PackageVersion Include="System.ServiceModel.Security"                 Version="$(SystemServiceModelVersion)" />
+    <PackageVersion Include="System.ServiceModel.Http"                     Version="8.0.0" />
+    <PackageVersion Include="System.ServiceModel.NetTcp"                   Version="8.0.0" />
   </ItemGroup>
 
   <!-- Project dependencies must have same version, not same-or-later. -->

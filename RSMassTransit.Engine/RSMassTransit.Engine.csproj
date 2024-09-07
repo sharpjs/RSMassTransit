@@ -29,10 +29,8 @@
     <PackageReference Include="Sharp.Async" />
     <PackageReference Include="Sharp.BlobStorage.Azure" />
     <PackageReference Include="Sharp.Disposable" />
-    <PackageReference Include="System.ServiceModel.Duplex" />
     <PackageReference Include="System.ServiceModel.Http" />
     <PackageReference Include="System.ServiceModel.NetTcp" />
-    <PackageReference Include="System.ServiceModel.Security" />
   </ItemGroup>
 
   <ItemGroup>

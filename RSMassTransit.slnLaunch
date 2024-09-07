@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Service",
+    "Projects": [
+      {
+        "Path": "RSMassTransit.Service\\RSMassTransit.Service.csproj",
+        "Action": "Start",
+        "DebugTarget": "RSMassTransit.Service"
+      },
+      {
+        "Path": "RSMassTransit.PowerShell\\RSMassTransit.PowerShell.csproj",
+        "Action": "Start",
+        "DebugTarget": "PS 7.0+"
+      }
+    ]
+  },
+  {
+    "Name": "Tool",
+    "Projects": [
+      {
+        "Path": "RSMassTransit.Tool\\RSMassTransit.Tool.csproj",
+        "Action": "Start",
+        "DebugTarget": "RSMassTransit.Tool"
+      },
+      {
+        "Path": "RSMassTransit.PowerShell\\RSMassTransit.PowerShell.csproj",
+        "Action": "Start",
+        "DebugTarget": "PS 7.0+"
+      }
+    ]
+  }
+]

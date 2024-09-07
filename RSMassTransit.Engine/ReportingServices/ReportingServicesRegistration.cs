@@ -9,8 +9,7 @@ internal static class ReportingServicesRegistration
 {
     internal static void AddReportingServices(this IServiceCollection services)
     {
-        if (services is null)
-            throw new ArgumentNullException(nameof(services));
+        ArgumentNullException.ThrowIfNull(services);
 
         services.AddSingleton(
             (IReportingServicesClientFactory)

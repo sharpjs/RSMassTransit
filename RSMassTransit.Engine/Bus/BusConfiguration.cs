@@ -16,7 +16,7 @@ internal class BusConfiguration : IBusConfiguration
         DefaultSecret     = "guest";
 
     private static Uri
-        DefaultHostUri => new Uri("rabbitmq://localhost", UriKind.Absolute);
+        DefaultHostUri => new("rabbitmq://localhost", UriKind.Absolute);
 
     /// <summary>
     ///   Gets or sets the URI of the bus host. The default value is
@@ -62,8 +62,7 @@ internal class BusConfiguration : IBusConfiguration
     /// </param>
     public void Load(IConfiguration configuration)
     {
-        if (configuration is null)
-            throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         HostUri    = configuration.GetUri    (nameof(HostUri))    ?? DefaultHostUri;
         QueueName  = configuration.GetString (nameof(QueueName))  ?? DefaultQueueName;

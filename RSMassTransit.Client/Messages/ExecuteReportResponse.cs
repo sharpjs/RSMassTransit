@@ -23,8 +23,8 @@ public class ExecuteReportResponse : IExecuteReportResponse
     /// <inheritdoc/>
     public IList<string> Messages
     {
-        get => _messages ??= new List<string>();
-        set => _messages = value;
+        get => _messages ??= [];
+        set => _messages   = value;
     }
     private IList<string>? _messages;
 }

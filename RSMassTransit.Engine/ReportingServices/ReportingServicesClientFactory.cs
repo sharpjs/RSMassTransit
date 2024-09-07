@@ -13,13 +13,13 @@ namespace RSMassTransit.ReportingServices;
 internal class ReportingServicesClientFactory : IReportingServicesClientFactory
 {
     public static ReportingServicesClientFactory
-        Instance = new ReportingServicesClientFactory();
+        Instance = new();
 
     private static readonly Binding
         Binding = CreateBinding();
 
     private static readonly EndpointAddress
-        ExecutionAddress = new EndpointAddress("http://localhost:80/ReportServer/ReportExecution2005.asmx");
+        ExecutionAddress = new("http://localhost:80/ReportServer/ReportExecution2005.asmx");
 
     protected ReportingServicesClientFactory() { }
 

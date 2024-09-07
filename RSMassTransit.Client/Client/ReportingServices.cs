@@ -222,8 +222,7 @@ public abstract class ReportingServices : IReportingServices
                     continue;
 
                 // URI scheme must be non-null
-                var scheme = schemeField.GetValue(obj: null) as string;
-                if (scheme != null)
+                if (schemeField.GetValue(obj: null) is string scheme)
                     schemes.Add(scheme, type);
             }
         }

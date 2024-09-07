@@ -11,7 +11,7 @@ public class FakeReportingServices : ReportingServices
         UriScheme = "fake";
 
     public static readonly Uri
-        Uri = new Uri("fake://example.com");
+        Uri = new("fake://example.com");
 
     public FakeReportingServices(ReportingServicesConfiguration configuration)
         : base(configuration) { }
@@ -19,7 +19,7 @@ public class FakeReportingServices : ReportingServices
     public Mock<IBusControl> Bus { get; }
         = new Mock<IBusControl>(MockBehavior.Strict);
 
-    public Dictionary<Type, Mock> RequestClients { get; } = new();
+    public Dictionary<Type, Mock> RequestClients { get; } = [];
 
     protected override IBusControl CreateBus(out Uri queueUri)
     {

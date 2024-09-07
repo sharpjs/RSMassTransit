@@ -1,6 +1,7 @@
 // Copyright Jeffrey Sharp
 // SPDX-License-Identifier: ISC
 
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +17,8 @@ internal static class StorageRegistration
         this IServiceCollection services,
         IConfiguration          configuration)
     {
-        if (services is null)
-            throw new ArgumentNullException(nameof(services));
-        if (configuration is null)
-            throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(services);
+        ArgumentNullException.ThrowIfNull(configuration);
 
         services.AddSingleton(LoadConfiguration(configuration));
         services.AddSingleton(CreateRepository);
@@ -35,17 +34,11 @@ internal static class StorageRegistration
     {
         var configuration = services.GetRequiredService<IStorageConfiguration>();
 
-        switch (configuration.Type)
+        return configuration.Type switch
         {
-            case StorageType.File:
-                return new FileBlobStorage(configuration.File);
-
-            case StorageType.AzureBlob:
-                return new AzureBlobStorage(configuration.Azure);
-
-            default:
-                // Should be unreachable
-                throw new NotSupportedException();
-        }
+            StorageType.File      => new FileBlobStorage(configuration.File),
+            StorageType.AzureBlob => new AzureBlobStorage(configuration.Azure),
+            _                     => throw new UnreachableException()
+        };
     }
 }

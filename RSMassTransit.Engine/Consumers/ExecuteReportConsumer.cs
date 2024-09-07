@@ -60,40 +60,39 @@ internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
         _logger.LogDebug("Creating report execution service client.");
         var credential = request.GetNetworkCredential();
 
-        using (var client = _services.CreateExecutionClient(credential))
-        {
-            _logger.LogDebug("Invoking LoadReport2.");
-            var loaded = await client.LoadReport2Async(
-                new LoadReport2Request { Report = request.Path }
-            );
+        using var client = _services.CreateExecutionClient(credential);
 
-            var executionHeader = loaded.ExecutionHeader;
+        _logger.LogDebug("Invoking LoadReport2.");
+        var loaded = await client.LoadReport2Async(
+            new LoadReport2Request { Report = request.Path }
+        );
 
-            _logger.LogDebug("Invoking SetExecutionParameters2.");
-            await client.SetExecutionParameters2Async(
-                new SetExecutionParameters2Request
-                {
-                    ExecutionHeader   = executionHeader,
-                    Parameters        = GetParameterValues   (request),
-                    ParameterLanguage = GetParameterLanguage (request),
-                }
-            );
+        var executionHeader = loaded.ExecutionHeader;
 
-            _logger.LogDebug("Invoking Render2.");
-            var rendered = await client.Render2Async(new Render2Request
+        _logger.LogDebug("Invoking SetExecutionParameters2.");
+        await client.SetExecutionParameters2Async(
+            new SetExecutionParameters2Request
             {
-                ExecutionHeader = executionHeader,
-                Format          = GetFormat(request),
-                PaginationMode  = PageCountMode.Actual
-            });
+                ExecutionHeader   = executionHeader,
+                Parameters        = GetParameterValues   (request),
+                ParameterLanguage = GetParameterLanguage (request),
+            }
+        );
 
-            response.ContentType       = rendered.MimeType;
-            response.FileNameExtension = rendered.Extension;
-            response.Length            = rendered.Result.Length;
-            response.Messages          = TranslateWarnings(rendered.Warnings);
+        _logger.LogDebug("Invoking Render2.");
+        var rendered = await client.Render2Async(new Render2Request
+        {
+            ExecutionHeader = executionHeader,
+            Format          = GetFormat(request),
+            PaginationMode  = PageCountMode.Actual
+        });
 
-            return rendered.Result;
-        }
+        response.ContentType       = rendered.MimeType;
+        response.FileNameExtension = rendered.Extension;
+        response.Length            = rendered.Result.Length;
+        response.Messages          = TranslateWarnings(rendered.Warnings);
+
+        return rendered.Result;
     }
 
     private async Task StoreRenderedReportAsync(
@@ -105,8 +104,9 @@ internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
 
         var extension = GetFileExtension(request);
 
-        using (var stream = new MemoryStream(bytes, writable: false))
-            response.Uri = await _storage.PutAsync(stream, extension);
+        using var stream = new MemoryStream(bytes, writable: false);
+
+        response.Uri = await _storage.PutAsync(stream, extension);
     }
 
     private static ParameterValue[] GetParameterValues(IExecuteReportRequest request)
@@ -122,7 +122,7 @@ internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
         => FormatNames[request.Format]; // TODO: Handle not-found errors
 
     private static readonly Dictionary<ReportFormat, string>
-        FormatNames = new Dictionary<ReportFormat, string>
+        FormatNames = new()
         {
             [ReportFormat.Word]        = "WORDOPENXML",
             [ReportFormat.WordLegacy]  = "WORD",
@@ -142,7 +142,7 @@ internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
         => FileExtensions[request.Format]; // TODO: Handle not-found errors
 
     private static readonly Dictionary<ReportFormat, string>
-        FileExtensions = new Dictionary<ReportFormat, string>
+        FileExtensions = new()
         {
             [ReportFormat.Word]        = ".docx",
             [ReportFormat.WordLegacy]  = ".doc",
@@ -158,10 +158,10 @@ internal class ExecuteReportConsumer : IConsumer<IExecuteReportRequest>
             [ReportFormat.Xml]         = ".xml"
         };
 
-    private IList<string> TranslateWarnings(Warning[] warnings)
+    private static IList<string> TranslateWarnings(Warning[] warnings)
     {
         if (warnings == null || warnings.Length == 0)
-            return new string[0];
+            return Array.Empty<string>();
 
         return Array.ConvertAll(
             warnings,

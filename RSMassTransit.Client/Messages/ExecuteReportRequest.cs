@@ -14,8 +14,8 @@ public class ExecuteReportRequest : IExecuteReportRequest
     /// <inheritdoc/>
     public IList<KeyValuePair<string, string>> ParameterValues
     {
-        get => _parameterValues ??= new List<KeyValuePair<string, string>>();
-        set => _parameterValues = value;
+        get => _parameterValues ??= [];
+        set => _parameterValues   = value;
     }
     private IList<KeyValuePair<string, string>>? _parameterValues;
 

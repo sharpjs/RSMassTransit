@@ -17,7 +17,7 @@ public class ReportingServicesClientFactoryTests
         DefaultCredential => CredentialCache.DefaultNetworkCredentials;
 
     private static readonly NetworkCredential
-        ExplicitCredential = new NetworkCredential("un", "pw");
+        ExplicitCredential = new("un", "pw");
 
     [Test]
     public void CreateExecutionClient_DefaultCredential()
@@ -35,7 +35,7 @@ public class ReportingServicesClientFactoryTests
         AssertClient<ReportExecutionServiceSoapClient>(client, ExplicitCredential);
     }
 
-    private void AssertClient<T>(
+    private static void AssertClient<T>(
         IReportExecutionSoapClient client,
         NetworkCredential          credential)
     {

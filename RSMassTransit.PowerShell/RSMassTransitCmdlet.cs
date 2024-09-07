@@ -10,7 +10,7 @@ namespace RSMassTransit.PowerShell;
 public abstract class RSMassTransitCmdlet : PSCmdlet, IDisposable
 {
     protected static readonly Uri
-        DefaultBusUri = new Uri("rabbitmq://localhost");
+        DefaultBusUri = new("rabbitmq://localhost");
 
     protected const string
         DefaultBusQueue = "reports";

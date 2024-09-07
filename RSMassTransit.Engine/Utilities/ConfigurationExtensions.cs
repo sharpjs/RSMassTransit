@@ -10,8 +10,7 @@ internal static class ConfigurationExtensions
 {
     public static string? GetString(this IConfiguration configuration, string key)
     {
-        if (configuration is null)
-            throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         return configuration[key].NullIfEmpty();
     }
@@ -75,8 +74,7 @@ internal static class ConfigurationExtensions
 
     public static object GetKeyPath(this IConfiguration configuration, string key)
     {
-        if (configuration is null)
-            throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         return configuration is IConfigurationSection section
             ? string.Concat(section.Path, ":", key)

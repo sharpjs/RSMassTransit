@@ -56,6 +56,21 @@ jobs:
           -p:Counter=${{ github.run_number }}
           -p:RepositoryCommit=${{ github.sha }}
 
+      - name: Publish Version
+        shell: pwsh
+        run: |
+          Add-Content $env:GITHUB_STEP_SUMMARY @"
+          |            |                                   |
+          |:-----------|:----------------------------------|
+          | Version    | ``$env:VERSION``                  |
+          | Branch/Tag | ``$env:GITHUB_REF`` $env:HEAD_REF |
+          | Commit     | ``$env:GITHUB_SHA`` $env:HEAD_SHA |`n`n
+          "@
+        env:
+          VERSION:  ${{ steps.stamp.outputs.version }}
+          HEAD_REF: ${{ github.event.pull_request && format('(head = `{0}`)', github.event.pull_request.head.ref) }}
+          HEAD_SHA: ${{ github.event.pull_request && format('(head = `{0}`)', github.event.pull_request.head.sha) }}
+
       - name: Restore NuGet Packages
         run: dotnet restore
 
@@ -94,6 +109,16 @@ jobs:
           reporttypes: Html;MarkdownSummaryGithub;Badges
           verbosity: Warning
 
+      - name: Publish Coverage Summary
+        shell: pwsh
+        run: |
+          Add-Content $env:GITHUB_STEP_SUMMARY @(
+            "## Coverage`n"
+            Select-String '^#' $env:REPORT_PATH -NotMatch -Raw
+          )
+        env:
+          REPORT_PATH: ${{ runner.temp }}\coverage\SummaryGithub.md
+
       - name: Save Coverage Report
         uses: actions/upload-artifact@v4
         #url: https://github.com/actions/upload-artifact
@@ -101,13 +126,6 @@ jobs:
           name: Coverage Report
           path: ${{ runner.temp }}\coverage
           if-no-files-found: error
-
-      - name: Publish Coverage Summary
-        shell: pwsh
-        run: >
-          Get-Content $env:REPORT_PATH -Raw >> $env:GITHUB_STEP_SUMMARY
-        env:
-          REPORT_PATH: ${{ runner.temp }}\coverage\SummaryGithub.md
 
       - name: Save Packages
         uses: actions/upload-artifact@v4

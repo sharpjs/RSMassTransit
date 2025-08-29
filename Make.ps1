@@ -26,6 +26,10 @@ param (
     [Parameter(Mandatory, ParameterSetName="Coverage")]
     [switch] $Coverage
 ,
+    # Show the coverage report in the defualt browser.
+    [Parameter(ParameterSetName="Coverage")]
+    [switch] $Show
+,
     # Do not build before running tests.
     [Parameter(ParameterSetName="Test")]
     [Parameter(ParameterSetName="Coverage")]
@@ -140,6 +144,9 @@ function Export-CoverageReport {
     ) | Write-Host
     if ($Summary.methodcoverage + $Summary.linecoverage + $Summary.branchcoverage -lt 300) {
         Write-Warning "Coverage is below 100%."
+    }
+    if ($Show) {
+        Start-Process (Join-Path $PSScriptRoot coverage index.html)
     }
 }
 

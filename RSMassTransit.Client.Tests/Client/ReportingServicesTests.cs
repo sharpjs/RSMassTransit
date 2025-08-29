@@ -1,5 +1,5 @@
-// Copyright Jeffrey Sharp
-// SPDX-License-Identifier: ISC
+// Copyright Subatomix Research Inc.
+// SPDX-License-Identifier: MIT
 
 using System.Net;
 using RSMassTransit.Messages;

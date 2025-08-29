@@ -1,8 +1,8 @@
 <Project>
 
   <!--
-    Copyright Jeffrey Sharp
-    SPDX-License-Identifier: ISC
+    Copyright Subatomix Research Inc.
+    SPDX-License-Identifier: MIT
   -->
 
   <!--
@@ -18,8 +18,8 @@
     <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>Jeffrey Sharp</Authors>
     <Company>Subatomix Research Inc.</Company>
-    <Copyright>© $([System.DateTime]::UtcNow.Year) $(Authors)</Copyright>
-    <PackageLicenseExpression>ISC</PackageLicenseExpression>
+    <Copyright>© $([System.DateTime]::UtcNow.Year) $(Company)</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
     <PackageTags>SSRS Reporting MassTransit Bus RabbitMQ ServiceBus</PackageTags>
     <PackageReleaseNotes>$(PackageProjectUrl)/blob/main/CHANGES.md</PackageReleaseNotes>

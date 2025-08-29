@@ -85,6 +85,6 @@ Most lines should begin with one of these words:
 - Initial release
 
 <!--
-  Copyright Jeffrey Sharp
-  SPDX-License-Identifier: ISC
+  Copyright Subatomix Research Inc.
+  SPDX-License-Identifier: MIT
 -->

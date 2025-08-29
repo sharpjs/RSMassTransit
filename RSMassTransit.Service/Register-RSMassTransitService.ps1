@@ -22,8 +22,8 @@ using namespace System.Runtime.InteropServices
         This script returns an object that represents the new service.
 
 .NOTES
-    Copyright Jeffrey Sharp
-    SPDX-License-Identifier: ISC
+    Copyright Subatomix Research Inc.
+    SPDX-License-Identifier: MIT
 
 .LINK
     https://github.com/sharpjs/RSMassTransit

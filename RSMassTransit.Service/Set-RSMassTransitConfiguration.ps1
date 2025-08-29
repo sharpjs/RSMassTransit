@@ -14,8 +14,8 @@
         This script does not produce output.
 
 .NOTES
-    Copyright Jeffrey Sharp
-    SPDX-License-Identifier: ISC
+    Copyright Subatomix Research Inc.
+    SPDX-License-Identifier: MIT
 
 .EXAMPLE
     Set-RSMassTransitConfiguration -BusHostUri sb://my-bus

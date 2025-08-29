@@ -51,6 +51,6 @@ implemented by [Jeff Sharp (@sharpjs)](https://github.com/sharpjs).
   ```
 
 <!--
-  Copyright Jeffrey Sharp
-  SPDX-License-Identifier: ISC
+  Copyright Subatomix Research Inc.
+  SPDX-License-Identifier: MIT
 -->

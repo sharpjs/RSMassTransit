@@ -2,8 +2,8 @@
 # https://editorconfig.org
 # https://aka.ms/editorconfigdocs
 #
-# Copyright Jeffrey Sharp
-# SPDX-License-Identifier: ISC
+# Copyright Subatomix Research Inc.
+# SPDX-License-Identifier: MIT
 
 root = true
 
@@ -34,7 +34,7 @@ insert_final_newline = false
 insert_final_newline = false
 
 [*.cs]
-file_header_template = Copyright Jeffrey Sharp\nSPDX-License-Identifier: ISC
+file_header_template = Copyright Subatomix Research Inc.\nSPDX-License-Identifier: MIT
 dotnet_diagnostic.CA1859.severity = none # CA1859: Use concrete types when possible for improved performance
 
 # C# Style Conventions

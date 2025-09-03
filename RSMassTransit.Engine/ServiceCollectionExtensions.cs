@@ -39,9 +39,9 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration          configuration)
     {
-        services.AddBus               (configuration.GetSection("Bus"    ));
-        services.AddBlobStorage       (configuration.GetSection("Storage"));
-        services.AddReportingServices ();
+        services.AddBus               (configuration.GetSection("Bus"      ));
+        services.AddBlobStorage       (configuration.GetSection("Storage"  ));
+        services.AddReportingServices (configuration.GetSection("Reporting"));
         return services;
     }
 }

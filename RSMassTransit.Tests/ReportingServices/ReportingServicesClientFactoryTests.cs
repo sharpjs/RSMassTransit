@@ -10,14 +10,23 @@ namespace RSMassTransit.ReportingServices;
 [TestFixture]
 public class ReportingServicesClientFactoryTests
 {
-    private static ReportingServicesClientFactory
-        Factory => ReportingServicesClientFactory.Instance;
-
     private static NetworkCredential
         DefaultCredential => CredentialCache.DefaultNetworkCredentials;
 
     private static readonly NetworkCredential
         ExplicitCredential = new("un", "pw");
+
+    private ReportingServicesClientFactory
+        Factory { get; }
+
+    public ReportingServicesClientFactoryTests()
+    {
+        Factory = new(Mock.Of<IReportingServicesClientConfiguration>(c
+            => c.ExecutionUri    == new Uri("http://localhost/ReportServer/ReportExecution2005.asmx")
+            && c.MaxResponseSize == 2L * 1024 * 1024 * 1024
+            && c.Timeout         == TimeSpan.FromHours(1)
+        ));
+    }
 
     [Test]
     public void CreateExecutionClient_DefaultCredential()

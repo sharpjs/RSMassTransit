@@ -12,16 +12,14 @@ namespace RSMassTransit.ReportingServices;
 
 internal class ReportingServicesClientFactory : IReportingServicesClientFactory
 {
-    public static ReportingServicesClientFactory
-        Instance = new();
+    private readonly Binding         _binding;
+    private readonly EndpointAddress _executionAddress;
 
-    private static readonly Binding
-        Binding = CreateBinding();
-
-    private static readonly EndpointAddress
-        ExecutionAddress = new("http://localhost:80/ReportServer/ReportExecution2005.asmx");
-
-    protected ReportingServicesClientFactory() { }
+    public ReportingServicesClientFactory(IReportingServicesClientConfiguration configuration)
+    {
+        _binding          = CreateBinding(configuration);
+        _executionAddress = new(configuration.ExecutionUri);
+    }
 
     public IReportExecutionSoapClient CreateExecutionClient(NetworkCredential? credential = null)
     {
@@ -29,7 +27,7 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
             ReportExecutionServiceSoapClient,
             ReportExecutionServiceSoap
         >(
-            () => new ReportExecutionServiceSoapClient(Binding, ExecutionAddress),
+            () => new ReportExecutionServiceSoapClient(_binding, _executionAddress),
             credential
         );
     }
@@ -54,16 +52,14 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
         }
     }
 
-    private static Binding CreateBinding()
+    private static Binding CreateBinding(IReportingServicesClientConfiguration configuration)
     {
         var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportCredentialOnly)
         {
-            // TODO: Make most of these configurable.
             Name                   = "ReportingServicesHttp",
-            MaxReceivedMessageSize = 1024 * 1024 * 1024, //   1 GiB
             AllowCookies           = true,
-            SendTimeout            = new TimeSpan(hours: 4, minutes:  0, seconds: 30), // just a bit longer than the report timeout
-            ReceiveTimeout         = new TimeSpan(hours: 0, minutes: 30, seconds:  0),
+            MaxReceivedMessageSize = configuration.MaxResponseSize,
+            SendTimeout            = configuration.Timeout,
         };
 
         binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Ntlm;

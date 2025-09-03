@@ -72,6 +72,50 @@ internal static class ConfigurationExtensions
         ));
     }
 
+    public static long? GetInt64(
+        this IConfiguration configuration,
+        string              key,
+        long                min = long.MinValue,
+        long                max = long.MaxValue)
+    {
+        var text = configuration.GetString(key);
+        if (text is null)
+            return null;
+
+        if (long.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value)
+                && value >= min && value <= max)
+            return value;
+
+        throw new ConfigurationException(string.Format(
+            "The value '{1}' is invalid for application setting '{0}'.  " +
+            "The value must be an integer, digits only, with optional leading sign, " +
+            "between {2} and {3}.",
+            configuration.GetKeyPath(key), text, min, max
+        ));
+    }
+
+    public static TimeSpan? GetTimeSpan(
+        this IConfiguration configuration,
+        string              key,
+        long                minTicks = long.MinValue,
+        long                maxTicks = long.MaxValue)
+    {
+        var text = configuration.GetString(key);
+        if (text is null)
+            return null;
+
+        if (TimeSpan.TryParse(text, CultureInfo.InvariantCulture, out var value)
+                && value.Ticks >= minTicks
+                && value.Ticks <= maxTicks)
+            return value;
+
+        throw new ConfigurationException(string.Format(
+            "The value '{1}' is invalid for application setting '{0}'.  " +
+            "The value must be a time span between {2} and {3}.",
+            configuration.GetKeyPath(key), text, TimeSpan.FromTicks(minTicks), TimeSpan.FromTicks(maxTicks)
+        ));
+    }
+
     public static object GetKeyPath(this IConfiguration configuration, string key)
     {
         ArgumentNullException.ThrowIfNull(configuration);

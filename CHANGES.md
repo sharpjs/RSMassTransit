@@ -26,7 +26,7 @@ Most lines should begin with one of these words:
 
   Component               | .NET Core/5+ | .NET Standard | .NET Framework
   :-----------------------|:------------:|:-------------:|:--------------:
-  Client packages         | ➤            | 2.0           | 4.6.1
+  Client packages         | 8.0          | 2.0           | 4.6.1
   Engine assembly         | 8.0          | *none*        | *none*
   .NET tool package       | 8.0          | *none*        | *none*
   Windows service package | 8.0          | *none*        | *none*

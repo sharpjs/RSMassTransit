@@ -1,6 +1,8 @@
 // Copyright Subatomix Research Inc.
 // SPDX-License-Identifier: MIT
 
+// TODO: Check nullability annotations in this file.
+
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -168,10 +170,10 @@ public abstract class ReportingServices : IReportingServices
         var supportedSchemes = DiscoverSupportedSchemes();
         var requestedScheme  = configuration.BusUri?.Scheme ?? "(not specified)";
 
-        if (!supportedSchemes.TryGetValue(requestedScheme, out Type type))
+        if (!supportedSchemes.TryGetValue(requestedScheme, out var type))
             throw OnUnsupportedScheme(requestedScheme, supportedSchemes.Keys);
 
-        return (ReportingServices) Activator.CreateInstance(type, configuration);
+        return (ReportingServices) Activator.CreateInstance(type, configuration)!;
     }
 
     private static void LoadAssemblies()
@@ -207,7 +209,7 @@ public abstract class ReportingServices : IReportingServices
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
             // Assembly must be from RSMassTransit.Client family
-            if (!assembly.GetName().Name.StartsWith(ClientAssemblyPrefix, Ordinal))
+            if (!assembly.GetName().Name!.StartsWith(ClientAssemblyPrefix, Ordinal))
                 continue;
 
             foreach (var type in assembly.GetExportedTypes())
@@ -218,7 +220,7 @@ public abstract class ReportingServices : IReportingServices
 
                 // Type must declare a URI scheme
                 var schemeField = type.GetField("UriScheme", Public | Static);
-                if (schemeField.FieldType != typeof(string))
+                if (schemeField!.FieldType != typeof(string))
                     continue;
 
                 // URI scheme must be non-null

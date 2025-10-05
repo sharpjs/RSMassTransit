@@ -14,6 +14,7 @@ Most lines should begin with one of these words:
 ## [2.0.0](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...release/2.0.0)
 -->
 - Add configuration for SSRS execution URI, max response size, and timeout.
+- Add support for HTTPS SSRS endpoint.
 - Add prettier console output.
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.

@@ -56,7 +56,7 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
     {
         var securityMode = configuration.ExecutionUri.Scheme == Uri.UriSchemeHttp
             ? BasicHttpSecurityMode.TransportCredentialOnly
-            : BasicHttpSecurityMode.TransportWithMessageCredential;
+            : BasicHttpSecurityMode.Transport;
 
         var binding = new BasicHttpBinding(securityMode)
         {

@@ -74,7 +74,7 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
     private static void ProvideCredential(ClientCredentials client, NetworkCredential? credential)
     {
         client.Windows.AllowedImpersonationLevel
-            = TokenImpersonationLevel.Impersonation;
+            = TokenImpersonationLevel.Delegation;
 
         client.Windows.ClientCredential
             = credential ?? CredentialCache.DefaultNetworkCredentials;

@@ -48,6 +48,21 @@ param (
     [pscredential]
     $BusCredential,
 
+    # URI of the SSRS SOAP endpoint.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [uri]
+    $ReportServiceUri,
+
+    # Maximum size in bytes of response to allow from the SSRS SOAP endpoint.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [long]
+    $ReportServiceMaxResponseSize,
+
+    # Maximum duration to wait for a response from the SSRS SOAP endpoint.
+    [Parameter(ValueFromPipelineByPropertyName)]
+    [timespan]
+    $ReportServiceTimeout,
+
     # Type of report storage. Valid types are File and AzureBlob.
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet($null, "File", "AzureBlob")]
@@ -107,6 +122,21 @@ process {
         $AppConfig.Bus.SecretName = $BusCredential.UserName
         $AppConfig.Bus.Secret     = $BusCredential.GetNetworkCredential().Password
         $AppConfigChanged         = $true
+    }
+
+    if ($ReportServiceUri -and $ReportServiceUri.ToString()) {
+        $AppConfig.Reporting.ExecutionUri = "$ReportServiceUri/ReportExecution2005.asmx"
+        $AppConfigChanged                 = $true
+    }
+
+    if ($ReportServiceMaxResponseSize) {
+        $AppConfig.Reporting.MaxResponseSize = $ReportServiceMaxResponseSize
+        $AppConfigChanged                    = $true
+    }
+
+    if ($ReportServiceTimeout) {
+        $AppConfig.Reporting.Timeout = $ReportServiceTimeout.ToString()
+        $AppConfigChanged            = $true
     }
 
     if ($StorageType) {

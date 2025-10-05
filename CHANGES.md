@@ -13,6 +13,7 @@ Most lines should begin with one of these words:
 <!--
 ## [2.0.0](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...release/2.0.0)
 -->
+- Add configuration for SSRS execution URI, max response size, and timeout.
 - Add prettier console output.
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.
@@ -36,11 +37,11 @@ Most lines should begin with one of these words:
 
   Package                        | Version
   :------------------------------|:-----------------
-  Microsoft.Extensions.Hosting.* | [8.0.0](https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.0/8.0.0.md)
-  Microsoft.Extensions.Logging   | [8.0.0](https://github.com/dotnet/core/blob/main/release-notes/8.0/8.0.0/8.0.0.md)
+  Microsoft.Extensions.Hosting.* | [9.0.9](https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.9/9.0.9.md)
+  Microsoft.Extensions.Logging   | [9.0.9](https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.9/9.0.9.md)
   Sharp.Disposable               | [1.1.1](https://github.com/sharpjs/Sharp.Disposable/releases/tag/release/1.1.1)
-  Subatomix.Logging              | [1.0.0-pre.4](https://github.com/sharpjs/Subatomix.Logging)
-  System.ServiceModel.*          | [8.0.0](https://github.com/dotnet/wcf/releases/tag/v3.4.0-rtm)
+  Subatomix.Logging              | [1.0.0-pre.6](https://github.com/sharpjs/Subatomix.Logging)
+  System.ServiceModel.*          | [8.1.2](https://github.com/dotnet/wcf/releases/tag/v8.1.2-rtm)
 
 ## [1.0.0](https://github.com/sharpjs/RSMassTransit/compare/v0.1.1...release/1.0.0)
 - Change project structure.

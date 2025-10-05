@@ -53,7 +53,7 @@ public class ReportingServicesClientFactoryTests
             .Which.ClientCredentials.Windows;
 
         windowsCredential.AllowedImpersonationLevel
-            .Should().Be(TokenImpersonationLevel.Impersonation);
+            .Should().Be(TokenImpersonationLevel.Delegation);
 
         windowsCredential.ClientCredential
             .Should().BeSameAs(credential);

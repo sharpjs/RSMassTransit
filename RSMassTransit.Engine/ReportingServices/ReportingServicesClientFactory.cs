@@ -54,7 +54,11 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
 
     private static Binding CreateBinding(IReportingServicesClientConfiguration configuration)
     {
-        var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportCredentialOnly)
+        var securityMode = configuration.ExecutionUri.Scheme == Uri.UriSchemeHttp
+            ? BasicHttpSecurityMode.TransportCredentialOnly
+            : BasicHttpSecurityMode.TransportWithMessageCredential;
+
+        var binding = new BasicHttpBinding(securityMode)
         {
             Name                   = "ReportingServicesHttp",
             AllowCookies           = true,

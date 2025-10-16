@@ -40,12 +40,6 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration          configuration)
     {
-        ServicePointManager.SetTcpKeepAlive(
-            enabled: true,
-            /* send keep-alive packet after */ 15_000 /* ms of inactivity  */,
-            /* send another KA packet after */  2_000 /* ms if no response */
-        );
-
         services.AddBus               (configuration.GetSection("Bus"      ));
         services.AddBlobStorage       (configuration.GetSection("Storage"  ));
         services.AddReportingServices (configuration.GetSection("Reporting"));

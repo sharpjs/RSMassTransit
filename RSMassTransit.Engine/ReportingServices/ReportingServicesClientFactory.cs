@@ -43,6 +43,7 @@ internal class ReportingServicesClientFactory : IReportingServicesClientFactory
         {
             client = constructor();
             ProvideCredential(client.ClientCredentials, credential);
+            client.Endpoint.EndpointBehaviors.Add(TcpKeepAliveHandlerBehavior.Instance);
             return client;
         }
         catch

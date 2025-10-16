@@ -16,6 +16,8 @@ Most lines should begin with one of these words:
 - Add configuration for SSRS execution URI, max response size, and timeout.
 - Add support for HTTPS SSRS endpoint.
 - Add prettier console output.
+- Add TCP keep-alive behavior in SSRS API connections so that load balancers
+  and firewalls do not drop connections awaiting a long-running report.
 - Fix unwanted `_error` and `_skipped` queues being created for each client's
   default (response) queue.
 - Update bus tuning:

@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
-    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub"         Version="8.0.0" />
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub"         Version="10.0.103" />
   </ItemGroup>
 
 </Project>

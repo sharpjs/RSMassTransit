@@ -36,8 +36,8 @@ Most lines should begin with one of these words:
   Package                        | Version
   :------------------------------|:-----------------
   MassTransit                    | [8.5.8](https://masstransit.io/support/upgrade#version-850)
-  Microsoft.Extensions.Hosting.* | [9.0.9](https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.9/9.0.9.md)
-  Microsoft.Extensions.Logging   | [9.0.9](https://github.com/dotnet/core/blob/main/release-notes/9.0/9.0.9/9.0.9.md)
+  Microsoft.Extensions.Hosting.* | [10.0.3](https://github.com/dotnet/core/blob/main/release-notes/10.0/10.0.3/10.0.3.md)
+  Microsoft.Extensions.Logging   | [10.0.3](https://github.com/dotnet/core/blob/main/release-notes/10.0/10.0.3/10.0.3.md)
   Sharp.Disposable               | [1.1.1](https://github.com/sharpjs/Sharp.Disposable/releases/tag/release/1.1.1)
   Subatomix.Logging              | [1.0.0-pre.6](https://github.com/sharpjs/Subatomix.Logging)
   System.ServiceModel.*          | [8.1.2](https://github.com/dotnet/wcf/releases/tag/v8.1.2-rtm)

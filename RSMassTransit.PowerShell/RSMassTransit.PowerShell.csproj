@@ -8,7 +8,15 @@
   <PropertyGroup>
     <Description>PowerShell Cmdlets for RSMassTransit, a MassTransit message bus interface for SQL Server Reporting Services</Description>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <ModuleGuid>86812cf8-957d-4eca-b899-6e8c580d68ef</ModuleGuid>
+    <MinimumPowerShellVersion>5.1</MinimumPowerShellVersion>
+    <MinimumDotNetFrameworkVersion>4.6.1</MinimumDotNetFrameworkVersion>
+    <MinimumClrVersion>4.0</MinimumClrVersion>
+    <PackageTags>
+      SSRS Reporting MassTransit Bus RabbitMQ ServiceBus
+      PSEdition_Desktop PSEdition_Core Windows Linux MacOS
+    </PackageTags>
+    <ModuleLicenseUrl>$(PackageProjectUrl)/blob/main/LICENSE.txt</ModuleLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,12 +26,12 @@
 
   <ItemGroup>
     <PackageReference Include="Subatomix.Build.Packaging.PowerShellModule" PrivateAssets="all" />
-    <PackageReference Include="PowerShellStandard.Library"                 PrivateAssets="all" />
+    <PackageReference Include="PowerShellStandard.Library" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="$(PowerShellItemIncludes)"
-             Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <CompatiblePSEditions Include="Core;Desktop" />
+    <CmdletsToExport Include="Invoke-RsReport" />
   </ItemGroup>
 
   <!--
@@ -37,5 +45,20 @@
   <PropertyGroup>
     <VersionSuffix>$([System.Text.RegularExpressions.Regex]::Replace($(VersionSuffix), '\+.*|[^0-9a-zA-Z-]+', ''))</VersionSuffix>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>
+      $(TargetsForTfmSpecificBuildOutput);PackReferences
+    </TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+  <Target Name="PackReferences" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage
+        Include="@(ReferenceCopyLocalPaths->
+          WithMetadataValue('CopyLocal', 'true')->
+          WithoutMetadataValue('CopyToPublishDirectory', 'false'))"
+        TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)" />
+    </ItemGroup>
+  </Target>
 
 </Project>

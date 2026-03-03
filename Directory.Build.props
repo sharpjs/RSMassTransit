@@ -21,9 +21,11 @@
     <Copyright>© $([System.DateTime]::UtcNow.Year) $(Company)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sharpjs/RSMassTransit</PackageProjectUrl>
+    <PackageProjectUrlRaw>$(PackageProjectUrl.Replace("github", "raw.githubusercontent"))</PackageProjectUrlRaw>
     <PackageTags>SSRS Reporting MassTransit Bus RabbitMQ ServiceBus</PackageTags>
     <PackageReleaseNotes>$(PackageProjectUrl)/blob/main/CHANGES.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>$(PackageProjectUrlRaw)/main/icon.png</PackageIconUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>

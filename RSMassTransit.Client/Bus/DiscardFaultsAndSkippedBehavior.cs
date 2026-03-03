@@ -1,8 +1,6 @@
 // Copyright Subatomix Research Inc.
 // SPDX-License-Identifier: MIT
 
-using MassTransit.EndpointConfigurators;
-
 namespace RSMassTransit.Bus;
 
 internal class DiscardFaultAndSkippedMessagesBehavior : IEndpointConfigurationObserver

@@ -4,6 +4,7 @@
 using System.Globalization;
 using MassTransit.Logging;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using RSMassTransit.Messages;
 using RSMassTransit.ReportingServices;
 using RSMassTransit.ReportingServices.Execution;

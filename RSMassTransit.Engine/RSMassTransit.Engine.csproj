@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" />
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" />
     <PackageReference Include="MassTransit.RabbitMQ" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
     <PackageReference Include="Sharp.Async" />

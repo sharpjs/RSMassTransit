@@ -15,13 +15,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <MassTransitVersion>[7.3.1, 8.0.0)</MassTransitVersion>
+    <MassTransitVersion>[8.5.8, 9.0.0)</MassTransitVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageVersion Include="MassTransit"                                  Version="$(MassTransitVersion)" />
     <PackageVersion Include="MassTransit.Azure.ServiceBus.Core"            Version="$(MassTransitVersion)" />
-    <PackageVersion Include="MassTransit.Extensions.DependencyInjection"   Version="$(MassTransitVersion)" />
     <PackageVersion Include="MassTransit.RabbitMQ"                         Version="$(MassTransitVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting"                 Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions"    Version="9.0.9" />

@@ -2,10 +2,6 @@
 // SPDX-License-Identifier: MIT
 
 using System.Diagnostics.CodeAnalysis;
-using GreenPipes;
-using MassTransit.Azure.ServiceBus.Core;
-using MassTransit.ExtensionsDependencyInjectionIntegration;
-using MassTransit.RabbitMqTransport;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RSMassTransit.Consumers;
@@ -24,9 +20,10 @@ internal static class BusRegistration
 
     internal static void AddBus(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddSingleton(LoadConfiguration(configuration));
-        services.AddMassTransit(ConfigureServices);
-        services.AddHostedService<BusService>();
+        var busConfiguration = LoadConfiguration(configuration);
+
+        services.AddSingleton(busConfiguration);
+        services.AddMassTransit(c => Configure(c, busConfiguration));
     }
 
     private static IBusConfiguration LoadConfiguration(IConfiguration configuration)
@@ -34,82 +31,75 @@ internal static class BusRegistration
         return new BusConfiguration(configuration);
     }
 
-    private static void ConfigureServices(IServiceCollectionBusConfigurator services)
+    private static void Configure(IBusRegistrationConfigurator c, IBusConfiguration configuration)
     {
-        services.AddConsumer<ExecuteReportConsumer>();
-        services.AddBus(CreateBus);
-    }
+        var scheme = configuration.HostUri.Scheme;
 
-    private static IBusControl CreateBus(IBusRegistrationContext context)
-    {
-        // This is called only once, so a fancier bus type registry is unwarranted.
-        var configuration = context.GetRequiredService<IBusConfiguration>();
-        var scheme        = configuration.HostUri.Scheme;
+        c.AddConsumer<ExecuteReportConsumer>();
 
         if (RabbitMqScheme.Equals(scheme, TypeComparison))
-            return CreateBusUsingRabbitMq(context, configuration);
+            c.UsingRabbitMq(ConfigureUsingRabbitMq);
 
-        if (AzureServiceBusScheme.Equals(scheme, TypeComparison))
-            return CreateBusUsingAzureServiceBus(context, configuration);
+        else if (AzureServiceBusScheme.Equals(scheme, TypeComparison))
+            c.UsingAzureServiceBus(ConfigureUsingAzureServiceBus);
 
-        throw new FormatException(string.Format(
-            "The scheme '{0}' is invalid for the BusUri application setting.  " +
-            "Valid schemes are '{1}' and '{2}'.",
-            scheme, RabbitMqScheme, AzureServiceBusScheme
-        ));
+        else
+            throw new FormatException(string.Format(
+                "The scheme '{0}' is invalid for the BusUri application setting.  " +
+                "Valid schemes are '{1}' and '{2}'.",
+                scheme, RabbitMqScheme, AzureServiceBusScheme
+            ));
     }
 
-    private static IBusControl CreateBusUsingRabbitMq(
-        IBusRegistrationContext context,
-        IBusConfiguration       configuration)
+    private static void ConfigureUsingRabbitMq(
+        IBusRegistrationContext         context,
+        IRabbitMqBusFactoryConfigurator b)
     {
-        return MassTransit.Bus.Factory.CreateUsingRabbitMq(b =>
+        var configuration = context.GetRequiredService<IBusConfiguration>();
+
+        var uri = configuration.HostUri;
+            uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
+
+        b.Host(uri, h =>
         {
-            var uri = configuration.HostUri;
-                uri = new UriBuilder(RabbitMqScheme, uri.Host, uri.Port, uri.AbsolutePath).Uri;
+            h.Username(configuration.SecretName);
+            h.Password(configuration.Secret);
+        });
 
-            b.Host(uri, h =>
-            {
-                h.Username(configuration.SecretName);
-                h.Password(configuration.Secret);
-            });
+        b.DiscardFaultAndSkippedMessages();
 
-            b.DiscardFaultAndSkippedMessages();
-
-            b.ReceiveEndpoint(configuration.QueueName, r =>
-            {
-                TuneForReportExecution(r);
-                r.ConfigureConsumers(context);
-            });
+        b.ReceiveEndpoint(configuration.QueueName, r =>
+        {
+            TuneForReportExecution(r);
+            r.ConfigureConsumers(context);
         });
     }
 
-    private static IBusControl CreateBusUsingAzureServiceBus(
-        IBusRegistrationContext context,
-        IBusConfiguration       configuration)
+    private static void ConfigureUsingAzureServiceBus(
+        IBusRegistrationContext           context,
+        IServiceBusBusFactoryConfigurator b)
     {
         const string UriDomain = ".servicebus.windows.net";
 
-        return MassTransit.Bus.Factory.CreateUsingAzureServiceBus(b =>
+        var configuration = context.GetRequiredService<IBusConfiguration>();
+
+        var uri = configuration.HostUri;
+            uri = new UriBuilder(AzureServiceBusScheme, uri.Host + UriDomain).Uri;
+
+        b.Host(uri, h =>
         {
-            var uri = configuration.HostUri;
-                uri = new UriBuilder(AzureServiceBusScheme, uri.Host + UriDomain).Uri;
+            h.NamedKeyCredential = new(
+                configuration.SecretName,
+                configuration.Secret
+            );
+        });
 
-            b.Host(uri, h =>
-            {
-                h.NamedKeyCredential = new(
-                    configuration.SecretName,
-                    configuration.Secret
-                );
-            });
+        b.DiscardFaultAndSkippedMessages();
 
-            b.DiscardFaultAndSkippedMessages();
-
-            b.ReceiveEndpoint(configuration.QueueName, r =>
-            {
-                TuneForReportExecution(r);
-                r.ConfigureConsumers(context);
-            });
+        b.ReceiveEndpoint(configuration.QueueName, r =>
+        {
+            TuneForReportExecution(r);
+            r.ConfigureConsumers(context);
         });
     }
 
@@ -156,7 +146,7 @@ internal static class BusRegistration
         // TODO: Consider physical memory in concurrency calculation.
         // TODO: Make loading factor(s) configurable.
         var concurrency = Math.Min(Environment.ProcessorCount, 32);
-        r.MaxConcurrentCalls = concurrency;
+        r.ConcurrentMessageLimit = concurrency;
 
         // RSMassTransit expects multiple service instances, competing for
         // infrequent, long-running requests.  Prefetch optimizes for the

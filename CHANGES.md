@@ -4,11 +4,6 @@ This file documents all notable changes.
 Most lines should begin with one of these words:
 *Add*, *Fix*, *Update*, *Change*, *Deprecate*, *Remove*.
 
-<!--
-## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.1.0...HEAD)
-(none)
--->
-
 ## [Unreleased](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...HEAD)
 <!--
 ## [2.0.0](https://github.com/sharpjs/RSMassTransit/compare/release/1.0.0...release/2.0.0)
@@ -30,7 +25,7 @@ Most lines should begin with one of these words:
 
   Component               | .NET Core/5+ | .NET Standard | .NET Framework
   :-----------------------|:------------:|:-------------:|:--------------:
-  Client packages         | 8.0          | 2.0           | 4.6.1
+  Client packages         | 8.0          | 2.0           | 4.6.2
   Engine assembly         | 8.0          | *none*        | *none*
   .NET tool package       | 8.0          | *none*        | *none*
   Windows service package | 8.0          | *none*        | *none*

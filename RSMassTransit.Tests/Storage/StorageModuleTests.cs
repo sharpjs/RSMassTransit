@@ -4,7 +4,6 @@
 #if PORTED
 using Autofac;
 using Autofac.Core;
-using FluentAssertions;
 using NUnit.Framework;
 using Sharp.BlobStorage;
 
@@ -23,7 +22,7 @@ namespace RSMassTransit.Storage
             {
                 container.ComponentRegistry
                     .IsRegistered(new TypedService(typeof(IBlobStorage)))
-                    .Should().BeTrue();
+                    .ShouldBeTrue();
             }
         }
     }

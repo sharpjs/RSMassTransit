@@ -13,7 +13,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(null)
-            .ToString().Should().BeEmpty();
+            .ToString().ShouldBeEmpty();
     }
 
     [Test]
@@ -21,7 +21,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a"])
-            .ToString().Should().Be("'a'");
+            .ToString().ShouldBe("'a'");
     }
 
     [Test]
@@ -29,7 +29,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a", "b"])
-            .ToString().Should().Be("'a', 'b'");
+            .ToString().ShouldBe("'a', 'b'");
     }
 
     [Test]
@@ -37,7 +37,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a", "b", "c"], separator: "|")
-            .ToString().Should().Be("'a'|'b'|'c'");
+            .ToString().ShouldBe("'a'|'b'|'c'");
     }
 
     [Test]
@@ -45,7 +45,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a", "b", "c"], separator: null)
-            .ToString().Should().Be("'a''b''c'");
+            .ToString().ShouldBe("'a''b''c'");
     }
 
     [Test]
@@ -53,7 +53,7 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a", "b", "c"], delimiter: "`")
-            .ToString().Should().Be("`a`, `b`, `c`");
+            .ToString().ShouldBe("`a`, `b`, `c`");
     }
 
     [Test]
@@ -61,6 +61,6 @@ public class StringBuilderExtensionsTests
     {
         new StringBuilder()
             .AppendDelimitedList(["a", "b", "c"], delimiter: null)
-            .ToString().Should().Be("a, b, c");
+            .ToString().ShouldBe("a, b, c");
     }
 }

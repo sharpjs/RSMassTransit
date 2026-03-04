@@ -9,7 +9,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
-using FluentAssertions;
 using MassTransit;
 using Moq;
 using NUnit.Framework;
@@ -61,15 +60,13 @@ namespace RSMassTransit.Consumers
         [Test]
         public void Construct_NullServices()
         {
-            this.Invoking(_ => new ExecuteReportConsumer(null, Storage.Object))
-                .Should().Throw<ArgumentNullException>();
+            Should.Throw<ArgumentNullException>(() => new ExecuteReportConsumer(null, Storage.Object));
         }
 
         [Test]
         public void Construct_NullStorage()
         {
-            this.Invoking(_ => new ExecuteReportConsumer(ClientFactory.Object, null))
-                .Should().Throw<ArgumentNullException>();
+            Should.Throw<ArgumentNullException>(() => new ExecuteReportConsumer(ClientFactory.Object, null));
         }
 
         [Test]

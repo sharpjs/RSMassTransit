@@ -3,7 +3,6 @@
 
 #if PORTED
 using Autofac;
-using FluentAssertions;
 using NUnit.Framework;
 
 namespace RSMassTransit.ReportingServices
@@ -21,7 +20,7 @@ namespace RSMassTransit.ReportingServices
             {
                 container
                     .Resolve<IReportingServicesClientFactory>()
-                    .Should().BeSameAs(ReportingServicesClientFactory.Instance);
+                    .ShouldBeSameAs(ReportingServicesClientFactory.Instance);
             }
         }
     }

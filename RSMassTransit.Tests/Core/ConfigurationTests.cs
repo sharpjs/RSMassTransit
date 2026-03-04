@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
-using FluentAssertions;
 using NUnit.Framework;
 using RSMassTransit.Storage;
 
@@ -22,8 +21,7 @@ namespace RSMassTransit.Core
         [Test]
         public void Construct_NullSettings()
         {
-            this.Invoking(_ => new Configuration(null))
-                .Should().Throw<ArgumentNullException>();
+            Should.Throw<ArgumentNullException>(() => new Configuration(null));
         }
 
         // InstanceId
@@ -32,14 +30,14 @@ namespace RSMassTransit.Core
         public void InstanceId_Current()
         {
             Configuration.Current.InstanceId
-                .Should().Be("TestInstance");
+                .ShouldBe("TestInstance");
         }
 
         [Test]
         public void InstanceId_Default()
         {
             new Configuration(Defaults).InstanceId
-                .Should().BeEmpty();
+                .ShouldBeEmpty();
         }
 
         [Test]
@@ -48,7 +46,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["InstanceId"] = "A" };
 
             new Configuration(settings).InstanceId
-                .Should().Be("A");
+                .ShouldBe("A");
         }
 
         // BusUri
@@ -57,14 +55,14 @@ namespace RSMassTransit.Core
         public void BusUri_Current()
         {
            Configuration.Current.BusUri
-                .Should().Be(new Uri("test://bus"));
+                .ShouldBe(new Uri("test://bus"));
         }
 
         [Test]
         public void BusUri_Default()
         {
             new Configuration(Defaults).BusUri
-                .Should().Be(new Uri("rabbitmq://localhost"));
+                .ShouldBe(new Uri("rabbitmq://localhost"));
         }
 
         [Test]
@@ -73,7 +71,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["BusUri"] = "urn:a" };
 
             new Configuration(settings).BusUri
-                .Should().Be(new Uri("urn:a"));
+                .ShouldBe(new Uri("urn:a"));
         }
 
         [Test]
@@ -81,9 +79,8 @@ namespace RSMassTransit.Core
         {
             var settings = new NameValueCollection { ["BusUri"] = "not a URI" };
 
-            this.Invoking(_ => new Configuration(settings))
-                .Should().Throw<ConfigurationErrorsException>()
-                .Which.Message.Should().Contain("The value must be an absolute URI.");
+            Should.Throw<ConfigurationErrorsException>(() => new Configuration(settings))
+                .Message.ShouldContain("The value must be an absolute URI.");
         }
 
         // BusQueue
@@ -92,14 +89,14 @@ namespace RSMassTransit.Core
         public void BusQueue_Current()
         {
             Configuration.Current.BusQueue
-                .Should().Be("testqueue");
+                .ShouldBe("testqueue");
         }
 
         [Test]
         public void BusQueue_Default()
         {
             new Configuration(Defaults).BusQueue
-                .Should().Be("reports");
+                .ShouldBe("reports");
         }
 
         [Test]
@@ -108,7 +105,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["BusQueue"] = "a" };
 
             new Configuration(settings).BusQueue
-                .Should().Be("a");
+                .ShouldBe("a");
         }
 
         // BusSecretName
@@ -117,14 +114,14 @@ namespace RSMassTransit.Core
         public void BusSecretName_Current()
         {
             Configuration.Current.BusSecretName
-                .Should().Be("testing");
+                .ShouldBe("testing");
         }
 
         [Test]
         public void BusSecretName_Default()
         {
             new Configuration(Defaults).BusSecretName
-                .Should().Be("guest");
+                .ShouldBe("guest");
         }
 
         [Test]
@@ -133,7 +130,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["BusSecretName"] = "a" };
 
             new Configuration(settings).BusSecretName
-                .Should().Be("a");
+                .ShouldBe("a");
         }
 
         // BusSecret
@@ -142,14 +139,14 @@ namespace RSMassTransit.Core
         public void BusSecret_Current()
         {
             Configuration.Current.BusSecret
-                .Should().Be("12345");
+                .ShouldBe("12345");
         }
 
         [Test]
         public void BusSecret_Default()
         {
             new Configuration(Defaults).BusSecret
-                .Should().Be("guest");
+                .ShouldBe("guest");
         }
 
         [Test]
@@ -158,7 +155,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["BusSecret"] = "a" };
 
             new Configuration(settings).BusSecret
-                .Should().Be("a");
+                .ShouldBe("a");
         }
 
         // StorageType
@@ -167,14 +164,14 @@ namespace RSMassTransit.Core
         public void StorageType_Current()
         {
             Configuration.Current.StorageType
-                .Should().Be(StorageType.AzureBlob);
+                .ShouldBe(StorageType.AzureBlob);
         }
 
         [Test]
         public void StorageType_Default()
         {
             new Configuration(Defaults).StorageType
-                .Should().Be(StorageType.File);
+                .ShouldBe(StorageType.File);
         }
 
         [Test]
@@ -183,7 +180,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.Type"] = "AzureBlob" };
 
             new Configuration(settings).StorageType
-                .Should().Be(StorageType.AzureBlob);
+                .ShouldBe(StorageType.AzureBlob);
         }
 
         [Test]
@@ -191,9 +188,8 @@ namespace RSMassTransit.Core
         {
             var settings = new NameValueCollection { ["Storage.Type"] = "not a storage type" };
 
-            this.Invoking(_ => new Configuration(settings))
-                .Should().Throw<ConfigurationErrorsException>()
-                .Which.Message.Should().Contain("The value must be one of:");
+            Should.Throw<ConfigurationErrorsException>(() => new Configuration(settings))
+                .Message.ShouldContain("The value must be one of:");
         }
 
         // Storage.File.Path
@@ -202,14 +198,14 @@ namespace RSMassTransit.Core
         public void Storage_File_Path_Current()
         {
             Configuration.Current.File.Path
-                .Should().Be(@"T:\TestBlobs");
+                .ShouldBe(@"T:\TestBlobs");
         }
 
         [Test]
         public void Storage_File_Path_Default()
         {
             new Configuration(Defaults).File.Path
-                .Should().Be(@"C:\Blobs");
+                .ShouldBe(@"C:\Blobs");
         }
 
         [Test]
@@ -218,7 +214,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.File.Path"] = @"T:\" };
 
             new Configuration(settings).File.Path
-                .Should().Be(@"T:\");
+                .ShouldBe(@"T:\");
         }
 
         // Storage.File.ReadBufferSize
@@ -227,14 +223,14 @@ namespace RSMassTransit.Core
         public void Storage_File_ReadBufferSize_Current()
         {
             Configuration.Current.File.ReadBufferSize
-                .Should().Be(68000);
+                .ShouldBe(68000);
         }
 
         [Test]
         public void Storage_File_ReadBufferSize_Default()
         {
             new Configuration(Defaults).File.ReadBufferSize
-                .Should().BeNull();
+                .ShouldBeNull();
         }
 
         [Test]
@@ -243,7 +239,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.File.ReadBufferSize"] = @"6502" };
 
             new Configuration(settings).File.ReadBufferSize
-                .Should().Be(6502);
+                .ShouldBe(6502);
         }
 
         [Test]
@@ -251,9 +247,8 @@ namespace RSMassTransit.Core
         {
             var settings = new NameValueCollection { ["Storage.File.ReadBufferSize"] = @"not a number" };
 
-            this.Invoking(_ => new Configuration(settings))
-                .Should().Throw<ConfigurationErrorsException>()
-                .Which.Message.Should().Contain("The value must be an integer,");
+            Should.Throw<ConfigurationErrorsException>(() => new Configuration(settings))
+                .Message.ShouldContain("The value must be an integer,");
         }
 
         // Storage.File.WriteBufferSize
@@ -262,14 +257,14 @@ namespace RSMassTransit.Core
         public void Storage_File_WriteBufferSize_Current()
         {
             Configuration.Current.File.WriteBufferSize
-                .Should().Be(80386);
+                .ShouldBe(80386);
         }
 
         [Test]
         public void Storage_File_WriteBufferSize_Default()
         {
             new Configuration(Defaults).File.WriteBufferSize
-                .Should().BeNull();
+                .ShouldBeNull();
         }
 
         [Test]
@@ -278,7 +273,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.File.WriteBufferSize"] = @"6502" };
 
             new Configuration(settings).File.WriteBufferSize
-                .Should().Be(6502);
+                .ShouldBe(6502);
         }
 
         [Test]
@@ -286,9 +281,8 @@ namespace RSMassTransit.Core
         {
             var settings = new NameValueCollection { ["Storage.File.WriteBufferSize"] = @"not a number" };
 
-            this.Invoking(_ => new Configuration(settings))
-                .Should().Throw<ConfigurationErrorsException>()
-                .Which.Message.Should().Contain("The value must be an integer,");
+            Should.Throw<ConfigurationErrorsException>(() => new Configuration(settings))
+                .Message.ShouldContain("The value must be an integer,");
         }
 
         // Storage.AzureBlob.ConnectionString
@@ -297,14 +291,14 @@ namespace RSMassTransit.Core
         public void Storage_AzureBlob_ConnectionString_Current()
         {
             Configuration.Current.Azure.ConnectionString
-                .Should().Be("Testing=true");
+                .ShouldBe("Testing=true");
         }
 
         [Test]
         public void Storage_AzureBlob_ConnectionString_Default()
         {
             new Configuration(Defaults).Azure.ConnectionString
-                .Should().Be("UseDevelopmentStorage=true");
+                .ShouldBe("UseDevelopmentStorage=true");
         }
 
         [Test]
@@ -313,7 +307,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.AzureBlob.ConnectionString"] = "A" };
 
             new Configuration(settings).Azure.ConnectionString
-                .Should().Be("A");
+                .ShouldBe("A");
         }
 
         // Storage.AzureBlob.ContainerName
@@ -322,14 +316,14 @@ namespace RSMassTransit.Core
         public void Storage_AzureBlob_ContainerName_Current()
         {
             Configuration.Current.Azure.ContainerName
-                .Should().Be("testblobs");
+                .ShouldBe("testblobs");
         }
 
         [Test]
         public void Storage_AzureBlob_ContainerName_Default()
         {
             new Configuration(Defaults).Azure.ContainerName
-                .Should().Be("reports");
+                .ShouldBe("reports");
         }
 
         [Test]
@@ -338,7 +332,7 @@ namespace RSMassTransit.Core
             var settings = new NameValueCollection { ["Storage.AzureBlob.ContainerName"] = "a" };
 
             new Configuration(settings).Azure.ContainerName
-                .Should().Be("a");
+                .ShouldBe("a");
         }
     }
 }

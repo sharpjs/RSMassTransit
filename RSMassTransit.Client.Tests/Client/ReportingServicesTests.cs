@@ -45,31 +45,37 @@ public class ReportingServicesTests
     {
         WithInstance()
             .NormalizeBusUri(Fake.UriScheme, "fake bus")
-            .Should().Be(Fake.Uri);
+            .ShouldBe(Fake.Uri);
     }
 
     [Test]
     public void NormalizeBusUri_Null()
     {
-        WithInstance(c => c.BusUri = null)
-            .Invoking(s => s.NormalizeBusUri(Fake.UriScheme, "fake bus"))
-            .Should().Throw<ConfigurationException>();
+        Should.Throw<ConfigurationException>(() =>
+        {
+            WithInstance(c => c.BusUri = null)
+                .NormalizeBusUri(Fake.UriScheme, "fake bus");
+        });
     }
 
     [Test]
     public void NormalizeBusUri_Relative()
     {
-        WithInstance(c => c.BusUri = new Uri("relative", UriKind.Relative))
-            .Invoking(s => s.NormalizeBusUri(Fake.UriScheme, "fake bus"))
-            .Should().Throw<ConfigurationException>();
+        Should.Throw<ConfigurationException>(() =>
+        {
+            WithInstance(c => c.BusUri = new Uri("relative", UriKind.Relative))
+                .NormalizeBusUri(Fake.UriScheme, "fake bus");
+        });
     }
 
     [Test]
     public void NormalizeBusUri_Hostless()
     {
-        WithInstance(c => c.BusUri = new Uri("file:///somewhere"))
-            .Invoking(s => s.NormalizeBusUri(Fake.UriScheme, "fake bus"))
-            .Should().Throw<ConfigurationException>();
+        Should.Throw<ConfigurationException>(() =>
+        {
+            WithInstance(c => c.BusUri = new Uri("file:///somewhere"))
+                .NormalizeBusUri(Fake.UriScheme, "fake bus");
+        });
     }
 
     [Test]
@@ -77,7 +83,7 @@ public class ReportingServicesTests
     {
         WithInstance(c => c.BusQueue = "stuff")
             .NormalizeBusQueue()
-            .Should().Be("stuff");
+            .ShouldBe("stuff");
     }
 
     [Test]
@@ -85,7 +91,7 @@ public class ReportingServicesTests
     {
         WithInstance(c => c.BusQueue = null)
             .NormalizeBusQueue()
-            .Should().Be(ReportingServicesConfiguration.DefaultBusQueue);
+            .ShouldBe(ReportingServicesConfiguration.DefaultBusQueue);
     }
 
     [Test]
@@ -93,7 +99,7 @@ public class ReportingServicesTests
     {
         WithInstance(c => c.BusQueue = "")
             .NormalizeBusQueue()
-            .Should().Be(ReportingServicesConfiguration.DefaultBusQueue);
+            .ShouldBe(ReportingServicesConfiguration.DefaultBusQueue);
     }
 
     [Test]
@@ -103,15 +109,17 @@ public class ReportingServicesTests
 
         WithInstance(c => c.BusCredential = credential)
             .NormalizeBusCredential()
-            .Should().BeSameAs(credential);
+            .ShouldBeSameAs(credential);
     }
 
     [Test]
     public void NormalizeBusCredential_Null()
     {
-        WithInstance(c => c.BusCredential = null)
-            .Invoking(s => s.NormalizeBusCredential())
-            .Should().Throw<ConfigurationException>();
+        Should.Throw<ConfigurationException>(() =>
+        {
+            WithInstance(c => c.BusCredential = null)
+                .NormalizeBusCredential();
+        });
     }
 
     [Test]
@@ -125,7 +133,7 @@ public class ReportingServicesTests
 
         var result = instance.ExecuteReport(request);
 
-        result.Should().BeSameAs(response);
+        result.ShouldBeSameAs(response);
         instance.Verify();
     }
 
@@ -140,7 +148,7 @@ public class ReportingServicesTests
 
         var result = await instance.ExecuteReportAsync(request);
 
-        result.Should().BeSameAs(response);
+        result.ShouldBeSameAs(response);
         instance.Verify();
     }
 

@@ -49,13 +49,13 @@ public class ReportingServicesClientFactoryTests
         NetworkCredential          credential)
     {
         var windowsCredential = client
-            .Should().BeAssignableTo<ReportExecutionServiceSoapClient>()
-            .Which.ClientCredentials.Windows;
+            .ShouldBeAssignableTo<ReportExecutionServiceSoapClient>()!
+            .ClientCredentials.Windows;
 
         windowsCredential.AllowedImpersonationLevel
-            .Should().Be(TokenImpersonationLevel.Delegation);
+            .ShouldBe(TokenImpersonationLevel.Delegation);
 
         windowsCredential.ClientCredential
-            .Should().BeSameAs(credential);
+            .ShouldBeSameAs(credential);
     }
 }

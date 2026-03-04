@@ -46,24 +46,4 @@
     <VersionSuffix>$([System.Text.RegularExpressions.Regex]::Replace($(VersionSuffix), '\+.*|[^0-9a-zA-Z-]+', ''))</VersionSuffix>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <TargetsForTfmSpecificBuildOutput>
-      $(TargetsForTfmSpecificBuildOutput);PackReferences
-    </TargetsForTfmSpecificBuildOutput>
-  </PropertyGroup>
-  <Target Name="PackReferences" DependsOnTargets="ResolveReferences">
-    <ItemGroup>
-      <_ReferenceFilesToPack
-        Include="@(ReferenceCopyLocalPaths)"
-        Condition="'%(ReferenceCopyLocalPaths.CopyToPublishDirectory)' != 'false'"
-      />
-      <_ReferenceFilesToPack Condition="'%(_ReferenceFilesToPack.DestinationSubPath)' == ''">
-        <DestinationSubPath>%(FileName)%(Extension)</DestinationSubPath>
-      </_ReferenceFilesToPack>
-      <BuildOutputInPackage Include="@(_ReferenceFilesToPack)">
-        <TargetPath>%(DestinationSubPath)</TargetPath>
-      </BuildOutputInPackage>
-    </ItemGroup>
-  </Target>
-
 </Project>

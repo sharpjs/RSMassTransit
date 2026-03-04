@@ -66,7 +66,7 @@ public abstract class RSMassTransitCmdlet : PSCmdlet, IDisposable
         }
         catch (RequestFaultException e)
         {
-            foreach (var x in e.Fault.Exceptions)
+            foreach (var x in e.Fault?.Exceptions ?? [])
                 WriteWarning($"{x.ExceptionType}: {x.Message}\r\n{x.StackTrace}");
 
             throw;

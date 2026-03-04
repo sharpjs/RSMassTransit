@@ -25,6 +25,7 @@
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" />
     <PackageReference Include="MassTransit.RabbitMQ" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="Newtonsoft.Json" /> <!-- later than transitive due to package vulnerability warning -->
     <PackageReference Include="Sharp.Async" />
     <PackageReference Include="Sharp.BlobStorage.Azure" />
     <PackageReference Include="Sharp.Disposable" />

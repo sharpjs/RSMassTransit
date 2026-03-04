@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Subatomix.Testing" />
+    <PackageReference Include="Newtonsoft.Json" /> <!-- later than transitive due to package vulnerability warning -->
   </ItemGroup>
 
 </Project>

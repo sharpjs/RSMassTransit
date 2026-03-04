@@ -25,11 +25,11 @@ Most lines should begin with one of these words:
 
   Component               | .NET Core/5+ | .NET Standard | .NET Framework
   :-----------------------|:------------:|:-------------:|:--------------:
-  Client packages         | 8.0          | 2.0           | 4.6.2
-  Engine assembly         | 8.0          | *none*        | *none*
-  .NET tool package       | 8.0          | *none*        | *none*
-  Windows service package | 8.0          | *none*        | *none*
-  Test suite              | 8.0          | *none*        | 4.8.1
+  Client packages         |  8.0         | 2.0           | 4.6.2
+  Engine assembly         | 10.0         | *none*        | *none*
+  .NET tool package       | 10.0         | *none*        | *none*
+  Windows service package | 10.0         | *none*        | *none*
+  Test suite              | 10.0         | *none*        | 4.8.1
 
 - Add/Update dependencies:
 

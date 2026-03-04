@@ -1,9 +1,4 @@
 {
-  "ProviderId": "Microsoft.VisualStudio.ConnectedService.Wcf",
-  "Version": "15.0.40203.910",
-  "GettingStartedDocument": {
-    "Uri": "https://go.microsoft.com/fwlink/?linkid=858517"
-  },
   "ExtendedData": {
     "inputs": [
       "http://localhost/ReportServer/ReportExecution2005.asmx"
@@ -17,7 +12,7 @@
     "namespaceMappings": [
       "*, RSMassTransit.ReportingServices.Execution"
     ],
-    "targetFramework": "netstandard2.1",
+    "targetFramework": "net10.0",
     "typeReuseMode": "None"
   }
 }

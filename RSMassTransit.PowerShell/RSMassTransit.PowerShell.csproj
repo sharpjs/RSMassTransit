@@ -53,11 +53,16 @@
   </PropertyGroup>
   <Target Name="PackReferences" DependsOnTargets="ResolveReferences">
     <ItemGroup>
-      <BuildOutputInPackage
-        Include="@(ReferenceCopyLocalPaths->
-          WithMetadataValue('CopyLocal', 'true')->
-          WithoutMetadataValue('CopyToPublishDirectory', 'false'))"
-        TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)" />
+      <_ReferenceFilesToPack
+        Include="@(ReferenceCopyLocalPaths)"
+        Condition="'%(ReferenceCopyLocalPaths.CopyToPublishDirectory)' != 'false'"
+      />
+      <_ReferenceFilesToPack Condition="'%(_ReferenceFilesToPack.DestinationSubPath)' == ''">
+        <DestinationSubPath>%(FileName)%(Extension)</DestinationSubPath>
+      </_ReferenceFilesToPack>
+      <BuildOutputInPackage Include="@(_ReferenceFilesToPack)">
+        <TargetPath>%(DestinationSubPath)</TargetPath>
+      </BuildOutputInPackage>
     </ItemGroup>
   </Target>
 
